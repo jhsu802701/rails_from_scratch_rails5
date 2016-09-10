@@ -128,13 +128,13 @@ git push origin 2-basic_scripts
 # heroku create
 # In your browser, visit your assigned URL.
 # heroku rename <name>
-# In your browser, visit your new URL.
+# In your browser, visit your new URL.  You will see the initial Heroku splash screen.
 
-# FIND OUT WHICH HEROKU PROJECT YOU ARE CURRENTLY CONFIGURED TO PUSH TO
+# FIND OUT WHICH HEROKU PROJECT YOU ARE CURRENTLY CONFIGURED TO PUSH TO:
 
 # git remote -v
 
-# SET THE NAME OF THE HEROKU REPOSITORY
+# SET THE NAME OF THE HEROKU REPOSITORY:
 # (necessary when you git clone this project or switch from one Heroku project to another):
 
 # HEROKU_NAME='<name>'
@@ -155,6 +155,7 @@ git remote -v
 ```
 * Follow the instructions in heroku.sh for configuring your local development environment.
 * Enter the command "sh heroku.sh" to deploy your project to Heroku.
+* Go to the URL of your Heroku app.  You should now see the Rails splash screen instead of the Heroku splash screen.
 * Enter the following commands:
 ```
 git status
