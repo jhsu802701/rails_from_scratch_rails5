@@ -173,11 +173,11 @@ git status
 * Enter the following commands:
 ```
 git add .
-git push origin 1-new_app
+git push origin 2-basic_scripts
 ```
-## I.  .gitignore
+## H.  .gitignore
 
-## J.  Wrapping Up
+## I.  Wrapping Up
 * At this point, this project only provides the default Splash page of Ruby on Rails.  The scripts in this chapter will be
 necessary throughout the rest of the project.
 * Set up Heroku.  (The heroku_upload.sh script doubles as a cheat sheet.)  Then enter "sh heroku_upload.sh" to upload this app
