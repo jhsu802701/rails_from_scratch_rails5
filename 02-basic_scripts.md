@@ -8,6 +8,8 @@ git checkout -b 2-basic_scripts
 ## B.  pg-start.sh
 * In the project's root directory, create the file pg-start.sh, and enter the following contents:
 ```
+#!/bin/bash
+
 echo '--------------'
 echo 'sh pg-start.sh'
 echo 'Starting PostgreSQL'
