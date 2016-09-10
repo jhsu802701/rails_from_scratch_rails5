@@ -3,7 +3,7 @@
 ## A.  New Branch
 Enter the following command:
 ```
-git checkout -b 1-new_app
+git checkout -b 2-basic_scripts
 ```
 ## B.  pg-start.sh
 * In the project's root directory, create the file pg-start.sh, and enter the following contents:
@@ -75,55 +75,8 @@ bundle exec rake test
 git add .
 git push origin 1-new_app
 ```
-## E. Other testing scripts
-* Add the file testc.sh in the project's root directory, and give it the following contents:
-```
-#!/bin/bash
 
-# NOTE: The bundle install and database migration are skipped here.
-# It is assumed that you already completed these steps, which are
-# covered in the build_fast.sh script.
-
-# Use this script to save time when working on controllers.
-
-echo '---------------------------------'
-echo 'bundle exec rake test:controllers'
-bundle exec rake test:controllers
-```
-* Add the file testh.sh in the project's root directory, and give it the following contents:
-```
-#!/bin/bash
-
-# NOTE: The bundle install and database migration are skipped here.
-# It is assumed that you already completed these steps, which are
-# covered in the build_fast.sh script.
-
-# Use this script to save time when working on helpers and mailers.
-
-echo '--------------------------------------------'
-echo 'bundle exec rake test TEST=test/helpers/*.rb'
-bundle exec rake test TEST=test/helpers/*.rb
-
-echo '--------------------------------------------'
-echo 'bundle exec rake test TEST=test/mailers/*.rb'
-bundle exec rake test TEST=test/mailers/*.rb
-```
-* Add the file testm.sh in the project's root directory, and give it the following contents:
-```
-#!/bin/bash
-
-# NOTE: The bundle install and database migration are skipped here.
-# It is assumed that you already completed these steps, which are
-# covered in the build_fast.sh script.
-
-# Use this script to save time when working on models.
-
-echo '----------------------------'
-echo 'bundle exec rake test:models'
-bundle exec rake test:models
-```
-
-## F.  server.sh
+## E.  server.sh
 * Create the file server.sh in the project's root directory, and give it the following contents:
 ```
 #!/bin/bash
@@ -146,7 +99,7 @@ git push origin 1-new_app
 ```
 * In Docker, enter the command "tmux" to create a second simultaneous window.  In one of these tmux windows, enter the command "sh server.sh" to run your local server.  Use a browser in the host machine to see what your Rails app looks like.  Use the other tmux window to enter commands.  If you need to stop the server for any reason, just go to that window and press CTRL-C.
 
-## G.  heroku.sh
+## F.  heroku.sh
 * In the project's root path, create the file heroku.sh and give it the following contents:
 ```
 #!/bin/bash
@@ -190,7 +143,7 @@ git remote -v
 git add .
 git push origin 1-new_app
 ```
-## H.  sandbox.sh
+## G.  sandbox.sh
 * In the project's root directory, create the file sandbox.sh and add the following contents:
 ```
 #!/bin/bash
@@ -206,7 +159,7 @@ git add .
 git push origin 1-new_app
 ```
 * OPTIONAL: In Docker, enter the command "tmux" to create an additional simultaneous window.  In one of these tmux windows, enter the command "sh sandbox.sh" to run the sandbox environment.  Use another tmux window to enter commands.
-## I.  git_check.sh
+## H.  git_check.sh
 * In the project's root directory, create the file git_check.sh and add the following contents:
 ```
 #!/bin/bash
@@ -222,15 +175,15 @@ git status
 git add .
 git push origin 1-new_app
 ```
-## J.  .gitignore
+## I.  .gitignore
 
-## K.  Wrapping Up
+## J.  Wrapping Up
 * At this point, this project only provides the default Splash page of Ruby on Rails.  The scripts in this chapter will be
 necessary throughout the rest of the project.
 * Set up Heroku.  (The heroku_upload.sh script doubles as a cheat sheet.)  Then enter "sh heroku_upload.sh" to upload this app
 to Heroku and then view it.
 * Enter the command "sh git_check.sh".  There should be no new files or changes left to add.
-* Go to the GitHub repository and issue a pull request for this 1-new_app branch.
+* Go to the GitHub repository and issue a pull request for this 1-basic_scripts branch.
 * Accept this pull request to merge it with the master branch, but do NOT delete this branch.
 * Enter the following commands:
 ```
