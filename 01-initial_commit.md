@@ -23,9 +23,16 @@ Let's update the .gitignore file.  Edit this file, make the following changes, a
 ########################
 .DS_Store # Prevents Mac users from accidentally adding .DS_Store
 ```
-## C. GitHub Repository
+## C. Setting Up Git Locally
+*  Enter the following commands in your shell window (providing your GitHub email address and name, respectively):
+```
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+```
+
+## D. GitHub Repository
 * In your web browser, go to [GitHub](https://github.com/) and create a new repository with the same name as that of this new 
-Rails app.  Stick with the default options to avoid financial costs and merge conflicts.  You will seeinstructions for making the initial push from your local machine to the GitHub repository.
+Rails app.  Stick with the default options to avoid financial costs and merge conflicts.  You will see instructions for making the initial push from your local machine to the GitHub repository.
 * In your shell window, cd into your project's root directory and enter the following commands:
 ```
 git init
