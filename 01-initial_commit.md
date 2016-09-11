@@ -30,7 +30,7 @@ Let's update the new project's .gitignore file.  Edit this file, make the follow
   git config --global user.email "you@example.com"
   git config --global user.name "Your Name"
 ```
-* Please note that you must repeat the above step every time you enter a new development environment or reset your Docker container.  Until you do so, you are unable to git commit.
+* Please note that you must repeat the above step every time you enter a new development environment or reset your Docker container.  Until you do so, you are unable to git commit, and you will see an error message telling you to set these Git configurations when you attempt to do so.
 
 ## D. GitHub Repository
 * In your web browser, go to [GitHub](https://github.com/) and create a new repository with the same name as that of this new 
