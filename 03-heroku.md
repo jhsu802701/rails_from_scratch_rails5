@@ -1,6 +1,6 @@
 # Chapter 3: Heroku
 
-Enter the command "git checkout -b 3-heroku" to start a new branch.  In this chapter, we will deploy the project to Heroku.
+In this chapter, we will deploy the project to Heroku.  Do NOT create a new Git branch in this chapter.  Remain in the master branch, because that is what will be deployed to Heroku.  Heroku will not accept your attempt to deploy if your master branch does not specify the use of the pg (PostgreSQL) gem in production.  (As you can see in the original Gemfile, the pg gem is not specified.)
 
 ## A. Gemfile
 *  Replace the Gemfile with the following contents:
@@ -55,7 +55,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # END: original gems
 ####################
 ```
-*  The pg gem (PostgreSQL) is needed in the production environment for Heroku, because it does NOT offer SQLite.  In the production environment, PostgreSQL is greatly preferred over SQLite.  While it's usually best to use the same database in the development and production environments, the use of SQLite in development and PostgreSQL in production (for Heroku) is usually used in tutorials.  If your production environment is not Heroku, it's best to use PostgreSQL in the development environment.
+*  The pg gem (PostgreSQL) is needed in the production environment for Heroku, because it does NOT offer SQLite.  In the production environment, PostgreSQL is greatly preferred over SQLite.  While it's usually best to use the same database in the development and production environments, the use of SQLite in development and PostgreSQL in production (for Heroku) is usually used in tutorials.  If your production environment is not Heroku, it's best to use PostgreSQL in the development and testing environments and skip the use of SQLite completely.
 *  Enter the command "bundle update".  This installs the latest versions of the above gems that conform to the specified requirements.  The Gemfile.lock file is automatically replaced.
 *  NOTE: The gems will need updating periodically.
 *  Enter the following commands: 
@@ -63,6 +63,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 sh git_check.sh # Gemfile and Gemfile.lock have changed
 git add .
 git commit -m "Updated Gemfile for Heroku"
+git push origin master
 ```
 
 ## B. heroku.sh
@@ -114,4 +115,4 @@ git remote -v
 sh git_check.sh
 git add .
 git commit -m "Added heroku.sh"
-git push origin 3-heroku
+git push origin master
