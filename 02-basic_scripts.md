@@ -6,7 +6,7 @@ and allow you to execute basic tasks in only one step.
 ## A. New Branch
 Enter the following command:
 ```
-git checkout -b 2-basic_scripts
+git checkout -b 02-basic_scripts
 ```
 ## B. pg-start.sh
 * Create the file pg-start.sh, enter the following contents, and save the file:
@@ -170,7 +170,7 @@ git commit -m "Added git_check.sh"
 * At this point, this project only provides the default Splash page of Ruby on Rails.  The scripts in this chapter will be
 necessary throughout the rest of the project.
 * Enter the command "sh git_check.sh".  There should be no new files or changes left to add.
-* Enter the command "git push origin 2-basic_scripts".
+* Enter the command "git push origin 02-basic_scripts".
 * Go to the GitHub repository and click on the "Compare and pull request" button for this 2-basic_scripts branch.
 * Accept this pull request to merge it with the master branch, but do NOT delete this branch.
 * Enter the following commands:
