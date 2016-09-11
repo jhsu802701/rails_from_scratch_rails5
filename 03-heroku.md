@@ -109,7 +109,7 @@ git remote -v
 * Create your own free account on Heroku if you do not already have one.
 * Follow the instructions in heroku.sh for configuring your local development environment and starting the new Heroku project.
 * Enter the command "sh heroku.sh" to deploy your project to Heroku.
-* Go to the URL of your Heroku app.  You should now see the Rails splash screen instead of the Heroku splash screen.
+* Go to the URL of your Heroku app.  You should now see the "Welcome to public/index.html!" screen instead of the Heroku splash screen.  If you didn't already have the index.html file in your public directory, you would see an error message.  For some reason, Heroku does not display the initial Rails splash screen like your local server does.
 * Enter the following commands:
 ```
 sh git_check.sh
