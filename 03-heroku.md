@@ -78,7 +78,7 @@ git commit -m "Updated Gemfile for Heroku"
 # STARTING A NEW HEROKU PROJECT:
 
 # heroku create
-# In your browser, visit your assigned URL.
+# In your browser, visit your assigned URL.  You will see the initial Heroku splash screen.
 # heroku rename <name>
 # In your browser, visit your new URL.  You will see the initial Heroku splash screen.
 
