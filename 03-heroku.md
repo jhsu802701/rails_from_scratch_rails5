@@ -116,4 +116,4 @@ git remote -v
 git status
 git add .
 git commit -m "Added heroku.sh"
-git push origin 2-basic_scripts
+git push origin 3-heroku
