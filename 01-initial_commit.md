@@ -42,3 +42,4 @@ git add .
 git commit -m "initial commit"
 ```
 * Go to your generic_rails-* repository on GitHub and follow the instructions for pushing an existing repository from the command line.
+* After you have pushed your repository, refresh the above browser window.  The instructions have been replaced with the source code of your new app.
