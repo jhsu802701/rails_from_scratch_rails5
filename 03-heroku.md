@@ -58,6 +58,7 @@ group :development do
 end
 # END: original gems
 ```
+*  The pg gem (PostgreSQL) is needed in the production environment for Heroku, because it does NOT offer SQLite.  In the production environment, PostgreSQL is greatly preferred over SQLite.  While it's usually best to use the same database in the development and production environments, the use of SQLite in development and PostgreSQL in production (for Heroku) is usually used in tutorials.  If your production environment is not Heroku, it's best to use PostgreSQL in the development environment.
 *  Enter the command "bundle update".  This installs the latest versions of the above gems that conform to the specified requirements.  The Gemfile.lock file is automatically replaced.
 *  NOTE: The gems will need updating periodically.
 *  Enter the following commands: 
