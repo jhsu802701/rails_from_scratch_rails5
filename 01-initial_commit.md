@@ -12,14 +12,15 @@ rails new generic_rails_$DATE
 Let's update the .gitignore file.  Edit this file, make the following changes, and then save the file.
 *  At the beginning of the .gitgnore file, enter the following lines:
 ```
+##########################
 # BEGIN: original contents
-#
+##########################
 ```
 *  At the end of the .gitignore file, enter the following lines:
 ```
-#
+########################
 # END: original contents
-#
+########################
 .DS_Store # Prevents Mac users from accidentally adding .DS_Store
 ```
 ## C. GitHub Repository
