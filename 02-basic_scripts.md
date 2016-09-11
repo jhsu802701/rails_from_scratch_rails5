@@ -134,7 +134,8 @@ git commit -m "Added sandbox.sh"
 ```
 #!/bin/bash
 
-# Run this script before updating Git.  This script enables you to make sure you've covered all bases and shows a list of all new files that will be saved if you do NOT add them to .gitignore.
+# Run this script before updating Git.  This script enables you to make sure you've covered all bases 
+# and shows a list of all new files that will be saved if you do NOT add them to .gitignore.
 
 sh build_fast.sh
 git status
