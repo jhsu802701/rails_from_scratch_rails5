@@ -9,7 +9,7 @@ rails new generic_rails_$DATE
 ```
 
 ## B. .gitignore file
-Let's update the .gitignore file.  Edit this file, make the following changes, and then save the file.
+Let's update the new project's .gitignore file.  Edit this file, make the following changes, and then save the file.
 *  At the beginning of the .gitgnore file, enter the following lines:
 ```
 ########################
