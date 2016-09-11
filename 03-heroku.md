@@ -106,7 +106,7 @@ echo 'git remote -v'
 git remote -v
 ```
 * Create your own free account on Heroku if you do not already have one.
-* Follow the instructions in heroku.sh for configuring your local development environment.
+* Follow the instructions in heroku.sh for configuring your local development environment and starting the new Heroku project.
 * Enter the command "sh heroku.sh" to deploy your project to Heroku.
 * Go to the URL of your Heroku app.  You should now see the Rails splash screen instead of the Heroku splash screen.
 * Enter the following commands:
