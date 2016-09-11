@@ -58,6 +58,8 @@ git commit -m "Added kill_spring.sh"
 # Resetting the Docker container to its original state AND running this script ensures that you
 # are on top of all dependencies and can avoid the old "works on my machine" problem.
 
+# This is Joel Spolsky's one-step build process at work.
+
 sh pg-start.sh
 
 echo '--------------'
