@@ -5,12 +5,22 @@ Enter the command "git checkout -b 3-heroku" to start a new branch:
 ## A. Gemfile
 *  Replace the Gemfile with the following contents:
 ```
-# A given version of Ruby takes a long time to install.
-# The version number is controlled to avoid the need to wait.
-# Install the newest version in this project's Docker image before updating the version numbers.
+# Installing a version of Ruby manually requires a long wait.
+# Preinstall the newest version in this project's Docker image before updating the Ruby version.
 ruby '2.3.1'
 
 source 'https://rubygems.org'
+
+####################
+BEGIN: original gems
+####################
+
+# Because the rails, pg, and nokogiri gems take a long time to install, this app initially uses
+# the current versions used in the Rails Tutorial Sample App.
+# These are preinstalled in the rbenv-general Docker images.
+gem 'rails', '5.0.0.1'
+gem 'pg', '0.18.4' # Not necessary in development if you're using SQLite
+gem 'nokogiri', '1.6.8'
 
 # BEGIN: SQLite
 group :development, :test do
@@ -18,24 +28,6 @@ group :development, :test do
 end
 # END: SQLite
 
-# Always included to simplify Gemfile management
-# You may wish to make this production-only.
-# Because it takes a long time to install, this app initially uses
-# the current version used in the Rails Tutorial Sample app, which
-# comes pre-installed in the jhsu802701/rbenv-general Docker image.
-gem 'pg', '0.18.4'
-
-# Rails takes a long time to install.
-# The version number is controlled to speed up the "bundle install process".
-# Install the newest version in this project's Docker image before updating the version numbers.
-gem 'rails', '5.0.0.1'
-
-# Nokogiri is a dependency of other gems.
-# Version numbers are controlled to speed up the "bundle install" process.
-# Install the newest versions in this project's Docker image before updating the version numbers.
-gem 'nokogiri', '1.6.8'
-
-# BEGIN: original gems
 gem 'puma', '3.6.0' # Server
 gem 'sass-rails', '5.0.6' # Stylesheets
 gem 'uglifier', '3.0.2' # Compressor for JavaScript assets
@@ -56,7 +48,10 @@ group :development do
   gem 'spring', '1.7.2'
   gem 'spring-watcher-listen', '2.0.0'
 end
-# END: original gems
+
+##################
+END: original gems
+##################
 ```
 *  The pg gem (PostgreSQL) is needed in the production environment for Heroku, because it does NOT offer SQLite.  In the production environment, PostgreSQL is greatly preferred over SQLite.  While it's usually best to use the same database in the development and production environments, the use of SQLite in development and PostgreSQL in production (for Heroku) is usually used in tutorials.  If your production environment is not Heroku, it's best to use PostgreSQL in the development environment.
 *  Enter the command "bundle update".  This installs the latest versions of the above gems that conform to the specified requirements.  The Gemfile.lock file is automatically replaced.
