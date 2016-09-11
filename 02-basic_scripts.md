@@ -148,7 +148,7 @@ git add .
 git commit -m "Added git_check.sh"
 ```
 
-## G.  Wrapping Up
+## H.  Wrapping Up
 * At this point, this project only provides the default Splash page of Ruby on Rails.  The scripts in this chapter will be
 necessary throughout the rest of the project.
 * Enter the command "sh git_check.sh".  There should be no new files or changes left to add.
