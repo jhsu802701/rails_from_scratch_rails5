@@ -1,13 +1,30 @@
 # Chapter 1: Initial Commit
 
+## A. Creating the New App
+
 * To create a new app named after the current date, enter the following commands in your shell window:
 ```
 DATE=`date +%Y_%m_%d`
 rails new generic_rails_$DATE
 ```
+
+## B. .gitignore file
+Let's update the .gitignore file.  Edit this file, make the following changes, and then save the file.
+*  At the beginning of the .gitgnore file, enter the following lines:
+```
+# BEGIN: original contents
+#
+```
+*  At the end of the .gitignore file, enter the following lines:
+```
+#
+# END: original contents
+#
+.DS_Store # Prevents Mac users from accidentally adding .DS_Store
+```
+## C. GitHub Repository
 * In your web browser, go to [GitHub](https://github.com/) and create a new repository with the same name as that of this new 
-Rails app.  Make it a public repository.  Stick with the default options (barebones) to avoid merge conflicts.  You will see 
-instructions for making the initial push from your local machine to the GitHub repository.
+Rails app.  Stick with the default options to avoid financial costs and merge conflicts.  You will seeinstructions for making the initial push from your local machine to the GitHub repository.
 * In your shell window, cd into your project's root directory and enter the following commands:
 ```
 git init
