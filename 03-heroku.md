@@ -3,9 +3,52 @@
 Enter the command "git checkout -b 3-heroku" to start a new branch:
 
 ## A. Gemfile
-*
-*  Enter the command "bundle update".
-*  Enter the command "sh git_check.sh".
+*  Replace the Gemfile with the following contents:
+```
+# BEGIN: database
+gem 'sqlite3'
+gem 'pg'
+# END: database
+
+# nokogiri and pg are dependencies of other gems
+# that take a long time to install
+# Version numbers are controlled to speed up the "bundle install" process.
+# Install the newest versions in the Docker image before updating the version numbers.
+gem 'nokogiri', '1.6.8'
+gem 'pg, '0.18.4'
+
+# BEGIN: original gems
+gem 'puma' # Server
+gem 'sass-rails' # Stylesheets
+gem 'uglifier' # Compressor for JavaScript assets
+gem 'coffee-rails' # Use CoffeeScript for .coffee assets and views
+gem 'jquery-rails' # Use jquery as the JavaScript library
+gem 'turbolinks' # Makes navigating your web application faster
+gem 'jbuilder' # Build JSON APIs with ease
+
+group :development, :test do
+  gem 'byebug', platform: :mri # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+end
+
+group :development do
+  # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
+  gem 'web-console'
+  gem 'listen', 
+  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'spring'
+  gem 'spring-watcher-listen', 
+end
+# END: original gems
+```
+*  Enter the command "bundle update".  This installs the latest versions of the above gems that conform to the specified requirements.  The Gemfile.lock file is automatically replaced.
+*  NOTE: The gems will need updating periodically.
+*  Enter the following commands: 
+```
+sh git_check.sh # Gemfile and Gemfile.lock have changed
+git add .
+git commit -m "Updated Gemfile for Heroku"
+```
+
 ## B. heroku.sh
 * In the project's root path, create the file heroku.sh and give it the following contents before saving it:
 ```
