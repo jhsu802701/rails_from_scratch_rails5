@@ -141,12 +141,15 @@ git commit -m "Added sandbox.sh"
 # and shows a list of all new files that will be saved if you do NOT add them to .gitignore.
 
 sh build_fast.sh
+
+echo '----------'
+echo 'git status'
 git status
 ```
 * Save this file.
 * Enter the following commands:
 ```
-git status
+sh git_check.sh
 git add .
 git commit -m "Added git_check.sh"
 ```
