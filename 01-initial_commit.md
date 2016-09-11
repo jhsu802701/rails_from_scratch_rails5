@@ -24,11 +24,13 @@ Let's update the .gitignore file.  Edit this file, make the following changes, a
 .DS_Store # Prevents Mac users from accidentally adding .DS_Store
 ```
 ## C. Setting Up Git Locally
+
 *  Enter the following commands in your shell window (providing your GitHub email address and name, respectively):
 ```
   git config --global user.email "you@example.com"
   git config --global user.name "Your Name"
 ```
+* Please note that you must repeat the above step every time you enter a new development environment or reset your Docker container.  Until you do so, you are unable to git commit.
 
 ## D. GitHub Repository
 * In your web browser, go to [GitHub](https://github.com/) and create a new repository with the same name as that of this new 
