@@ -1,6 +1,6 @@
 # Chapter 3: Heroku
 
-Enter the command "git checkout -b 3-heroku" to start a new branch:
+Enter the command "git checkout -b 3-heroku" to start a new branch.  In this chapter, we will deploy the project to Heroku.
 
 ## A. Gemfile
 *  Replace the Gemfile with the following contents:
@@ -105,12 +105,13 @@ echo '-------------'
 echo 'git remote -v'
 git remote -v
 ```
+* Create your own free account on Heroku if you do not already have one.
 * Follow the instructions in heroku.sh for configuring your local development environment.
 * Enter the command "sh heroku.sh" to deploy your project to Heroku.
 * Go to the URL of your Heroku app.  You should now see the Rails splash screen instead of the Heroku splash screen.
 * Enter the following commands:
 ```
-git status
+sh git_check.sh
 git add .
 git commit -m "Added heroku.sh"
 git push origin 3-heroku
