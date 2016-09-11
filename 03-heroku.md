@@ -19,7 +19,7 @@ BEGIN: original gems
 # the current versions used in the Rails Tutorial Sample App.
 # These are preinstalled in the rbenv-general Docker images.
 gem 'rails', '5.0.0.1'
-gem 'pg', '0.18.4' # Not necessary in development if you're using SQLite
+gem 'pg', '0.18.4' # Not necessary in development and testing if you're using SQLite
 gem 'nokogiri', '1.6.8'
 
 # BEGIN: SQLite
