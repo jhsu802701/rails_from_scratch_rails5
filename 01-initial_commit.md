@@ -2,7 +2,7 @@
 
 ## A. Creating the New App
 
-* To create a new app named after the current date, enter the following commands in your shell window:
+To create a new app named after the current date, enter the following commands in your shell window:
 ```
 DATE=`date +%Y_%m_%d`
 rails new generic_rails_$DATE
