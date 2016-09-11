@@ -159,7 +159,7 @@ git commit -m "Added git_check.sh"
 necessary throughout the rest of the project.
 * Enter the command "sh git_check.sh".  There should be no new files or changes left to add.
 * Enter the command "git push origin 2-basic_scripts".
-* Go to the GitHub repository and issue a pull request for this 2-basic_scripts branch.
+* Go to the GitHub repository and click on the "Compare and pull request" button for this 2-basic_scripts branch.
 * Accept this pull request to merge it with the master branch, but do NOT delete this branch.
 * Enter the following commands:
 ```
