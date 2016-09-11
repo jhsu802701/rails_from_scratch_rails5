@@ -5,26 +5,44 @@ Enter the command "git checkout -b 3-heroku" to start a new branch:
 ## A. Gemfile
 *  Replace the Gemfile with the following contents:
 ```
-# BEGIN: database
-gem 'sqlite3'
-gem 'pg'
-# END: database
+# A given version of Ruby takes a long time to install.
+# The version number is controlled to avoid the need to wait.
+# Install the newest version in this project's Docker image before updating the version numbers.
+ruby '2.3.1'
 
-# nokogiri and pg are dependencies of other gems
-# that take a long time to install
+source 'https://rubygems.org'
+
+# BEGIN: SQLite
+group :development, :test do
+  gem 'sqlite3', '1.3.11' # Delete if using only PostgreSQL
+end
+# END: SQLite
+
+# Always included to simplify Gemfile management
+# You may wish to make this production-only.
+# Because it takes a long time to install, this app initially uses
+# the current version used in the Rails Tutorial Sample app, which
+# comes pre-installed in the jhsu802701/rbenv-general Docker image.
+gem 'pg', '0.18.4'
+
+# Rails takes a long time to install.
+# The version number is controlled to speed up the "bundle install process".
+# Install the newest version in this project's Docker image before updating the version numbers.
+gem 'rails', '5.0.0.1'
+
+# Nokogiri is a dependency of other gems.
 # Version numbers are controlled to speed up the "bundle install" process.
-# Install the newest versions in the Docker image before updating the version numbers.
+# Install the newest versions in this project's Docker image before updating the version numbers.
 gem 'nokogiri', '1.6.8'
-gem 'pg, '0.18.4'
 
 # BEGIN: original gems
-gem 'puma' # Server
-gem 'sass-rails' # Stylesheets
-gem 'uglifier' # Compressor for JavaScript assets
-gem 'coffee-rails' # Use CoffeeScript for .coffee assets and views
-gem 'jquery-rails' # Use jquery as the JavaScript library
-gem 'turbolinks' # Makes navigating your web application faster
-gem 'jbuilder' # Build JSON APIs with ease
+gem 'puma', '3.6.0' # Server
+gem 'sass-rails', '5.0.6' # Stylesheets
+gem 'uglifier', '3.0.2' # Compressor for JavaScript assets
+gem 'coffee-rails', '4.2.1' # Use CoffeeScript for .coffee assets and views
+gem 'jquery-rails', '4.2.1' # Use jquery as the JavaScript library
+gem 'turbolinks', '5.0.1' # Makes navigating your web application faster
+gem 'jbuilder', '2.6.0' # Build JSON APIs with ease
 
 group :development, :test do
   gem 'byebug', platform: :mri # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -32,11 +50,11 @@ end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'web-console'
-  gem 'listen', 
+  gem 'web-console', '3.3.1'
+  gem 'listen', '3.0.8'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-  gem 'spring-watcher-listen', 
+  gem 'spring', '1.7.2'
+  gem 'spring-watcher-listen', '2.0.0'
 end
 # END: original gems
 ```
