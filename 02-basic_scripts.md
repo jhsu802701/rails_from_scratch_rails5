@@ -108,9 +108,21 @@ rails server -b 0.0.0.0
 * In Docker, enter the command "tmux" to begin tmux mode.  Press Ctrl-b and then "c" to create a second tmux window.  In one of your tmux screen, cd into your project's root directory, and enter the command "sh server.sh" to run your local server.  Use a browser in the host machine to see what your Rails app looks like.  Use the other tmux screen to continue entering commands.  Press Ctrl-b and then "p" to go to the previous tmux screen.  Press Ctrl-b and then "n" to go to the next tmux
 screen.  To scroll within a tmux screen, press Ctrl-b and then your normal keys for paging up and paging down.  To exit scroll mode (which disables your ability to do anything other than scroll up or down), press Ctrl-C.   If you need to stop the server for any reason, just go to that tmux screen and press CTRL-c.  To close a tmux screen, go to that screen and enter "exit".
 * In your Docker container's host environment, open the web browser and go to the appropriate URL.  You should see the Ruby on Rails default splash screen.  Keep this web browser tab open, and refresh it periodically to see the progress in this project.
+* Create the file index.html in the public directory of your project and save it with the following contents:
+```
+<html>
+	<head>
+		<title>public/index.html</title>
+	</head>
+	<body>
+		Welcome to public/index.html!
+	</body>
+</html>
+```
+* Refresh your web browser tab.  The Ruby on Rails splash screen should now be replaced with a plain page that reads "Welcome to public.html!"
 * Enter the following commands:
 ```
-git status
+git status # server.sh and public.html
 git add .
 git commit -m "Added server.sh"
 ```
