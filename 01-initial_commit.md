@@ -21,7 +21,11 @@ Let's update the new project's .gitignore file.  Edit this file, make the follow
 #######################
 # END: initial contents
 #######################
+
 .DS_Store # Prevents Mac users from accidentally adding .DS_Store
+
+/spring/*.pid # Ignore Spring files.
+
 ```
 ## C. Setting Up Git Locally
 
