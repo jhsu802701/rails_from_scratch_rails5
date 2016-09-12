@@ -30,7 +30,15 @@ In the previous chapter, we made changes to the Gemfile.  This is a time when th
 *  If your project passed all tests, and the outcome of running the build_fast.sh script was as expected, then this means that you have covered all bases through the Docker image build scripts and the build_fast.sh script.
 *  If your project didn't behave as expected, it's time to figure out what's missing, and you should be thankful that you spotted the dependency mismanagement problem early on.
 
-## F.  Conclusions
+## F. Configurations
+*  Before you can successfully use the "git commit" command, you need to configure your Git with your GitHub credentials again with the following commands: 
+```
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
+```
+*  Before you can successfully use the heroku.sh script again, you'll need to follow the steps in this script's comments to get back in business.  You must configure the local environment and set the name of the Heroku repository.
+
+## G. Conclusions
 
 *  If all goes well, it only takes a few minutes to check for dependency mismanagement problems.
 *  If your project doesn't behave as expected when you run the build_fast.sh script, you now can address your dependency mismanagement problem while it's still small.  Not having a Docker image with the right elements for the project and not having a 1-step build script means that it's much more difficult and time-consuming to check for dependency mismanagement problems.  This encourages people to neglect this responsibility and allow the hidden problems to fester.  This means that when the dependency mismanagement problems show up later, the troubleshooting process is MUCH, MUCH more difficult.  In other words, individuals and teams who neglect dependency mismanagement checking are in a situation analogous to those of students who wait until the last minute to start work on a term paper.
