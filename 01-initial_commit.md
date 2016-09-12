@@ -42,6 +42,7 @@ Rails app.  Stick with the default options to avoid financial costs and merge co
 * In your shell window, cd into your project's root directory and enter the following commands:
 ```
 git init
+git status # Shows list of files in your project, starting with .gitignore
 git add .
 git commit -m "initial commit"
 ```
