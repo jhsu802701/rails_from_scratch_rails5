@@ -41,6 +41,7 @@ Let's update the new project's .gitignore file.  Edit this file, make the follow
 #######################
 # END: initial contents
 #######################
+```
 
 ### D. Setting Up Git Locally
 
