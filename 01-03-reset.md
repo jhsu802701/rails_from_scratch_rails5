@@ -31,7 +31,7 @@ It's a good idea to reset your development environment occasionally.  Because we
 *  If your project didn't behave as expected, it's time to figure out what's missing, and you should be thankful that you spotted the dependency mismanagement problem early on.
 *  Because your local server is occupying the first tmux screen, you need to start a second tmux screen to continue entering commands.
 
-### F. Reconfiguring Git
+### E. Reconfiguring Git
 
 Before you can successfully use the "git commit" command, you need to reconfigure your Git with your GitHub credentials with the following commands (providing your GitHub email address and name, respectively): 
 ```
@@ -39,7 +39,7 @@ git config --global user.email "you@example.com"
 git config --global user.name "Your Name"
 ```
 
-### G. Conclusions
+### F. Conclusions
 
 *  If all goes well, it only takes a few minutes to check for dependency mismanagement problems.
 *  If your project doesn't behave as expected when you run the build_fast.sh script, you now can address your dependency mismanagement problem while it's still small.  Not having a Docker image with the right elements for the project and not having a 1-step build script means that it's much more difficult and time-consuming to check for dependency mismanagement problems.  This encourages people to neglect this responsibility and allow any hidden problems to fester.  This means that when the dependency mismanagement problems show up later, the troubleshooting process is MUCH, MUCH more difficult.  In other words, individuals and teams who neglect dependency mismanagement checking are in a situation analogous to those of students who wait until the last minute to start work on a term paper.
