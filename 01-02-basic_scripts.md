@@ -155,21 +155,24 @@ git commit -m "Added server.sh"
 
 rails console --sandbox
 ```
-* Enter the following commands:
+*  Enter the command "sh sandbox.sh" to start the Rails sandbox.  When you are finished trying it out, just enter "exit" in the Rails sandbox console to return to the normal Bash command line.
+*  If you frequently use a Rails sandbox console, you should keep a tmux window dedicated to it.
+*  Enter the following commands:
 ```
 git status
 git add .
 git commit -m "Added sandbox.sh"
 ```
 ### G. git_check.sh
-* Create the file git_check.sh with the following content:
+*  Create the file git_check.sh with the following content:
 ```
 #!/bin/bash
 
 # Run this script before pushing the branch to GitHub.
-# This script enables you to make sure you've covered all bases, shows the list of all files 
-# that were changed, and shows the list of new files that will be saved if you do NOT add them
-# to .gitignore.
+# This script enables you to make sure you've covered all bases, 
+# shows the list of all files that were changed, 
+# and shows the list of new files that will be saved 
+# if you do NOT add them to .gitignore.
 
 sh build_fast.sh
 
