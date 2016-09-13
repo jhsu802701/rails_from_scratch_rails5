@@ -24,7 +24,7 @@ sh git_check.sh
 git add .
 git commit -m "Installed Rubocop"
 ```
-### .rubocopy.yml
+### .rubocop.yml
 * Create the file .rubocop.yml with the following content:
 ```
 AllCops:
