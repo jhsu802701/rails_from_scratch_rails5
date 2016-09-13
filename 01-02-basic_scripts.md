@@ -7,7 +7,7 @@ and allow you to execute basic tasks in only one step.
 ### A. New Branch
 Enter the following command:
 ```
-git checkout -b 02-basic_scripts
+git checkout -b 01-02-basic_scripts
 ```
 ### B. pg-start.sh
 * Create the file pg-start.sh, enter the following contents, and save the file:
