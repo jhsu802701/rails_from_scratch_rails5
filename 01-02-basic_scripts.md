@@ -42,6 +42,8 @@ git commit -m "Added pg-start.sh"
 # you need to kill the old Spring process so that a new one
 # can be automatically created to replace it.
 
+echo '------------------'
+echo 'pkill -9 -f spring'
 pkill -9 -f spring
 ```
 * Enter the command "sh kill_spring.sh" to try out this script.
