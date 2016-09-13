@@ -3,12 +3,12 @@
 
 In this chapter, we will add basic scripts for executing routine tasks in only one step.  These scripts will be located in the project's root directory and allow you to execute basic tasks in only one step.  I find these scripts to be necessary, because a Rails project has more tasks and details than I can remember verbatim.
 
-### A. New Branch
+### New Branch
 Enter the following command:
 ```
 git checkout -b 01-02-basic_scripts
 ```
-### B. pg-start.sh
+### pg-start.sh
 * Create the file pg-start.sh with the following content:
 ```
 #!/bin/bash
@@ -33,7 +33,7 @@ git add .
 git commit -m "Added pg-start.sh"
 ```
 
-### C.  kill_spring.sh
+### kill_spring.sh
 * Create the file kill_spring.sh with the following content:
 ```
 #!/bin/bash
@@ -53,7 +53,7 @@ git status
 git add .
 git commit -m "Added kill_spring.sh"
 ``` 
-### D. build_fast.sh
+### build_fast.sh
 * Create the file build_fast.sh with the following content:
 ```
 #!/bin/bash
@@ -103,7 +103,7 @@ git add .
 git commit -m "Added build_fast.sh"
 ```
 
-### E. server.sh
+### server.sh
 * Create the file server.sh with the following content:
 ```
 #!/bin/bash
@@ -127,7 +127,7 @@ rails server -b 0.0.0.0
 screen.  To scroll within a tmux screen, press Ctrl-b and then your normal keys for paging up and paging down.  To exit scroll mode (which disables your ability to do anything other than scroll up or down), press Ctrl-C.   If you need to stop the server for any reason, just go to that tmux screen and press CTRL-c.  To close a tmux screen, go to that screen and enter "exit".
 * I recommend always keeping a tmux window dedicated to the local server.  Always keep it running unless there is a specific reason you need to shut it down.
 * While the local server is running, open the web browser in your host environment and go to the appropriate URL.  You should see the Ruby on Rails default splash screen.  Keep this web browser tab open, and refresh it periodically to see the progress in this project.
-* Create the file index.html in the public directory of your project and save it with the following contents:
+* Create the file index.html in the public directory of your project with the following content:
 ```
 <html>
 	<head>
@@ -146,7 +146,7 @@ git add .
 git commit -m "Added server.sh"
 ```
 
-### F. sandbox.sh
+### sandbox.sh
 *  Create the file sandbox.sh with the following content:
 ```
 #!/bin/bash
@@ -163,7 +163,7 @@ git status
 git add .
 git commit -m "Added sandbox.sh"
 ```
-### G. git_check.sh
+### git_check.sh
 *  Create the file git_check.sh with the following content:
 ```
 #!/bin/bash
@@ -188,10 +188,10 @@ git add .
 git commit -m "Added git_check.sh"
 ```
 
-### H.  Wrapping Up
+### Wrapping Up
 * Enter the command "sh git_check.sh".  There should be no new files or changes left to add.
 * Enter the command "git push origin 01-02-basic_scripts".
-* Go to the GitHub repository and click on the "Compare and pull request" button for this 2-basic_scripts branch.
+* Go to the GitHub repository and click on the "Compare and pull request" button for this 01-02-basic_scripts branch.
 * Accept this pull request to merge it with the master branch, but do NOT delete this branch.
 * Enter the following commands:
 ```
