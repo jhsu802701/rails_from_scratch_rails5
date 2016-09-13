@@ -10,6 +10,7 @@ Enter the command "git checkout -b 01-04-rubocop".
 
 * Add the following line to the end of the Gemfile:
 ```
+# BEGIN: gems used in test_code.sh script
 gem 'rubocop', '0.42.0' # Code style checking tool; not recommended for legacy apps
 ```
 * Enter the command "bundle install; rubocop".  This installs and runs Rubocop.  
