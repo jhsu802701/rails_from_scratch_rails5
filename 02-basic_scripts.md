@@ -1,14 +1,15 @@
-# Chapter 2: Basic Scripts
+# Unit 1
+## Chapter 2: Basic Scripts
 
 In this chapter, we will add basic scripts to our Rails app.  These scripts will be located in the project's root directory
 and allow you to execute basic tasks in only one step.
 
-## A. New Branch
+### A. New Branch
 Enter the following command:
 ```
 git checkout -b 02-basic_scripts
 ```
-## B. pg-start.sh
+### B. pg-start.sh
 * Create the file pg-start.sh, enter the following contents, and save the file:
 ```
 #!/bin/bash
@@ -29,7 +30,7 @@ git status
 git add .
 git commit -m "Added pg-start.sh"
 ```
-## C.  kill_spring.sh
+### C.  kill_spring.sh
 * Create the file kill_spring.sh, enter the following contents, and save the file:
 ```
 #!/bin/bash
@@ -46,7 +47,7 @@ git status
 git add .
 git commit -m "Added kill_spring.sh"
 ``` 
-## D. build_fast.sh
+### D. build_fast.sh
 * Create the file build_fast.sh, enter the following contents, and save the file:
 ```
 #!/bin/bash
@@ -90,7 +91,7 @@ git add .
 git commit -m "Added build_fast.sh"
 ```
 
-## E. server.sh
+### E. server.sh
 * Create the file server.sh, enter the following contents, and save the file:
 ```
 #!/bin/bash
@@ -127,7 +128,7 @@ git add .
 git commit -m "Added server.sh"
 ```
 
-## F. sandbox.sh
+### F. sandbox.sh
 *  Create the file sandbox.sh, enter the following contents, and save the file:
 ```
 #!/bin/bash
@@ -166,7 +167,7 @@ git add .
 git commit -m "Added git_check.sh"
 ```
 
-## H.  Wrapping Up
+### G.  Wrapping Up
 * At this point, this project only provides the default Splash page of Ruby on Rails.  The scripts in this chapter will be
 necessary throughout the rest of the project.
 * Enter the command "sh git_check.sh".  There should be no new files or changes left to add.
