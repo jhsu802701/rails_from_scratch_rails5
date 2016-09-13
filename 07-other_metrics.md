@@ -1,23 +1,24 @@
-# Chapter 7: Other Metrics
+# Unit 1
+## Chapter 7: Other Metrics
 
-## A. Gemfile
+### A. Gemfile
 
-## B. SimpleCov
+### B. SimpleCov
 
-## C. bundle-audit
+### C. bundle-audit
 
-## D. Brakeman
+### D. Brakeman
 
-## E. sandi_meter
+### E. sandi_meter
 
-## F. Rails Best Practices
+### F. Rails Best Practices
 
-## G. Gemsurance
+### G. Gemsurance
 
-## H. test_code.sh
+### H. test_code.sh
 
-## I. all.sh
+### I. all.sh
 
-## J. git_check.sh
+### J. git_check.sh
 
-## K.  Wrapping Up
+### K.  Wrapping Up
