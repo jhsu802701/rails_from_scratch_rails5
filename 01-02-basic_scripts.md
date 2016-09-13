@@ -1,8 +1,7 @@
 # Unit 1
 ## Chapter 2: Basic Scripts
 
-In this chapter, we will add basic scripts to our Rails app.  These scripts will be located in the project's root directory
-and allow you to execute basic tasks in only one step.
+In this chapter, we will add basic scripts for executing routine tasks in only one step.  These scripts will be located in the project's root directory and allow you to execute basic tasks in only one step.  I find these scripts to be necessary, because a Rails project has more tasks and details than I can remember verbatim.
 
 ### A. New Branch
 Enter the following command:
@@ -182,8 +181,6 @@ git commit -m "Added git_check.sh"
 ```
 
 ### H.  Wrapping Up
-* At this point, this project only provides the default Splash page of Ruby on Rails.  The scripts in this chapter will be
-necessary throughout the rest of the project.
 * Enter the command "sh git_check.sh".  There should be no new files or changes left to add.
 * Enter the command "git push origin 01-02-basic_scripts".
 * Go to the GitHub repository and click on the "Compare and pull request" button for this 2-basic_scripts branch.
