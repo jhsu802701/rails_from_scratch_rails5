@@ -26,7 +26,8 @@ It's a good idea to reset your development environment occasionally.  Because we
 
 *  In the Docker container, start tmux.
 *  In your project's root directory, enter the command "sh build_fast.sh; sh server.sh" to execute the build process and start the local server.  This takes care of "bundle install", database migrations, testing process, and starting the local server so that you can view your app on your host system's browser.  If the Docker image came with the specific versions of Ruby, Rails, pg, and Nokogiri that are used by the project, then the build_fast.sh script will only need a few minutes to execute.  Since the rbenv-general Docker image is set up for the Rails Tutorial Sample App, you should create a customized Docker image for your project.
-*  If your project passed all tests, and the outcome of running the build_fast.sh script was as expected, then this means that you have covered all bases through the Docker image build scripts and the build_fast.sh script.
+*  Once the local server is running, open your web browser and view your project.
+*  If your project passed all tests, you are able to view your local app in the browser, and the outcome of running the build_fast.sh script was as expected, then this means that you have covered all bases through the Docker image build scripts and the build_fast.sh script.
 *  If your project didn't behave as expected, it's time to figure out what's missing, and you should be thankful that you spotted the dependency mismanagement problem early on.
 *  Because your local server is occupying the first tmux screen, you need to start a second tmux screen to continue entering commands.
 
