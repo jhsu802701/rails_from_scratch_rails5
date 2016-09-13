@@ -2,6 +2,8 @@
 
 ## Chapter 4: RuboCop
 
+RuboCop is a Ruby code analyzer that points out violations of the Ruby Style Guide.  Violations don't cause the code to fail but can slow down expert Rubyists when they read and analyze the code.  It's best to add RuboCop very early in a project, because it gets increasingly difficult to introduce later on.
+
 ### New Branch
 
 Enter the command "git checkout -b 01-04-rubocop".
