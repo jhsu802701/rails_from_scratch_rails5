@@ -141,7 +141,7 @@ screen.  To scroll within a tmux screen, press Ctrl-b and then your normal keys 
 * Refresh your web browser tab.  The Ruby on Rails splash screen should now be replaced with a plain page that reads "Welcome to public.html!"
 * Enter the following commands:
 ```
-git status # server.sh and public.html
+git status # server.sh and public/index.html
 git add .
 git commit -m "Added server.sh"
 ```
