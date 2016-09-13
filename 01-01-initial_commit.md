@@ -7,6 +7,7 @@ Open your Docker container from the appropriate rbenv-general Docker image (as d
 ```
 DATE=`date +%Y_%m_%d`
 rails new generic_rails_$DATE
+cd generic_rails_$DATE
 ```
 
 ### B. .gitignore file
