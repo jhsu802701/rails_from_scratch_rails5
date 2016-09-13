@@ -10,7 +10,7 @@ Enter the following command:
 git checkout -b 01-02-basic_scripts
 ```
 ### B. pg-start.sh
-* Create the file pg-start.sh, enter the following contents, and save the file:
+* Create the file pg-start.sh with the following content:
 ```
 #!/bin/bash
 
@@ -24,19 +24,22 @@ echo 'you can skip this step to save time.'
 sudo service postgresql start
 ```
 * Enter the command "sh pg-start.sh" to run this command.  You'll see a system message notifying you that PostgreSQL is starting up.  If you decide to change your development and testing database from SQLite to PostgreSQL, starting up PostgreSQL will be necessary in a Docker container, because the PostgreSQL server does NOT automatically start.
+* While this script is not necessary if you're using SQLite instead of PostgreSQL for the database in the development and test environments, many projects skip the use of SQLite and use PostgreSQL exclusively.  It's better to have this script and not need it than to need it but not have it.  It's easier to remove this feature later than to add it later.
 * Enter the following commands:
 ```
 git status
 git add .
 git commit -m "Added pg-start.sh"
 ```
+
 ### C.  kill_spring.sh
-* Create the file kill_spring.sh, enter the following contents, and save the file:
+* Create the file kill_spring.sh with the following content:
 ```
 #!/bin/bash
 
-# If you get Spring errors when you attempt to test your app, you need to kill the old Spring 
-# process so that a new one can be automatically created to replace it.
+# If you get Spring errors when you attempt to test your app,
+# you need to kill the old Spring process so that a new one
+# can be automatically created to replace it.
 
 pkill -9 -f spring
 ```
@@ -48,18 +51,24 @@ git add .
 git commit -m "Added kill_spring.sh"
 ``` 
 ### D. build_fast.sh
-* Create the file build_fast.sh, enter the following contents, and save the file:
+* Create the file build_fast.sh with the following content:
 ```
 #!/bin/bash
 
-# After you use the reset.sh script to return the Docker container to a fresh Ruby on Rails 
-# environment and use the "git clone" command to download this project's source code, running 
-# this script sets up this project AND runs all tests.
+# After you use the reset.sh script to return the Docker container to a
+# fresh Ruby on Rails environment and use the "git clone" command to 
+# download this project's source code, running this script sets up this 
+# project AND runs all tests.
 
-# Resetting the Docker container to its original state AND running this script ensures that you
-# are on top of all dependencies and can avoid the old "works on my machine" problem.
+# Resetting the Docker container to its original state AND running this 
+# script ensures that you are on top of all dependencies and can avoid 
+# being stopped in your tracks by the infamous "works on my machine" 
+# problem.
 
 # This is Joel Spolsky's one-step build process at work.
+
+# Killing the spring server is usually not necessary, but it's better to 
+# include this script and not need it than to need it but not have it.
 
 sh pg-start.sh
 
@@ -92,18 +101,23 @@ git commit -m "Added build_fast.sh"
 ```
 
 ### E. server.sh
-* Create the file server.sh, enter the following contents, and save the file:
+* Create the file server.sh with the following content:
 ```
 #!/bin/bash
 
 sh pg-start.sh
 
 echo 'View page at http://localhost:<port number>/'
-echo 'If you are developing this app in the host environment, the port number is 3000.'
-echo 'If you are using Docker or Vagrant, the port number may be something else.'
-echo 'If the host machine of your Docker container is OS X or Windows, you may need to replace "localhost" with a'
+echo 'If you are developing this app in the host environment,'
+echo 'the port number is 3000.'
+echo 'If you are using Docker or Vagrant,'
+echo 'the port number may be something else.'
+echo 'If the host machine of your Docker container is OS X or Windows,'
+echo 'you may need to replace "localhost" with a'
 echo 'numerical IP address (the one used by Docker Machine).'
 
+echo '-----------------------'
+echo 'rails server -b 0.0.0.0'
 rails server -b 0.0.0.0
 ```
 * In Docker, enter the command "tmux" to begin tmux mode.  Press Ctrl-b and then "c" to create a second tmux window.  In one of your tmux screen, cd into your project's root directory, and enter the command "sh server.sh" to run your local server.  Use a browser in the host machine to see what your Rails app looks like.  Use the other tmux screen to continue entering commands.  Press Ctrl-b and then "p" to go to the previous tmux screen.  Press Ctrl-b and then "n" to go to the next tmux
@@ -129,7 +143,7 @@ git commit -m "Added server.sh"
 ```
 
 ### F. sandbox.sh
-*  Create the file sandbox.sh, enter the following contents, and save the file:
+*  Create the file sandbox.sh with the following content:
 ```
 #!/bin/bash
 
@@ -137,7 +151,6 @@ git commit -m "Added server.sh"
 
 rails console --sandbox
 ```
-* Save this file.
 * Enter the following commands:
 ```
 git status
@@ -145,13 +158,14 @@ git add .
 git commit -m "Added sandbox.sh"
 ```
 ## G. git_check.sh
-* Create the file git_check.sh, enter the following contents, and save the file:
+* Create the file git_check.sh with the following content:
 ```
 #!/bin/bash
 
 # Run this script before pushing the branch to GitHub.
-# This script enables you to make sure you've covered all bases 
-# and shows a list of all new files that will be saved if you do NOT add them to .gitignore.
+# This script enables you to make sure you've covered all bases, shows the list of all files 
+# that were changed, and shows the list of new files that will be saved if you do NOT add them
+# to .gitignore.
 
 sh build_fast.sh
 
@@ -167,11 +181,11 @@ git add .
 git commit -m "Added git_check.sh"
 ```
 
-### G.  Wrapping Up
+### H.  Wrapping Up
 * At this point, this project only provides the default Splash page of Ruby on Rails.  The scripts in this chapter will be
 necessary throughout the rest of the project.
 * Enter the command "sh git_check.sh".  There should be no new files or changes left to add.
-* Enter the command "git push origin 02-basic_scripts".
+* Enter the command "git push origin 01-02-basic_scripts".
 * Go to the GitHub repository and click on the "Compare and pull request" button for this 2-basic_scripts branch.
 * Accept this pull request to merge it with the master branch, but do NOT delete this branch.
 * Enter the following commands:
