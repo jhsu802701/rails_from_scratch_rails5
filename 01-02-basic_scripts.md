@@ -156,7 +156,7 @@ git status
 git add .
 git commit -m "Added sandbox.sh"
 ```
-## G. git_check.sh
+### G. git_check.sh
 * Create the file git_check.sh with the following content:
 ```
 #!/bin/bash
