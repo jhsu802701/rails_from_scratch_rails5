@@ -21,9 +21,9 @@ It is assumed that you are using my rbenv-general Docker image.  The link to the
 ## Ruby and Gem Versions
 *  The Ruby version (specified in the Gemfile) is the same one provided in the recommended rbenv-general Docker image.  This saves you from the time-consuming processes of installing the specified version of Ruby and installing the rails, nokogiri, and pg gems in each.
 *  Many of the gem versions specified in this repository will be outdated by the time you read this.  
-*  
 
-## Gem Updating Process
+
+## Gem Version Updating Process
 *  Edit the Gemfile to specify a new version of the gem.
 *  Enter "bundle update; sh build_fast.sh".
 *  If all goes well, all tests pass.
