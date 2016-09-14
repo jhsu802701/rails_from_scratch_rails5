@@ -21,10 +21,10 @@ end
 * Enter the command "bundle install" to install the gems.
 * Enter the following commands:
 ```
+sh git_check.sh
 git add .
 git commit -m "Installed additional code analysis gems" 
 ```
-
 ### test_code.sh
 * Create the file test_code.sh with the following content:
 ```
@@ -68,22 +68,76 @@ echo 'gemsurance'
 gemsurance
 echo 'The Gemsurance Report is in gemsurance_report.html in the root directory.'
 ```
-* 
+### .gitignore
+Add the following line to the end of .gitignore:
+```
+gemsurance_report.html
+```
 
-### bundle-audit
+### .rubocop.yml
+* Add the tmp/vulnerabilities/lib/* files, tmp/vulnerabilities/spec/* files, and tmp/vulnerabilities/Rakefile to the list of AllCops exclusions.  (These files are automatically generated when you run the test_code.sh script.)  The .rubucop.yml file should look like:
+```
+AllCops:
+  Exclude:
+    - db/schema.rb
+    - tmp/vulnerabilities/lib/*
+    - tmp/vulnerabilities/spec/*
+    - tmp/vulnerabilities/Rakefile
+    
+Metrics/LineLength:
+. . .
+```
+* Enter the following commands:
+```
+sh git_check.sh
+git add .
+git commit -m "Added test_code.sh; updated .gitignore and .rubocop.yml" 
+```
 
-### Brakeman
+### git_check.sh
+* Between the "rubocop" and "git status" sections, add the following lines:
+```
+echo '----------------------'
+echo 'rails_best_practices .'
+rails_best_practices .
+```
+* Enter the following commands:
+```
+sh git_check.sh
+git add .
+git commit -m "Updated git_check.sh" 
+```
 
-### sandi_meter
+### all.sh
+* Create the file all.sh with the following content:
+```
+#!/bin/bash
 
-### Rails Best Practices
+sh build_fast.sh 2>&1 | tee log/build_fast.log
+sh test_code.sh 2>&1 | tee log/test_code.log
 
-### G. Gemsurance
+echo 'Results are logged in:'
+echo 'log/script/build_fast.log'
+echo 'log/script/test_code.log'
+```
+* Run this script by entering "sh all.sh".
+* Enter the following commands:
+```
+sh git_check.sh
+git add .
+git commit -m "Added all.sh"
+```
 
-### H. test_code.sh
+### Wrapping Up
+Enter the command "sh git_check.sh". There should be no new files or changes left to add.
+Enter the command "git push origin 01-04-rubocop".
+Go to the GitHub repository and click on the "Compare and pull request" button for this branch.
+Accept this pull request to merge it with the master branch, but do NOT delete this branch.
+Enter the following commands:
 
-### I. all.sh
-
-### J. git_check.sh
-
-### K.  Wrapping Up
+* Enter the following commands:
+```
+sh git_check.sh
+git add .
+git commit -m "Installed additional code analysis gems" 
+```
