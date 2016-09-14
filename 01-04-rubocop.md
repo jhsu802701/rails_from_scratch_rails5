@@ -17,12 +17,12 @@ Enter the command "git checkout -b 01-04-rubocop".
 
 gem 'rubocop', '0.42.0', require: false # Code style checking tool; not recommended for legacy apps
 ```
-* Enter the command "bundle install; rubocop".  This installs and runs RuboCop.  You can see why it's best to add Rubocop early on and why I don't recommend adding it to a legacy app.  Even at this early stage in the project, I found 48 violations.
+* Enter the command "bundle install; rubocop".  This installs and runs RuboCop.  You can see why it's best to add Rubocop early on and why I don't recommend adding it to a legacy app.  Even at this early stage in the project, I found 49 violations.
 * Enter the following commands:
 ```
 sh git_check.sh
 git add .
-git commit -m "Installed Rubocop"
+git commit -m "Installed RuboCop"
 ```
 ### .rubocop.yml
 * Create the file .rubocop.yml with the following content:
