@@ -14,7 +14,7 @@ group :development, :testing do
   gem 'sandi_meter', '1.2.0' # Checks for compliance with Sandi Metz' four rules
   gem 'rubocop', '0.42.0' # Checks for violations of the Ruby Style Guide, not recommended for legacy apps
   gem 'rails_best_practices', '1.17.0' # Checks the quality of Rails code, not recommended for legacy apps
-  gem 'gemsurance'
+  gem 'gemsurance', '0.6.0' # Checks for outdated and insecure gems
 end
 # END: gems used in test_code.sh script
 ```
@@ -68,6 +68,9 @@ echo 'gemsurance'
 gemsurance
 echo 'The Gemsurance Report is in gemsurance_report.html in the root directory.'
 ```
+* The Gemsurance Report shows which gems are up to date, which are out of date, and which have known security issues and thus more urgently need to be updated.
+* Enter the command "sh git_check.sh".  You'll find that gemsurance_report.html should be added to .gitignore, and you'll find that the app is no longer RuboCop compliant, because RuboCop examines the files in the tmp directory.
+
 ### .gitignore
 Add the following line to the end of .gitignore:
 ```
