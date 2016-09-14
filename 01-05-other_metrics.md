@@ -69,6 +69,7 @@ gemsurance
 echo 'The Gemsurance Report is in gemsurance_report.html in the root directory.'
 ```
 * The Gemsurance Report shows which gems are up to date, which are out of date, and which have known security issues and thus more urgently need to be updated.
+* Enter the command "sh test_code.sh" to run this script.
 * Enter the command "sh git_check.sh".  You'll find that gemsurance_report.html should be added to .gitignore, and you'll find that the app is no longer RuboCop compliant, because RuboCop examines the files in the tmp directory.
 * Add the following line to the end of .gitignore:
 ```
