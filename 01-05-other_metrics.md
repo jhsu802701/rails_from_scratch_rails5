@@ -129,15 +129,12 @@ git commit -m "Added all.sh"
 ```
 
 ### Wrapping Up
-Enter the command "sh git_check.sh". There should be no new files or changes left to add.
-Enter the command "git push origin 01-04-rubocop".
-Go to the GitHub repository and click on the "Compare and pull request" button for this branch.
-Accept this pull request to merge it with the master branch, but do NOT delete this branch.
-Enter the following commands:
-
+* Enter the command "sh git_check.sh". There should be no new files or changes left to add.
+* Enter the command "git push origin 01-05-other_metrics".
+* Go to the GitHub repository and click on the "Compare and pull request" button for this branch.
+* Accept this pull request to merge it with the master branch, but do NOT delete this branch.
 * Enter the following commands:
 ```
-sh git_check.sh
-git add .
-git commit -m "Installed additional code analysis gems" 
+git checkout master
+git pull
 ```
