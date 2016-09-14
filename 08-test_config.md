@@ -1,6 +1,6 @@
 Chapter 8: Test Configuration
 
-A. test/test_helper.rb
+A. test/test_helper.rb: show how long longest tests take
 
 B. SimpleCov
 
