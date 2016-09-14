@@ -70,15 +70,11 @@ echo 'The Gemsurance Report is in gemsurance_report.html in the root directory.'
 ```
 * The Gemsurance Report shows which gems are up to date, which are out of date, and which have known security issues and thus more urgently need to be updated.
 * Enter the command "sh git_check.sh".  You'll find that gemsurance_report.html should be added to .gitignore, and you'll find that the app is no longer RuboCop compliant, because RuboCop examines the files in the tmp directory.
-
-### .gitignore
-Add the following line to the end of .gitignore:
+* Add the following line to the end of .gitignore:
 ```
 gemsurance_report.html
 ```
-
-### .rubocop.yml
-* Add the tmp/vulnerabilities/lib/* files, tmp/vulnerabilities/spec/* files, and tmp/vulnerabilities/Rakefile to the list of AllCops exclusions.  (These files are automatically generated when you run the test_code.sh script.)  The .rubucop.yml file should look like:
+* In the .rubocop.yml file, add the tmp/vulnerabilities/lib/* files, tmp/vulnerabilities/spec/* files, and tmp/vulnerabilities/Rakefile to the list of AllCops exclusions.  (These files are automatically generated when you run the test_code.sh script.)  The .rubucop.yml file should look like:
 ```
 AllCops:
   Exclude:
@@ -93,13 +89,22 @@ Metrics/LineLength:
 * Enter the following commands:
 ```
 sh git_check.sh
+rubocop; rails_best_practices
 git add .
 git commit -m "Added test_code.sh; updated .gitignore and .rubocop.yml" 
 ```
 
 ### git_check.sh
-* Between the "rubocop" and "git status" sections, add the following lines:
+* In the git_check.sh file, replace the lines between "sh build_fast.sh" and the "git status" section with the following:
 ```
+echo '----------------'
+echo 'brakeman -Aq -w2'
+brakeman -Aq -w2
+
+echo '-------'
+echo 'rubocop'
+rubocop
+
 echo '----------------------'
 echo 'rails_best_practices .'
 rails_best_practices .
@@ -120,8 +125,8 @@ sh build_fast.sh 2>&1 | tee log/build_fast.log
 sh test_code.sh 2>&1 | tee log/test_code.log
 
 echo 'Results are logged in:'
-echo 'log/script/build_fast.log'
-echo 'log/script/test_code.log'
+echo 'log/build_fast.log'
+echo 'log/test_code.log'
 ```
 * Run this script by entering "sh all.sh".
 * Enter the following commands:
@@ -132,7 +137,7 @@ git commit -m "Added all.sh"
 ```
 
 ### Wrapping Up
-* Enter the command "sh git_check.sh". There should be no new files or changes left to add.
+* Enter the command "sh git_check.sh". There should be no new files or changes left to add, and the app should be compliant with RuboCop and Rails Best Practices.
 * Enter the command "git push origin 01-05-other_metrics".
 * Go to the GitHub repository and click on the "Compare and pull request" button for this branch.
 * Accept this pull request to merge it with the master branch, but do NOT delete this branch.
