@@ -110,14 +110,12 @@ git commit -m "Added build_fast.sh"
 
 sh pg-start.sh
 
-echo 'View page at http://localhost:<port number>/'
-echo 'If you are developing this app in the host environment,'
-echo 'the port number is 3000.'
+echo 'View page at http://localhost:3000/'
 echo 'If you are using Docker or Vagrant,'
 echo 'the port number may be something else.'
-echo 'If the host machine of your Docker container is OS X or Windows,'
-echo 'you may need to replace "localhost" with a'
-echo 'numerical IP address (the one used by Docker Machine).'
+echo 'If you are using Docker Machine,'
+echo 'replace "localhost" with a numerical' 
+echo 'IP address (probably 192.168.99.100).'
 
 echo '-----------------------'
 echo 'rails server -b 0.0.0.0'
