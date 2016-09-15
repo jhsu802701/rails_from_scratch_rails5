@@ -91,9 +91,9 @@ echo '-----------------'
 echo 'sh kill_spring.sh'
 sh kill_spring.sh
 
-echo '---------------------'
-echo 'bundle exec rake test'
-bundle exec rake test
+echo '----------'
+echo 'rails test'
+rails test
 ```
 * Enter the command "sh build_fast.sh" to run this command.
 * Enter the following commands:
