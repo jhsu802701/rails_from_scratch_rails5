@@ -24,6 +24,8 @@ Let's update the new project's .gitignore file.  Edit this file, make the follow
 # END: initial contents
 #######################
 
+# NOTE: Comments MUST get their own dedicated lines and cannot be shared with that of the file name
+
 # Prevents Mac users from accidentally adding .DS_Store
 .DS_Store
 
