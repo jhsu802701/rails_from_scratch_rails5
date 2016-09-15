@@ -83,9 +83,9 @@ echo '-----------------'
 echo 'sh kill_spring.sh'
 sh kill_spring.sh
 
-echo '---------------------------'
-echo 'bundle exec rake db:migrate'
-bundle exec rake db:migrate
+echo '----------------'
+echo 'rails db:migrate'
+rails db:migrate
 
 echo '-----------------'
 echo 'sh kill_spring.sh'
