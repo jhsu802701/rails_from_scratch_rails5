@@ -26,12 +26,89 @@ Let's update the new project's .gitignore file.  Edit this file, make the follow
 
 # NOTE: Comments MUST get their own dedicated lines and cannot be shared with that of the file name
 
-# Prevents Mac users from accidentally adding .DS_Store
-.DS_Store
-
 # Ignore Spring files.
 /spring/*.pid
 
+################################
+# BEGIN: Windows files to ignore
+################################
+# FROM https://github.com/github/gitignore/blob/master/Global/Windows.gitignore
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+##############################
+# END: Windows files to ignore
+##############################
+
+#############################
+# BEGIN: OS X files to ignore
+#############################
+# FROM https://github.com/github/gitignore/blob/master/Global/macOS.gitignore
+
+*.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+###########################
+# END: OS X files to ignore
+###########################
+
+##############################
+# BEGIN: Linux files to ignore
+##############################
+# FROM https://github.com/github/gitignore/blob/master/Global/Linux.gitignore
+
+*~
+
+# temporary files which can be created if a process still has a handle open of a deleted file
+.fuse_hidden*
+
+# KDE directory preferences
+.directory
+
+# Linux trash folder which might appear on any partition or disk
+.Trash-*
+############################
+# END: Linux files to ignore
+############################
 ```
 ### Gemfile
 *  By default, your new Rails app uses SQLite as its database.  The production environment uses PostgreSQL, which is not specified in the original Gemfile.  Because Unit 1 focuses on the development environment, we'll leave the original contents of the Gemfile alone but label the contents for easy replacement later.
