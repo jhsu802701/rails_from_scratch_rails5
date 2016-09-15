@@ -194,5 +194,5 @@ git commit -m "Added git_check.sh"
 * Enter the following commands:
 ```
 git checkout master
-git pull
+git pull origin master
 ```
