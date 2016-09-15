@@ -30,6 +30,9 @@ git commit -m "Installed RuboCop"
 AllCops:
   Exclude:
     - db/schema.rb
+    - tmp/vulnerabilities/lib/*
+    - tmp/vulnerabilities/spec/*
+    - tmp/vulnerabilities/Rakefile
 
 Metrics/LineLength:
   Exclude:
@@ -43,10 +46,15 @@ Metrics/LineLength:
     - config/initializers/session_store.rb
     - config/initializers/wrap_parameters.rb
     - config/environments/production.rb
+    - config/environments/test.rb
     - config/puma.rb
     - db/seeds.rb
     - Gemfile
     - Rakefile
+    - test/test_helper.rb
+
+Style/ClassAndModuleChildren:
+  Exclude:
     - test/test_helper.rb
 ```
 * The .rubocop.yml file tells RuboCop which violations to ignore in specific files.  Some violations are impossible to avoid or are not worth fixing.  For example, db/schema.rb is automatically generated every time you migrate the database.
@@ -55,21 +63,6 @@ Metrics/LineLength:
 *  In the config/environments/production.rb file, replace the double-quotes cited by Rubocop, and get rid of the extra spaces it cited.  Entering the command "rubocop" shows that 7 offenses remain.
 *  In the app/helpers/application_helper.rb, app/controllers/application_controller.rb, app/mailers/application_mailer.rb, and app/models/application_record.rb files, add a "#" directly above the "class" statements cited.  Entering the command "rubocop" shows that 3 offenses remain.
 * Remove the extra blank lines in the Gemfile that were cited by RuboCop.  Entering the command "rubocop" shows that only 1 offense remains.
-*  In the test/test_helper.rb line, switch from the compact style to the nested style as directed by Rubocop.  The resulting file should be:
-```
-ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../../config/environment', __FILE__)
-require 'rails/test_help'
-
-class ActiveSupport
-  class TestCase
-    # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-    fixtures :all
-
-    # Add more helper methods to be used by all tests here...
-  end
-end
-```
 * Enter the command "rubocop" again.  There should be no violations.
 * Enter the command "sh build_fast.sh".  Everything should proceed as expected.
 * Enter the following commands:
