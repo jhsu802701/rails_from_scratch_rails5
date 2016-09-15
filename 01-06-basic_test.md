@@ -24,6 +24,22 @@ class Test1Test < ActionDispatch::IntegrationTest
 end
 ```
 * Enter the command "rails test'.  You'll see that the test for the title and heading fail.
+* Add the following code to the end of the Gemfile:
+```
+# BEGIN: gems needed for "rails test"
+group :testing do
+  gem 'minitest-reporters', '1.1.11' # Show red and green by default
+end
+# END: gems needed for "rails test"
+
+```
+* Edit the test/test_helper.rb file.  Prior to the line "class ActiveSupport::TestCase", enter the following lines:
+```
+require 'minitest/reporters'
+Minitest::Reporters.use!
+
+```
+* Enter the command "bundle install; rails test".
 
 ### SimpleCov
 
