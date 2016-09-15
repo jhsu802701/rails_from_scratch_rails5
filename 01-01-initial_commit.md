@@ -24,11 +24,6 @@ Let's update the new project's .gitignore file.  Edit this file, make the follow
 # END: initial contents
 #######################
 
-# NOTE: Comments MUST get their own dedicated lines and cannot be shared with that of the file name
-
-# Ignore Spring files.
-/spring/*.pid
-
 ################################
 # BEGIN: Windows files to ignore
 ################################
@@ -109,6 +104,11 @@ Temporary Items
 ############################
 # END: Linux files to ignore
 ############################
+
+# NOTE: Comments MUST get their own dedicated lines and cannot be shared with that of the file name
+
+# Ignore Spring files.
+/spring/*.pid
 ```
 ### Gemfile
 *  By default, your new Rails app uses SQLite as its database.  The production environment uses PostgreSQL, which is not specified in the original Gemfile.  Because Unit 1 focuses on the development environment, we'll leave the original contents of the Gemfile alone but label the contents for easy replacement later.
