@@ -1,6 +1,6 @@
 # Unit 1
 ## Chapter 6: Basic Testing
-This chapter sets up basic testing, SimpleCov, and Minitest
+In this chapter, you will set up basic testing, SimpleCov, and Minitest.
 
 ### New Branch
 Enter the command "git checkout -b 01-06-basic_test"
