@@ -114,15 +114,15 @@ Temporary Items
 *  By default, your new Rails app uses SQLite as its database.  The production environment uses PostgreSQL, which is not specified in the original Gemfile.  Because Unit 1 focuses on the development environment, we'll leave the original contents of the Gemfile alone but label the contents for easy replacement later.
 *  At the beginning of the Gemfile, enter the following lines:
 ```
-########################
-# BEGIN:initial contents
-########################
+####################
+# BEGIN:initial gems
+####################
 ```
 *  At the end of the Gemfile file, enter the following lines:
 ```
-#######################
-# END: initial contents
-#######################
+###################
+# END: initial gems
+###################
 ```
 
 ### Setting Up Git Locally
