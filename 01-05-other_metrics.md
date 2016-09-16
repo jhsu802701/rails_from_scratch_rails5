@@ -148,3 +148,6 @@ git commit -m "Added all.sh"
 git checkout master
 git pull
 ```
+
+### Conclusion
+Be sure to run the RuboCop, Rails Best Practices, and Brakeman tools before entering a "git commit" command.  These steps are covered in the git_check.sh script.
