@@ -16,7 +16,7 @@ Enter the command "git checkout -b 01-04-rubocop".
 # BEGIN: gems used in test_code.sh script
 gem 'rubocop', '0.42.0', require: false # Code style checking tool; not recommended for legacy apps
 ```
-* Enter the command "bundle install; rubocop".  This installs and runs RuboCop.  You can see why it's best to add Rubocop early on and why I don't recommend adding it to a legacy app.  Even at this early stage in the project, I found 49 offenses.
+* Enter the command "bundle install; rubocop".  This installs and runs RuboCop.  You can see why it's best to add Rubocop early on and why I don't recommend adding it to a legacy app.  Even at this early stage in the project, I found 48 offenses.
 * Enter the following commands:
 ```
 sh git_check.sh
@@ -54,12 +54,11 @@ Style/ClassAndModuleChildren:
     - test/test_helper.rb
 ```
 * The .rubocop.yml file tells RuboCop which violations to ignore in specific files.  Some violations are impossible to avoid or are not worth fixing.  For example, db/schema.rb is automatically generated every time you migrate the database.
-* Enter the command "rubocop" to see how many violations remain.  This .rubocop.yml file reduced the number of offenses to 14.  These remaining violations are relatively easy to fix.
-*  In the config/puma.rb file, replace the double-quotes cited by RuboCop with single-quotes.  Enter the command "rubocop" again.  10 offenses remain.
-*  In the config/environments/production.rb file, replace the double-quotes cited by Rubocop, and get rid of the extra spaces it cited.  Entering the command "rubocop" shows that 7 offenses remain.
-*  In the app/helpers/application_helper.rb, app/controllers/application_controller.rb, app/mailers/application_mailer.rb, and app/models/application_record.rb files, add a "#" directly above the "class" statements cited.  Entering the command "rubocop" shows that 3 offenses remain.
-* Remove the extra blank lines in the Gemfile that were cited by RuboCop.  Entering the command "rubocop" shows that only 1 offense remains.
-* Enter the command "rubocop" again.  There should be no violations.
+* Enter the command "rubocop" to see how many violations remain.  This .rubocop.yml file reduced the number of offenses to 12.  These remaining violations are relatively easy to fix.
+*  In the config/puma.rb file, replace the double-quotes cited by RuboCop with single-quotes.  Enter the command "rubocop" again.  8 offenses remain.
+*  In the config/environments/production.rb file, replace the double-quotes cited by Rubocop, and get rid of the extra spaces it cited.  Entering the command "rubocop" shows that 5 offenses remain.
+*  In the app/helpers/application_helper.rb, app/controllers/application_controller.rb, app/mailers/application_mailer.rb, and app/models/application_record.rb files, add a "#" directly above the "class" statements cited.  Entering the command "rubocop" shows that 1 offense remain.
+* Remove the extra blank lines in the Gemfile that were cited by RuboCop.  Enter the command "rubocop" again.  There should be no violations.
 * Enter the command "sh build_fast.sh".  Everything should proceed as expected.
 * Enter the following commands:
 ```
