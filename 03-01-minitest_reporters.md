@@ -22,11 +22,10 @@ sh git_check.sh
 git add .
 git commit -m "Installed minitest-reporters"
 ```
-### test/test_helper.rb
-*  Replace the contents of the file test/test_helper.rb with the following code:
+### Configuration
+*  Insert the code for configuring Minitest Reporters between the line "require 'rails/test_help'" and the line "class ActiveSupport::TestCase".  Your code should look like this:
 ```
-ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../../config/environment', __FILE__)
+...
 require 'rails/test_help'
 
 # BEGIN: use minitest-reporters
@@ -62,11 +61,17 @@ Minitest::Reporters.use! [Minitest::Reporters::AwesomeReporter.new(reporter_opti
 # END: use minitest-reporters
 
 class ActiveSupport::TestCase
-  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-  fixtures :all
-
-  # Add more helper methods to be used by all tests here...
-end
+...
+```
+* Add the following code to the end of .rubocop.yml:
+```
+Style/MutableConstant:
+  Exclude:
+    - test/test_helper.rb
+    
+Style/SpaceInsideStringInterpolation:
+  Exclude:
+    - test/test_helper.rb
 ```
 
 * Enter the following commands:
