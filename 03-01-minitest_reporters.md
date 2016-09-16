@@ -55,7 +55,7 @@ module Minitest
   end
 end
 
-reporter_options = { color: true, slow_count: 10 }
+reporter_options = { color: true, slow_count: 5 }
 Minitest::Reporters.use! [Minitest::Reporters::AwesomeReporter.new(reporter_options),
                           Minitest::Reporters::HtmlReporter.new]
 # END: use minitest-reporters
