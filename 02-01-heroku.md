@@ -123,4 +123,9 @@ sh git_check.sh
 git add .
 git commit -m "Added heroku.sh"
 git push origin master
+sh heroku.sh
 ```
+
+### Conclusions
+
+When you git push to the master branch, you should run the heroku.sh script afterwards as well.
