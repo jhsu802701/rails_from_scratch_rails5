@@ -67,7 +67,7 @@ git add .
 git commit -m "RuboCop compliant"
 ```
 ### git_check.sh
-* Add the following lines after the line "sh build_fast.sh":
+* Add the following lines after the line "sh build_fast.sh" but before the "git status" section:
 ```
 
 echo '-------'
