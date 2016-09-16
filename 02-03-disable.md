@@ -2,7 +2,7 @@
 ## Chapter 3: Disabling Dangerous Tasks in Production
 
 *  Making it easy to destroy data in the development and test environments is desirable.  However, there should be barriers to this in the production environment to prevent disasters.
-* Create the file /lib/tasks/disable_db_tasks_on_production.rake with the following content:
+* Create the file lib/tasks/disable_db_tasks_on_production.rake with the following content:
 ```
 # PURPOSE:
 # Prevent data from being altered by rake commands in the production environment
