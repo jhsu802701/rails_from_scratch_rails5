@@ -128,4 +128,4 @@ sh heroku.sh
 
 ### Conclusions
 
-When you git push to the master branch, you should run the heroku.sh script afterwards as well.
+When you git push to the master branch or merge another branch into the master branch, you should run the heroku.sh script afterwards as well.
