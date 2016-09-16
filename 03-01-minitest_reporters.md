@@ -73,7 +73,10 @@ Style/SpaceInsideStringInterpolation:
   Exclude:
     - test/test_helper.rb
 ```
-
+* Add the following line to the end of .gitignore:
+```
+test/html_reports/
+```
 * Enter the following commands:
 ```
 sh git_check.sh
