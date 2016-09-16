@@ -1,6 +1,6 @@
 # Unit 3
 ## Chapter 1: Minitest Reporters
-In this chapter, you will set up Minitest Reporters.
+In this chapter, you will set up Minitest Reporters.  It provides features like red/green displays and a list of the most time-consuming tests within your test suite.
 
 ### New Branch
 Enter the command "git checkout -b 03-01-minitest_reporters"
@@ -8,11 +8,12 @@ Enter the command "git checkout -b 03-01-minitest_reporters"
 ### Gemfile
 *  Add the following lines to the end of the Gemfile:
 ```
-# BEGIN: gems needed for "rails test"
+# BEGIN: minitest-reporters
+# Shows red/green displays and a list of the most time-consuming tests within your test suite
 group :testing do
-  gem 'minitest-reporters', '1.1.11' # Show red and green by default
+  gem 'minitest-reporters', '1.1.11'
 end
-# END: gems needed for "rails test"
+# END: minitest-reporters
 ```
 * Enter the command "bundle install".
 * Enter the following commands:
