@@ -31,6 +31,9 @@ require 'rails/test_help'
 # BEGIN: use minitest-reporters
 require 'minitest/reporters'
 Minitest::Reporters.use!
+reporter_options = { color: true, slow_count: 10 }
+Minitest::Reporters.use! [Minitest::Reporters::DefaultReporter.new(reporter_options),
+                          Minitest::Reporters::HtmlReporter.new]
 # END: use minitest-reporters
 
 class ActiveSupport::TestCase
