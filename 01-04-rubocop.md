@@ -29,9 +29,6 @@ git commit -m "Installed RuboCop"
 AllCops:
   Exclude:
     - db/schema.rb
-    - tmp/vulnerabilities/lib/*
-    - tmp/vulnerabilities/spec/*
-    - tmp/vulnerabilities/Rakefile
 
 Metrics/LineLength:
   Exclude:
