@@ -19,7 +19,7 @@ end
 ```
 sh git_check.sh
 git add .
-git commit -m "Installed minitest-reporters and simplecov"
+git commit -m "Installed minitest-reporters"
 ```
 ### test/test_helper.rb
 *  Replace the contents of the file test/test_helper.rb with the following code:
