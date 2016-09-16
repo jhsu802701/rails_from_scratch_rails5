@@ -92,3 +92,6 @@ git commit -m "Added rubocop command to git_check.sh"
 git checkout master
 git pull
 ```
+
+### Conclusions
+From now on, be sure to check for RuboCop compliance before entering a "git commit" command.  This is now covered in the git_check.sh script.
