@@ -11,7 +11,7 @@ Enter the command "git checkout -b 01-06-basic_test"
 # BEGIN: gems needed for "rails test"
 group :testing do
   gem 'minitest-reporters', '1.1.11' # Show red and green by default
-  gem 'simplecov', '0.12.0', :require => false # Shows test coverage
+  gem 'simplecov', '0.12.0', require: false # Shows test coverage
 end
 # END: gems needed for "rails test"
 ```
