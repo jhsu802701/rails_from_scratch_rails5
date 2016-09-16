@@ -1,6 +1,7 @@
 # Unit 2
 ## Chapter 3: Disabling Dangerous Tasks in Production
 
+### Configuration
 *  Making it easy to destroy data in the development and test environments is desirable.  However, there should be barriers to this in the production environment to prevent disasters.
 * Create the file lib/tasks/disable_db_tasks_on_production.rake with the following content:
 ```
@@ -21,11 +22,6 @@ namespace :db do
         puts 'If you really want to run it, '
         puts 'call it again with `I_KNOW_THIS_MAY_SCREW_THE_DB=1`'
         exit
-      else
-        # NOTE: If you are not using Heroku, you need to modify this section.
-        require 'heroku'
-        puts 'Making a backup of the database, just in case...'
-        puts `heroku pgbackups:capture`
       end
     end
   end
@@ -34,4 +30,52 @@ end
 DISABLED_TASKS.each do |task|
   Rake::Task[task].enhance ['db:guard_for_production']
 end
+```
+### Executing Dangerous Tasks in the Production Environment
+* Create the file temp1.sh with the following contents:
+```
+#!/bin/bash
+
+echo '****************'
+echo 'EXPECTED RESULT:'
+echo 'This task is disabled in production.'
+echo '************************************'
+rails db:drop RAILS_ENV=production
+rails db:migrate:reset RAILS_ENV=production
+rails db:schema:load RAILS_ENV=production
+rails db:seed RAILS_ENV=production
+
+echo ''
+echo '****************'
+echo 'EXPECTED RESULT:'
+echo 'Rails db commands ENABLED'
+echo '*************************'
+
+I_KNOW_THIS_MAY_SCREW_THE_DB=1 RAILS_ENV=production rails db:drop
+I_KNOW_THIS_MAY_SCREW_THE_DB=1 RAILS_ENV=production rails db:migrate:reset
+I_KNOW_THIS_MAY_SCREW_THE_DB=1 RAILS_ENV=production rails db:schema:load
+I_KNOW_THIS_MAY_SCREW_THE_DB=1 RAILS_ENV=production rails db:seed
+
+unset RAILS_ENV
+unset I_KNOW_THIS_MAY_SCREW_THE_DB
+echo ''
+echo '****************'
+echo 'EXPECTED RESULT:'
+echo 'Rails db commands ENABLED'
+echo '*************************'
+rails db:drop
+rails db:migrate:reset
+rails db:schema:load
+rails db:seed
+```
+* Remove the temp1.sh script by entering "rm temp1.sh".
+
+### Wrapping Up
+Enter the following commands to push this change to GitHub and Heroku:
+```
+sh git_check.sh
+git add .
+git commit -m "Disabled dangerous tasks in production"
+git push origin master
+sh heroku.sh
 ```
