@@ -94,6 +94,12 @@ end
 </html>
 ```
 * Now all of the tests pass, and the display output contains green instead of red.
+* Enter the following commands:
+```
+sh git_check.sh
+git add .
+git commit -m "Successfully completes first test"
+```
 
 ### Wrapping Up
 * Enter the command "sh git_check.sh". There should be no new files or changes left to add.
