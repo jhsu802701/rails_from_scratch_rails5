@@ -1,9 +1,9 @@
-# Unit 1
-## Chapter 6: Basic Testing
+# Unit 3
+## Chapter 1: Basic Testing
 In this chapter, you will set up basic testing, SimpleCov, and Minitest.
 
 ### New Branch
-Enter the command "git checkout -b 01-06-basic_test"
+Enter the command "git checkout -b 03-01-basic_test"
 
 ### Gemfile
 *  Add the following lines to the end of the Gemfile:
