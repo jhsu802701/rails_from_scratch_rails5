@@ -6,8 +6,7 @@
 Open your Docker container from the appropriate rbenv-general Docker image (as discussed in the README.md file).  In the shell window, go to the /home/winner/shared directory.  To create a new app named after the current date, enter the following commands:
 ```
 DATE=`date +%Y_%m_%d`
-rails new generic_rails_$DATE
-cd generic_rails_$DATE
+rails new generic_rails_$DATE; cd generic_rails_$DATE
 ```
 
 ### .gitignore file
