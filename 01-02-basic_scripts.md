@@ -166,7 +166,7 @@ git commit -m "Added sandbox.sh"
 ```
 #!/bin/bash
 
-# Run this script before pushing the branch to GitHub.
+# Run this script before entering a "git commit" command.
 # This script enables you to make sure you've covered all bases, 
 # shows the list of all files that were changed, 
 # and shows the list of new files that will be saved 
@@ -196,3 +196,7 @@ git commit -m "Added git_check.sh"
 git checkout master
 git pull origin master
 ```
+
+### Conclusions
+* Be sure to run the git_check.sh script before entering a "git commit" command.
+* Keep the local web server running at all times.  Dedicate one entire tmux screen for doing this so that you can easily stop it and restart it if necessary.
