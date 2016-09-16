@@ -83,7 +83,7 @@ end
     </body>
 </html>
 ```
-* Now all of the tests pass, and the display output contains green instead of red.
+* Enter the command "rails test".  Now all of the tests pass, and the display output contains green instead of red.
 * Enter the following commands:
 ```
 sh git_check.sh
