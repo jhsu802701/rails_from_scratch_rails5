@@ -3,7 +3,7 @@
 
 In this chapter, you will deploy the project to Heroku.  Do NOT create a new Git branch in this chapter.  Remain in the master branch, because that is what will be deployed to Heroku.
 
-## A. Gemfile
+### Gemfile
 * Heroku will not accept your attempt to deploy if your master branch does not specify the use of the pg (PostgreSQL) gem in production.  (As you can see in the original Gemfile, the pg gem is not specified.)
 * Replace everything up to the end of the "initial gems" section of the Gemfile with the following code:
 ```
@@ -73,7 +73,7 @@ git commit -m "Updated Gemfile for Heroku"
 git push origin master
 ```
 
-## B. heroku.sh
+### heroku.sh
 * In the project's root path, create the file heroku.sh and give it the following contents before saving it:
 ```
 #!/bin/bash
