@@ -27,3 +27,6 @@ It is assumed that you are using my rbenv-general Docker image.  The link to the
 *  Edit the Gemfile to specify a new version of the gem.
 *  Enter "bundle update; sh build_fast.sh".
 *  If all goes well, all tests pass.
+
+## Things Worth Remembering
+* Do NOT mix files and comments on the same line in .gitignore.  The filename/path MUST have its own dedicated line.
