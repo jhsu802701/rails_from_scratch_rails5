@@ -93,7 +93,7 @@ git commit -m "Successfully completes first test"
 
 ### Wrapping Up
 * Enter the command "sh git_check.sh". There should be no new files or changes left to add.
-* Enter the command "git push origin 01-06-basic_test".
+* Enter the command "git push origin 03-01-basic_test".
 * Go to the GitHub repository and click on the "Compare and pull request" button for this branch.
 * Accept this pull request to merge it with the master branch, but do NOT delete this branch.
 * Enter the following commands:
