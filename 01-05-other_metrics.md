@@ -88,8 +88,7 @@ Metrics/LineLength:
 * Enter the command "sh test_code.sh" to run this script.
 * Enter the following commands:
 ```
-sh git_check.sh
-rubocop; rails_best_practices
+sh git_check.sh; rubocop; rails_best_practices
 git add .
 git commit -m "Added test_code.sh; updated .gitignore and .rubocop.yml" 
 ```
@@ -148,4 +147,4 @@ git pull
 ```
 
 ### Conclusion
-Be sure to run the RuboCop, Rails Best Practices, and Brakeman tools before entering a "git commit" command.  These steps are covered in the git_check.sh script.
+Be sure to run the RuboCop, Rails Best Practices, and Brakeman tools before entering a "git commit" command.  These steps are covered in the git_check.sh script.  Fix all violations prior to entering a "git commit" command.
