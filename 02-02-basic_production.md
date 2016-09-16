@@ -1,8 +1,9 @@
-# Chapter 5: Basic Production Environment Configuration
+# Unit 2
+## Chapter 2: Basic Production Environment Configuration
 
 Do not create a new branch in this chapter.  Stick with the master branch.
 
-## A. SSL in Production
+### A. SSL in Production
 
 *  Edit the config/environments/production.rb file and uncomment the line containing "config.force_ssl = true".
 This means that SSL is automatically enabled.
@@ -17,7 +18,7 @@ sh heroku.sh
 * When you use your browser to view your project, note the presence of "https://" and the lock icon in the address bar.
 This signals that SSL is working.
 
-## B. Production Web Server
+### B. Production Web Server
 
 * Replace the contents of the config/puma.rb file with the following:
 
