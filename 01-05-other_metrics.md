@@ -86,8 +86,6 @@ Metrics/LineLength:
 . . .
 ```
 * Enter the command "sh test_code.sh" to run this script.
-* Enter the command "sh git_check.sh".  You'll find that gemsurance_report.html should be added to .gitignore, and you'll find that the app is no longer RuboCop compliant, because RuboCop examines the files in the tmp directory.
-
 * Enter the following commands:
 ```
 sh git_check.sh
