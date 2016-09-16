@@ -1,7 +1,7 @@
 # Unit 1
 ## Chapter 3: Resetting Your Development Environment
 
-It's a good idea to reset your development environment occasionally.  Because we are not editing the project's source code in this chapter, there is no need to create a new branch.
+It's a good idea to reset your development environment occasionally.  Because you are not editing the project's source code in this chapter, there is no need to create a new branch.
 
 ### What's the Point?
 
