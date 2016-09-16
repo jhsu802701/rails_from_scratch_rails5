@@ -133,4 +133,5 @@ git commit -m "Successfully completes first test"
 ```
 git checkout master
 git pull
+sh heroku.sh
 ```
