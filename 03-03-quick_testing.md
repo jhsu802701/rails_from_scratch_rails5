@@ -1,5 +1,5 @@
 # Unit 3
-## Chapter 3: Scripts for Quick Testing
+## Chapter 2: Scripts for Quick Testing
 
 In this chapter, you will create scripts for testing a small portion of your entire test suite.  
 
@@ -9,7 +9,7 @@ In this chapter, you will create scripts for testing a small portion of your ent
 * You are still on the hook to run the entire test suite AFTER you have verified that the small portion you were working on is up to snuff.  In other words, you run the quick testing scripts many times, but you wait until the end of the process to run the full test suite.
 
 ### New Branch
-Enter the command "git checkout -b 03-03-quick_testing.
+Enter the command "git checkout -b 03-02-quick_testing.
 
 ### Helper/Mailer Testing
 * Create the file testh.sh and give it the following content:
