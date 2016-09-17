@@ -9,7 +9,7 @@ In this chapter, you will create scripts for testing a small portion of your ent
 * You are still on the hook to run the entire test suite AFTER you have verified that the small portion you were working on is up to snuff.  In other words, you run the quick testing scripts many times, but you wait until the end of the process to run the full test suite.
 
 ### New Branch
-Enter the command "git checkout -b 03-02-quick_testing.
+Enter the command "git checkout -b 03-02-quick_testing".
 
 ### Helper/Mailer Testing
 * Create the file testh.sh and give it the following content:
@@ -56,7 +56,7 @@ git commit -m "Added quick helper/mailer test scripts"
 ```
 
 ### Model Testing
-* Create the file testh.sh and give it the following content:
+* Create the file testm.sh and give it the following content:
 ```
 #!/bin/bash
 
@@ -69,6 +69,26 @@ git commit -m "Added quick helper/mailer test scripts"
 echo '----------------------'
 echo 'rails test test/models'
 rails test test/models
+```
+* Create the file testml.sh ("l" for longer) and give it the following content:
+```
+#!/bin/bash
+
+# This is a slightly longer version of testm.sh.
+
+echo '----------------'
+echo 'brakeman -Aq -w2'
+brakeman -Aq -w2
+
+echo '-------'
+echo 'rubocop'
+rubocop
+
+echo '----------------------'
+echo 'rails_best_practices .'
+rails_best_practices .
+
+sh testm.sh
 ```
 
 ### Controller Testing
