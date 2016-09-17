@@ -3,7 +3,7 @@
 In this chapter, you will set up Minitest Reporters.  It provides features like red/green displays and a list of the most time-consuming tests within your test suite.
 
 ### New Branch
-Enter the command "git checkout -b 03-01-minitest_reporters"
+Enter the command "git checkout -b 03-01-minitest_reporters".
 
 ### Gemfile
 *  Add the following lines to the end of the Gemfile:
