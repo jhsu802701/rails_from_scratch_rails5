@@ -90,9 +90,58 @@ rails_best_practices .
 
 sh testm.sh
 ```
+* Enter the command "sh testm.sh".  This is the script to use before you are certain that all of your model tests pass.
+* Enter the command "sh testml.sh".  This is the script to use for checking code quality after all of your model tests pass.
+* Enter the following commands:
+```
+sh git_check.sh
+git add .
+git commit -m "Added quick model test scripts"
+```
 
 ### Controller Testing
+* Create the file testc.sh and give it the following content:
+```
+#!/bin/bash
 
+# NOTE: The bundle install and database migration are skipped here.
+# It is assumed that you already completed these steps, which are
+# covered in the build_fast.sh script.
+
+# This script tests the controllers only.
+
+echo '---------------------------'
+echo 'rails test test/controllers'
+rails test test/controllers
+```
+* Create the file testcl.sh ("l" for longer) and give it the following content:
+```
+#!/bin/bash
+
+# This is a slightly longer version of testc.sh.
+
+echo '----------------'
+echo 'brakeman -Aq -w2'
+brakeman -Aq -w2
+
+echo '-------'
+echo 'rubocop'
+rubocop
+
+echo '----------------------'
+echo 'rails_best_practices .'
+rails_best_practices .
+
+sh testc.sh
+```
+* Enter the command "sh testc.sh".  This is the script to use before you are certain that all of your model tests pass.
+* Enter the command "sh testcl.sh".  This is the script to use for checking code quality after all of your model tests pass.
+* Enter the following commands:
+```
+sh git_check.sh
+git add .
+git commit -m "Added quick controller test scripts"
+```
 
 ### Integration Testing
 
