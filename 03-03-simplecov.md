@@ -1,10 +1,10 @@
 # Unit 3
-## Chapter 3: SimpleCov
+## Chapter 4: SimpleCov
 
 In this chapter, you will 
 
 ### New Branch
-Enter the command "git checkout -b 03-03-simplecov".
+Enter the command "git checkout -b 03-04-simplecov".
 
 ### Gemfile
 * Add the following lines to the end of the Gemfile:
@@ -28,4 +28,4 @@ git commit -m "Installed Guard gems"
 * Replace the initial contents of the Guardfile with the following:
 
 ### Wrapping up
-* Enter the command "git push origin 03-03-simplecov".
+* Enter the command "git push origin 03-04-simplecov".
