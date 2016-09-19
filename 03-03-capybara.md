@@ -22,6 +22,7 @@ end
 * Enter the command "bundle install" to install these Capybara gems.
 * Enter the following commands:
 ```
+sh git_check.sh
 git add .
 git commit -m "Installed Capybara gems"
 ```
@@ -47,6 +48,7 @@ end
 ```
 * Enter the following commands:
 ```
+sh git_check.sh
 git add .
 git commit -m "Configured test/test_helper.rb to use Capybara"
 ```
