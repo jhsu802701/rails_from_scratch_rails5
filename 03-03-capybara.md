@@ -55,7 +55,7 @@ git commit -m "Configured test/test_helper.rb to use Capybara"
 
 ### Adding Capybara Tests
 * Enter the command "rails generate integration_test test3".
-* Enter the command "alias test='rails test test/integration/test3_test.rb'".
+* Enter the command "alias test='rails test test/integration/test3_test.rb'".  (NOTE: If you enter the command "test" at this point, there will be an error in writing to the HTML report, because there are no actual tests in place yet.)
 * Edit the file test/integration/test3_test.rb and give it the following content:
 ```
 require 'test_helper'
