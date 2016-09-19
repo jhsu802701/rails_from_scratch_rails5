@@ -147,6 +147,19 @@ end
 </html>
 ```
 * Enter the command "test".  Now all of the tests in test/integration/test3_test.rb pass.
-* Enter the command "sh git_check.sh".
-
+* Enter the command "sh git_check.sh".  Everything should be ready for git commit.
+* Enter the following commands:
+```
+git add .
+git commit -m "Added successful Capybara test"
+git push origin 03-03-capybara
+```
 ### Wrapping Up
+* Go to the GitHub repository and click on the "Compare and pull request" button for this branch.
+* Accept this pull request to merge it with the master branch, but do NOT delete this branch.
+* Enter the following commands:
+```
+git checkout master
+git pull
+sh heroku.sh
+```
