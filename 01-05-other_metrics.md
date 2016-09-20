@@ -86,9 +86,9 @@ Metrics/LineLength:
 . . .
 ```
 * Enter the command "sh test_code.sh" to run this script.
+* Enter the command "sh git_check.sh; rubocop; rails_best_practices".  The file gemsurance_report.html should be NOT listed.
 * Enter the following commands:
 ```
-sh git_check.sh; rubocop; rails_best_practices
 git add .
 git commit -m "Added test_code.sh; updated .gitignore and .rubocop.yml" 
 ```
@@ -108,9 +108,9 @@ echo '----------------------'
 echo 'rails_best_practices .'
 rails_best_practices .
 ```
+* Enter the command "sh git_check.sh".
 * Enter the following commands:
 ```
-sh git_check.sh
 git add .
 git commit -m "Updated git_check.sh" 
 ```
@@ -128,15 +128,14 @@ echo 'log/build_fast.log'
 echo 'log/test_code.log'
 ```
 * Run this script by entering "sh all.sh".
+* Enter the command "sh git_check.sh".
 * Enter the following commands:
 ```
-sh git_check.sh
 git add .
 git commit -m "Added all.sh"
 ```
 
 ### Wrapping Up
-* Enter the command "sh git_check.sh". There should be no new files or changes left to add, and the app should be compliant with Brakeman, RuboCop, and Rails Best Practices.
 * Enter the command "git push origin 01-05-other_metrics".
 * Go to the GitHub repository and click on the "Compare and pull request" button for this branch.
 * Accept this pull request to merge it with the master branch, but do NOT delete this branch.
@@ -147,4 +146,4 @@ git pull
 ```
 
 ### Conclusion
-Be sure to run the RuboCop, Rails Best Practices, and Brakeman tools before entering a "git commit" command.  These steps are covered in the git_check.sh script.  Fix all violations prior to entering a "git commit" command.
+Be sure to run the RuboCop, Rails Best Practices, and Brakeman tools before entering a "git commit" command.  These steps are covered in the git_check.sh script.  Fix all violations prior to entering the "git add" and "git commit" commands.
