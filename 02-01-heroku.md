@@ -9,8 +9,7 @@ In this chapter, you will deploy the project to Heroku.  Do NOT create a new Git
 ```
 # Installing a version of Ruby manually requires a long wait.
 # Preinstall the newest version in this project's Docker image before updating the Ruby version.
-# NOTE: You should specify a Ruby version
-# It is commented out for your convenience.
+# NOTE: You should specify a Ruby version.  It is commented out for your convenience.
 # Enter the command "rbenv versions" to see which versions of Ruby are already installed locally.
 # ruby '2.3.1'
 
@@ -30,6 +29,7 @@ gem 'pg' # Not necessary in development and testing if you're using SQLite
 gem 'nokogiri'
 
 # BEGIN: SQLite
+# NOTE: This section is automatically deleted in the pg-setup.rb script
 group :development, :test do
   gem 'sqlite3', '1.3.11' # Delete if using only PostgreSQL
 end
@@ -43,15 +43,17 @@ gem 'jquery-rails', '4.2.1' # Use jquery as the JavaScript library
 gem 'turbolinks', '5.0.1' # Makes navigating your web application faster
 gem 'jbuilder', '2.6.0' # Build JSON APIs with ease
 
+# Call 'byebug' anywhere in the code to stop execution and get a debugger console
 group :development, :test do
-  gem 'byebug', '9.0.5', platform: :mri # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug', '9.0.5', platform: :mri
 end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '3.3.1'
   gem 'listen', '3.0.8'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  # Spring speeds up development by keeping your application running in the background.
+  # Read more at https://github.com/rails/spring .
   gem 'spring', '1.7.2'
   gem 'spring-watcher-listen', '2.0.0'
 end
@@ -78,28 +80,24 @@ git push origin master
 ```
 #!/bin/bash
 
-# CONFIGURING YOUR LOCAL DEVELOPMENT ENVIRONMENT TO ACCESS HEROKU:
-
-# heroku login
-# heroku keys:add
-
 # STARTING A NEW HEROKU PROJECT:
+# 1. heroku login
+# 2. heroku keys:add
+# 3. heroku create
+# 4. In your browser, visit your assigned URL.  You will see the initial Heroku splash screen.
+# 5. heroku rename <name>
+# 6. In your browser, visit your new URL.  You will see the initial Heroku splash screen.
 
-# heroku create
-# In your browser, visit your assigned URL.  You will see the initial Heroku splash screen.
-# heroku rename <name>
-# In your browser, visit your new URL.  You will see the initial Heroku splash screen.
-
-# FIND OUT WHICH HEROKU PROJECT YOU ARE CURRENTLY CONFIGURED TO PUSH TO:
-
+# SHOW WHICH HEROKU PROJECT YOU ARE CURRENTLY CONFIGURED TO PUSH TO:
 # git remote -v
 
-# SET THE NAME OF THE HEROKU REPOSITORY:
+# CONNECTING YOUR LOCAL DEVELOPMENT ENVIRONMENT TO A LEGACY HEROKU PROJECT:
 # (necessary when you git clone this project or switch from one Heroku project to another):
-
-# HEROKU_NAME='<name>'
-# git remote rm heroku
-# git remote add heroku git@heroku.com:<name>.git
+# 1. heroku login
+# 2. heroku keys:add
+# 3. HEROKU_NAME='<name>' # Please fill in the name of your Heroku project
+# 4. git remote rm heroku
+# 5. git remote add heroku git@heroku.com:$HEROKU_NAME.git
 
 echo '----------------------'
 echo 'git push heroku master'
@@ -117,9 +115,9 @@ git remote -v
 * Follow the instructions in heroku.sh for configuring your local development environment and starting the new Heroku project.
 * Enter the command "sh heroku.sh" to deploy your project to Heroku.
 * Go to the URL of your Heroku app.  You should now see the "Welcome to public/index.html!" screen instead of the Heroku splash screen.  If you didn't already have the index.html file in your public directory, you would see an error message.  For some reason, Heroku does not display the initial Rails splash screen like your local server does.
+* Enter the command "sh git_check.sh".
 * Enter the following commands:
 ```
-sh git_check.sh
 git add .
 git commit -m "Added heroku.sh"
 git push origin master
