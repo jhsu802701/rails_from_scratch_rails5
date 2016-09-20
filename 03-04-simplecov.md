@@ -42,7 +42,7 @@ EXEC_SIMPLE_COV='true' rails test
 ```
 * Add the following lines to the end of .gitignore:
 ```
-# Omit coverage reports
+# Omit SimpleCov coverage reports
 coverage
 ```
 * Enter the command "sh git_check.sh".
