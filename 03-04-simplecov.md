@@ -15,17 +15,16 @@ group :test do
 end
 # END: SimpleCov (provides % coverage)
 ```
-* Enter the command "bundle install".
+* Enter the command "sh git_check.sh".
 * Enter the following commands:
 ```
-sh git_check.sh
 git add .
 git commit -m "Installed simplecov gem"
 ```
 ### Configuration
 * Add the following lines to the BEGINNING of the test/test_helper.rb file:
 ```
-if ENV['EXEC_SIMPLE_COV'] == 1
+if ENV['EXEC_SIMPLE_COV'] == 'true'
   require 'simplecov'
   SimpleCov.start 'rails' do
     add_filter 'app/channels/*'
@@ -37,9 +36,9 @@ end
 * In the file build_fast.sh, replace the "rails test" section with the following code:
 ```
 # Provide coverage report
-echo '----------------------------'
-echo 'EXEC_SIMPLE_COV=1 rails test'
-EXEC_SIMPLE_COV=1 rails test
+echo '---------------------------------'
+echo "EXEC_SIMPLE_COV='true' rails test"
+EXEC_SIMPLE_COV='true' rails test
 ```
 * Add "coverage" to the .gitignore file.  This prevents the coverage reports from entering source control.
 * Enter the command "sh git_check.sh".
