@@ -1,7 +1,7 @@
 # Unit 3
 ## Chapter 4: SimpleCov
 
-In this chapter, you will 
+In this chapter, you will add the SimpleCov gem, which provides coverage reports.
 
 ### New Branch
 Enter the command "git checkout -b 03-04-simplecov".
