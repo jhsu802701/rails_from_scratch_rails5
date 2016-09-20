@@ -15,7 +15,7 @@ It's a good idea to reset your development environment occasionally.  Because yo
 *  When you are out of the Docker container, enter "sh reset.sh" to run the Docker container reset script.  In a few seconds, you will be in a fresh development environment, with all changes made since the previous reset undone.  As long as you keep the same version of this Docker image, you will have the exact same conditions every time you run the associated reset.sh script.
 *  Note that the contents of the "shared" directory are preserved, because they were on your host system.
 
-### Deleting and Retrieving the Source Code.
+### Deleting and Retrieving the Source Code
 
 *  Since you just pushed the previous chapter's changes to GitHub, you are now free to delete your project from your local machine.
 *  After you have deleted your project from the local machine, you can retrieve your project from GitHub.  
