@@ -27,7 +27,10 @@ git commit -m "Installed simplecov gem"
 ```
 if ENV['EXEC_SIMPLE_COV'] == 1
   require 'simplecov'
-  SimpleCov.start 'rails'
+  SimpleCov.start 'rails' do
+    add_filter 'app/channels/*'
+    add_filter 'app/jobs/*'
+  end
   puts 'required simplecov'
 end
 ```
