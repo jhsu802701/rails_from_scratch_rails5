@@ -49,9 +49,9 @@ sh testh.sh
 ```
 * Enter the command "sh testh.sh".  This is the script to use before you are certain that all of your helper/mailer tests pass.
 * Enter the command "sh testhl.sh".  This is the script to use for checking code quality after all of your helper/mailer tests pass.
+* Enter the command "sh git_check.sh".
 * Enter the following commands:
 ```
-sh git_check.sh
 git add .
 git commit -m "Added quick helper/mailer test scripts"
 ```
@@ -93,9 +93,9 @@ sh testm.sh
 ```
 * Enter the command "sh testm.sh".  This is the script to use before you are certain that all of your model tests pass.
 * Enter the command "sh testml.sh".  This is the script to use for checking code quality after all of your model tests pass.
+* Enter the command "sh git_check.sh".
 * Enter the following commands:
 ```
-sh git_check.sh
 git add .
 git commit -m "Added quick model test scripts"
 ```
@@ -137,9 +137,9 @@ sh testc.sh
 ```
 * Enter the command "sh testc.sh".  This is the script to use before you are certain that all of your model tests pass.
 * Enter the command "sh testcl.sh".  This is the script to use for checking code quality after all of your model tests pass.
+* Enter the command "sh git_check.sh".
 * Enter the following commands:
 ```
-sh git_check.sh
 git add .
 git commit -m "Added quick controller test scripts"
 ```
@@ -183,7 +183,7 @@ end
 </html>
 ```
 * Enter the command "test".  Now the tests in the file test/integration/test2_test.rb pass.
-* Enter the command "sh git_check.sh".   All of the tests pass.  The code complies with Brakeman, RuboCop, and Rails Best Practices.  There is nothing to add to .gitignore at this time.  You are now ready to git commit.
+* Enter the command "sh git_check.sh" to verify that all tests pass.
 * Enter the following commands:
 ```
 git add .
@@ -191,7 +191,6 @@ git commit -m "Successfully completes temp2 integration test"
 ```
 
 ### Wrapping Up
-* Enter the command "sh git_check.sh". There should be no new files or changes left to add.
 * Enter the command "git push origin 03-02-quick_testing".
 * Go to the GitHub repository and click on the "Compare and pull request" button for this branch.
 * Accept this pull request to merge it with the master branch, but do NOT delete this branch.
