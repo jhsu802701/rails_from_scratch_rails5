@@ -9,23 +9,37 @@ Enter the command "git checkout -b 03-04-simplecov".
 ### Gemfile
 * Add the following lines to the end of the Gemfile:
 ```
-# BEGIN: Guard automated test tools
+# BEGIN: SimpleCov (provides % coverage)
 group :test do
-  gem 'guard', '2.14.0'
-  gem 'guard-minitest', '2.4.6'
+  gem 'simplecov', '0.12.0'
 end
-# END: Guard automated test tools
+# END: SimpleCov (provides % coverage)
 ```
 * Enter the command "bundle install".
 * Enter the following commands:
 ```
 sh git_check.sh
 git add .
-git commit -m "Installed Guard gems"
+git commit -m "Installed simplecov gem"
 ```
 ### Configuration
-* Create the initial Guardfile by entering the command "bundle exec guard init".
-* Replace the initial contents of the Guardfile with the following:
+* Add the following lines to the BEGINNING of the test/test_helper.rb file:
+```
+if ENV['EXEC_SIMPLE_COV'] == 1
+  require 'simplecov'
+  SimpleCov.start 'rails'
+  puts "required simplecov"
+end
+```
+* In the file build_fast.sh, replace the "rails test" section with the following code:
+```
+# Provide coverage report
+echo '----------------------------'
+echo 'rails test EXEC_SIMPLE_COV=1'
+rails test EXEC_SIMPLE_COV=1
+```
+* Add "coverage" to the .gitignore file.  This prevents the coverage reports from entering source control.
+* Enter the command "sh git_check.sh".
 
 ### Wrapping up
 * Enter the command "git push origin 03-04-simplecov".
