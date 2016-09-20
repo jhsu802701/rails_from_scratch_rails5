@@ -5,13 +5,13 @@
 ```
 # GENERIC APP TEMPLATE
 
-BEGIN: continuous integration badges
+BEGIN: continuous integration badges (markdown format)
 Insert Travis CI build badge here
 Insert Gemnasium badge here
 Insert Hakiri badge here
 Insert Code Climate GPA badge here
 Insert Code Climate Test Coverage badge here
-END: continuous integration badges
+END: continuous integration badges (markdown format)
 
 Welcome to the Generic App Template!
 This is the template created by following the 
