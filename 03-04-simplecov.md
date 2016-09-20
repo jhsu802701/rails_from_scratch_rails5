@@ -40,7 +40,11 @@ echo '---------------------------------'
 echo "EXEC_SIMPLE_COV='true' rails test"
 EXEC_SIMPLE_COV='true' rails test
 ```
-* Add "coverage" to the .gitignore file.  This prevents the coverage reports from entering source control.
+* Add the following lines to the end of .gitignore:
+```
+# Omit coverage reports
+coverage
+```
 * Enter the command "sh git_check.sh".
 
 ### Wrapping up
