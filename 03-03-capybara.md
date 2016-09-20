@@ -66,7 +66,7 @@ class Test3Test < ActionDispatch::IntegrationTest
     assert page.has_text?('Welcome to public/index.html!')
     assert page.has_text?("There's Ruby on Racetracks")
     assert page.has_text?("and there's Not Exactly.")
-    assert page.has_text?("Make sure you choose the correct one.")
+    assert page.has_text?('Make sure you choose the correct one.')
   end
 
   test 'about page has expected content' do
