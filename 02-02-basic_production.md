@@ -7,9 +7,9 @@ Do not create a new branch in this chapter.  Stick with the master branch.
 
 *  Edit the config/environments/production.rb file and uncomment the line containing "config.force_ssl = true".
 This means that SSL is automatically enabled.
+* Enter the command "sh git_check.sh".
 *  Enter the following commands to push this change to GitHub and Heroku:
 ```
-sh git_check.sh
 git add .
 git commit -m "Use SSL in production"
 git push origin master
@@ -45,9 +45,9 @@ end
 ```
 web: bundle exec puma -C config/puma.rb
 ```
+* Enter the command "sh git_check.sh".
 *  Enter the following commands to push this change to GitHub and Heroku:
 ```
-sh git_check.sh
 git add .
 git commit -m "Use Puma web server in production"
 git push origin master
