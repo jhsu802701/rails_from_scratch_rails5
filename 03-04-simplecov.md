@@ -46,6 +46,19 @@ EXEC_SIMPLE_COV='true' rails test
 coverage
 ```
 * Enter the command "sh git_check.sh".  Don't worry about the lack of coverage for the application controller, helper, mailer, and controller just yet.  These topics will be tackled later.
+* Enter the following commands:
+```
+git add .
+git commit -m "Configured SimpleCov"
+git push origin 03-04-simplecov
+```
 
 ### Wrapping up
-* Enter the command "git push origin 03-04-simplecov".
+* Go to the GitHub repository and click on the "Compare and pull request" button for this branch.
+* Accept this pull request to merge it with the master branch, but do NOT delete this branch.
+* Enter the following commands:
+```
+git checkout master
+git pull
+sh heroku.sh
+```
