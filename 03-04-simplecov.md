@@ -35,8 +35,8 @@ end
 ```
 # Provide coverage report
 echo '----------------------------'
-echo 'rails test EXEC_SIMPLE_COV=1'
-rails test EXEC_SIMPLE_COV=1
+echo 'EXEC_SIMPLE_COV=1 rails test'
+EXEC_SIMPLE_COV=1 rails test
 ```
 * Add "coverage" to the .gitignore file.  This prevents the coverage reports from entering source control.
 * Enter the command "sh git_check.sh".
