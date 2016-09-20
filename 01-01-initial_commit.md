@@ -106,8 +106,6 @@ Temporary Items
 
 # NOTE: Comments MUST get their own dedicated lines and cannot be shared with that of the file name
 
-# Ignore Spring files.
-/spring/*.pid
 ```
 ### Gemfile
 *  By default, your new Rails app uses SQLite as its database.  The production environment uses PostgreSQL, which is not specified in the original Gemfile.  Because Unit 1 focuses on the development environment, we'll leave the original contents of the Gemfile alone but label the contents for easy replacement later.
