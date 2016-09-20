@@ -74,15 +74,13 @@ echo '-------'
 echo 'rubocop'
 rubocop
 ```
-* Now you can easily check for RuboCop violations prior to executing the git add and git commit commands.  Enter the command "sh git_check.sh".
+* Now you can easily check for RuboCop violations prior to executing the git add and git commit commands.  Enter the command "sh git_check.sh".  There should be no errors, RuboCop offenses, or new files other than the ones explicitly added in this chapter.
 * Enter the following commands:
 ```
-sh git_check.sh
 git add .
 git commit -m "Added rubocop command to git_check.sh"
 ```
 ### Wrapping Up
-*  Enter the command "sh git_check.sh". There should be no new files or changes left to add.
 *  Enter the command "git push origin 01-04-rubocop".
 *  Go to the GitHub repository and click on the "Compare and pull request" button for this branch.
 *  Accept this pull request to merge it with the master branch, but do NOT delete this branch.
