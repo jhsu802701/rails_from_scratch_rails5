@@ -15,10 +15,9 @@ group :testing do
 end
 # END: minitest-reporters
 ```
-* Enter the command "bundle install".
+* Enter the command "sh git_check.sh".
 * Enter the following commands:
 ```
-sh git_check.sh
 git add .
 git commit -m "Installed minitest-reporters"
 ```
@@ -77,9 +76,9 @@ Style/SpaceInsideStringInterpolation:
 ```
 test/html_reports/
 ```
+* Enter the command "sh git_check.sh".
 * Enter the following commands:
 ```
-sh git_check.sh
 git add .
 git commit -m "Updated test/test_helper.rb for minitest-reporters"
 ```
@@ -117,15 +116,14 @@ end
 </html>
 ```
 * Enter the command "rails test".  Now all of the tests pass, and the display output contains green instead of red.
+* Enter the command "sh git_check.sh".
 * Enter the following commands:
 ```
-sh git_check.sh
 git add .
 git commit -m "Successfully completes first test"
 ```
 
 ### Wrapping Up
-* Enter the command "sh git_check.sh". There should be no new files or changes left to add.
 * Enter the command "git push origin 03-01-minitest_reporters".
 * Go to the GitHub repository and click on the "Compare and pull request" button for this branch.
 * Accept this pull request to merge it with the master branch, but do NOT delete this branch.
