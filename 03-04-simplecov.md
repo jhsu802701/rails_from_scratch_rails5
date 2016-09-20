@@ -45,7 +45,7 @@ EXEC_SIMPLE_COV='true' rails test
 # Omit SimpleCov coverage reports
 coverage
 ```
-* Enter the command "sh git_check.sh".
+* Enter the command "sh git_check.sh".  Don't worry about the lack of coverage for the application controller, helper, mailer, and controller just yet.  These topics will be tackled later.
 
 ### Wrapping up
 * Enter the command "git push origin 03-04-simplecov".
