@@ -23,3 +23,10 @@ gem for starting off a new Rails with a high-quality pre-existing app already in
 This saves time, because it's MUCH quicker and easier to modify an existing app 
 than it is to create a new one completely from scratch.
 ```
+* Enter the command "sh git_check.sh".
+* Enter the following commands:
+```
+git add .
+git commit -m "New README.md page with badges"
+git push origin master
+```
