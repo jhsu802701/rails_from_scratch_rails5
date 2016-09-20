@@ -23,3 +23,7 @@ git add .
 git commit -m "Added travis.yml"
 git push origin master
 ```
+
+### Travis CI Test Results
+* Pushing the code to GitHub automatically triggers Travis CI to run its tests.
+* In a few moments, you will see the build test results.  Your app should be passing.
