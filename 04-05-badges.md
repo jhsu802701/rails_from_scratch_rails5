@@ -32,3 +32,4 @@ git add .
 git commit -m "New README.md page with badges"
 git push origin master
 ```
+* On your project page in CodeClimate, click on the Refresh button.  This updates the badge displays.
