@@ -3,23 +3,8 @@
 
 ### Setting Up On the Circle CI Web Site
 * Log in to the [Circle CI](http://www.circleci.com) web site.  If you haven't already done so, you need to create an account first.
-* In the CircleCI dashboard, click on the "Add Projects" icon.  Select your project.
-* Go to your Accounts page.
-* Enter your Rails app.
-
-### solano.yml
-* Create the file solano.yml with the following content (replacing the Ruby version if necesssary):
-```
-ruby_version: ruby-2.3.1
-```
-* Enter the command "sh git_check.sh"
-* Enter the following commands:
-```
-git add .
-git commit -m "Added solano.yml"
-git push origin master
-```
+* In the CircleCI dashboard, click on the "Add Projects" icon.  Click on the "Build project" button for your project.
 
 ### Solano CI Test Results
-* Pushing the code to GitHub automatically triggers Solano CI to run its tests.
-* In a few moments, you will see the build test results.  Your app should be passing.
+
+After the test has finished and given you results, click on "Project Settings".  Then click on "Status Badges" to see the status badge for the build state.
