@@ -1,8 +1,9 @@
 # Unit 4
-## Chapter 1: Solano CI
+## Chapter 1: Circle CI
 
-### Setting Up On the Solano CI Web Site
-* Log in to the [Solano CI](https://ci.solanolabs.com/) web site.  If you haven't already done so, you need to create an account first.
+### Setting Up On the Circle CI Web Site
+* Log in to the [Circle CI](http://www.circleci.com) web site.  If you haven't already done so, you need to create an account first.
+* In the CircleCI dashboard, click on the "Add Projects" icon.  Select your project.
 * Go to your Accounts page.
 * Enter your Rails app.
 
