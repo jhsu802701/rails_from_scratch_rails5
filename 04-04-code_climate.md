@@ -43,4 +43,4 @@ git commit -m "Added Code Climate gem"
 git push origin master
 ```
 * In the Code Coverage instructions, note the value of the CODECLIMATE_REPO_TOKEN variable. 
-* Go back to the Travis CI web site.  Go to your project, and click on "More Options -> Settings".  Add the environment variable CODECLIMATE_REPO_TOKEN, and enter the value provided by Code Climate.  Click on "Add".
+* Go back to your project page at the Solano CI web site.  Go to the Code Climate Integration tab and submit the environment variable provided by Code Climate.
