@@ -43,4 +43,4 @@ git commit -m "Added Code Climate gem"
 git push origin master
 ```
 * In the Code Coverage instructions, note the value of the CODECLIMATE_REPO_TOKEN variable. 
-* Go back to your project page at the Solano CI web site.  Go to the Code Climate Integration tab and submit the environment variable provided by Code Climate.
+* Go back to your project page at the Circle CI web site.  Click on "Project Settings", and click on "ENVIRONMENT VARIABLES".  Enter the environment variable name and value specified by Code Climate.
