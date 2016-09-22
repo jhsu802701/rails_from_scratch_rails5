@@ -7,7 +7,7 @@
 
 BEGIN: continuous integration badges (markdown format)
 
-Insert Solano CI build badge here
+Insert Circle CI build badge here
 Insert Gemnasium badge here
 Insert Hakiri badge here
 Insert Code Climate GPA badge here
