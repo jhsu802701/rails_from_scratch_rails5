@@ -25,7 +25,7 @@ It is assumed that you are using my rbenv-general Docker image.  The link to the
 
 ## Gem Version Updating Process
 *  Edit the Gemfile to specify a new version of the gem.
-*  Enter "bundle update; sh build_fast.sh".
+*  Enter "bundle update; sh all.sh".
 *  If all goes well, all tests pass.
 
 ## Things Worth Remembering
