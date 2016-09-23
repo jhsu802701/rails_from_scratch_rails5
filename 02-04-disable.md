@@ -1,5 +1,5 @@
 # Unit 2
-## Chapter 3: Disabling Dangerous Tasks in Production
+## Chapter 4: Disabling Dangerous Tasks in Production
 No new branch is needed in this chapter.
 
 ### Configuration
