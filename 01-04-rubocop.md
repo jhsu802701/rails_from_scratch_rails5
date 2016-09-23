@@ -14,7 +14,7 @@ Enter the command "git checkout -b 01-04-rubocop".
 ```
 
 # BEGIN: gems used in test_code.sh script
-gem 'rubocop', '0.42.0', require: false # Code style checking tool; not recommended for legacy apps
+gem 'rubocop', require: false # Code style checking tool; not recommended for legacy apps
 ```
 * Enter the command "bundle install; rubocop".  This installs and runs RuboCop.  You can see why it's best to add Rubocop early on and why I don't recommend adding it to a legacy app.  Even at this early stage in the project, I found 48 offenses.
 * Enter the following commands:
