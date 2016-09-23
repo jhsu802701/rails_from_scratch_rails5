@@ -1,7 +1,10 @@
 # Unit 2
-# Chapter 1: Heroku
+# Chapter 1: Gems for Heroku
 
 In this chapter, you will deploy the project to Heroku.  Do NOT create a new Git branch in this chapter.  Remain in the master branch, because that is what will be deployed to Heroku.
+
+### New Branch
+Enter the command "git checkout -b 02-01-A-heroku"
 
 ### Gemfile
 * Heroku will not accept your attempt to deploy if your master branch does not specify the use of the pg (PostgreSQL) gem in production.  (As you can see in the original Gemfile, the pg gem is not specified.)
@@ -65,14 +68,33 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 ###################
 ```
 *  The pg gem (PostgreSQL) is needed in the production environment for Heroku, because it does NOT offer SQLite.  In the production environment, PostgreSQL is greatly preferred over SQLite.  While it's usually best to use the same database in the development and production environments, the use of SQLite in development and PostgreSQL in production (for Heroku) is usually used in tutorials.  If your production environment is not Heroku, it's best to use PostgreSQL in the development and testing environments and skip the use of SQLite completely.
-*  Enter the command "bundle update".  This installs the latest versions of the above gems that conform to the specified requirements.  The Gemfile.lock file is automatically replaced.
-*  NOTE: The gems will need updating periodically.
 *  Enter the following commands: 
 ```
 sh git_check.sh # Gemfile and Gemfile.lock have changed
 git add .
 git commit -m "Updated Gemfile for Heroku"
-git push origin master
+git push origin 02-01-heroku
+```
+### Reset
+* While you have not actually changed the list of gems in your app (because you only rearranged the Gemfile and didn't delete gems), it's still a good idea at this point to reset everything to guard against dependency mismanagement risks.  If there are any problems, it's easier to resolve things now than later.
+* Stop all processes in your tmux screens. Enter "exit" to close each tmux screen. Enter "exit" to leave the Docker container.
+* When you are out of the Docker container, enter "sh reset.sh" to run the Docker container reset script.
+* On your local machine, delete your project's source code.
+* Go to your GitHub repository for your project, and click on the "Clone or download" button to look up your project's GitHub URL.
+* In the /home/winner/shared directory in your Docker container, enter the command "git clone (GitHub URL)". This downloads your code.
+* In the Docker container, start tmux.
+* In your project's root directory, enter the command "git checkout 02-01-A-heroku".  This brings you into the alternate branch you created and pushed to.
+* Enter the command "sh all.sh; sh server.sh" to execute the build process and start the local server.
+* Once the local server is running, open your web browser and view your project.
+* Open a second tmux window, cd into your project directory, and use this window for entering commands.
+* If all went well, you are ready to merge this branch into the master branch.
+
+### 
+
+* Reconfigure Git by entering the following commands (and providing your GitHub email address and name, respectively):
+```
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
 ```
 
 ### heroku.sh
