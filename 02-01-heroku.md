@@ -31,31 +31,31 @@ gem 'nokogiri'
 # BEGIN: SQLite
 # NOTE: This section is automatically deleted in the pg-setup.rb script
 group :development, :test do
-  gem 'sqlite3', '1.3.11' # Delete if using only PostgreSQL
+  gem 'sqlite3' # Delete if using only PostgreSQL
 end
 # END: SQLite
 
-gem 'puma', '3.6.0' # Server
-gem 'sass-rails', '5.0.6' # Stylesheets
-gem 'uglifier', '3.0.2' # Compressor for JavaScript assets
-gem 'coffee-rails', '4.2.1' # Use CoffeeScript for .coffee assets and views
-gem 'jquery-rails', '4.2.1' # Use jquery as the JavaScript library
-gem 'turbolinks', '5.0.1' # Makes navigating your web application faster
-gem 'jbuilder', '2.6.0' # Build JSON APIs with ease
+gem 'puma' # Server
+gem 'sass-rails' # Stylesheets
+gem 'uglifier' # Compressor for JavaScript assets
+gem 'coffee-rails' # Use CoffeeScript for .coffee assets and views
+gem 'jquery-rails' # Use jquery as the JavaScript library
+gem 'turbolinks' # Makes navigating your web application faster
+gem 'jbuilder' # Build JSON APIs with ease
 
 # Call 'byebug' anywhere in the code to stop execution and get a debugger console
 group :development, :test do
-  gem 'byebug', '9.0.5', platform: :mri
+  gem 'byebug', platform: :mri
 end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'web-console', '3.3.1'
-  gem 'listen', '3.0.8'
+  gem 'web-console'
+  gem 'listen'
   # Spring speeds up development by keeping your application running in the background.
   # Read more at https://github.com/rails/spring .
-  gem 'spring', '1.7.2'
-  gem 'spring-watcher-listen', '2.0.0'
+  gem 'spring'
+  gem 'spring-watcher-listen'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
