@@ -38,7 +38,7 @@ It's a good idea to reset your development environment occasionally.  Because yo
 
 ### Reconfiguring Git
 
-Before you can successfully use the "git commit" command, you need to reconfigure your Git with your GitHub credentials with the following commands (providing your GitHub email address and name, respectively): 
+Before you can successfully use the "git commit" command, you need to reconfigure your Git with your GitHub credentials with the following commands (and providing your GitHub email address and name, respectively): 
 ```
 git config --global user.email "you@example.com"
 git config --global user.name "Your Name"
