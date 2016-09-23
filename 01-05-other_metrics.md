@@ -120,12 +120,39 @@ git commit -m "Updated git_check.sh"
 ```
 #!/bin/bash
 
-sh build_fast.sh 2>&1 | tee log/build_fast.log
-sh test_code.sh 2>&1 | tee log/test_code.log
+sh pg-start.sh
+
+echo '--------------'
+echo 'bundle install'
+bundle install
+
+echo '-----------------'
+echo 'sh kill_spring.sh'
+sh kill_spring.sh
+
+echo '----------------'
+echo 'rails db:migrate'
+rails db:migrate
+
+echo '-----------------'
+echo 'sh kill_spring.sh'
+sh kill_spring.sh
+
+LOG_RAILS_TEST='log/all-rails_test.log'
+LOG_TEST_CODE='log/all-test_code.log'
+
+# BEGIN: ACTIONS TO LOG
+
+echo '----------'
+echo "rails test"
+rails test 2>&1 | tee $LOG_RAILS_TEST
+sh test_code.sh 2>&1 | tee $LOG_TEST_CODE
 
 echo 'Results are logged in:'
-echo 'log/build_fast.log'
-echo 'log/test_code.log'
+echo $LOG_RAILS_TEST
+echo $LOG_TEST_CODE
+
+# END: ACTIONS TO LOG
 ```
 * Run this script by entering "sh all.sh".
 * Enter the command "sh git_check.sh".
