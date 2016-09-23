@@ -11,7 +11,7 @@ Enter the command "git checkout -b 03-01-minitest_reporters".
 # BEGIN: minitest-reporters
 # Shows red/green displays and a list of the most time-consuming tests within your test suite
 group :testing do
-  gem 'minitest-reporters', '1.1.11'
+  gem 'minitest-reporters'
 end
 # END: minitest-reporters
 ```
