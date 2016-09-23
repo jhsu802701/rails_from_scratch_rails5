@@ -1,5 +1,5 @@
 # Unit 2
-## Chapter 2: Basic Production Environment Configuration
+## Chapter 3: Basic Production Environment Configuration
 
 Do not create a new branch in this chapter.  Stick with the master branch.
 
