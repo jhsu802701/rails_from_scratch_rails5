@@ -30,10 +30,34 @@ git push origin master
 # Code Climate
 gem 'codeclimate-test-reporter', group: :test, require: nil
 ```
-* Add the following lines to the very beginning of test/test_helper.rb
+* Replace the beginning of the test/test_helper.rb file (before the Minitest section).  This file should appear as follows:
 ```
 require 'codeclimate-test-reporter'
 CodeClimate::TestReporter.start
+
+def run_simple_cov
+  require 'simplecov'
+  SimpleCov.start 'rails' do
+    add_filter 'app/channels/*'
+    add_filter 'app/jobs/*'
+  end
+end
+
+# save to CircleCI's artifacts directory if we're on CircleCI
+if ENV['CIRCLE_ARTIFACTS']
+  dir = File.join(ENV['CIRCLE_ARTIFACTS'], 'coverage')
+  SimpleCov.coverage_dir(dir)
+  run_simple_cov
+end
+
+run_simple_cov if ENV['EXEC_SIMPLE_COV'] == 'true'
+
+ENV['RAILS_ENV'] ||= 'test'
+require File.expand_path('../../config/environment', __FILE__)
+require 'rails/test_help'
+
+# BEGIN: Minitest section
+...
 ```
 * Enter the command "sh git_check.sh".
 * Enter the following commands:
