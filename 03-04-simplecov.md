@@ -9,11 +9,11 @@ Enter the command "git checkout -b 03-04-simplecov".
 ### Gemfile
 * Add the following lines to the end of the Gemfile:
 ```
-# BEGIN: SimpleCov (provides % coverage)
+
+# SimpleCov (provides % coverage)
 group :test do
-  gem 'simplecov', '0.12.0'
+  gem 'simplecov'
 end
-# END: SimpleCov (provides % coverage)
 ```
 * Enter the command "sh git_check.sh".
 * Enter the following commands:
