@@ -25,7 +25,7 @@ It's a good idea to reset your development environment occasionally.  Because yo
 *  Since you just pushed the previous chapter's changes to GitHub, you are now free to delete your project from your local machine.
 *  After you have deleted your project from the local machine, you can retrieve your project from GitHub.  
 *  Go to your GitHub repository for your project, and click on the "Clone or download" button to look up your project's GitHub URL.
-*  In the /home/winner/shared directory in your Docker container, enter the command "git clone <GitHub URL>".  This downloads your code.
+*  In the /home/winner/shared directory in your Docker container, enter the command "git clone (GitHub URL)".  This downloads your code.
 
 ### Setting Up Your Project
 
