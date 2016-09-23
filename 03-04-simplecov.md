@@ -11,9 +11,7 @@ Enter the command "git checkout -b 03-04-simplecov".
 ```
 
 # SimpleCov (provides % coverage)
-group :test do
-  gem 'simplecov'
-end
+gem 'simplecov', require: false, group: :test
 ```
 * Enter the command "sh git_check.sh".
 * Enter the following commands:
