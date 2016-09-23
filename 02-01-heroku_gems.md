@@ -78,16 +78,17 @@ git push origin 02-01-heroku
 ### Reset
 * While you have not actually changed the list of gems in your app (because you only rearranged the Gemfile and didn't delete gems), it's still a good idea at this point to reset everything to guard against dependency mismanagement risks.  If there are any problems, it's easier to resolve things now than later.
 * Begin following the steps in Unit 1 Chapter 3 for resetting your development environment and downloading the source code.
-* After you have downloaded the source code, go to the first tmux screen, cd into the root directory of your project, and enter the command "sh all.sh; sh server.sh". (Remember that the test_code.sh script and tools like RuboCop and Rails Best Practices were not yet in place back in Unit 1 Chapter 3.)
-* Follow the steps needed to restore your ability to successfully use the "git commit" command.
-* Follow the steps in the heroku.sh script for restoring your ability to push to Heroku again. You should be able to push to Heroku again by entering the command "sh heroku.sh".
+* After you have downloaded the source code, go to the first tmux screen, cd into the root directory of your project, and enter the command "git checkout 02-01-heroku".  This switches you from the master branch to the 02-01-heroku branch and downloads the source code revisions of this alternate branch.
+* Enter the command "sh all.sh; sh server.sh". (Remember that the test_code.sh script and tools like RuboCop and Rails Best Practices were not yet in place back in Unit 1 Chapter 3.)
+* Once the local server is running, open your web browser and view your project.
+* If your project passed all tests, you are able to view your local app in the browser, and the outcome of running the all.sh script was as expected, then this means that you have covered all bases through the Docker image build scripts and the build_fast.sh script.
+* Follow the steps in Unit 1 Chapter 3 to restore your ability to use the "git commit" command.
 
-### 
-
-* Reconfigure Git by entering the following commands (and providing your GitHub email address and name, respectively):
+### Wrapping Up 
+* Go to the GitHub repository and click on the "Compare and pull request" button for this 02-01-heroku branch.
+* Accept this pull request to merge it with the master branch, but do NOT delete this branch.
+* Enter the following commands:
 ```
-git config --global user.email "you@example.com"
-git config --global user.name "Your Name"
+git checkout master
+git pull origin master
 ```
-
-
