@@ -121,10 +121,13 @@ end
 ```
 git add .
 git commit -m "Successfully completes first test"
+git push origin 03-01-minitest_reporters
 ```
+### Reset
+* Follow the instructions in the README.md file for resetting the Docker container.  After you have downloaded the source code with the "git clone" command, enter "git checkout 03-01-minitest_reporters" to switch to this alternate branch.
+* If all goes as expected, you are ready to submit a pull request and merge this branch into the master branch.
 
 ### Wrapping Up
-* Enter the command "git push origin 03-01-minitest_reporters".
 * Go to the GitHub repository and click on the "Compare and pull request" button for this branch.
 * Accept this pull request to merge it with the master branch, but do NOT delete this branch.
 * Enter the following commands:
