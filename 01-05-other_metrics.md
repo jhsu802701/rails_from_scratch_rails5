@@ -9,12 +9,12 @@ Enter the command "git checkout -b 01-05-other_metrics".
 * Remove the line beginning with "gem 'rubocop'" from the Gemfile.  Replace this line with the following content:
 ```
 group :development, :testing do
-  gem 'bundler-audit', '0.5.0' # Checks for vulnerable versions of gems
-  gem 'brakeman', '3.4.0' # Checks for security vulnerabilities
-  gem 'sandi_meter', '1.2.0' # Checks for compliance with Sandi Metz' four rules
-  gem 'rubocop', '0.42.0' # Checks for violations of the Ruby Style Guide, not recommended for legacy apps
-  gem 'rails_best_practices', '1.17.0' # Checks the quality of Rails code, not recommended for legacy apps
-  gem 'gemsurance', '0.6.0' # Checks for outdated and insecure gems
+  gem 'bundler-audit' # Checks for vulnerable versions of gems
+  gem 'brakeman' # Checks for security vulnerabilities
+  gem 'sandi_meter' # Checks for compliance with Sandi Metz' four rules
+  gem 'rubocop' # Checks for violations of the Ruby Style Guide, not recommended for legacy apps
+  gem 'rails_best_practices' # Checks the quality of Rails code, not recommended for legacy apps
+  gem 'gemsurance' # Checks for outdated and insecure gems
 end
 # END: gems used in test_code.sh script
 ```
