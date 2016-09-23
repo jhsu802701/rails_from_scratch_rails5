@@ -11,4 +11,4 @@
 * In the CircleCI dashboard, click on the "Add Projects" icon.  Click on the "Build project" button for your project.
 
 ### Circle CI Test Results
-After the test has finished and given you results, click on "Project Settings".  Then click on "Status Badges" to see the status badge for the build state.
+After the test has finished and given you results, click on "Project Settings".  Then click on "Status Badges" to see the status badge for the build status.
