@@ -30,4 +30,4 @@ It is assumed that you are using my rbenv-general Docker image.  The link to the
 
 ## Things Worth Remembering
 * Do NOT mix files and comments on the same line in .gitignore.  The filename/path MUST have its own dedicated line.
-* If the "rails test" command is called from a script within a script (instead of being called directly or called through a script), some of the minitest-reporter options may not work, and this is why there is duplication between the build_fast.sh script and the all.sh script.
+* When you run the "rails test" command from a script within a script, some of the minitest-reporter features (like the green/red output) won't work, and the AwesomeReporter option will throw an error message and prevent the tests from running.  This is why the all.sh script must call the "rails test" command directly instead of calling it indirectly through the build_fast.sh script.
