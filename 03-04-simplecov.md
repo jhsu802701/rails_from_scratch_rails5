@@ -22,6 +22,7 @@ git commit -m "Installed simplecov gem"
 ### Configuration
 * Add the following lines to the BEGINNING of the test/test_helper.rb file:
 ```
+# BEGIN: SimpleCov
 if ENV['EXEC_SIMPLE_COV'] == 'true'
   require 'simplecov'
   SimpleCov.start 'rails' do
@@ -30,6 +31,7 @@ if ENV['EXEC_SIMPLE_COV'] == 'true'
   end
   puts 'required simplecov'
 end
+# END: SimpleCov
 ```
 * In the file build_fast.sh, replace the "rails test" section with the following code:
 ```
