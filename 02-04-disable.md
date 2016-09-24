@@ -78,5 +78,5 @@ Enter the following commands to push this change to GitHub and Heroku:
 git add .
 git commit -m "Disabled dangerous tasks in production"
 git push origin master
-sh heroku.sh
 ```
+* Enter the command "sh heroku.sh".
