@@ -6,14 +6,9 @@ In this chapter, you will set up Minitest Reporters.  It provides features like 
 Enter the command "git checkout -b 03-01-minitest_reporters".
 
 ### Gemfile
-*  Add the following lines to the end of the Gemfile:
+*  Add the following line to the end of the Gemfile:
 ```
-# BEGIN: minitest-reporters
-# Shows red/green displays and a list of the most time-consuming tests within your test suite
-group :testing do
-  gem 'minitest-reporters'
-end
-# END: minitest-reporters
+gem 'minitest-reporters', require: :false, group: :test
 ```
 * Enter the command "sh git_check.sh".
 * Enter the following commands:
