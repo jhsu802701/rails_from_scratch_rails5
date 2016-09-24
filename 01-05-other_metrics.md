@@ -18,10 +18,9 @@ group :development, :testing do
 end
 # END: gems used in test_code.sh script
 ```
-* Enter the command "bundle install" to install the gems.
+* Enter the command "sh git_check.sh" to install the gems.
 * Enter the following commands:
 ```
-sh git_check.sh
 git add .
 git commit -m "Installed additional code analysis gems" 
 ```
