@@ -7,7 +7,7 @@
 #!/bin/bash
 
 # STARTING A NEW HEROKU PROJECT:
-# 1. Enter the command "heroku login:.
+# 1. Enter the command "heroku login:".
 # 2. Enter the command "heroku keys:add".
 # 3. Enter the command "heroku create".
 # 4. In your browser, visit your assigned URL.  You will see the initial Heroku splash screen.
