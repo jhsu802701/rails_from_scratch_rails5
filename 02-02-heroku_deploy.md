@@ -47,8 +47,9 @@ git remote -v
 git add .
 git commit -m "Added heroku.sh"
 git push origin master
-sh heroku.sh
 ```
+* Enter the command "sh heroku.sh".
+
 ### Reset
 * When you reset your Docker container, you will need to reconfigure it to connect to Heroku again.  Because the process of setting up Heroku is still fresh in your mind, this is a good time to practice how to set up your local development environment for a legacy project instead of a new one.
 * Begin following the steps in Unit 1 Chapter 3 for resetting your development environment and downloading the source code.
