@@ -45,9 +45,9 @@ class ActionDispatch::IntegrationTest
   end
 end
 ```
+* Enter the command "sh git_check.sh".
 * Enter the following commands:
 ```
-sh git_check.sh
 git add .
 git commit -m "Configured test/test_helper.rb to use Capybara"
 ```
