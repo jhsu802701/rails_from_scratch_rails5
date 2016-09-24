@@ -187,7 +187,7 @@ end
 * Enter the following commands:
 ```
 git add .
-git commit -m "Successfully completes temp2 integration test"
+git commit -m "Successfully completes test2 integration test"
 ```
 
 ### Wrapping Up
