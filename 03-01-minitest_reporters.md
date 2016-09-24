@@ -17,7 +17,7 @@ git add .
 git commit -m "Installed minitest-reporters"
 ```
 ### Configuration
-*  Insert the code for configuring Minitest Reporters between the line "require 'rails/test_help'" and the line "class ActiveSupport::TestCase".  Your code should look like this:
+*  In the test/test_helper.rb file, insert the code for configuring Minitest Reporters between the line "require 'rails/test_help'" and the line "class ActiveSupport::TestCase".  Your code should look like this:
 ```
 ...
 require 'rails/test_help'
