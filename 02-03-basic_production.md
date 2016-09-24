@@ -13,8 +13,8 @@ This means that SSL is automatically enabled.
 git add .
 git commit -m "Use SSL in production"
 git push origin master
-sh heroku.sh
 ```
+* Enter the command "sh heroku.sh".
 * When you use your browser to view your project, note the presence of "https://" and the lock icon in the address bar.
 This signals that SSL is working.
 
@@ -51,5 +51,5 @@ web: bundle exec puma -C config/puma.rb
 git add .
 git commit -m "Use Puma web server in production"
 git push origin master
-sh heroku.sh
 ```
+* Enter the command "sh heroku.sh".
