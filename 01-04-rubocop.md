@@ -59,10 +59,9 @@ Style/ClassAndModuleChildren:
 *  In the config/environments/production.rb file, replace the double-quotes cited by Rubocop, and get rid of the extra spaces it cited.  Entering the command "rubocop" shows that 5 offenses remain.
 *  In the app/helpers/application_helper.rb, app/controllers/application_controller.rb, app/mailers/application_mailer.rb, and app/models/application_record.rb files, add a "#" directly above the "class" statements cited.  Entering the command "rubocop" shows that 1 offense remain.
 * Remove the extra blank lines in the Gemfile that were cited by RuboCop.  Enter the command "rubocop" again.  There should be no violations.
-* Enter the command "sh build_fast.sh".  Everything should proceed as expected.
+* Enter the command "sh git_check.sh".  Everything should proceed as expected.
 * Enter the following commands:
 ```
-sh git_check.sh
 git add .
 git commit -m "RuboCop compliant"
 ```
