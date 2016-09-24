@@ -19,10 +19,9 @@ end
 ```
 * The capybara-email gem will allow you to test the process of email confirmations for admin and user authentication.
 * The capybara-slow_finder_errors gem throws an error when a Capybara process times out.  This flags bottlenecks in the testing process that slow it down and increase the temptation to skip it.
-* Enter the command "bundle install" to install these Capybara gems.
+* Enter the command "sh git_check.sh".
 * Enter the following commands:
 ```
-sh git_check.sh
 git add .
 git commit -m "Installed Capybara gems"
 ```
