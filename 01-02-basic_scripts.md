@@ -91,7 +91,7 @@ echo '-----------------'
 echo 'sh kill_spring.sh'
 sh kill_spring.sh
 
-echo "\n\n\n\n\n"
+echo "\n\n\n\n\n\n\n\n\n\n"
 
 echo '----------'
 echo 'rails test'
