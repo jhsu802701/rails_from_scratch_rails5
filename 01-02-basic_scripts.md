@@ -168,13 +168,31 @@ git commit -m "Added sandbox.sh"
 ```
 #!/bin/bash
 
-# Run this script before entering a "git commit" command.
-# This script enables you to make sure you've covered all bases, 
-# shows the list of all files that were changed, 
-# and shows the list of new files that will be saved 
-# if you do NOT add them to .gitignore.
+echo '--------------------------'
+echo 'sh pg-start.sh > /dev/null'
+sh pg-start.sh > /dev/null
 
-sh build_fast.sh
+echo '--------------------------'
+echo 'bundle install > /dev/null'
+bundle install > /dev/null
+
+echo '-----------------------------'
+echo 'sh kill_spring.sh > /dev/null'
+sh kill_spring.sh > /dev/null
+
+echo '----------------------------'
+echo 'rails db:migrate > /dev/null'
+rails db:migrate > /dev/null
+
+echo '-----------------------------'
+echo 'sh kill_spring.sh > /dev/null'
+sh kill_spring.sh > /dev/null
+
+echo "\n\n\n\n\n\n\n\n\n\n"
+
+echo '----------'
+echo 'rails test'
+rails test
 
 echo '----------'
 echo 'git status'
