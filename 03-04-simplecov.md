@@ -44,9 +44,13 @@ EXEC_SIMPLE_COV='true' rails test
 ```
 #!/bin/bash
 
-clear
+# Screen output is abbreviated for better readability.
 
-# Screen output is abbreviated to give critical steps better visibility.
+# Attempts to log the test results AND make SimpleCov work 
+# (which requires setting an environment variable)
+# did not pan out.
+
+clear
 
 echo '--------------------------'
 echo 'sh pg-start.sh > /dev/null'
