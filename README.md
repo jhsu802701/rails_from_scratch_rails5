@@ -43,4 +43,4 @@ git config --global user.name "Your Name"
 
 ## Things Worth Remembering
 * Do NOT mix files and comments on the same line in .gitignore.  The filename/path MUST have its own dedicated line.
-* When you run the "rails test" command from a script within a script, some of the minitest-reporter features (like the green/red output) won't work, and the AwesomeReporter option will throw an error message and prevent the tests from running.  This is why the all.sh script must call the "rails test" command directly instead of calling it indirectly through the build_fast.sh script.
+* Attempts to log the screen output of "rails test" AND use the minitest-reporters features resulted in the message "uninitialized constant Minitest::Reporters::ANSI::Code::ENDCODE (NameError)".  As a result, the screen output of the all.sh script is abbreviated for better readability.
