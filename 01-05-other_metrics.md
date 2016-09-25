@@ -132,31 +132,13 @@ git commit -m "Updated git_check.sh"
 
 clear
 
-echo '--------------------------'
-echo 'sh pg-start.sh > /dev/null'
-sh pg-start.sh > /dev/null
+sh build_fast.sh
 
-echo '--------------------------'
-echo 'bundle install > /dev/null'
-bundle install > /dev/null
+FILE_LOG_TEST_CODE='log/all-test_code.log'
 
-echo '-----------------------------'
-echo 'sh kill_spring.sh > /dev/null'
-sh kill_spring.sh > /dev/null
-
-echo '----------------------------'
-echo 'rails db:migrate > /dev/null'
-rails db:migrate > /dev/null
-
-echo '-----------------------------'
-echo 'sh kill_spring.sh > /dev/null'
-sh kill_spring.sh > /dev/null
-
-echo '----------'
-echo 'rails test'
-rails test
-
-sh test_code.sh
+echo '-------------------------------------'
+echo "sh test_code.sh > $FILE_LOG_TEST_CODE"
+sh test_code.sh > $FILE_LOG_TEST_CODE
 ```
 * Run this script by entering "sh all.sh".
 * Enter the command "sh git_check.sh".
