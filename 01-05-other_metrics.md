@@ -33,6 +33,9 @@ echo '*******************'
 echo 'BEGIN: test_code.sh'
 echo '*******************'
 
+# This script runs the app through code metrics.
+# Violations will not stop the app from passing but will be flagged here.
+
 echo '--------------------------'
 echo 'bundle install > /dev/null'
 bundle install > /dev/null
