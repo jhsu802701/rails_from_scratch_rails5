@@ -141,47 +141,33 @@ echo '-----------------------------'
 echo 'sh kill_spring.sh > /dev/null'
 sh kill_spring.sh > /dev/null
 
-echo '---------------------------------'
-echo "EXEC_SIMPLE_COV='true' rails test"
-EXEC_SIMPLE_COV='true' rails test
-
-echo "\n\n\n\n\n"
-
-echo '-----------'
-echo 'sandi_meter'
-sandi_meter
-
-echo "\n\n\n\n\n"
+echo '----------------'
+echo 'brakeman -Aq -w2'
+brakeman -Aq -w2
 
 echo '-------------------'
 echo 'bundle-audit update'
 bundle-audit update
 
-echo "\n\n\n\n\n"
-
 echo '------------'
 echo 'bundle-audit'
 bundle-audit
 
-echo "\n\n\n\n\n"
-
-echo '----------------'
-echo 'brakeman -Aq -w2'
-brakeman -Aq -w2
-
-echo "\n\n\n\n\n"
+echo '-----------'
+echo 'sandi_meter'
+sandi_meter
 
 echo '-------'
 echo 'rubocop'
 rubocop
 
-echo "\n\n\n\n\n"
-
 echo '----------------------'
 echo 'rails_best_practices .'
 rails_best_practices .
 
-echo "\n\n\n\n\n"
+echo '---------------------------------'
+echo "EXEC_SIMPLE_COV='true' rails test"
+EXEC_SIMPLE_COV='true' rails test
 
 echo '----------'
 echo 'gemsurance'
