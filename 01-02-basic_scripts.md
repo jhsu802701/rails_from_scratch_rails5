@@ -198,10 +198,9 @@ echo '----------'
 echo 'git status'
 git status
 ```
-* Save this file.
+* Enter the command "sh git_check.sh".
 * Enter the following commands:
 ```
-sh git_check.sh
 git add .
 git commit -m "Added git_check.sh"
 ```
