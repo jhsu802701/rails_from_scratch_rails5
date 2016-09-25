@@ -93,7 +93,7 @@ git commit -m "Added test_code.sh; updated .gitignore and .rubocop.yml"
 ```
 
 ### git_check.sh
-* In the git_check.sh file, replace the lines between "sh build_fast.sh" and the "git status" section with the following:
+* In the git_check.sh file, replace the rubocop section with the following:
 ```
 echo '----------------'
 echo 'brakeman -Aq -w2'
