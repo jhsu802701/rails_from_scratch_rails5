@@ -165,9 +165,9 @@ echo '----------------------'
 echo 'rails_best_practices .'
 rails_best_practices .
 
-echo '---------------------------------'
-echo "EXEC_SIMPLE_COV='true' rails test"
-EXEC_SIMPLE_COV='true' rails test
+echo '----------'
+echo 'rails test'
+rails test
 
 echo '----------'
 echo 'gemsurance'
