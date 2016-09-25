@@ -168,31 +168,7 @@ git commit -m "Added sandbox.sh"
 ```
 #!/bin/bash
 
-echo '--------------------------'
-echo 'sh pg-start.sh > /dev/null'
-sh pg-start.sh > /dev/null
-
-echo '--------------------------'
-echo 'bundle install > /dev/null'
-bundle install > /dev/null
-
-echo '-----------------------------'
-echo 'sh kill_spring.sh > /dev/null'
-sh kill_spring.sh > /dev/null
-
-echo '----------------------------'
-echo 'rails db:migrate > /dev/null'
-rails db:migrate > /dev/null
-
-echo '-----------------------------'
-echo 'sh kill_spring.sh > /dev/null'
-sh kill_spring.sh > /dev/null
-
-echo "\n\n\n\n\n\n\n\n\n\n"
-
-echo '----------'
-echo 'rails test'
-rails test
+sh build_fast.sh
 
 echo '----------'
 echo 'git status'
