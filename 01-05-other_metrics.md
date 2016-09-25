@@ -119,39 +119,74 @@ git commit -m "Updated git_check.sh"
 ```
 #!/bin/bash
 
-sh pg-start.sh
+clear
 
-echo '--------------'
-echo 'bundle install'
-bundle install
+echo '--------------------------'
+echo 'sh pg-start.sh > /dev/null'
+sh pg-start.sh > /dev/null
 
-echo '-----------------'
-echo 'sh kill_spring.sh'
-sh kill_spring.sh
+echo '--------------------------'
+echo 'bundle install > /dev/null'
+bundle install > /dev/null
+
+echo '-----------------------------'
+echo 'sh kill_spring.sh > /dev/null'
+sh kill_spring.sh > /dev/null
+
+echo '----------------------------'
+echo 'rails db:migrate > /dev/null'
+rails db:migrate > /dev/null
+
+echo '-----------------------------'
+echo 'sh kill_spring.sh > /dev/null'
+sh kill_spring.sh > /dev/null
+
+echo '---------------------------------'
+echo "EXEC_SIMPLE_COV='true' rails test"
+EXEC_SIMPLE_COV='true' rails test
+
+echo "\n\n\n\n\n"
+
+echo '-----------'
+echo 'sandi_meter'
+sandi_meter
+
+echo "\n\n\n\n\n"
+
+echo '-------------------'
+echo 'bundle-audit update'
+bundle-audit update
+
+echo "\n\n\n\n\n"
+
+echo '------------'
+echo 'bundle-audit'
+bundle-audit
+
+echo "\n\n\n\n\n"
 
 echo '----------------'
-echo 'rails db:migrate'
-rails db:migrate
+echo 'brakeman -Aq -w2'
+brakeman -Aq -w2
 
-echo '-----------------'
-echo 'sh kill_spring.sh'
-sh kill_spring.sh
+echo "\n\n\n\n\n"
 
-LOG_RAILS_TEST='log/all-rails_test.log'
-LOG_TEST_CODE='log/all-test_code.log'
+echo '-------'
+echo 'rubocop'
+rubocop
 
-# BEGIN: ACTIONS TO LOG
+echo "\n\n\n\n\n"
+
+echo '----------------------'
+echo 'rails_best_practices .'
+rails_best_practices .
+
+echo "\n\n\n\n\n"
 
 echo '----------'
-echo "rails test"
-rails test 2>&1 | tee $LOG_RAILS_TEST
-sh test_code.sh 2>&1 | tee $LOG_TEST_CODE
-
-echo 'Results are logged in:'
-echo $LOG_RAILS_TEST
-echo $LOG_TEST_CODE
-
-# END: ACTIONS TO LOG
+echo 'gemsurance'
+gemsurance
+echo 'The Gemsurance Report is in gemsurance_report.html in the root directory.'
 ```
 * Run this script by entering "sh all.sh".
 * Enter the command "sh git_check.sh".
