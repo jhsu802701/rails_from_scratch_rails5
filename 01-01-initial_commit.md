@@ -104,7 +104,7 @@ Temporary Items
 # END: Linux files to ignore
 ############################
 
-# NOTE: Comments MUST get their own dedicated lines and cannot be shared with that of the file name
+# NOTE: Comments MUST get their own dedicated lines and cannot be shared with that of the file name.
 
 ```
 ### Gemfile
