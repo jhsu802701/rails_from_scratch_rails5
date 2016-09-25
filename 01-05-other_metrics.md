@@ -8,6 +8,7 @@ Enter the command "git checkout -b 01-05-other_metrics".
 ### Gemfile
 * Edit the end of the Gemfile so that it looks like this:
 ```
+...
 ###################
 # END: initial gems
 ###################
