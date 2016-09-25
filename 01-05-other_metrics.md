@@ -29,9 +29,20 @@ git commit -m "Installed additional code analysis gems"
 ```
 #!/bin/bash
 
-echo '--------------'
-echo 'bundle install'
-bundle install
+echo '*******************'
+echo 'BEGIN: test_code.sh'
+echo '*******************'
+
+echo '--------------------------'
+echo 'bundle install > /dev/null'
+bundle install > /dev/null
+
+# -A: runs all checks
+# -q: output the report only; suppress information warnings
+# -w2: level 2 warnings (medium and high only)
+echo '----------------'
+echo 'brakeman -Aq -w2'
+brakeman -Aq -w2
 
 echo '-----------'
 echo 'sandi_meter'
@@ -47,13 +58,6 @@ echo '------------'
 echo 'bundle-audit'
 bundle-audit
 
-# -A: runs all checks
-# -q: output the report only; suppress information warnings
-# -w2: level 2 warnings (medium and high only)
-echo '----------------'
-echo 'brakeman -Aq -w2'
-brakeman -Aq -w2
-
 echo '-------'
 echo 'rubocop'
 rubocop
@@ -66,6 +70,10 @@ echo '----------'
 echo 'gemsurance'
 gemsurance
 echo 'The Gemsurance Report is in gemsurance_report.html in the root directory.'
+
+echo '*****************'
+echo 'END: test_code.sh'
+echo '*****************'
 ```
 * The Gemsurance Report shows which gems are up to date, which are out of date, and which have known security issues and thus more urgently need to be updated.
 * Add the following line to the end of .gitignore:
@@ -141,38 +149,11 @@ echo '-----------------------------'
 echo 'sh kill_spring.sh > /dev/null'
 sh kill_spring.sh > /dev/null
 
-echo '----------------'
-echo 'brakeman -Aq -w2'
-brakeman -Aq -w2
-
-echo '-------------------'
-echo 'bundle-audit update'
-bundle-audit update
-
-echo '------------'
-echo 'bundle-audit'
-bundle-audit
-
-echo '-----------'
-echo 'sandi_meter'
-sandi_meter
-
-echo '-------'
-echo 'rubocop'
-rubocop
-
-echo '----------------------'
-echo 'rails_best_practices .'
-rails_best_practices .
-
 echo '----------'
 echo 'rails test'
 rails test
 
-echo '----------'
-echo 'gemsurance'
-gemsurance
-echo 'The Gemsurance Report is in gemsurance_report.html in the root directory.'
+sh test_code.sh
 ```
 * Run this script by entering "sh all.sh".
 * Enter the command "sh git_check.sh".
