@@ -66,7 +66,7 @@ git add .
 git commit -m "RuboCop compliant"
 ```
 ### git_check.sh
-* Add the following lines before the "rails test" section:
+* Add the following lines to the end of git_check.sh:
 ```
 
 echo '-------'
