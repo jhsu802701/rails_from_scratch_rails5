@@ -6,8 +6,13 @@ In the previous chapter, you added the RuboCop tool.  In this chapter, you will 
 Enter the command "git checkout -b 01-05-other_metrics".
 
 ### Gemfile
-* Remove the line beginning with "gem 'rubocop'" from the Gemfile.  Replace this line with the following content:
+* Edit the end of the Gemfile so that it looks like this:
 ```
+###################
+# END: initial gems
+###################
+
+# BEGIN: gems used in test_code.sh script
 group :development, :testing do
   gem 'bundler-audit' # Checks for vulnerable versions of gems
   gem 'brakeman' # Checks for security vulnerabilities
