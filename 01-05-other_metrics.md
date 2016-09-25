@@ -110,8 +110,12 @@ git commit -m "Added test_code.sh; updated .gitignore and .rubocop.yml"
 ```
 
 ### git_check.sh
-* In the git_check.sh file, replace the rubocop section with the following:
+* In the git_check.sh file, replace the entire contents of git_check.sh with the following:
 ```
+#!/bin/bash
+
+sh build_fast.sh
+
 echo '----------------'
 echo 'brakeman -Aq -w2'
 brakeman -Aq -w2
@@ -123,6 +127,10 @@ rubocop
 echo '----------------------'
 echo 'rails_best_practices .'
 rails_best_practices .
+
+echo '----------'
+echo 'git status'
+git status
 ```
 * Enter the command "sh git_check.sh".
 * Enter the following commands:
