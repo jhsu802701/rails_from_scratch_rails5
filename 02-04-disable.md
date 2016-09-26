@@ -69,6 +69,7 @@ rails db:migrate:reset
 rails db:schema:load
 rails db:seed
 ```
+* Enter the command "sh temp1.sh" to run this script.
 * Remove the temp1.sh script by entering "rm temp1.sh".
 
 ### Wrapping Up
