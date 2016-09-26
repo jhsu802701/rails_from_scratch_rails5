@@ -8,6 +8,7 @@ Enter the command "git checkout -b 03-01-minitest_reporters".
 ### Gemfile
 *  Add the following line to the end of the Gemfile:
 ```
+# Adds special features to tests
 gem 'minitest-reporters', require: :false, group: :test
 ```
 * Enter the command "sh git_check.sh".
