@@ -35,10 +35,6 @@ git commit -m "Installed additional code analysis gems"
 ```
 #!/bin/bash
 
-echo '*******************'
-echo 'BEGIN: test_code.sh'
-echo '*******************'
-
 # This script runs the app through code metrics.
 # Violations will not stop the app from passing but will be flagged here.
 
@@ -79,10 +75,6 @@ echo '----------'
 echo 'gemsurance'
 gemsurance
 echo 'The Gemsurance Report is in gemsurance_report.html in the root directory.'
-
-echo '*****************'
-echo 'END: test_code.sh'
-echo '*****************'
 ```
 * The Gemsurance Report shows which gems are up to date, which are out of date, and which have known security issues and thus more urgently need to be updated.
 * Add the following line to the end of .gitignore:
