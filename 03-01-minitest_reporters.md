@@ -17,8 +17,94 @@ gem 'minitest-reporters', require: :false, group: :testing
 git add .
 git commit -m "Installed minitest-reporters"
 ```
+### test/rake_rerun_reporter.rb
+* Add the file test/rake_rerun_reporter.rb and give it the following contents:
+```
+# From https://gist.github.com/foton/141b9f73caccf13ccfcc
+
+require 'minitest/reporters'
+
+module Minitest
+  module Reporters
+    class RakeRerunReporter < Minitest::Reporters::DefaultReporter
+
+      def initialize(options = {})
+        @rerun_user_prefix=options.fetch(:rerun_prefix, '')
+        super
+      end
+
+      def report
+        super
+      
+        puts
+      
+        unless @fast_fail
+          #print rerun commands
+          failed_or_error_tests=(tests.select {|t| t.failure && !t.skipped? })
+
+          unless failed_or_error_tests.empty?
+            puts red("You can rerun failed/error test by commands (you can add rerun prefix with 'rerun_prefix' option):")
+
+            failed_or_error_tests.each do |test|
+              print_rerun_command(test)
+            end
+          end
+        end
+        
+        #summary for all suite again
+        puts
+        print colored_for(suite_result, result_line)
+        puts
+        
+      end  
+
+      private
+
+        def print_rerun_command(test)
+          message = rerun_message_for(test)
+          unless message.nil? || message.strip == ''
+            puts
+            puts colored_for(result(test), message)
+          end
+        end
+
+        def rerun_message_for(test)
+          file_path=location(test.failure).gsub(/(\:\d*)\z/,"")
+          msg="#{@rerun_user_prefix} rake test TEST=#{file_path} TESTOPTS=\"--name=#{test.name} -v\""
+          if test.skipped?
+            "Skipped: \n#{msg}"
+          elsif test.error?
+            "Error:\n#{msg}"
+          else
+            "Failure:\n#{msg}"
+          end
+        end
+        
+        def location(exception)
+          last_before_assertion = ''
+
+          exception.backtrace.reverse_each do |ss|
+            break if ss =~ /in .(assert|refute|flunk|pass|fail|raise|must|wont)/
+            last_before_assertion = ss
+            break if ss=~ /_test.rb\:/
+          end
+
+          last_before_assertion.sub(/:in .*$/, '')
+        end  
+
+    end
+  end
+end
+```
+* Enter the command "sh git_check.sh".
+* Enter the following commands:
+```
+git add .
+git commit -m "Added test/rake_rerun_reporter.rb"
+```
 ### Configuration
-*  In the test/test_helper.rb file, insert the code for configuring Minitest Reporters between the line "require 'rails/test_help'" and the line "class ActiveSupport::TestCase".  Your code should look like this:
+* Add the file 
+* In the test/test_helper.rb file, insert the code for configuring Minitest Reporters between the line "require 'rails/test_help'" and the line "class ActiveSupport::TestCase".  Your code should look like this:
 ```
 ...
 require 'rails/test_help'
@@ -26,6 +112,9 @@ require 'rails/test_help'
 # BEGIN: use minitest-reporters
 # AwesomeReporter configuration from
 # http://chriskottom.com/blog/2014/06/dress-up-your-minitest-output/
+# RakeRerunReporter from
+# https://gist.github.com/foton/141b9f73caccf13ccfcc
+
 require 'minitest/reporters'
 Minitest::Reporters.use!
 
@@ -50,9 +139,10 @@ module Minitest
   end
 end
 
-reporter_options = { color: true, slow_count: 5 }
+reporter_options = { color: true, slow_count: 5, verbose: false, rerun_prefix: 'rm -f log/test.log && bundle exec' }
 Minitest::Reporters.use! [Minitest::Reporters::AwesomeReporter.new(reporter_options),
-                          Minitest::Reporters::HtmlReporter.new]
+                          Minitest::Reporters::HtmlReporter.new,
+                          Minitest::Reporters::RakeRerunReporter.new(reporter_options)]
 # END: use minitest-reporters
 
 class ActiveSupport::TestCase
