@@ -1,7 +1,7 @@
 # Unit 2
 ## Chapter 3: Basic Production Environment Configuration
 
-Do not create a new branch in this chapter.  Stick with the master branch.
+Do not create a new branch in this chapter.  Stick with the master branch.  In this chapter, you will use the production environment configurations from Rails Tutorial.
 
 ### A. SSL in Production
 
