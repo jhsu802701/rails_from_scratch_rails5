@@ -70,5 +70,6 @@ git push origin 04-05-code_climate_coverage
 ```
 git checkout master
 git pull origin master
+sh heroku.sh
 ```
 * Go back to the project page on Code Climate.  The code coverage test results should be available, and they should match those in your local environment.
