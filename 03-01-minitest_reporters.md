@@ -147,10 +147,6 @@ AllCops:
     - tmp/vulnerabilities/spec/*
     - tmp/vulnerabilities/Rakefile
 
-Cop/MethodLength:
-  Exclude:
-    - test/rake_rerun_reporter.rb
-
 Metrics/AbcSize:
   Exclude:
     - test/rake_rerun_reporter.rb
@@ -174,6 +170,10 @@ Metrics/LineLength:
     - Rakefile
     - test/rake_rerun_reporter.rb
     - test/test_helper.rb
+
+Metrics/MethodLength:
+  Exclude:
+    - test/rake_rerun_reporter.rb
 
 Style/ClassAndModuleChildren:
   Exclude:
