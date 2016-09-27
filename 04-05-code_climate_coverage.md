@@ -73,3 +73,4 @@ git pull origin master
 sh heroku.sh
 ```
 * Go back to the project page on Code Climate.  The code coverage test results should be available, and they should match those in your local environment.
+* If you don't see the Coverage results, make sure that Circle CI has the correct environment variable and value, and then do a rebuild in Circle CI.
