@@ -18,7 +18,7 @@ gem 'minitest-reporters', require: :false, group: :testing # Adds special featur
 git add .
 git commit -m "Installed minitest-reporters"
 ```
-### test/rake_rerun_reporter.rb
+### Configuration
 * Add the file test/rake_rerun_reporter.rb and give it the following contents:
 ```
 # From https://gist.github.com/foton/141b9f73caccf13ccfcc
@@ -97,14 +97,6 @@ module Minitest
   end
 end
 ```
-* Enter the command "sh git_check.sh".
-* Enter the following commands:
-```
-git add .
-git commit -m "Added test/rake_rerun_reporter.rb"
-```
-### Configuration
-* Add the file 
 * In the test/test_helper.rb file, insert the code for configuring Minitest Reporters between the line "require 'rails/test_help'" and the line "class ActiveSupport::TestCase".  Your code should look like this:
 ```
 ...
