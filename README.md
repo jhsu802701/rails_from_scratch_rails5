@@ -46,7 +46,7 @@ git config --global user.name "Your Name"
 * Attempts to log the screen output of "rails test" AND use the minitest-reporters features resulted in the message "uninitialized constant Minitest::Reporters::ANSI::Code::ENDCODE (NameError)".  As a result, the screen output of the all.sh script is abbreviated for better readability.
 
 ## Core Principles
-* Double down on the use of shortcuts, automation scripts, and cheat sheets.  There are no rules, regulations, or ethical considerations prohibiting these tactics.
+* Double down on the use of shortcuts, automation scripts, standard operating procedures, and cheat sheets.  There are no rules, regulations, or ethical considerations prohibiting these tactics.
 * Double down on the quality control.  It's MUCH easier to establish quality control at the very beginning of the process than to try to introduce it much later.
 * Use test-driven development, or at least provide comprehensive tests promptly.  If you don't have time to provide tests while the process of providing the desired features and capablities is still fresh in your mind, you likely won't be able to find the time to do so later.  The time "saved" by skipping tests early on will be negated many times over later on when you accidentally break things without realizing it.
 * Create your app with numerous small steps, not a handful of giant ones.  The protocol documented here consists of numerous small chapters.  In the long run, this saves time, because I can keep track of what I'm doing and easily troubleshoot any surprises that crop up.  Every time I go through Rails Tutorial, I lose track of where I am and what I'm doing, and troubleshooting can be difficult given the numerous actions taken all at once.
