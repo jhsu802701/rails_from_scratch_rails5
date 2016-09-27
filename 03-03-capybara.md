@@ -54,7 +54,6 @@ git commit -m "Configured test/test_helper.rb to use Capybara"
 
 ### Adding Capybara Tests
 * Enter the command "rails generate integration_test test3".
-* Enter the command "alias test='rails test test/integration/test3_test.rb'".  (NOTE: If you enter the command "test" at this point, there will be an error in writing to the HTML report, because there are no actual tests in place yet.)
 * Edit the file test/integration/test3_test.rb and give it the following content:
 ```
 require 'test_helper'
@@ -84,7 +83,12 @@ class Test3Test < ActionDispatch::IntegrationTest
   end
 end
 ```
-* Enter the command "test".  You'll see that all three tests fail.
+* Enter the command "rails test".  You'll see that all three of the new tests fail.
+* Enter the following command:
+```
+alias test1='(command provided in test results with the TESTOPTS part omitted)'
+```
+* Enter the command "test1".
 * Edit the file public/about.html and replace it with the following content:
 ```
 <html>
@@ -100,7 +104,7 @@ end
 </body>
 </html>
 ```
-* Enter the command "test".  Now only 2 of the tests fail.
+* Enter the command "test1".  Now only 2 of the tests fail.
 * Edit the file public/index.html and replace it with the following content:
 ```
 <html>
@@ -118,7 +122,7 @@ end
     </body>
 </html>
 ```
-* Enter the command "test".  Now all of the tests in test/integration/test3_test.rb pass.
+* Enter the command "test1".  Now all of the tests in test/integration/test3_test.rb pass.
 * Enter the command "sh git_check.sh".  Everything should be ready for git commit.
 * Enter the following commands:
 ```
