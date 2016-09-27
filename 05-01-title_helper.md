@@ -1,0 +1,85 @@
+# Unit 5
+## Chapter 1: Title Helper
+In this chapter, you will create a title helper.  This will be the basis of the title in each page on your site.
+
+### New Branch
+Enter the command "git checkout -b 05-01-title_helper".
+
+### Testing and Creating the Title Helper
+* Create the file test/helpers/application_helper_test.rb with the following content:
+```
+require 'test_helper'
+
+class ApplicationHelperTest < ActionView::TestCase
+  test "full title helper" do
+    assert_equal full_title, 'Ruby on Racetracks'
+    assert_equal full_title('About'), 'About | Ruby on Racetracks'
+    assert_equal full_title('Contact'), 'Contact | Ruby on Racetracks'
+    assert_equal full_title('Top 10'), 'Top 10 | Ruby on Racetracks'
+    assert_equal full_title('TheSolarcatcher'), 'TheSolarcatcher | Ruby on Racetracks'
+    assert_equal full_title('FreewayJim'), 'FreewayJim | Ruby on Racetracks'
+    assert_equal full_title('InterstateKyle'), 'InterstateKyle | Ruby on Racetracks'
+  end
+end
+```
+* Enter the command "sh testh.sh".  Your helper test should fail.
+* Enter the command "rails generate helper title".  This generates the title helper.
+* Edit the file app/helpers/application_helper.rb and give it the following content:
+```
+#
+module ApplicationHelper
+  # Returns the full title on a per-page basis
+  def full_title(page_title = '')
+    base_title = 'Generic App Template'
+    if page_title.empty?
+      base_title
+    else
+      page_title + ' | ' + base_title
+    end
+  end
+end
+```
+* Make the test/helpers/application_helper_test.rb exempt from the line length cop by replace the contents of the .rubocop.yml file with the following:
+```
+AllCops:
+  Exclude:
+    - db/schema.rb
+    - tmp/vulnerabilities/lib/*
+    - tmp/vulnerabilities/spec/*
+    - tmp/vulnerabilities/Rakefile
+
+Metrics/AbcSize:
+  Exclude:
+    - test/rake_rerun_reporter.rb
+
+Metrics/LineLength:
+  Exclude:
+    - bin/spring
+    - config/application.rb
+    - config/environments/development.rb
+    - config/environments/production.rb
+    - config/initializers/assets.rb
+    - config/initializers/backtrace_silencers.rb
+    - config/initializers/new_framework_defaults.rb
+    - config/initializers/session_store.rb
+    - config/initializers/wrap_parameters.rb
+    - config/environments/production.rb
+    - config/environments/test.rb
+    - config/puma.rb
+    - db/seeds.rb
+    - Gemfile
+    - Rakefile
+    - test/helpers/application_helper_test.rb
+    - test/rake_rerun_reporter.rb
+    - test/test_helper.rb
+
+Metrics/MethodLength:
+  Exclude:
+    - test/rake_rerun_reporter.rb
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - test/test_helper.rb
+```
+* Edit the test/test_helper.rb file by adding the line "include ApplicationHelper" after "# Add more helper methods to be used by all tests here...".
+### Wrapping Up
