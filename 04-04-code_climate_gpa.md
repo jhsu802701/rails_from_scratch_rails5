@@ -19,4 +19,5 @@ git add .
 git commit -m "Added CodeClimate configuration files"
 git push origin master
 ```
+* Enter the command "sh heroku.sh".
 * Code Climate now provides a GPA rating of your code quality and a badge denoting this.
