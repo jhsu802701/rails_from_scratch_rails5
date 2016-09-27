@@ -167,9 +167,12 @@ class Test2Test < ActionDispatch::IntegrationTest
 end
 ```
 * Entering the command "rails test" runs all of the tests.  Both of the new tests fail.
-* Entering the command "rails test test/integration/test2_test.rb" runs just the tests in test/integration/test2_test.rb.
-* Entering the command "alias 'test'='rails test test/integration/test2_test.rb'" means that entering the simple command "test" equates to running the command "rails test test/integration/test2_test.rb".
-* Enter the command "test".  Only the tests in the file test/integration/test2_test.rb are executed.
+* You will see two messages for running the failed tests individually.  Since both tests are defined in the same file, everything before the definition of the TESTOPTS environment variable is identical.  This common portion of the task will look something like this:
+```
+rm -f log/test.log && bundle exec rake test TEST=/home/winner/shared/generic_rails_2016_09_25/test/integration/test2_test.rb
+```
+* Enter the command "alias test1='(common portion of test commands)'.
+* Entering the command "test1" runs just the tests in test/integration/test2_test.rb.
 * Create the file public/about.html with the following content:
 ```
 <html>
@@ -182,7 +185,7 @@ end
 </body>
 </html>
 ```
-* Enter the command "test".  Now the tests in the file test/integration/test2_test.rb pass.
+* Enter the command "test1".  Now the tests in the file test/integration/test2_test.rb pass.
 * Enter the command "sh git_check.sh" to verify that all tests pass.
 * Enter the following commands:
 ```
