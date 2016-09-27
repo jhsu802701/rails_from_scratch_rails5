@@ -105,6 +105,7 @@ require 'rails/test_help'
 # https://gist.github.com/foton/141b9f73caccf13ccfcc
 
 require 'minitest/reporters'
+require 'rake_rerun_reporter'
 Minitest::Reporters.use!
 
 module Minitest
@@ -209,6 +210,30 @@ class Test1Test < ActionDispatch::IntegrationTest
 end
 ```
 * Enter the command "rails test".  You'll see that the test for the title and heading fail.
+* In the test results, you'll see a section that looks something like:
+```
+You can rerun failed/error test by commands (you can add rerun prefix with 'reru
+n_prefix' option):
+
+Failure:
+rm -f log/test.log && bundle exec rake test TEST=/home/winner/shared/generic_rai
+ls_2016_09_25/test/integration/test1_test.rb TESTOPTS="--name=test_home_page_has
+_expected_title_and_heading -v"
+
+```
+* To rerun just the test that failed, all you have to do is copy and paste the command provided.  Just cut, paste, and enter into your shell window the following:
+```
+rm -f log/test.log && bundle exec rake test TEST=/home/winner/shared/generic_rai
+ls_2016_09_25/test/integration/test1_test.rb TESTOPTS="--name=test_home_page_has
+_expected_title_and_heading -v"
+
+```
+* You can also write this command into an alias.  Just enter the following command:
+```
+alias test1='(command to be copied)'
+
+```
+* Then enter the command "test1" to rerun this test.
 * Replace the contents of the public/index.html file with the following:
 ```
 <html>
@@ -221,7 +246,8 @@ end
     </body>
 </html>
 ```
-* Enter the command "rails test".  Now all of the tests pass, and the display output contains green instead of red.
+* Enter the command "test1".  Now the test passes.
+* Enter the command "rails test".  All of the tests should pass now.
 * Enter the command "sh git_check.sh".
 * Enter the following commands:
 ```
