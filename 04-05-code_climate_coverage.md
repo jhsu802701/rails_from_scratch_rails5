@@ -64,6 +64,7 @@ git push origin 04-05-code_climate_coverage
 ```
 ### Wrapping Up
 * Go to the GitHub repository and click on the "Compare and pull request" button for this branch.
+* You'll see the analysis by the continuous integration services.  The app should pass all tests, but if Circle CI shows that your app has any test failures or errors, this is a warning of a dependency mismanagement problem or an intermittent issue.  (In this case, you should reset your development environment and do some troubleshooting.)
 * Accept this pull request to merge it with the master branch, but do NOT delete this branch.
 * Enter the following commands:
 ```
