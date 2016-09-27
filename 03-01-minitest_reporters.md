@@ -114,11 +114,11 @@ Minitest::Reporters.use!
 module Minitest
   module Reporters
     class AwesomeReporter < DefaultReporter
-      GREEN = '1;32'
-      RED = '1;31'
+      GREEN = '1;32'.freeze
+      RED = '1;31'.freeze
 
       def color_up(string, color)
-        color? ? "\e\[#{ color }m#{ string }#{ ANSI::Code::ENDCODE }" : string
+        color? ? "\e\[#{color}m#{string}#{ANSI::Code::ENDCODE}" : string
       end
 
       def red(string)
@@ -141,13 +141,44 @@ Minitest::Reporters.use! [Minitest::Reporters::AwesomeReporter.new(reporter_opti
 class ActiveSupport::TestCase
 ...
 ```
-* Add the following code to the end of .rubocop.yml:
+* Replace the contents of the .rubocop.yml with the following code:
 ```
-Style/MutableConstant:
+AllCops:
   Exclude:
+    - db/schema.rb
+    - tmp/vulnerabilities/lib/*
+    - tmp/vulnerabilities/spec/*
+    - tmp/vulnerabilities/Rakefile
+
+Cop/MethodLength:
+  Exclude:
+    - test/rake_rerun_reporter.rb
+
+Metrics/AbcSize:
+  Exclude:
+    - test/rake_rerun_reporter.rb
+
+Metrics/LineLength:
+  Exclude:
+    - bin/spring
+    - config/application.rb
+    - config/environments/development.rb
+    - config/environments/production.rb
+    - config/initializers/assets.rb
+    - config/initializers/backtrace_silencers.rb
+    - config/initializers/new_framework_defaults.rb
+    - config/initializers/session_store.rb
+    - config/initializers/wrap_parameters.rb
+    - config/environments/production.rb
+    - config/environments/test.rb
+    - config/puma.rb
+    - db/seeds.rb
+    - Gemfile
+    - Rakefile
+    - test/rake_rerun_reporter.rb
     - test/test_helper.rb
-    
-Style/SpaceInsideStringInterpolation:
+
+Style/ClassAndModuleChildren:
   Exclude:
     - test/test_helper.rb
 ```
