@@ -6,7 +6,7 @@ In this chapter, you will set up Minitest Reporters.  It provides features like 
 Enter the command "git checkout -b 03-01-minitest_reporters".
 
 ### Gemfile
-*  Add the following line to the end of the Gemfile:
+*  Add the following lines to the end of the Gemfile:
 ```
 # Minitest
 gem 'minitest', require: :false, group: :testing
