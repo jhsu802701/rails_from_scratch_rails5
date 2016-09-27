@@ -234,6 +234,7 @@ alias test1='(command to be copied)'
 
 ```
 * Then enter the command "test1" to rerun this test.
+* NOTE: All aliases that you create are automatically destroyed upon exiting the tmux window.
 * Replace the contents of the public/index.html file with the following:
 ```
 <html>
