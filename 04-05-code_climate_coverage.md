@@ -12,7 +12,7 @@ Enter the command "git checkout -b 04-05-code_climate_coverage".
 * Go back to your project page at the Circle CI web site. Click on "Project Settings", and click on "ENVIRONMENT VARIABLES". Enter the environment variable name and value specified by Code Climate.
 
 ### Gemfile
-* In the Gemfile, replace the SimpleCov section with the following code:
+* In the Gemfile, add the following lines to the end of the file:
 ``` 
 
 # Code Climate
