@@ -35,6 +35,8 @@ module ApplicationHelper
   end
 end
 ```
+* Enter the command "sh testh.sh".  Your helper test should now pass.
+* Enter the command "sh testhl.sh".  Rails Best Practices will warn you about an unused method (full_title within ApplicationHelper), but don't worry about this now, because you will use it on every web page on your site.  RuboCop will flag test/helpers/application_helper_test.rb for having a line more than 80 characters long. 
 * Make the test/helpers/application_helper_test.rb exempt from the line length cop by replace the contents of the .rubocop.yml file with the following:
 ```
 AllCops:
