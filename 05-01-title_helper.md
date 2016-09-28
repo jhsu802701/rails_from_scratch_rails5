@@ -81,5 +81,19 @@ Style/ClassAndModuleChildren:
   Exclude:
     - test/test_helper.rb
 ```
-* Edit the test/test_helper.rb file by adding the line "include ApplicationHelper" after "# Add more helper methods to be used by all tests here...".
+* Enter the command "sh git_check.sh".  Rails Best Practices will flag you about an unused method (full_title within ApplicationHelper), but don't worry about this now, because you will use it on every web page on your site.
+* Enter the following commands:
+```
+git add .
+git commit -m "Added test helper"
+```
+
 ### Wrapping Up
+* Go to the GitHub repository and click on the "Compare and pull request" button for this branch.
+* Accept this pull request to merge it with the master branch, but do NOT delete this branch.
+* Enter the following commands:
+```
+git checkout master
+git pull
+sh heroku.sh
+```
