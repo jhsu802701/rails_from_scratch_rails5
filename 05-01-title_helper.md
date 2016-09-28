@@ -86,6 +86,7 @@ Style/ClassAndModuleChildren:
 ```
 git add .
 git commit -m "Added test helper"
+git push origin 05-01-title_helper
 ```
 
 ### Wrapping Up
