@@ -23,7 +23,6 @@ class ApplicationHelperTest < ActionView::TestCase
 end
 ```
 * Enter the command "sh testh.sh".  Your helper test should fail.
-* Enter the command "rails generate helper title".  This generates the title helper.
 * Edit the file app/helpers/application_helper.rb and give it the following content:
 ```
 #
