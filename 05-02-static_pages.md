@@ -90,6 +90,7 @@ test/integration/test3_test.rb
 * Replace the content of the file test/integration_test/static_pages_test.rb with the following code:
 ```
 require 'test_helper'
+include ApplicationHelper
 
 class StaticPagesTest < ActionDispatch::IntegrationTest
   test 'home page has expected content' do
@@ -217,6 +218,8 @@ end
 * Download a [Ruby on Rails logo] (https://bytebucket.org/railstutorial/sample_app_4th_ed/raw/c9d26c71bc901a9f2e2bb59f5bafc0fc82be7ffb/app/assets/images/rails.png) in png format and save it as app/assets/images/rails.png.
 * Replace the content of app/views/static_pages/home.html.erb with the following content:
 ```
+<% provide(:title, '') %>
+
 <div class="center jumbotron">
   <h1>Home</h1>
   Welcome to Generic App Template!
@@ -226,15 +229,20 @@ end
 ```
 * Replace the content of app/views/static_pages/about.html.erb with the following content:
 ```
+<% provide(:title, "About") %>
+
 <h1>About</h1>
 Describe your site here.
 ```
 * Replace the content of app/views/static_pages/contact.html.erb with the following content:
 ```
+<% provide(:title, 'Contact') %>
+
 <h1>Contact</h1>
 Email address: <%= raw(EmailMunger.encode('somebody@rubyonracetracks.com')) %>
 ```
-* Enter the command "rake test".
+* Enter the command "rails test".  All tests should pass.  
+* Enter the command "sh git_check.sh".  Test coverage has improved, as app/mailers/application_mailer.rb and app/models/application_record.rb are the only files not covered yet.  RuboCop and Rails Best Practices show no offenses.
 * Enter the following commands:
 ```
 git add .
@@ -243,3 +251,12 @@ git push origin 05-02-static_pages
 ```
 
 ### Wrapping Up
+* Go to the GitHub repository and click on the "Compare and pull request" button for this branch.
+* Accept this pull request to merge it with the master branch, but do NOT delete this branch.
+* Enter the following commands:
+```
+git checkout master
+git pull
+sh heroku.sh
+```
+* The new static pages should now appear on the Heroku site.
