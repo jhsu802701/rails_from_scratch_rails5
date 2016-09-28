@@ -84,7 +84,7 @@ Style/ClassAndModuleChildren:
 * Enter the following commands:
 ```
 git add .
-git commit -m "Added test helper"
+git commit -m "Added title helper"
 git push origin 05-01-title_helper
 ```
 
