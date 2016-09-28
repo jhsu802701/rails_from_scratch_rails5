@@ -79,7 +79,8 @@ Style/ClassAndModuleChildren:
   Exclude:
     - test/test_helper.rb
 ```
-* Enter the command "sh git_check.sh".  Rails Best Practices will warn you about an unused method (full_title within ApplicationHelper), but don't worry about this now, because you will use it on every web page on your site.
+* Enter the command "sh testhl.sh".  The RuboCop issue has now been resolved.
+* Enter the command "sh git_check.sh".  All tests pass, and RuboCop finds no offenses.  (Again, you will address the issue flagged by Rails Best Practices after this chapter.)
 * Enter the following commands:
 ```
 git add .
