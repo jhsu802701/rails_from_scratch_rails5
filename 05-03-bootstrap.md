@@ -18,7 +18,7 @@ git add .
 git commit -m "Installed bootstrap-sass"
 ```
 ### Configuring Bootstrap
-* Create the file app/assets/stylesheets/custom.scss with the following content:
+* Replace the contents of the file app/assets/stylesheets/custom.scss with the following code:
 ```
 @import "bootstrap-sprockets";
 @import "bootstrap";
