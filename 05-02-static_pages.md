@@ -202,6 +202,7 @@ end
 ```
 * Add the file app/views/layouts/_footer.html.erb with the following content:
 ```
+<hr>
 <footer class="footer">
   <small>
     Generic App Template by Somebody
