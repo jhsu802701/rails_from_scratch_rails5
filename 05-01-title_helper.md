@@ -11,14 +11,11 @@ Enter the command "git checkout -b 05-01-title_helper".
 require 'test_helper'
 
 class ApplicationHelperTest < ActionView::TestCase
-  test "full title helper" do
-    assert_equal full_title, 'Ruby on Racetracks'
-    assert_equal full_title('About'), 'About | Ruby on Racetracks'
-    assert_equal full_title('Contact'), 'Contact | Ruby on Racetracks'
-    assert_equal full_title('Top 10'), 'Top 10 | Ruby on Racetracks'
-    assert_equal full_title('TheSolarcatcher'), 'TheSolarcatcher | Ruby on Racetracks'
-    assert_equal full_title('FreewayJim'), 'FreewayJim | Ruby on Racetracks'
-    assert_equal full_title('InterstateKyle'), 'InterstateKyle | Ruby on Racetracks'
+  test 'full title helper' do
+    assert_equal full_title, 'Generic App Template'
+    assert_equal full_title('About'), 'About | Generic App Template'
+    assert_equal full_title('Contact'), 'Contact | Generic App Template'
+    assert_equal full_title('Michael Hartl'), 'Michael Hartl | Generic App Template'
   end
 end
 ```
