@@ -18,7 +18,7 @@ git add .
 git commit -m "Installed bootstrap-sass"
 ```
 ### Configuring Bootstrap
-* Creae the file app/assets/stylesheets/custom.scss with the following code:
+* Create the file app/assets/stylesheets/custom.scss with the following code:
 ```
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -119,26 +119,7 @@ footer {
   }
 }
 ```
-* Create the file app/assets/stylesheets/application.css with the following content:
-```
-/*
- * This is a manifest file that'll be compiled into application.css, which
- * will include all the files listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets,
- * vendor/assets/stylesheets, or vendor/assets/stylesheets of plugins, if any,
- * can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear
- * at the bottom of the compiled file so the styles you add here take
- * precedence over styles defined in any styles defined in the other CSS/SCSS
- * files in this directory. It is generally better to create a new file per
- * style scope.
- *
- *= require_tree .
- *= require_self
- */
-```
+* Stop and restart the Rails server.  (If you refresh your local web page in your browser without restarting the Rails server, you will get a syntax error message.)
 * View your site in your local browser.
 * Enter the command "sh git_check.sh".
 * Enter the following commands:
