@@ -80,7 +80,7 @@ Style/ClassAndModuleChildren:
     - test/test_helper.rb
 ```
 * Enter the command "sh testhl.sh".  The RuboCop issue has now been resolved.
-* Enter the command "sh git_check.sh".  All tests pass, and RuboCop finds no offenses.  (Again, you will address the issue flagged by Rails Best Practices after this chapter.)
+* Enter the command "sh git_check.sh".  All tests pass, and RuboCop finds no offenses.  Note that SimpleCov shows improved test coverage now that app/helpers/application_helper.rb is covered.  (Again, you will address the unused method issue flagged by Rails Best Practices after this chapter.)
 * Enter the following commands:
 ```
 git add .
