@@ -159,11 +159,87 @@ class StaticPagesTest < ActionDispatch::IntegrationTest
   end
 end
 ```
-* Replace the content o
+* Replace the content of the file app/views/layouts/application.html.erb with the following:
+```
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= full_title(yield(:title)) %></title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all',
+                                              'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= render 'layouts/shim' %>
+  </head>
+  <body>
+    <%= render 'layouts/header' %>
+    <div class="container">
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
+      <%= yield %>
+      <%= render 'layouts/footer' %>
+      <%= debug(params) if Rails.env.development? %>
+    </div>
+  </body>
+</html>
+```
+* Add the file app/views/layouts/_header.html.erb with the following content:
+```
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <%= link_to "Generic App Template", root_path, id: "logo" %>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "About", about_path %></li>
+        <li><%= link_to "Contact", contact_path %></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+```
+* Add the file app/views/layouts/_footer.html.erb with the following content:
+```
+<footer class="footer">
+  <small>
+    Generic App Template by Somebody
+  </small>
+</footer>
+```
+* Add the file app/views/layouts/_shim.html.erb with the following content:
+```
+<!--[if lt IE 9]>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+  </script>
+<![endif]-->
+```
+* Download a [Ruby on Rails logo] (https://bytebucket.org/railstutorial/sample_app_4th_ed/raw/c9d26c71bc901a9f2e2bb59f5bafc0fc82be7ffb/app/assets/images/rails.png) in png format and save it as app/assets/images/rails.png.
+* Replace the content of app/views/static_pages/home.html.erb with the following content:
+```
+<div class="center jumbotron">
+  <h1>Home</h1>
+  Welcome to Generic App Template!
+  <%= link_to image_tag("rails.png", alt: "Rails logo"),
+              'http://rubyonrails.org/' %>
+</div>
+```
+* Replace the content of app/views/static_pages/about.html.erb with the following content:
+```
+<h1>About</h1>
+Describe your site here.
+```
+* Replace the content of app/views/static_pages/contact.html.erb with the following content:
+```
+<h1>Contact</h1>
+Email address: <%= raw(EmailMunger.encode('somebody@rubyonracetracks.com')) %>
+```
+* Enter the command "rake test".
 * Enter the following commands:
 ```
 git add .
 git commit -m "Added static pages"
+git push origin 05-02-static_pages
 ```
 
 ### Wrapping Up
