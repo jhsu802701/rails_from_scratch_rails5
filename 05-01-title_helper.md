@@ -80,7 +80,7 @@ Style/ClassAndModuleChildren:
   Exclude:
     - test/test_helper.rb
 ```
-* Enter the command "sh git_check.sh".  Rails Best Practices will flag you about an unused method (full_title within ApplicationHelper), but don't worry about this now, because you will use it on every web page on your site.
+* Enter the command "sh git_check.sh".  Rails Best Practices will warn you about an unused method (full_title within ApplicationHelper), but don't worry about this now, because you will use it on every web page on your site.
 * Enter the following commands:
 ```
 git add .
