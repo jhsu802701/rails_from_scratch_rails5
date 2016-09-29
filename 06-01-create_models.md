@@ -1,5 +1,5 @@
 # Unit 6
-## Chapter 1: Devise
+## Chapter 1: Creating Admin and User Models
 
 In this chapter, you will set up the Devise gem.
 
