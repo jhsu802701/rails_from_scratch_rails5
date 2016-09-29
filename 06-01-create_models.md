@@ -18,7 +18,7 @@ git add .
 git commit -m "Installed Devise gem"
 ```
 
-### Setting Up Devise
+### Configuring Devise
 * Enter the command "rails generate devise:install".
 * Edit the file config/environments/development.rb so that it looks like this:
 
@@ -30,5 +30,80 @@ git commit -m "Installed Devise gem"
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 end
 ```
+* Make config/initializers/devise.rb exempt from RuboCop's line length cop.  Replace the contents of the .rubocop.yml file with the following:
+```
+AllCops:
+  Exclude:
+    - db/schema.rb
+    - tmp/vulnerabilities/lib/*
+    - tmp/vulnerabilities/spec/*
+    - tmp/vulnerabilities/Rakefile
+
+Metrics/AbcSize:
+  Exclude:
+    - test/rake_rerun_reporter.rb
+
+Metrics/LineLength:
+  Exclude:
+    - bin/spring
+    - config/application.rb
+    - config/environments/development.rb
+    - config/environments/production.rb
+    - config/initializers/assets.rb
+    - config/initializers/backtrace_silencers.rb
+    - config/initializers/devise.rb
+    - config/initializers/new_framework_defaults.rb
+    - config/initializers/session_store.rb
+    - config/initializers/wrap_parameters.rb
+    - config/environments/production.rb
+    - config/environments/test.rb
+    - config/puma.rb
+    - db/seeds.rb
+    - Gemfile
+    - Rakefile
+    - test/helpers/application_helper_test.rb
+    - test/rake_rerun_reporter.rb
+    - test/test_helper.rb
+
+Metrics/MethodLength:
+  Exclude:
+    - test/rake_rerun_reporter.rb
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - test/test_helper.rb
+```
+* Enter the command "sh git_check.sh".
+* Enter the following commands:
+```
+git add .
+git commit -m "Configured Devise"
+```
+### Creating the Admin and User Models
+* Create the user model by entering the following command:
+```
+rails generate devise USER
+```
+* Create the admin model by entering the following command:
+```
+rails generate devise ADMIN
+```
+* Note that the db/migrate directory now contains scripts that create the admin and user tables in the database and sets the parameters.
+* Enter the command "rails db:migrate" to implement these database migrations.  Until you do so, the admin and user tables will not exist.
+* Enter the command "sh git_check.sh".
+* Enter the following commands:
+```
+git add .
+git commit -m "Added the admin and user models"
+git push origin 06-01-create_models
+```
 
 ### Wrapping Up
+* Go to the GitHub repository and click on the "Compare and pull request" button for this branch.
+* Accept this pull request to merge it with the master branch, but do NOT delete this branch.
+* Enter the following commands:
+```
+git checkout master
+git pull
+sh heroku.sh
+```
