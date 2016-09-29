@@ -92,7 +92,7 @@ rails generate devise ADMIN
 * Enter the command "rails db:migrate" to implement these database migrations.  Until you do so, the admin and user tables will not exist.
 * Enter the command "sh git_check.sh".  You'll see some RuboCop offenses.
 * Add new lines consisting of just "#" prior to the app/models/admins.rb and app/models/users.rb files.
-* In the db/migrate/(time)_devise_create_admins.rb and db/migrate/(time)_devise_create_users.rb files, add the line "# rubocop:disable all" at the very beginning and the line "# rubocop:enable all" to the very end.
+* In the .rubocop.yml file, add "db/migrate/*" to the list of files exempt from AllCops.
 * Enter the command "sh git_check.sh".
 * Enter the following commands:
 ```
