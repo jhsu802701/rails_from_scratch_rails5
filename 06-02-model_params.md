@@ -483,8 +483,6 @@ class User < ApplicationRecord
                        format: { with: VALID_USERNAME_REGEX },
                        uniqueness: { case_sensitive: false }
 
-  mount_uploader :picture, PictureUploader
-
   private
 
   # Converts email to all lower-case.
