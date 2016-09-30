@@ -49,10 +49,6 @@ end
 # Used in the development environment by certain scripts
 run_simple_cov if ENV['EXEC_SIMPLE_COV'] == 'true'
 
-ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../../config/environment', __FILE__)
-require 'rails/test_help'
-
 # End: SimpleCov/Code Climate
 ```
 * Enter the command "sh git_check.sh".
