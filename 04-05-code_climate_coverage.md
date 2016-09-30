@@ -33,9 +33,10 @@ CodeClimate::TestReporter.start
 
 def run_simple_cov
   require 'simplecov'
-  SimpleCov.start 'rails' do
+  SimpleCov.start do
     add_filter 'app/channels/*'
     add_filter 'app/jobs/*'
+    add_filter 'test/*'
   end
 end
 
