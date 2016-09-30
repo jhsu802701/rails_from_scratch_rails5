@@ -28,6 +28,7 @@ if ENV['EXEC_SIMPLE_COV'] == 'true'
   SimpleCov.start 'rails' do
     add_filter 'app/channels/*'
     add_filter 'app/jobs/*'
+    add_filter 'test/*'
   end
   puts 'required simplecov'
 end
