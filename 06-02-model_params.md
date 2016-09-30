@@ -123,19 +123,66 @@ class AdminTest < ActiveSupport::TestCase
   end
 end
 ```
-
-* Update the admin model.  Enter the following command to add parameters:
+* Enter the command "sh testm.sh".  You'll see that these admin model tests fail.
+* Update the admin model.  Enter the following commands to add parameters:
 ```
 rails generate migration add_params_to_admins last_name:string first_name:string username:string super:boolean
+rails db:migrate
 ```
+* In the (time)_devise_create_admins.rb file, uncomment the lines under "## Confirmable" and "## Lockable".  Replace the contents of this file with the following:
+```
+class DeviseCreateAdmins < ActiveRecord::Migration[5.0]
+  def change
+    create_table :admins do |t|
+      ## Database authenticatable
+      t.string :email,              null: false, default: ''
+      t.string :encrypted_password, null: false, default: ''
+
+      ## Recoverable
+      t.string   :reset_password_token
+      t.datetime :reset_password_sent_at
+
+      ## Rememberable
+      t.datetime :remember_created_at
+
+      ## Trackable
+      t.integer  :sign_in_count, default: 0, null: false
+      t.datetime :current_sign_in_at
+      t.datetime :last_sign_in_at
+      t.string   :current_sign_in_ip
+      t.string   :last_sign_in_ip
+
+      ## Confirmable
+      t.string   :confirmation_token
+      t.datetime :confirmed_at
+      t.datetime :confirmation_sent_at
+      t.string   :unconfirmed_email # Only if using reconfirmable
+
+      ## Lockable
+      t.integer  :failed_attempts, default: 5, null: false # Only if lock strategy is :failed_attempts
+      t.string   :unlock_token # Only if unlock strategy is :email or :both
+      t.datetime :locked_at
+
+      t.timestamps null: false
+    end
+
+    add_index :admins, :email,                unique: true
+    add_index :admins, :reset_password_token, unique: true
+    add_index :admins, :confirmation_token,   unique: true
+    add_index :admins, :unlock_token,         unique: true
+  end
+end
+```
+* Enter the command "rails db:migrate:reset".
 * Replace the contents of the app/models/admin.rb file with the following:
 ```
+#
 class Admin < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :confirmable, authentication_keys: [:username]
+         :confirmable, :lockable, authentication_keys: [:username]
 
   before_save :downcase_email, :downcase_username
 
@@ -165,10 +212,201 @@ class Admin < ApplicationRecord
   end
 end
 ```
-* Update the admin test fixtures
+* Enter the command "sh testm.sh".  You'll see that one test fails, the test for minimum password length.
+* Edit the config/initializers/devise.rb file.  Change the value of the config.password_length parameter from "6..128" to "10..128".
+* Enter the command "sh testm.sh".  You'll see that all model tests pass.
+* Enter the command "sh testml.sh".  You'll see that there are no Brakeman, RuboCop, or Rails Best Practices offenses.
+* Update the admin test fixtures by replacing the contents of test/fixtures/admins.yml with the following:
+```
+# Read about fixtures at
+# http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+elle_woods: 
+  username: 'ewoods'
+  last_name: 'Woods'
+  first_name: 'Elle'
+  email: 'elle_woods@example.com'
+  super: true
+  encrypted_password: <%= Admin.new.send(:password_digest, 'endorphins') %>
+  confirmed_at: <%= Time.zone.now %>
+
+vivian_kensington:
+  username: 'vkensington'
+  last_name: 'Kensington'
+  first_name: 'Vivian'
+  email: 'vanessa_kensingston@example.com'
+  super: true
+  encrypted_password: <%= Admin.new.send(:password_digest, 'nice outfit') %>
+  confirmed_at: <%= Time.zone.now %>
+
+emmett_richmond:
+  username: 'erichmond'
+  last_name: 'Richmond'
+  first_name: 'Emmett'
+  email: 'emmett_richmond@example.com'
+  super: false
+  encrypted_password: <%= Admin.new.send(:password_digest, "new representation") %>
+  confirmed_at: <%= Time.zone.now %>
+  
+paulette_bonafonte:
+  username: 'pbonafonte'
+  last_name: 'Bonafonte'
+  first_name: 'Paulette'
+  email: 'paulette_bonafonte@example.com'
+  super: false
+  encrypted_password: <%= Admin.new.send(:password_digest, "Neptune's Beauty Nook") %>
+  confirmed_at: <%= Time.zone.now %>
+  
+professor_callahan:
+  username: 'pcallahan'
+  last_name: 'Callahan'
+  first_name: 'Professor'
+  email: 'professor_callahan@example.com'
+  super: true
+  encrypted_password: <%= Admin.new.send(:password_digest, 'Titanic guy') %>
+  confirmed_at: <%= Time.zone.now %>
+
+warner_huntington:
+  username: 'whuntington'
+  last_name: 'Huntington'
+  first_name: 'Warner'
+  email: 'warner_huntington@example.com'
+  super: false
+  encrypted_password: <%= Admin.new.send(:password_digest, 'need someone serious') %>
+  confirmed_at: <%= Time.zone.now %>
+```
+* Enter the command "sh git_check.sh".
+* Enter the following commands:
+```
+git add .
+git commit -m "Passes admin model tests"
+```
 
 ### Adding User Parameters
-* Create user model tests
+* Create user model tests.  Replace the contents of test/models/user_test.rb with the following:
+```
+require 'test_helper'
+
+class UserTest < ActiveSupport::TestCase
+  def setup
+    @user = User.new(last_name: 'Bond', first_name: 'James',
+                     username: 'jbond007', email: '007@example.com',
+                     password: 'bond_james_bond',
+                     password_confirmation: 'bond_james_bond',
+                     confirmed_at: Time.now)
+  end
+
+  test 'should be valid' do
+    assert @user.valid?
+  end
+
+  test 'email should be present' do
+    @user.email = '     '
+    assert_not @user.valid?
+  end
+
+  test 'email should not be too long' do
+    @user.email = 'a' * 244 + '@example.com'
+    assert_not @user.valid?
+    @user.email = 'a' * 243 + '@example.com'
+    assert @user.valid?
+  end
+
+  test 'email validation should accept valid addresses' do
+    valid_addresses = %w(user@example.com USER@foo.COM A_US-ER@foo.bar.org
+                         first.last@foo.jp alice+bob@baz.cn)
+    valid_addresses.each do |valid_address|
+      @user.email = valid_address
+      assert @user.valid?, "#{valid_address.inspect} should be valid"
+    end
+  end
+
+  test 'email validation should reject invalid addresses' do
+    invalid_addresses = %w(user@example,com user_at_foo.org user.name@example.
+                           foo@bar_baz.com foo@bar+baz.com)
+    invalid_addresses.each do |invalid_address|
+      @user.email = invalid_address
+      assert_not @user.valid?, "#{invalid_address.inspect} should be invalid"
+    end
+  end
+
+  test 'email address should be unique' do
+    # duplicate_user: same email but uppercase; different username
+    duplicate_user = @user.dup
+    duplicate_user.email = @user.email.upcase
+    duplicate_user.username = 'jbond008'
+    @user.save
+    assert_not duplicate_user.valid?
+    # duplicate_user: different email; different username
+    duplicate_user = @user.dup
+    duplicate_user.email = '008@example.com'
+    duplicate_user.username = 'jbond008'
+    @user.save
+    assert duplicate_user.valid?
+  end
+
+  test 'username should be unique' do
+    # duplicate_user: different email; same username but uppercase
+    duplicate_user = @user.dup
+    duplicate_user.email = '008@example.com'
+    duplicate_user.username = @user.username.upcase
+    @user.save
+    assert_not duplicate_user.valid?
+    # duplicate_user: different email; different username
+    duplicate_user = @user.dup
+    duplicate_user.email = '008@example.com'
+    duplicate_user.username = 'jbond008'
+    @user.save
+    assert duplicate_user.valid?
+  end
+
+  test 'username should be present' do
+    @user.username = 'jbond_007'
+    assert @user.valid?
+    @user.username = 'j'
+    assert @user.valid?
+    @user.username = '     '
+    assert_not @user.valid?
+  end
+
+  test 'username should not have @ symbol in it' do
+    @user.username = 'jbond007@'
+    assert_not @user.valid?
+    @user.username = '@jbond007'
+    assert_not @user.valid?
+    @user.username = 'jbond007@example.com'
+    assert_not @user.valid?
+  end
+
+  test 'username should be no longer than 255 characters' do
+    @user.username = 'a' * 256
+    assert_not @user.valid?
+    @user.username = 'a' * 255
+    assert @user.valid?
+  end
+
+  test 'first name should be present and no longer than 50 characters' do
+    @user.first_name = '     '
+    assert_not @user.valid?
+    @user.first_name = 'A' + 'a' * 50
+    assert_not @user.valid?
+  end
+
+  test 'last name should be present and no longer than 50 characters' do
+    @user.last_name = '     '
+    assert_not @user.valid?
+    @user.last_name = 'A' + 'a' * 50
+    assert_not @user.valid?
+  end
+
+  test 'password should have a minimum length of 10 characters' do
+    @user.password = @user.password_confirmation = 'a' * 9
+    assert_not @user.valid?
+    @user.password = @user.password_confirmation = 'a' * 10
+    assert @user.valid?
+  end
+end
+```
 * Update the user model
 * Update the user test fixtures
 
