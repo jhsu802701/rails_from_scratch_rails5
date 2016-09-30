@@ -495,8 +495,69 @@ class User < ApplicationRecord
     self.username = username.downcase
   end
 end
-
 ```
-* Update the user test fixtures
+* Enter the command "sh testm.sh".  All tests should pass.
+* Enter the command "sh testml.sh".  All tests should pass, and there should be no offenses cited by Brakeman, RuboCop, or Rails Best Practices.
+* Update the user test fixtures by replacing the contents of /test/fixtures/users.yml with the following:
+```
+# Read about fixtures at
+# http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+connery:
+  last_name: 'Connery'
+  first_name: 'Sean'
+  username: 'sconnery'
+  email: 'sean_connery@example.com'
+  encrypted_password: <%= User.new.send(:password_digest, 'Goldfinger') %>
+  confirmed_at: <%= Time.zone.now %>
+
+lazenby:
+  last_name: 'Lazenby'
+  first_name: 'George'
+  username: 'glazenby'
+  email: 'george_lazenby@example.com'
+  encrypted_password: <%= User.new.send(:password_digest, 'ohmss1969') %>
+  confirmed_at: <%= Time.zone.now %>
+
+moore:
+  last_name: 'Moore'
+  first_name: 'Roger'
+  username: 'rmoore'
+  email: 'roger_moore@example.com'
+  encrypted_password: <%= User.new.send(:password_digest, 'moonraker') %>
+  confirmed_at: <%= Time.zone.now %>
+
+dalton:
+  last_name: 'Dalton'
+  first_name: 'Timothy'
+  username: 'tdalton'
+  email: 'timothy_dalton@example.com'
+  encrypted_password: <%= User.new.send(:password_digest, 'daylights') %>
+  confirmed_at: <%= Time.zone.now %>
+
+brosnan:
+  last_name: 'Brosnan'
+  first_name: 'Pierce'
+  username: 'pbrosnan'
+  email: 'pierce_brosnan@example.com'
+  encrypted_password: <%= User.new.send(:password_digest, 'goldeneye') %>
+  confirmed_at: <%= Time.zone.now %>
+
+craig:
+  last_name: 'Craig'
+  first_name: 'Daniel'
+  username: 'dcraig'
+  email: 'daniel_craig@example.com'
+  encrypted_password: <%= User.new.send(:password_digest, 'reboot007') %>
+  confirmed_at: <%= Time.zone.now %>
+
+blofeld:
+  last_name: 'Blofeld'
+  first_name: 'Ernst'
+  username: 'eblofeld'
+  email: 'ernst_blofeld@example.com'
+  encrypted_password: <%= User.new.send(:password_digest, 'stainless steel') %>
+  confirmed_at: <%= Time.zone.now %>
+```
 
 ### Wrapping Up
