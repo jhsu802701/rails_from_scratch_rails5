@@ -127,7 +127,7 @@ end
 * Update the admin model.  Enter the following commands to add parameters:
 ```
 rails generate migration add_params_to_admins last_name:string first_name:string username:string super:boolean
-rails db:migrate
+rails db:migrate:reset
 ```
 * In the (time)_devise_create_admins.rb file, uncomment the lines under "## Confirmable" and "## Lockable".  Replace the contents of this file with the following:
 ```
@@ -407,7 +407,56 @@ class UserTest < ActiveSupport::TestCase
   end
 end
 ```
-* Update the user model
+* Enter the command "sh testm.sh".  You'll see that the user model tests fail.
+* Update the user model.  Enter the following commands to add parameters:
+```
+rails generate migration add_params_to_users last_name:string first_name:string username:string
+rails db:migrate:reset
+```
+* Make the users confirmable and lockable.  Replace the contents of (date)_devise_create_users.rb with the following:
+```
+class DeviseCreateUsers < ActiveRecord::Migration[5.0]
+  def change
+    create_table :users do |t|
+      ## Database authenticatable
+      t.string :email,              null: false, default: ''
+      t.string :encrypted_password, null: false, default: ''
+
+      ## Recoverable
+      t.string   :reset_password_token
+      t.datetime :reset_password_sent_at
+
+      ## Rememberable
+      t.datetime :remember_created_at
+
+      ## Trackable
+      t.integer  :sign_in_count, default: 0, null: false
+      t.datetime :current_sign_in_at
+      t.datetime :last_sign_in_at
+      t.string   :current_sign_in_ip
+      t.string   :last_sign_in_ip
+
+      ## Confirmable
+      t.string   :confirmation_token
+      t.datetime :confirmed_at
+      t.datetime :confirmation_sent_at
+      t.string   :unconfirmed_email # Only if using reconfirmable
+
+      ## Lockable
+      t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
+      t.string   :unlock_token # Only if unlock strategy is :email or :both
+      t.datetime :locked_at
+
+      t.timestamps null: false
+    end
+
+    add_index :users, :email,                unique: true
+    add_index :users, :reset_password_token, unique: true
+    add_index :users, :confirmation_token,   unique: true
+    add_index :users, :unlock_token,         unique: true
+  end
+end
+```
 * Update the user test fixtures
 
 ### Wrapping Up
