@@ -466,7 +466,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :confirmable, lockable, authentication_keys: [:username]
+         :confirmable, :lockable, authentication_keys: [:username]
 
   before_save :downcase_email, :downcase_username
 
