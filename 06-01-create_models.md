@@ -98,8 +98,8 @@ rails generate devise ADMIN
 # Read about fixtures at
 # http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# These fixtures are disabled initially,
-# because the original fixtures created by the Devise gem cause all tests to fail.
+# These fixtures are disabled initially.
+# The original fixtures created by the Devise gem cause all tests to fail.
 ```
 * Enter the command "sh git_check.sh".
 * Enter the following commands:
