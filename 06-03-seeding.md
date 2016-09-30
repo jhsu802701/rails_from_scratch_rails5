@@ -1,11 +1,116 @@
 # Unit 6
 ## Chapter 3: Model Seeding
 
+In this chapter, you will seed the database in your development environment with simulated admin and model data.  As you will see later, this fake data helps you to see how your site will appear under active use.
+
+### New Branch
+Enter the command "git checkout -b 06-03-seeding".
+
 ### Gemfile
-* Add the Faker gem
+* Add the Faker gem.  Add the following line to the end of the Gemfile:
+```
+gem 'faker' # Generates fake data used for seeding the database
+```
+* Enter the command "sh git_check.sh".
+* Enter the following commands:
+```
+git add .
+git commit -m "Added the Faker gem"
+```
 
 ### db/seeds.rb
+* Replace the contents of the db/seeds.rb file with the following:
+```
+puts 'Admins: 0/100'
 
+Admin.create!(last_name: 'Tarter', first_name: 'Jill',
+              username: 'jill_tarter',
+              email: 'jill_tarter@rubyonracetracks.com',
+              password: 'SETI Institute',
+              password_confirmation: 'SETI Institute',
+              confirmed_at: Time.now, super: true)
+
+Admin.create!(last_name: 'Drake', first_name: 'Frank',
+              username: 'frank_drake',
+              email: 'fdrake@rubyonracetracks.com',
+              password: 'Drake Equation',
+              password_confirmation: 'Drake Equation',
+              confirmed_at: Time.now, super: true)
+
+puts 'Admins: 2/100'
+
+49.times do |n|
+  name_l = Faker::Name.last_name
+  name_f = Faker::Name.first_name
+  email_address = "admin-#{n + 1}@rubyonracetracks.com"
+
+  Admin.create!(last_name: name_l, first_name: name_f,
+                username: "admin#{n + 1}",
+                email: email_address, password: 'Daytona 500',
+                password_confirmation: 'Daytona 500',
+                confirmed_at: Time.now)
+end
+
+puts 'Admins: 51/100'
+
+49.times do |n|
+  name_l = Faker::Name.last_name
+  name_f = Faker::Name.first_name
+  email_address = Faker::Internet.email(name_f)
+
+  Admin.create!(last_name: name_l, first_name: name_f,
+                username: "admin-faker#{n + 1}",
+                email: email_address, password: 'Daytona 500',
+                password_confirmation: 'Daytona 500',
+                confirmed_at: Time.now)
+end
+
+puts 'Admins: 100/100'
+
+User.create!(last_name: 'Arroway', first_name: 'Ellie',
+             username: 'earroway',
+             email: 'ellie_arroway@rubyonracetracks.com',
+             password: '3.14159265',
+             password_confirmation: '3.14159265',
+             confirmed_at: Time.now)
+
+puts 'Users: 1/100'
+
+49.times do |n|
+  name_l = Faker::Name.last_name
+  name_f = Faker::Name.first_name
+  email_address = "user-#{n + 1}@railstutorial.org"
+
+  User.create!(last_name: name_l, first_name: name_f,
+               username: "user#{n + 1}", email: email_address,
+               password: 'Daytona 500',
+               password_confirmation: 'Daytona 500',
+               confirmed_at: Time.now)
+end
+
+puts 'Users: 50/100'
+
+50.times do |n|
+  name_l = Faker::Name.last_name
+  name_f = Faker::Name.first_name
+  email_address = Faker::Internet.email(name_f)
+
+  User.create!(last_name: name_l, first_name: name_f,
+               username: "user-faker#{n + 1}", email: email_address,
+               password: 'Daytona 500',
+               password_confirmation: 'Daytona 500',
+               confirmed_at: Time.now)
+end
+
+puts 'Users: 100/100'
+```
+* Enter the command "rails db:migrate:reset; rails db:seed".
+* Enter the command "sh git_check.sh".
+* Enter the following commands:
+```
+git add .
+git commit -m "Filled in db/seeds.rb"
+```
 ### seed.sh
 
 ### all.sh
