@@ -93,6 +93,14 @@ rails generate devise ADMIN
 * Enter the command "sh git_check.sh".  You'll see some RuboCop offenses.
 * Add new lines consisting of just "#" prior to the app/models/admins.rb and app/models/users.rb files.
 * In the .rubocop.yml file, add "db/migrate/*" to the list of files exempt from AllCops.
+* Replace the test/fixtures/admins.yml and test/fixtures/users.yml files with the following content:
+```
+# Read about fixtures at
+# http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# These fixtures are disabled initially,
+# because the original fixtures created by the Devise gem cause all tests to fail.
+```
 * Enter the command "sh git_check.sh".
 * Enter the following commands:
 ```
