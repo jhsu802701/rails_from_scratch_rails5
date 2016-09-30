@@ -10,9 +10,6 @@ Enter the command "git checkout -b 06-02-model_params".
 ```
 require 'test_helper'
 
-#
-require 'test_helper'
-
 class AdminTest < ActiveSupport::TestCase
   def setup
     @admin = Admin.new(last_name: 'Bond', first_name: 'James',
