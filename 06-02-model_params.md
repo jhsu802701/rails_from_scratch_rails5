@@ -559,5 +559,20 @@ blofeld:
   encrypted_password: <%= User.new.send(:password_digest, 'stainless steel') %>
   confirmed_at: <%= Time.zone.now %>
 ```
+* Enter the command "sh git_check.sh".
+* Enter the following commands:
+```
+git add .
+git commit -m "Passes user model tests"
+git push origin 06-02-model_params
+```
 
 ### Wrapping Up
+* Go to the GitHub repository and click on the "Compare and pull request" button for this branch.
+* Accept this pull request to merge it with the master branch, but do NOT delete this branch.
+* Enter the following commands:
+```
+git checkout master
+git pull
+sh heroku.sh
+```
