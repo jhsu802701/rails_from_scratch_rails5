@@ -57,7 +57,7 @@ git commit -m "Added config/database-pg.yml"
 ```
 
 ### Setup Scripts
-* Create the file pg-setup.rb with the following content:
+* Create the file pg_setup.rb with the following content:
 ```
 #!/usr/bin/ruby
 
@@ -150,7 +150,7 @@ puts 'Finished setting up PostgreSQL'
 puts '++++++++++++++++++++++++++++++'
 puts
 ```
-* Create the file pg-setup.sh with the following content:
+* Create the file pg_setup.sh with the following content:
 ```
 #!/bin/bash
 
@@ -237,96 +237,14 @@ sh git_check.sh
 ```
 git add .
 git commit -m "Added PostgreSQL setup scripts"
-```
-
-### Test Scripts
-* Create the file pg-test.rb with the following content:
-```
-#!/usr/bin/ruby
-require 'rails'
-
-def change_pg_params
-  n = Time.now.to_i
-  time_str = Time.now.strftime('%Y_%m%d_%H%M_%S')
-  dirname = File.basename(Dir.getwd)
-  d1 = "db_#{dirname}_#{n}_dev" # Database name (development)
-  d2 = "db_#{dirname}_#{n}_test" # Database name (testing)
-  d3 = "db_#{dirname}_#{n}_pro" # Database name (production)
-  v1 = "var_#{dirname}_#{n}_u" # Environmental variable storing the username
-  v2 = "var_#{dirname}_#{n}_p" # Environmental variable storing the password
-  u = "user_#{dirname}_#{n}" # Username
-  p = 'long_way_stinks' # Password
-  command1 = "ruby pg-setup.rb #{d1} #{d2} #{d3} #{v1} #{v2} #{u} #{p} "
-  command2 = "2>&1 | tee log/test_pg_#{time_str}.log"
-  system("#{command1}#{command2}")
-  system("sh build_fast.sh 2>&1 | tee -a log/test_pg_#{time_str}.log")
-end
-
-if Rails.env == 'development'
-  change_pg_params
-  change_pg_params
-else
-  puts 'This script only works in the development environment.'
-end
-```
-* Create the file pg-test.sh with the following content:
-```
-#!/bin/bash
-
-INPUT_CONT='N'
-if [ "$1" = 'auto' ]; then
-  INPUT_CONT='Y'
-else
-  echo '******************'
-  echo 'PostgreSQL testing'
-  echo
-  echo 'This script (test_pg.sh) and the test_pg.rb script are intended'
-  echo 'for use in developing the Generic App Template and are not'
-  echo 'intended for projects created with the Generic App gem.'
-  echo
-  echo 'Please note that the following files tracked by Git may change:'
-  echo 'config/database.yml'
-  echo 'db/schema.rb'
-  echo '.gitignore'
-  echo
-  echo "Do you still wish to continue?  If so, please enter 'Y' or 'y'."
-  read INPUT_CONT
-fi
-
-if [ $INPUT_CONT = "Y" ] || [ $INPUT_CONT = "y" ]; then
-  sh pg-start.sh
-  echo '--------------'
-  echo 'bundle install'
-  bundle install
-  ruby pg-test.rb
-  echo '**************************'
-  echo 'PostgreSQL tests completed'
-  echo '**************************'
-  echo 'If all went well, no tests failed.'
-  echo 'The screen output has been saved in the log directory.'
-  echo
-  echo 'Please note that the following files tracked by Git may have changed:'
-  echo 'config/database.yml'
-  echo 'db/schema.rb'
-  echo
-else
-  echo 'Exiting . . . . .'
-  echo
-fi
-```
-* Enter the following commands:
-```
-git add .
-git commit -m "Added PostgreSQL test scripts"
 git push origin 07-02-postgresql
 ```
+
 ### Using the PostgreSQL Scripts
 * The Generic App Template uses SQLite in the development environment.  These PostgreSQL scripts are provided to make it easy to switch from SQLite to PostgreSQL WITHOUT forcing the use of it.  Because executing these PostgreSQL scripts makes changes in the source code, you will NOT be entering any more Git commands in the rest of this chapter.
 * Enter the command "sh pg-setup.sh".  To speed up the process, you can just use the default values given.  In the end, your app will use PostgreSQL instead of SQLite, and all of your tests should pass.
-* Enter the command "sh pg-test.sh".  This automatically sets up PostgreSQL again with different database parameters.  In the end, your tests should pass.
 * Reset the development environment.  After you have downloaded the master branch of this app's code, enter the command "git checkout 07-02-postgresql".
-* Enter the command "sh pg-test.sh".
-
+* Enter the command "sh pg_test.sh".
 
 ### Wrapping Up
 * If all goes well, submit a pull request on this branch in GitHub, and accept this pull request when you see that it passes.
