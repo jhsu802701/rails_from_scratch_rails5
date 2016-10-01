@@ -61,6 +61,10 @@ git commit -m "Added config/database-pg.yml"
 ```
 #!/usr/bin/ruby
 
+# rubocop:disable Metrics/LineLength
+# rubocop:disable Style/PercentLiteralDelimiters
+# rubocop:disable Style/UnneededPercentQ
+
 require 'string_in_file'
 
 # Get input arguments (called by Bash script)
@@ -149,6 +153,10 @@ puts
 puts 'Finished setting up PostgreSQL'
 puts '++++++++++++++++++++++++++++++'
 puts
+
+# rubocop:enable Metrics/LineLength
+# rubocop:enable Style/PercentLiteralDelimiters
+# rubocop:enable Style/UnneededPercentQ
 ```
 * Create the file pg_setup.sh with the following content:
 ```
