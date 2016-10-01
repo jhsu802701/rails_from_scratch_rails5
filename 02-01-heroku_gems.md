@@ -32,7 +32,7 @@ gem 'pg' # Not necessary in development and testing if you're using SQLite
 gem 'nokogiri'
 
 # BEGIN: SQLite
-# NOTE: This section is automatically deleted in the pg-setup.rb script
+# NOTE: This section is automatically deleted in the pg_setup.rb script
 group :development, :test do
   gem 'sqlite3' # Delete if using only PostgreSQL
 end
