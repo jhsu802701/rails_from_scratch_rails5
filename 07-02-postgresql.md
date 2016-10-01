@@ -231,7 +231,7 @@ bundle install
 
 ruby pg-setup.rb $db_dev $db_test $db_pro $env_var_username $env_var_password $db_username $db_password
 
-sh build_fast.sh
+sh git_check.sh
 ```
 * Enter the following commands:
 ```
