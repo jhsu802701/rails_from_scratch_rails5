@@ -133,6 +133,15 @@ StringInFile.replace('DB_NAME_TEST', ENV['APP_DB_NAME_TEST'], 'config/database.y
 StringInFile.replace('DB_NAME_PRO', ENV['APP_DB_NAME_PRO'], 'config/database.yml')
 
 puts
+puts '----------------'
+puts 'Updating Gemfile'
+gem install line_containing
+require 'line_containing'
+LineContaining.delete_between_plus('# BEGIN: SQLite', '# END: SQLite', 'Gemfile')
+gem install remove_double_blank
+RemoveDoubleBlank.update('Gemfile')
+
+puts
 puts '--------------------'
 puts 'Database parameters:'
 puts
