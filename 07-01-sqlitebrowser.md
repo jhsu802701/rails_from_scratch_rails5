@@ -1,7 +1,7 @@
 # Unit 7
 ## Chapter 1: SQLite Browser
 
-SQLit eBrowser is a GUI browser tool that you can install in your host environment to view your SQLite database for your Ruby on Rails app.  It's MUCH easier to use SQLite Browser than to remember commands.  When your app does not work as expected, SQLite is an essential troubleshooting tool for checking the contents of the databases involved.
+SQLiteBrowser is a GUI browser tool that you can install in your host environment to view your SQLite database for your Ruby on Rails app.  It's MUCH easier to use SQLite Browser than to remember commands.  When your app does not work as expected, SQLite is an essential troubleshooting tool for checking the contents of the databases involved.
 
 ### Downloading and Installing SQLiteBrowser
 * If your host environment is Debian Linux, Ubuntu Linux, or one of their derivatives, enter the command "sudo apt-get install sqlitebrowser".  SQLite Browser will install in a few minutes.
