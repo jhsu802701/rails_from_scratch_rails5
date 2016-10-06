@@ -116,7 +116,7 @@ echo
 
 echo '------------------------------'
 echo 'Drawing gem dependency diagram'
-bundle viz --file=notes/diagram-gems --format=jpg --requirements --version
+bundle viz --file=log/diagram-gems --format=jpg --requirements --version
 
 echo '----------'
 echo 'git status'
