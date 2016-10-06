@@ -29,6 +29,12 @@ git commit -m "Installed rails-erd, railroady, and annotate"
 ```
 #!/bin/bash
 
+mkdir -p notes
+
+echo '----------'
+echo 'git status'
+git status
+
 file_he='notes/1-file_list-helpers.txt'
 file_mo='notes/1-file_list-models.txt'
 file_co='notes/1-file_list-controllers.txt'
@@ -111,6 +117,10 @@ echo
 echo '------------------------------'
 echo 'Drawing gem dependency diagram'
 bundle viz --file=notes/diagram-gems --format=jpg --requirements --version
+
+echo '----------'
+echo 'git status'
+git status
 
 echo '*************'
 echo 'OUTPUT FILES:'
