@@ -23,9 +23,8 @@ end
 git add .
 git commit -m "Installed rails-erd, railroady, and annotate"
 ```
-
-### outline.sh
-* Create the file outline.sh with the following content:
+### outline-short.sh
+* Create the file outline-short.sh with the following content:
 ```
 #!/bin/bash
 
@@ -39,9 +38,6 @@ file_he='notes/1-file_list-helpers.txt'
 file_mo='notes/1-file_list-models.txt'
 file_co='notes/1-file_list-controllers.txt'
 file_vi='notes/1-file_list-views.txt'
-d_mo='log/diagram-models.jpg'
-d_co='log/diagram-controllers.jpg'
-d_gems='log/diagram-gems.jpg'
 
 sh pg-start.sh
 
@@ -98,6 +94,36 @@ tree app/views >> $file_vi
 echo 'FINISHED compiling the list of files that make up the MVC structure'
 echo '-------------------------------------------------------------------'
 
+echo '----------'
+echo 'git status'
+git status
+
+echo '******************************'
+echo 'outline-short.sh OUTPUT FILES:'
+echo $file_he
+echo $file_mo
+echo $file_co
+echo $file_vi
+echo
+```
+* Enter the command "sh outline-short.sh".
+* Enter the following commands:
+```
+git add .
+git commit -m "Added outline-short.sh and automatically generated comments and outlines"
+```
+
+### outline.sh
+* Create the file outline.sh with the following content:
+```
+#!/bin/bash
+
+sh outline-short.sh
+
+d_mo='log/diagram-models.jpg'
+d_co='log/diagram-controllers.jpg'
+d_gems='log/diagram-gems.jpg'
+
 echo '---------------'
 echo 'Using rails-erd'
 bundle exec erd --attributes=foreign_keys,primary_keys,timestamps,inheritance,content --filetype=dot --filename=notes/diagram-models --inheritance --notation=bachman
@@ -114,39 +140,76 @@ echo
 echo "Controllers diagram is at $d_co"
 echo
 
-echo '------------------------------'
-echo 'Drawing gem dependency diagram'
+echo '-----------------------------------------------------'
+echo 'Drawing gem dependency diagram (log/diagram-gems.jpg)'
 bundle viz --file=log/diagram-gems --format=jpg --requirements --version
 
-echo '----------'
-echo 'git status'
-git status
-
-echo '*************'
-echo 'OUTPUT FILES:'
-echo $file_he
-echo $file_mo
-echo $file_co
-echo $file_vi
+echo '************************'
+echo 'outline.sh OUTPUT FILES:'
 echo $d_mo
 echo $d_co
 echo $d_gems
 echo
 ```
+* Enter the command "sh outline.sh".
 * Enter the following commands:
 ```
 git add .
 git commit -m "Added outline.sh"
 ```
 
-### Creating Outlines
-* Enter the command "sh outline.sh".
+### all.sh
+* Edit the all.sh script.  Replace the existing code with the following:
+```
+#!/bin/bash
+
+clear
+
+sh build_fast.sh
+
+FILE_LOG_OUTLINE='log/all-outline.log'
+FILE_LOG_TEST_CODE='log/all-test_code.log'
+FILE_LOG_SEED='log/all-seed.log'
+
+echo '---------------------------------'
+echo "sh outline.sh > $FILE_LOG_OUTLINE"
+sh outline.sh > $FILE_LOG_OUTLINE
+
+echo '---------------------------'
+echo "sh seed.sh > $FILE_LOG_SEED"
+sh seed.sh > $FILE_LOG_SEED
+
+echo '-------------------------------------'
+echo "sh test_code.sh > $FILE_LOG_TEST_CODE"
+sh test_code.sh > $FILE_LOG_TEST_CODE
+echo 'The Gemsurance Report is in gemsurance_report.html in the root directory.'
+```
+* Enter the command "sh all.sh".
 * Enter the following commands:
 ```
 git add .
-git commit -m "Executed sh outline.sh"
+git commit -m "Updated all.sh to include outline.sh"
 ```
 
-### Updating Other Scripts
+### git_check.sh
+* Replace the "git status" section in the git_check.sh script with the following:
+```
+sh outline-short.sh
+```
+* Enter the command "sh git_check.sh".
+* Enter the following commands:
+```
+git add .
+git commit -m "Updated git_check.sh to include outline-short.sh"
+git push origin 08-01-outline
+```
 
 ### Wrapping Up
+* Go to the GitHub repository and click on the "Compare and pull request" button for this branch.
+* Accept this pull request to merge it with the master branch, but do NOT delete this branch.
+* Enter the following commands:
+```
+git checkout master
+git pull
+sh heroku.sh
+```
