@@ -37,9 +37,9 @@ echo '----------------'
 echo 'brakeman -Aq -w2'
 brakeman -Aq -w2
 
-echo '-------'
-echo 'rubocop'
-rubocop
+echo '----------'
+echo 'rubocop -D'
+rubocop -D
 
 echo '----------------------'
 echo 'rails_best_practices .'
@@ -81,9 +81,9 @@ echo '----------------'
 echo 'brakeman -Aq -w2'
 brakeman -Aq -w2
 
-echo '-------'
-echo 'rubocop'
-rubocop
+echo '----------'
+echo 'rubocop -D'
+rubocop -D
 
 echo '----------------------'
 echo 'rails_best_practices .'
@@ -125,9 +125,9 @@ echo '----------------'
 echo 'brakeman -Aq -w2'
 brakeman -Aq -w2
 
-echo '-------'
-echo 'rubocop'
-rubocop
+echo '----------'
+echo 'rubocop -D'
+rubocop -D
 
 echo '----------------------'
 echo 'rails_best_practices .'
