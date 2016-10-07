@@ -71,20 +71,17 @@ echo '----------------------'
 echo 'rails_best_practices .'
 rails_best_practices .
 
-echo '----------'
-echo 'gemsurance'
-gemsurance
-echo 'The Gemsurance Report is in gemsurance_report.html in the root directory.'
+echo '----------------------------------------------'
+echo 'gemsurance --output log/gemsurance_report.html'
+gemsurance --output log/gemsurance_report.html
+echo 'The Gemsurance Report is in log/gemsurance_report.html .'
 ```
 * The Gemsurance Report shows which gems are up to date, which are out of date, and which have known security issues and thus more urgently need to be updated.
-* Add the following line to the end of .gitignore:
-```
-gemsurance_report.html
-```
 * In the .rubocop.yml file, add the tmp/vulnerabilities/lib/* files, tmp/vulnerabilities/spec/* files, and tmp/vulnerabilities/Rakefile to the list of AllCops exclusions.  (These files are automatically generated when you run the test_code.sh script.)  The .rubucop.yml file should look like:
 ```
 AllCops:
   Exclude:
+    - db/migrate/*
     - db/schema.rb
     - tmp/vulnerabilities/lib/*
     - tmp/vulnerabilities/spec/*
