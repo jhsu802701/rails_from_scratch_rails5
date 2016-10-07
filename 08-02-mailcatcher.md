@@ -37,7 +37,7 @@ echo 'If you are using Docker or Vagrant, the port number may be something else.
 echo 'If you are using Docker Machine, replace "localhost" with the appropriate numerical IP address (probably 192.168.99.100).'
 # Send mail through smtp://localhost:1025
 ```
-* Enter the command "mailcatcher.sh".
+* Enter the command "sh mailcatcher.sh".
 * In the browser window in the host environment, go to the appropriate URL.
 * Enter the command "sh git_check.sh".
 * Enter the following commands:
