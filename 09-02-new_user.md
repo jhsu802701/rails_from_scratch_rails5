@@ -77,7 +77,10 @@ end
   <%= link_to image_tag("rails.png", alt: "Rails logo"),
               'http://rubyonrails.org/' %>
 </div>
-
 ```
+* Enter the command "test1".  The first integration test will pass, but the other three will fail.
+
+## User Signup Page
+* Create custom user authentication pages.  Enter the command "rails generate devise:views users".
 
 ### Wrapping Up
