@@ -30,10 +30,6 @@ git commit -m "Installed rails-erd, railroady, and annotate"
 
 mkdir -p notes
 
-echo '----------'
-echo 'git status'
-git status
-
 file_he='notes/1-file_list-helpers.txt'
 file_mo='notes/1-file_list-models.txt'
 file_co='notes/1-file_list-controllers.txt'
@@ -93,10 +89,6 @@ tree app/views >> $file_vi
 
 echo 'FINISHED compiling the list of files that make up the MVC structure'
 echo '-------------------------------------------------------------------'
-
-echo '----------'
-echo 'git status'
-git status
 
 echo '******************************'
 echo 'outline-short.sh OUTPUT FILES:'
@@ -192,9 +184,13 @@ git commit -m "Updated all.sh to include outline.sh"
 ```
 
 ### git_check.sh
-* Replace the "git status" section in the git_check.sh script with the following:
+* Add the following lines to the end of the git_check.sh script:
 ```
 sh outline-short.sh
+
+echo '----------'
+echo 'git status'
+git status
 ```
 * Enter the command "sh git_check.sh".
 * Enter the following commands:
