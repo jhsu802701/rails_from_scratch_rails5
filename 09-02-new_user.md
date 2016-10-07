@@ -81,7 +81,6 @@ end
 * Enter the command "test1".  The first integration test will pass, but the other three will fail.
 
 ## User Signup Page
-* Create custom user authentication pages.  Enter the command "rails generate devise:views users".
 * Edit the user signup page.  Replace the contents of app/views/users/registrations/new.html.erb with the following:
 ```
 <% provide(:title, "New User") %>
