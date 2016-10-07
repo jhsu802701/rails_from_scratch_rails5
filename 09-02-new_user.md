@@ -53,7 +53,31 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
   end
 end
 ```
-* Enter the command "sh build_fast.sh".  All of your new integration tests will fail.
-### 
+* Enter the command "sh build_fast.sh".  All 4 of your new integration tests will fail.
+* From the error outputs, use the alias command to create the "test1" alias that tests all of these new integration tests.
+* Enter the command "test1" to run just these tests again.
+
+### Home Page
+* Replace the contents of the app/views/static_pages/home.html.erb with the following:
+```
+<% provide(:title, '') %>
+<div class="center jumbotron">
+  <h1>Home</h1>
+  Welcome to Generic App Template!
+  <br><br>
+  <% if user_signed_in? %>
+    You are logged in as a user (<%= current_user.username %>).
+  <% elsif admin_signed_in? %>
+    You are logged in as an admin (<%= current_admin.username %>).
+  <% else %>
+    <div class="center jumbotron">
+      <%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-lg btn-primary" %>
+    </div>
+  <% end %>
+  <%= link_to image_tag("rails.png", alt: "Rails logo"),
+              'http://rubyonrails.org/' %>
+</div>
+
+```
 
 ### Wrapping Up
