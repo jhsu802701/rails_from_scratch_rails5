@@ -28,6 +28,7 @@ git commit -m "Installed RuboCop"
 ```
 AllCops:
   Exclude:
+    - db/migrate/*
     - db/schema.rb
 
 Metrics/LineLength:
@@ -44,6 +45,7 @@ Metrics/LineLength:
     - config/environments/production.rb
     - config/environments/test.rb
     - config/puma.rb
+    - config/routes.rb
     - db/seeds.rb
     - Gemfile
     - Rakefile
