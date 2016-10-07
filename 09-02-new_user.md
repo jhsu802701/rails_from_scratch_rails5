@@ -131,6 +131,20 @@ to create much better passwords AND store them in encrypted form.
 
 <%= render "users/shared/links" %>
 ```
-* Enter the command "test1".
+* Edit the config/routes.rb file.  Replace the line "devise_for :users" with a user section so that the file looks like:
+```
+...
+Rails.application.routes.draw do
+  devise_for :admins
+  
+  # BEGIN: user section
+  devise_for :users,
+             controllers: { registrations: 'users/registrations' }
+  # END: user section
+
+  root 'static_pages#home'
+...
+```
+* Enter the command "test1".  The first two tests will pass, but the second two tests will still fail.
 
 ### Wrapping Up
