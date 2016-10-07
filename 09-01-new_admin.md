@@ -7,7 +7,7 @@ In this chapter, you will add scripts for creating a new admin.  Because the adm
 Enter the command "git checkout -b 09-01-new_admin".
 
 ### admin_create.rb
-* Create the file create_admin.rb with the following content:
+* Create the file admin_create.rb with the following content:
 ```
 #!/usr/bin/env ruby
 
