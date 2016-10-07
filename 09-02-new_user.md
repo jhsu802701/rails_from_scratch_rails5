@@ -16,12 +16,12 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
   include ApplicationHelper
 
   test 'Home page provides access to user signup page' do
-    visit_root
+    visit root_path
     assert page.has_link?('Sign up now!', href: new_user_registration_path)
   end
 
   test 'User signup page has expected content' do
-    visit_root
+    visit root_path
     click_on 'Sign up now!'
     assert page.has_css?('title', text: full_title('New User'), visible: false)
     assert page.has_css?('h1', text: 'New User')
