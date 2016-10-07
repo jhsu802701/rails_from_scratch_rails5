@@ -1,7 +1,6 @@
 # Unit 8
 ## Chapter 3: Better Errors
 
-### Gemfile
 * Add the following lines to the end of the Gemfile:
 ```
 # BEGIN: Better Errors
@@ -13,6 +12,9 @@ end
 # END: Better Errors
 ```
 * Enter the command "sh git_check.sh".
-
-
-### Wrapping Up
+* Enter the following commands:
+```
+git add .
+git commit -m "Added better_errors and binding_of_caller"
+git push origin master
+```
