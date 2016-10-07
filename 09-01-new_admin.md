@@ -107,7 +107,14 @@ echo '**********************'
 echo 'Entering rails console'
 bundle exec rails runner "eval(File.read 'admin_create.rb')"
 ```
-* Enter the command "sh admin_create.sh" to create a new admin.  You can use the default values.
+* Enter the command "sh admin_create.sh" to create a new admin.  When prompted, enter the following parameters:
+  * Username: rserling
+  * Email address: rod_serling@rubyonracetracks.com
+  * First name: Rod
+  * Last name: Serling
+  * Password: The Twilight Zone
+  * Conform password: The Twilight Zone
+  * Super admin: y
 * Use the SQLiteBrowser tool in your host environment to verify that you have created the new admin.
 * Enter the command "sh git_check.sh".
 * Enter the following commands:
