@@ -15,7 +15,7 @@ Although MailCatcher is a gem, you should NOT add it to your Gemfile, because it
 ...
   # From http://mailcatcher.me/
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
+  config.action_mailer.smtp_settings = { address: 'localhost', port: 1025 }
 end
 ```
 * Enter the command "sh git_check.sh".
