@@ -18,5 +18,41 @@ Although MailCatcher is a gem, you should NOT add it to your Gemfile, because it
   config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
 end
 ```
+* Enter the command "sh git_check.sh".
+* Enter the following commands:
+```
+git add .
+git commit -m "Configured environments/development.rb for MailCatcher"
+```
+### mailcatcher.sh
+* Add the file mailcatcher.sh with the following content:
+```
+#!/bin/bash
+
+gem install mailcatcher
+mailcatcher --ip 0.0.0.0
+echo 'View mail at http://localhost:<port number>/'
+echo 'If you are developing this app in the host environment, the port number is 1080.'
+echo 'If you are using Docker or Vagrant, the port number may be something else.'
+echo 'If you are using Docker Machine, replace "localhost" with the appropriate numerical IP address (probably 192.168.99.100).'
+# Send mail through smtp://localhost:1025
+```
+* Enter the command "mailcatcher.sh".
+* In the browser window in the host environment, go to the appropriate URL.
+* Enter the command "sh git_check.sh".
+* Enter the following commands:
+```
+git add .
+git commit -m "Added mailcatcher.sh"
+git push origin 08-02-mailcatcher
+```
 
 ### Wrapping Up
+* Go to the GitHub repository and click on the "Compare and pull request" button for this branch.
+* Accept this pull request to merge it with the master branch, but do NOT delete this branch.
+* Enter the following commands:
+```
+git checkout master
+git pull
+sh heroku.sh
+```
