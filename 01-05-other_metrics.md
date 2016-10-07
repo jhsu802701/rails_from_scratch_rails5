@@ -63,9 +63,9 @@ echo '------------'
 echo 'bundle-audit'
 bundle-audit
 
-echo '-------'
-echo 'rubocop'
-rubocop
+echo '----------'
+echo 'rubocop -D'
+rubocop -D
 
 echo '----------------------'
 echo 'rails_best_practices .'
