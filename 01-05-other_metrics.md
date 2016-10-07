@@ -138,7 +138,6 @@ clear
 sh build_fast.sh
 
 FILE_LOG_TEST_CODE='log/all-test_code.log'
-
 echo '-------------------------------------'
 echo "sh test_code.sh > $FILE_LOG_TEST_CODE"
 sh test_code.sh > $FILE_LOG_TEST_CODE
