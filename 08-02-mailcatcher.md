@@ -38,7 +38,7 @@ echo 'If you are using Docker Machine, replace "localhost" with the appropriate 
 # Send mail through smtp://localhost:1025
 ```
 * Enter the command "sh mailcatcher.sh".
-* In the browser window in the host environment, go to the appropriate URL.
+* In the browser window in the host environment, go to the appropriate URL.  You should see the MailCatcher interface, but there won't be any messages.
 * Enter the command "sh git_check.sh".
 * Enter the following commands:
 ```
