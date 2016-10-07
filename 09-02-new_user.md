@@ -82,5 +82,56 @@ end
 
 ## User Signup Page
 * Create custom user authentication pages.  Enter the command "rails generate devise:views users".
+* Edit the user signup page.  Replace the contents of app/views/users/registrations/new.html.erb with the following:
+```
+<% provide(:title, "New User") %>
+
+<h1>New User</h1>
+Using the same password for all of your accounts is risky.
+Limiting yourself to passwords that you can easily remember is risky.
+You should use a password management program like <a href='http://www.keepassx.org'>KeePassX</a>
+to create much better passwords AND store them in encrypted form.
+
+<%= form_for(resource, html: { multipart: true }, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :username %> (for logging in) <br />
+    <%= f.text_field :username, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "users/shared/links" %>
+```
+* Enter the command "test1".
 
 ### Wrapping Up
