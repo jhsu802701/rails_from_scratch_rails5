@@ -20,8 +20,10 @@ git commit -m "Installed Devise gem"
 
 ### Configuring Devise
 * Enter the command "rails generate devise:install".
-* Create custom admin authentication pages.  Enter the command "rails generate devise:views admins".  This creates custom admin authentication pages that you will use later.
-* Create custom user authentication pages.  Enter the command "rails generate devise:views users".  This creates custom user authentication pages that you will use later.
+* Create admin authentication controllers.  Enter the command "rails generate devise:controllers admins".  This creates admin authentication controllers that will be needed later.
+* Create admin authentication pages.  Enter the command "rails generate devise:views admins".  This creates admin authentication pages that you will use later.
+* Create user authentication controllers.  Enter the command "rails generate devise:controllers users".  This creates user authentication controllers that will be needed later.
+* Create user authentication pages.  Enter the command "rails generate devise:views users".  This creates user authentication pages that you will use later.
 * Edit the file config/environments/development.rb so that it looks like this:
 
 ```
