@@ -118,9 +118,8 @@ d_gems='log/diagram-gems.jpg'
 
 echo '---------------'
 echo 'Using rails-erd'
-bundle exec erd --attributes=foreign_keys,primary_keys,timestamps,inheritance,content --filetype=dot --filename=notes/diagram-models --inheritance --notation=bachman
-dot -Tjpg notes/diagram-models.dot > $d_mo
-rm notes/diagram-models.dot
+bundle exec erd --attributes=foreign_keys,primary_keys,timestamps,inheritance,content --filetype=dot --filename=log/diagram-models --inheritance --notation=bachman
+dot -Tjpg log/diagram-models.dot > $d_mo
 echo
 echo "Models diagram is at $d_mo"
 echo
