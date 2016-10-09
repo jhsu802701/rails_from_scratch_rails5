@@ -118,6 +118,16 @@ footer {
     }
   }
 }
+
+/* miscellaneous */
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
+}
 ```
 * Stop and restart the Rails server.  (If you refresh your local web page in your browser without restarting the Rails server, you will get a syntax error message.)
 * View your site in your local browser.
