@@ -93,37 +93,37 @@ to create much better passwords AND store them in encrypted form.
 
 <%= form_for(resource, html: { multipart: true }, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
-  <br>
+
   <div class="field">
     <%= f.label :username %> (for logging in) <br />
     <%= f.text_field :username, autofocus: true %>
   </div>
-  <br>
+
   <div class="field">
     <%= f.label :last_name %><br />
     <%= f.text_field :last_name %>
   </div>
-  <br>
+
   <div class="field">
     <%= f.label :first_name %><br />
     <%= f.text_field :first_name %>
   </div>
-  <br>
+
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email %>
   </div>
-  <br>
+
   <div class="field">
     <%= f.label :password %><br />
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
-  <br>
+
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
-  <br>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
