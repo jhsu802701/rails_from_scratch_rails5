@@ -24,13 +24,15 @@ git commit -m "Installed Devise gem"
 * Create admin authentication pages.  Enter the command "rails generate devise:views admins".  This creates admin authentication pages that you will use later.
 * Create user authentication controllers.  Enter the command "rails generate devise:controllers users".  This creates user authentication controllers that will be needed later.
 * Create user authentication pages.  Enter the command "rails generate devise:views users".  This creates user authentication pages that you will use later.
-* Edit the file config/environments/development.rb so that it looks like this:
+* Edit the files config/environments/development.rb AND config/environments/test.rb so that they look like this:
 
 ```
 (original content here)
 ...
 
   # From https://github.com/plataformatec/devise
+  # Needed to avoid the error message:
+  # ActionView::Template::Error: Missing host to link to!
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 end
 ```
