@@ -148,7 +148,7 @@ Rails.application.routes.draw do
 * Enter the command "test1".  The first two tests will pass, but the second two tests will still fail.
 
 ### Stylesheet
-* Add the following code to the end of the file app/assets/stylesheets/custom.scss:
+Add the following code to the end of the file app/assets/stylesheets/custom.scss:
 ```
 /* forms */
 
