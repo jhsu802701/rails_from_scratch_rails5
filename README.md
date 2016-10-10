@@ -52,3 +52,7 @@ git config --global user.name "Your Name"
 * Create your app with numerous small steps, not a handful of giant ones.  The protocol documented here consists of numerous small chapters.  In the long run, this saves time, because I can keep track of what I'm doing and easily troubleshoot any surprises that crop up.  Every time I go through Rails Tutorial, I lose track of where I am and what I'm doing, and troubleshooting can be difficult given the numerous actions taken all at once.
 * Try out the Rails app in a fresh development environment by resetting the Docker container.  If you don't do this periodically, you can end up in trouble later.  Dependency mismanagement problems (also known as the infamous "works on my machine" problem) are frustrating and embarassing, and they reflect poorly on your knowledge of what it takes to make your app work.
 * Integrating these principles in legacy projects may require some compromises, but the principles described here will improve the quality.  It's hard to improve the quality of a project when you can't define the Holy Grail that you're aiming for.
+
+## Excluded Features
+* Guard is excluded.  Reasons for this omission are explained in the Quick Testing Chapter (Unit 3 Chapter 2).
+* SimpleCov and the Code Climate Test Coverage badge are excluded.  The biggest problem I encountered was showing the models to be uncovered in spite of the inclusion of model tests.  Additionally, I encountered divergences between the local environment's coverage results and Code Climate's coverage results.
