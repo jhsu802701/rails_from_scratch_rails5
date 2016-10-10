@@ -1,5 +1,5 @@
 # Unit 4
-## Chapter 6: Adding Badges
+## Chapter 5: Adding Badges
 
 * Replace the README.md file with the following (providing the badge URLs in the appropriate locations):
 ```
