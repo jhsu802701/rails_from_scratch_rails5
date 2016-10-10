@@ -244,7 +244,7 @@ Email address: <%= raw(EmailMunger.encode('somebody@rubyonracetracks.com')) %>
 ```
 * When you view the contact page in the web browser, the email address appears normal.  However, when you view the page source from the browser, you see that the characters in the email address have been encoded.  This allows human eyes to see the actual email address, but most bots attempting to harvest email addresses will see noise and thus miss this email address.
 * Enter the command "rails test".  All tests should pass.
-* Enter the command "sh git_check.sh".  Test coverage has improved, as app/mailers/application_mailer.rb and app/models/application_record.rb are the only files not covered yet.  RuboCop and Rails Best Practices show no offenses.
+* Enter the command "sh git_check.sh".  RuboCop and Rails Best Practices show no offenses.
 * Enter the following commands:
 ```
 git add .
