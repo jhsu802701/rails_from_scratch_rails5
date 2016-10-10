@@ -2,7 +2,6 @@
 ## Chapter 1: Circle CI
 
 ### Why use Circle CI?
-* Like the local development environment, Circle CI uses the SimpleCov gem for providing coverage test results for the Code Climate CI to display.  Other continuous integration systems produce different results and make it more difficult to exclude files and directories from coverage tests.
 * It's easier to add the Code Climate repo token value to Circle CI than is the case with other CI systems.  
 * Code Climate's instructions for working with Travis CI include entering the repo token value to your source code, which is considered to be a security no-no.
 
