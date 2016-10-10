@@ -55,14 +55,15 @@ Style/ClassAndModuleChildren:
   Exclude:
     - test/test_helper.rb
 ```
+* The .rubocop.yml file tells RuboCop which violations to ignore in specific files.  Some violations are impossible to avoid or are not worth fixing.  For example, db/schema.rb is automatically generated every time you migrate the database.
 * Although there are no files in db/migrate yet, scripts will be automatically generated later.  Editing these scripts to make them compliant with RuboCop is more trouble than it's worth.
 * Although config/routes.rb does not violate the Metrics/LineLength cop yet, comments will be automatically generated it by the annotate gem later.  These comments will violate this cop but are too valuable to omit.
-* The .rubocop.yml file tells RuboCop which violations to ignore in specific files.  Some violations are impossible to avoid or are not worth fixing.  For example, db/schema.rb is automatically generated every time you migrate the database.
-* Enter the command "rubocop -D" to see how many violations remain.  This .rubocop.yml file reduced the number of offenses to 12.  These remaining violations are relatively easy to fix.
-*  In the config/puma.rb file, replace the double-quotes cited by RuboCop with single-quotes.  Enter the command "rubocop -D" again.  8 offenses remain.
-*  In the config/environments/production.rb file, replace the double-quotes cited by Rubocop, and get rid of the extra spaces it cited.  Entering the command "rubocop -D" shows that 5 offenses remain.
-*  In the app/helpers/application_helper.rb, app/controllers/application_controller.rb, app/mailers/application_mailer.rb, and app/models/application_record.rb files, add a "#" directly above the "class" statements cited.  Entering the command "rubocop -D" shows that 1 offense remain.
-* Remove the extra blank lines in the Gemfile that were cited by RuboCop.  Enter the command "rubocop -D" again.  There should be no violations.
+* Enter the command "rubocop -D" to see how many violations remain.  This .rubocop.yml file reduced the number of offenses to 14.  These remaining violations are relatively easy to fix.
+*  In the config/puma.rb file, replace the double-quotes cited by RuboCop with single-quotes.  Enter the command "rubocop -D" again.  10 offenses remain.
+*  In the config/environments/production.rb file, replace the double-quotes cited by Rubocop, and get rid of the extra spaces it cited.  Entering the command "rubocop -D" shows that 7 offenses remain.
+*  In the app/helpers/application_helper.rb, app/controllers/application_controller.rb, app/mailers/application_mailer.rb, and app/models/application_record.rb files, add a "#" directly above the "class" statements cited.  Entering the command "rubocop -D" shows that 3 offenses remain.
+* Remove the extra blank lines in the Gemfile that were cited by RuboCop.  Enter the command "rubocop -D" again.  There should be 2 violations remaining.
+* In the bin/spring file, replace the double-quotes cited by RuboCop with single-quotes, and replace the "=" cited with "==".  Enter the command "rubocop -D" again.  There should be no violations remaining.
 * Enter the command "sh git_check.sh".  Everything should proceed as expected.
 * Enter the following commands:
 ```
