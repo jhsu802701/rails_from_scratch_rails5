@@ -77,9 +77,9 @@ git commit -m "RuboCop compliant"
 
 sh build_fast.sh
 
-echo '-------'
-echo 'rubocop'
-rubocop
+echo '----------'
+echo 'rubocop -D'
+rubocop -D
 
 echo '----------'
 echo 'git status'
