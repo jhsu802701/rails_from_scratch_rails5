@@ -28,16 +28,12 @@ git commit -m "Installed RuboCop"
 ```
 AllCops:
   Exclude:
+    - bin/spring
     - db/migrate/*
     - db/schema.rb
 
-Lint/AssignmentInCondition:
-  Exclude:
-    - bin/spring
-
 Metrics/LineLength:
   Exclude:
-    - bin/spring
     - config/application.rb
     - config/environments/development.rb
     - config/environments/production.rb
