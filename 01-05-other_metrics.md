@@ -81,6 +81,7 @@ echo 'The Gemsurance Report is in log/gemsurance_report.html .'
 ```
 AllCops:
   Exclude:
+    - bin/spring
     - db/migrate/*
     - db/schema.rb
     - tmp/vulnerabilities/lib/*
