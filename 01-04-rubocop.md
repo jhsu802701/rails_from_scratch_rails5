@@ -31,6 +31,10 @@ AllCops:
     - db/migrate/*
     - db/schema.rb
 
+Lint/AssignmentInCondition:
+  Exclude:
+    - bin/spring
+
 Metrics/LineLength:
   Exclude:
     - bin/spring
