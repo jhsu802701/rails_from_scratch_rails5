@@ -100,7 +100,7 @@ git commit -m "Added test_code.sh; updated .gitignore and .rubocop.yml"
 ```
 
 ### git_check.sh
-* In the git_check.sh file, replace the entire contents of git_check.sh with the following:
+* Replace the entire contents of the git_check.sh file with the following:
 ```
 #!/bin/bash
 
