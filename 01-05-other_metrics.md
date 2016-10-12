@@ -142,7 +142,7 @@ FILE_LOG_TEST_CODE='log/all-test_code.log'
 echo '-------------------------------------'
 echo "sh test_code.sh > $FILE_LOG_TEST_CODE"
 sh test_code.sh > $FILE_LOG_TEST_CODE
-echo 'The Gemsurance Report is in gemsurance_report.html in the root directory.'
+echo 'The Gemsurance Report is in log/gemsurance_report.html .'
 ```
 * Run this script by entering "sh all.sh".
 * Enter the command "sh git_check.sh".
