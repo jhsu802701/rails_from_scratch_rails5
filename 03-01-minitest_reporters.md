@@ -23,6 +23,10 @@ git commit -m "Installed minitest-reporters"
 ```
 # From https://gist.github.com/foton/141b9f73caccf13ccfcc
 
+# rubocop:disable Metrics/AbcSize
+# rubocop:disable Metrics/LineLength
+# rubocop:disable Metrics/MethodLength
+
 require 'minitest/reporters'
 
 module Minitest
@@ -92,6 +96,10 @@ module Minitest
     end
   end
 end
+
+# rubocop:enable Metrics/AbcSize
+# rubocop:enable Metrics/LineLength
+# rubocop:enable Metrics/MethodLength
 ```
 * In the test/test_helper.rb file, insert the code for configuring Minitest Reporters between the line "require 'rails/test_help'" and the line "class ActiveSupport::TestCase".  Your code should look like this:
 ```
