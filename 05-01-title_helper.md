@@ -8,6 +8,8 @@ Enter the command "git checkout -b 05-01-title_helper".
 ### Testing and Creating the Title Helper
 * Create the file test/helpers/application_helper_test.rb with the following content:
 ```
+# rubocop:disable Metrics/LineLength
+
 require 'test_helper'
 
 class ApplicationHelperTest < ActionView::TestCase
@@ -18,9 +20,11 @@ class ApplicationHelperTest < ActionView::TestCase
     assert_equal full_title('Michael Hartl'), 'Michael Hartl | Generic App Template'
   end
 end
+
+# rubocop:enable Metrics/LineLength
 ```
 * Enter the command "sh testh.sh".  Your helper test should fail.
-* Edit the file app/helpers/application_helper.rb and give it the following content:
+* Replace the contents of app/helpers/application_helper.rb with the following:
 ```
 #
 module ApplicationHelper
