@@ -146,47 +146,6 @@ Minitest::Reporters.use! [Minitest::Reporters::AwesomeReporter.new(reporter_opti
 class ActiveSupport::TestCase
 ...
 ```
-* Replace the contents of the .rubocop.yml with the following code:
-```
-AllCops:
-  Exclude:
-    - db/schema.rb
-    - tmp/vulnerabilities/lib/*
-    - tmp/vulnerabilities/spec/*
-    - tmp/vulnerabilities/Rakefile
-
-Metrics/AbcSize:
-  Exclude:
-    - test/rake_rerun_reporter.rb
-
-Metrics/LineLength:
-  Exclude:
-    - bin/spring
-    - config/application.rb
-    - config/environments/development.rb
-    - config/environments/production.rb
-    - config/initializers/assets.rb
-    - config/initializers/backtrace_silencers.rb
-    - config/initializers/new_framework_defaults.rb
-    - config/initializers/session_store.rb
-    - config/initializers/wrap_parameters.rb
-    - config/environments/production.rb
-    - config/environments/test.rb
-    - config/puma.rb
-    - db/seeds.rb
-    - Gemfile
-    - Rakefile
-    - test/rake_rerun_reporter.rb
-    - test/test_helper.rb
-
-Metrics/MethodLength:
-  Exclude:
-    - test/rake_rerun_reporter.rb
-
-Style/ClassAndModuleChildren:
-  Exclude:
-    - test/test_helper.rb
-```
 * Add the following line to the end of .gitignore:
 ```
 test/html_reports/
