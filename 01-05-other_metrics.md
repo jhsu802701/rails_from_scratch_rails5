@@ -92,7 +92,7 @@ Metrics/LineLength:
 . . .
 ```
 * Enter the command "sh test_code.sh" to run this script.
-* Enter the command "sh git_check.sh; rubocop; rails_best_practices".  The file gemsurance_report.html should be NOT listed.
+* Enter the command "sh git_check.sh; rubocop -D; rails_best_practices".  The file gemsurance_report.html should be NOT listed.
 * Enter the following commands:
 ```
 git add .
