@@ -96,7 +96,7 @@ Metrics/LineLength:
 * Enter the following commands:
 ```
 git add .
-git commit -m "Added test_code.sh; updated .gitignore and .rubocop.yml" 
+git commit -m "Added test_code.sh" 
 ```
 
 ### git_check.sh
