@@ -73,8 +73,8 @@ rails db:seed
 * Remove the temp1.sh script by entering "rm temp1.sh".
 
 ### Wrapping Up
-* Enter the command "sh git_check.sh".  Only the file lib/tasks/disable_db_tasks_on_production.rake should be listed.
-Enter the following commands to push this change to GitHub and Heroku:
+* Enter the command "sh git_check.sh".  Only the file lib/tasks/disable_db_tasks_on_production.rake should be listed as a change.
+* Enter the following commands:
 ```
 git add .
 git commit -m "Disabled dangerous tasks in production"
