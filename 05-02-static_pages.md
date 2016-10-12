@@ -67,13 +67,13 @@ git commit -m "Added static pages controller"
 ```
 
 ### Static Pages: Views
-* Remove the following files:
+* Enter the following commands:
 ```
-public/index.html
-public/about.html
-test/integration/test1_test.rb
-test/integration/test2_test.rb
-test/integration/test3_test.rb
+git rm public/index.html
+git rm public/about.html
+git rm test/integration/test1_test.rb
+git rm test/integration/test2_test.rb
+git rm test/integration/test3_test.rb
 ```
 * Enter the command "rails test" to make sure you have removed the initial content and initial integration tests.
 * In your browser window connected to the local server, you'll find your static pages at http://localhost:3000/, http://localhost:3000/about, and http://localhost:3000/contact .  (NOTE: If you are using Docker Machine, replace localhost with the appropriate numerical IP address.  If your Docker container outputs to a host port other than 3000, replace the "3000" with the appropriate port number.)
