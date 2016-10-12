@@ -40,50 +40,7 @@ module ApplicationHelper
 end
 ```
 * Enter the command "sh testh.sh".  Your helper test should now pass.
-* Enter the command "sh testhl.sh".  Rails Best Practices will warn you about an unused method (full_title within ApplicationHelper), but don't worry about this now, because you will use it on every web page on your site.  RuboCop will flag test/helpers/application_helper_test.rb for having a line more than 80 characters long. 
-* Make the test/helpers/application_helper_test.rb exempt from the line length cop by replace the contents of the .rubocop.yml file with the following:
-```
-AllCops:
-  Exclude:
-    - db/schema.rb
-    - tmp/vulnerabilities/lib/*
-    - tmp/vulnerabilities/spec/*
-    - tmp/vulnerabilities/Rakefile
-
-Metrics/AbcSize:
-  Exclude:
-    - test/rake_rerun_reporter.rb
-
-Metrics/LineLength:
-  Exclude:
-    - bin/spring
-    - config/application.rb
-    - config/environments/development.rb
-    - config/environments/production.rb
-    - config/initializers/assets.rb
-    - config/initializers/backtrace_silencers.rb
-    - config/initializers/new_framework_defaults.rb
-    - config/initializers/session_store.rb
-    - config/initializers/wrap_parameters.rb
-    - config/environments/production.rb
-    - config/environments/test.rb
-    - config/puma.rb
-    - db/seeds.rb
-    - Gemfile
-    - Rakefile
-    - test/helpers/application_helper_test.rb
-    - test/rake_rerun_reporter.rb
-    - test/test_helper.rb
-
-Metrics/MethodLength:
-  Exclude:
-    - test/rake_rerun_reporter.rb
-
-Style/ClassAndModuleChildren:
-  Exclude:
-    - test/test_helper.rb
-```
-* Enter the command "sh testhl.sh".  The RuboCop issue has now been resolved.
+* Enter the command "sh testhl.sh".  Rails Best Practices will warn you about an unused method (full_title within ApplicationHelper), but don't worry about this now, because you will use it on every web page on your site.
 * Enter the command "sh git_check.sh".  All tests pass, and RuboCop finds no offenses.  (Again, you will address the unused method issue flagged by Rails Best Practices after this chapter.)
 * Enter the following commands:
 ```
