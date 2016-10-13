@@ -6,20 +6,6 @@ In this chapter, you will provide scripts for converting your app from the SQLit
 ### New Branch
 Enter the command "git checkout -b 07-02-postgresql".
 
-### Gemfile
-* Add the following lines to the Gemfile:
-```
-# BEGIN: gems needed for PostgreSQL configuration
-gem 'figaro'
-gem 'string_in_file'
-# END: gems needed for PostgreSQL configuration
-```
-* Enter the command "sh git_check.sh".
-* Enter the following commands:
-```
-git add .
-git commit -m "Added figaro and string_in_file gems"
-```
 ### config/database-pg.yml
 * Create the file config/database-pg.yml with the following content:
 ```
@@ -66,6 +52,7 @@ git commit -m "Added config/database-pg.yml"
 # rubocop:disable Style/UnneededPercentQ
 
 require 'string_in_file'
+require 'figaro'
 
 # Get input arguments (called by Bash script)
 db_name_dev = ARGV[0]
@@ -242,9 +229,14 @@ echo "Username: ${db_username}"
 echo "Password: ${db_password}"
 
 sh pg-start.sh
-echo '--------------'
-echo 'bundle install'
-bundle install
+
+echo '------------------'
+echo 'gem install figaro'
+gem install figaro
+
+echo '--------------------------'
+echo 'gem install string_in_file'
+gem install string_in_file
 
 ruby pg_setup.rb $db_dev $db_test $db_pro $env_var_username $env_var_password $db_username $db_password
 
