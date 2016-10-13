@@ -135,7 +135,6 @@ echo '-------------------------------'
 echo 'gem install remove_double_blank'
 gem install remove_double_blank
 
-
 ruby pg_setup.rb $db_dev $db_test $db_pro $env_var_username $env_var_password $db_username $db_password
 
 sh git_check.sh
@@ -151,6 +150,8 @@ sh git_check.sh
 # rubocop:disable Style/UnneededPercentQ
 
 require 'string_in_file'
+require 'line_containing'
+require 'remove_double_blank'
 require 'figaro'
 
 # Get input arguments (called by Bash script)
