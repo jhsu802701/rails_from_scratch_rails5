@@ -36,49 +36,8 @@ git commit -m "Installed Devise gem"
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 end
 ```
-* Make config/initializers/devise.rb exempt from RuboCop's line length cop.  Replace the contents of the .rubocop.yml file with the following:
-```
-AllCops:
-  Exclude:
-    - db/schema.rb
-    - tmp/vulnerabilities/lib/*
-    - tmp/vulnerabilities/spec/*
-    - tmp/vulnerabilities/Rakefile
+* In the .rubocop.yml file, add config/intitializers/devise.rb to the list of files exempt from the Metrics/LineLength cop.
 
-Metrics/AbcSize:
-  Exclude:
-    - test/rake_rerun_reporter.rb
-
-Metrics/LineLength:
-  Exclude:
-    - bin/spring
-    - config/application.rb
-    - config/environments/development.rb
-    - config/environments/production.rb
-    - config/initializers/assets.rb
-    - config/initializers/backtrace_silencers.rb
-    - config/initializers/devise.rb
-    - config/initializers/new_framework_defaults.rb
-    - config/initializers/session_store.rb
-    - config/initializers/wrap_parameters.rb
-    - config/environments/production.rb
-    - config/environments/test.rb
-    - config/puma.rb
-    - db/seeds.rb
-    - Gemfile
-    - Rakefile
-    - test/helpers/application_helper_test.rb
-    - test/rake_rerun_reporter.rb
-    - test/test_helper.rb
-
-Metrics/MethodLength:
-  Exclude:
-    - test/rake_rerun_reporter.rb
-
-Style/ClassAndModuleChildren:
-  Exclude:
-    - test/test_helper.rb
-```
 * Enter the command "sh git_check.sh".
 * Enter the following commands:
 ```
