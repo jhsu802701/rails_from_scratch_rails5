@@ -37,7 +37,7 @@ git commit -m "Installed Devise gem"
 end
 ```
 * In the .rubocop.yml file, add config/intitializers/devise.rb to the list of files exempt from the Metrics/LineLength cop.
-* In the .rubocop.yml file, add "app/controllers/admins/ * " and "app/controllers/users/ * " to the list of files excluded from the Style/ClassAndModuleChildren cop.
+* In the .rubocop.yml file, add "app/controllers/admins/\*" and "app/controllers/users/\*" to the list of files excluded from the Style/ClassAndModuleChildren cop.
 * Add the following lines to the end of .rubocop.yml:
 ```
 Style/CommentIndentation:
