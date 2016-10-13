@@ -170,7 +170,7 @@ class Admin < ApplicationRecord
 end
 ```
 * Enter the command "sh testm.sh".  You'll see that one test fails, the test for minimum password length.
-* Edit the config/initializers/devise.rb file.  Change the value of the config.password_length parameter from "6..128" to "10..128".
+* Edit the config/initializers/devise.rb file.  Change the value of the config.password_length parameter from "6..128" to "10..128".  Change the value of config.mailer_sender to "somebody@rubyonracetracks.com" (in the interest of consistency with the email address shown on the Contact page).
 * Enter the command "sh testm.sh".  You'll see that all model tests pass.
 * Enter the command "sh testml.sh".  You'll see that there are no Brakeman, RuboCop, or Rails Best Practices offenses.
 * Update the admin test fixtures by replacing the contents of test/fixtures/admins.yml with the following:
