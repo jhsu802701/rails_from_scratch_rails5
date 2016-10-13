@@ -36,7 +36,7 @@ git commit -m "Installed Devise gem"
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 end
 ```
-* In the .rubocop.yml file, add config/intializers/devise.rb to the list of files exempt from the Metrics/LineLength cop.
+* In the .rubocop.yml file, add config/initializers/devise.rb to the list of files exempt from the Metrics/LineLength cop.
 * In the .rubocop.yml file, add "app/controllers/admins/\*" and "app/controllers/users/\*" to the list of files excluded from the Style/ClassAndModuleChildren cop.
 * Add the following lines to the end of .rubocop.yml:
 ```
