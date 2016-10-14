@@ -223,7 +223,6 @@ StringInFile.replace('DB_NAME_PRO', ENV['APP_DB_NAME_PRO'], 'config/database.yml
 puts
 puts '----------------'
 puts 'Updating Gemfile'
-require 'line_containing'
 LineContaining.delete_between_plus('# BEGIN: SQLite', '# END: SQLite', 'Gemfile')
 RemoveDoubleBlank.update('Gemfile')
 
