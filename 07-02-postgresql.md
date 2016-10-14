@@ -268,9 +268,4 @@ git push origin 07-02-postgresql
 
 ### Wrapping Up
 * If all goes well, submit a pull request on this branch in GitHub, and accept this pull request when you see that it passes.
-* Enter the following commands:
-```
-git checkout master
-git pull
-sh heroku.sh
-```
+* Follow the procedure in the README.md file for resetting your Docker container.
