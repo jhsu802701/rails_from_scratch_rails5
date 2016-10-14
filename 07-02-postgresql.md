@@ -13,6 +13,8 @@ Enter the command "git checkout -b 07-02-postgresql".
 # NOTE: Attempts to use "gem install" in the PostgreSQL setup scripts did not pan out.
 # You do not need these gems if you use SQLite in the development environment.
 gem 'figaro'
+gem 'line_containing'
+gem 'remove_double_blank'
 gem 'string_in_file'
 # END: gems used for setting up PostgreSQL in the development environment
 ```
@@ -149,6 +151,8 @@ sh git_check.sh
 # rubocop:disable Style/PercentLiteralDelimiters
 # rubocop:disable Style/UnneededPercentQ
 
+require 'line_containing'
+require 'remove_double_blank'
 require 'string_in_file'
 
 # Get input arguments (called by Bash script)
@@ -219,10 +223,8 @@ StringInFile.replace('DB_NAME_PRO', ENV['APP_DB_NAME_PRO'], 'config/database.yml
 puts
 puts '----------------'
 puts 'Updating Gemfile'
-gem install line_containing
 require 'line_containing'
 LineContaining.delete_between_plus('# BEGIN: SQLite', '# END: SQLite', 'Gemfile')
-gem install remove_double_blank
 RemoveDoubleBlank.update('Gemfile')
 
 puts
