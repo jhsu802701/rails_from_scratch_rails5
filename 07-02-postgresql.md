@@ -6,6 +6,21 @@ In this chapter, you will provide scripts for converting your app from the SQLit
 ### New Branch
 Enter the command "git checkout -b 07-02-postgresql".
 
+### Gemfile
+* Add the following lines to the end of the Gemfile:
+```
+# BEGIN: gems used for setting up PostgreSQL in the development environment
+gem 'figaro'
+gem 'string_in_file'
+# END: gems used for setting up PostgreSQL in the development environment
+```
+* Enter the command "sh git_check.sh".
+* Enter the following commands:
+```
+git add .
+git commit -m "Added gems for setting up PostgreSQL in development"
+```
+
 ### config/database-pg.yml
 * Create the file config/database-pg.yml with the following content:
 ```
@@ -132,50 +147,7 @@ sh git_check.sh
 # rubocop:disable Style/PercentLiteralDelimiters
 # rubocop:disable Style/UnneededPercentQ
 
-puts '-------------------------------------'
-puts "system('gem install line_containing')"
-system('gem install line_containing')
-
-puts '-----------------------------------------'
-puts "system('gem install remove_double_blank')"
-system('gem install remove_double_blank')
-
-puts '------------------------------------'
-puts "system('gem install string_in_file')"
-system('gem install string_in_file')
-
-puts '-----------------------'
-puts 'BEGIN: updating Gemfile'
-
-# Remove SQLite from Gemfile
-require 'line_containing'
-str1 = '# BEGIN: SQLite'
-str2 = '# END: SQLite'
-LineContaining.delete_between_plus(str1, str2, 'Gemfile')
-
-# Remove gems for setting up PostgreSQL (to be added later)
-str1 = '# BEGIN: gems for setting up PostgreSQL'
-str2 = '# END: gems for setting up PostgreSQL'
-LineContaining.delete_between_plus(str1, str2, 'Gemfile')
-
-open('Gemfile', 'a') do |f|
-  f.puts "\n\n"
-  f.puts str1
-  f.puts "gem 'figaro'"
-  f.puts str2
-  f.puts "\n\n"
-end
-
-# Remove consecutive blank lines
-require 'remove_double_blank'
-RemoveDoubleBlank.update('Gemfile')
-
-puts 'END: updating Gemfile'
-puts '---------------------'
-
-puts '------------------------'
-puts "system('bundle install')"
-system('bundle install')
+require 'string_in_file'
 
 # Get input arguments (called by Bash script)
 db_name_dev = ARGV[0]
@@ -215,7 +187,6 @@ system('wait')
 puts '--------------------------------------------------'
 puts 'Using Figaro to create initial configuration files'
 system('rm config/application.yml')
-require 'figaro'
 system('figaro install')
 system('wait')
 
@@ -228,7 +199,6 @@ open('config/application.yml', 'a') do |f|
   f.puts "\n"
   f.puts 'VAR_STORE_PASSWORD: "PASSWORD123"'
 end
-require 'string_in_file'
 StringInFile.replace('VAR_STORE_USERNAME', var_store_username, 'config/application.yml')
 StringInFile.replace('USERNAME123', username_x, 'config/application.yml')
 StringInFile.replace('VAR_STORE_PASSWORD', var_store_password, 'config/application.yml')
@@ -243,6 +213,15 @@ StringInFile.replace('VAR_STORE_PASSWORD', var_store_password, 'config/database.
 StringInFile.replace('DB_NAME_DEV', ENV['APP_DB_NAME_DEV'], 'config/database.yml')
 StringInFile.replace('DB_NAME_TEST', ENV['APP_DB_NAME_TEST'], 'config/database.yml')
 StringInFile.replace('DB_NAME_PRO', ENV['APP_DB_NAME_PRO'], 'config/database.yml')
+
+puts
+puts '----------------'
+puts 'Updating Gemfile'
+gem install line_containing
+require 'line_containing'
+LineContaining.delete_between_plus('# BEGIN: SQLite', '# END: SQLite', 'Gemfile')
+gem install remove_double_blank
+RemoveDoubleBlank.update('Gemfile')
 
 puts
 puts '--------------------'
