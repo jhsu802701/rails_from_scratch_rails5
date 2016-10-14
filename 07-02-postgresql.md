@@ -262,7 +262,8 @@ git push origin 07-02-postgresql
 * The Generic App Template uses SQLite in the development environment.  These PostgreSQL scripts are provided to make it easy to switch from SQLite to PostgreSQL WITHOUT forcing the use of it.  Because executing these PostgreSQL scripts makes changes in the source code, you will NOT be entering any more Git commands in the rest of this chapter.
 * Enter the command "sh pg_setup.sh".  To speed up the process, you can just use the default values given.  In the end, your app will use PostgreSQL instead of SQLite, and all of your tests should pass.
 * Reset the development environment.  After you have downloaded the master branch of this app's code, enter the command "git checkout 07-02-postgresql".
-* Enter the command "sh pg_setup.sh".
+* In one tmux window, enter the command "sh all.sh; sh server.sh".
+* After the all.sh and server.sh commands have been executed in the first tmux window, go to a second tmux window and enter the command "sh pg_setup.sh".
 
 ### Wrapping Up
 * If all goes well, submit a pull request on this branch in GitHub, and accept this pull request when you see that it passes.
