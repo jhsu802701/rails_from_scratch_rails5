@@ -10,6 +10,7 @@ Enter the command "git checkout -b 07-02-postgresql".
 * Add the following lines to the end of the Gemfile:
 ```
 # BEGIN: gems used for setting up PostgreSQL in the development environment
+# NOTE: Attempts to use "gem install" in the PostgreSQL setup scripts did not pan out.
 gem 'figaro'
 gem 'string_in_file'
 # END: gems used for setting up PostgreSQL in the development environment
