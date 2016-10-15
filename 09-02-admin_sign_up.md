@@ -60,6 +60,7 @@ Edit the config/routes.rb file.  Replace the line "devise_for :admins" with the 
   end
 ```
 * Enter the command "test1".  The test should now pass.
+
 ### Stylesheet
 * Add the following lines to the end of the file app/assets/stylesheets/custom.scss:
 
