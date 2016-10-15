@@ -1,0 +1,10 @@
+# Unit 9
+## Chapter 2: New Admin Sign Up
+
+In this chapter, you will disable the new user registration capability.  Anyone who visits the URL for registering a new admin should be automatically forwarded to the home page and see a flash message (highlighted in red) noting that new admin registrations are disabled.
+
+## Stylesheet
+
+## Routing
+
+## 
