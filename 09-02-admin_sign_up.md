@@ -95,6 +95,16 @@ Edit the config/routes.rb file.  Replace the line "devise_for :admins" with the 
  }
  ```
 * In your browser window, go to the URL http://localhost:3000/admins/sign_up (replacing "localhost" and/or "3000" if necessary).  You should be automatically forwarded to the home page, and you should see the message "Admin sign-ups are disabled." highlighted in red.
+
+### Rails Best Practices
+* Entering the command "rails_best_practices" falsely shows unused methods in app/controllers/admins/registration
+s_controller.rb.  You need to suppress this warning.
+* Enter the command "rails_best_practices -g".  This generates the file config/rails_best_practices.yml.
+* Edit the file config/rails_best_practices.yml.  Replace the line beginning with "RemoveUnusedMethodsInControllersCheck" with the following:
+```
+RemoveUnusedMethodsInControllersCheck: { except_methods: [],
+                                         ignored_files: ['app/controllers/admins/registrations_controller'] }
+```
 * Enter the command "sh git_check.sh".
 * Enter the following commands:
 ```
