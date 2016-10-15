@@ -121,7 +121,7 @@ bundle exec rails runner "eval(File.read 'admin_create.rb')"
 ```
 git add .
 git commit -m "Added admin_create.sh"
-* git push origin 09-01-new_admin
+git push origin 09-01-new_admin
 ```
 
 ### Wrapping Up
