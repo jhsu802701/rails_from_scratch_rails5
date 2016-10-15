@@ -4,7 +4,7 @@
 In this chapter, you will provide the general public the ability to sign up for a user account.
 
 ### New Branch
-Enter the command "git checkout -b 09-02-user_sign_up".
+Enter the command "git checkout -b 09-03-user_sign_up".
 
 ### Integration Test
 * Enter the command "rails generate integration_test users_signup".
