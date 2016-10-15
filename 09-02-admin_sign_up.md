@@ -13,17 +13,27 @@ Enter the command "git checkout -b 09-02-admin_sign_up".
 require 'test_helper'
 
 class AdminsSignupTest < ActionDispatch::IntegrationTest
-  visit new_admin_registration_path
+  include ApplicationHelper
 
-  # Flash message
-  assert page.has_text?('Admin sign-ups are disabled.')
+  test 'Cannot sign up as admin' do
+    visit new_admin_registration_path
 
-  # Home page
-  assert page.has_css?('title', text: full_title(''), visible: false)
-  assert page.has_css?('h1', text: 'Home')
+    # Flash message
+    assert page.has_text?('Admin sign-ups are disabled.')
+
+    # Home page
+    assert page.has_css?('title', text: full_title(''), visible: false)
+    assert page.has_css?('h1', text: 'Home')
+  end
 end
-
 ```
+* Enter the command "rails test".  You'll see that this new test fails.
+* Enter the following command:
+```
+alias test1='(command provided in test results with the TESTOPTS part omitted)'
+```
+* Enter the command "test1" to repeat just the admin signup test.
+
 ### Routing
 Edit the config/routes.rb file.  Replace the line "devise_for :admins" with the following:
 ```
@@ -48,10 +58,10 @@ Edit the config/routes.rb file.  Replace the line "devise_for :admins" with the 
     flash[:alert] = 'Admin sign-ups are disabled.'
     redirect_to root_path
   end
-* 
 ```
+* Enter the command "test1".  The test should now pass.
 ### Stylesheet
-Add the following lines to the end of the file app/assets/stylesheets/custom.scss:
+* Add the following lines to the end of the file app/assets/stylesheets/custom.scss:
 
 ```
 /*flash*/
@@ -83,5 +93,20 @@ Add the following lines to the end of the file app/assets/stylesheets/custom.scs
     text-align: left;
  }
  ```
-
-## 
+* In your browser window, go to the URL http://localhost:3000/admins/sign_up (replacing "localhost" and/or "3000" if necessary).  You should be automatically forwarded to the home page, and you should see the message "Admin sign-ups are disabled." highlighted in red.
+* Enter the command "sh git_check.sh".
+* Enter the following commands:
+```
+git add .
+git commit -m "Disabled admin sign-up"
+git push origin 09-02-admin_sign_up
+```
+### Wrapping Up
+* Go to the GitHub repository and click on the "Compare and pull request" button for this branch.
+* Accept this pull request to merge it with the master branch, but do NOT delete this branch.
+* Enter the following commands:
+```
+git checkout master
+git pull
+sh heroku.sh
+```
