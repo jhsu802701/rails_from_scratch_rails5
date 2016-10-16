@@ -80,6 +80,17 @@ end
 ```
 * Enter the command "test1".  The first integration test will pass, but the other three will fail.
 
+### Routing
+* Edit the config/routes.rb file.  Replace the line "devise_for :users" with the following lines:
+```
+  # BEGIN: user section
+  devise_for :users,
+             controllers: { registrations: 'users/registrations' }
+  # END: user section
+```
+* Enter the command "test1".  The first two tests will pass, but the second two tests will still fail.
+
+
 ## User Signup Page
 * Edit the user signup page.  Replace the contents of app/views/users/registrations/new.html.erb with the following:
 ```
@@ -131,14 +142,6 @@ to create much better passwords AND store them in encrypted form.
 
 <%= render "users/shared/links" %>
 ```
-* Edit the config/routes.rb file.  Replace the line "devise_for :users" with the following lines:
-```
-  # BEGIN: user section
-  devise_for :users,
-             controllers: { registrations: 'users/registrations' }
-  # END: user section
-```
-* Enter the command "test1".  The first two tests will pass, but the second two tests will still fail.
 
 ### Stylesheet
 Add the following code to the end of the file app/assets/stylesheets/custom.scss:
