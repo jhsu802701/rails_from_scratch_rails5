@@ -1,5 +1,5 @@
 # Unit 9
-## Chapter 10: Admin Password Reset
+## Chapter 9: Admin Password Reset
 
 ### New Branch
 
