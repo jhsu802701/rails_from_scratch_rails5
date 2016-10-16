@@ -218,6 +218,7 @@ input {
 ### User Registration Controller
 * Edit the file app/controllers/users/registrations_controller.rb and replace the content with the following:
 ```
+#
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
@@ -260,7 +261,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :last_name, :first_name, :email])
+    devise_parameter_sanitizer.permit(:sign_up,
+                                      keys: [:username, :last_name,
+                                             :first_name, :email])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
@@ -278,8 +281,30 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 end
-
 ```
 * At this point, the local server will allow you to sign up, but the second two integration tests will still fail.
+
+### Test Helper
+* Add the following lines to the end of the test/test_helper.rb file:
+```
+def sign_up_user(name_u, name_l, name_f, e, p1, p2)
+  visit root_path
+  assert page.has_link?('Sign up now!', href: new_user_registration_path)
+  click_on 'Sign up now!'
+  assert page.has_css?('title', text: full_title('New User'), visible: false)
+  assert page.has_css?('h1', text: 'New User')
+  assert page.has_text?('password management program')
+  assert page.has_text?('create much better passwords')
+  assert page.has_link?('KeePassX', href: 'http://www.keepassx.org')
+  fill_in('Last name', with: name_l)
+  fill_in('First name', with: name_f)
+  fill_in('Username', with: name_u)
+  fill_in('Email', with: e)
+  fill_in('Password', with: p1) # not yet changed
+  fill_in('Password confirmation', with: p2)
+  click_button('Sign up')
+end
+```
+* 
 
 ### Wrapping Up
