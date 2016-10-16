@@ -61,6 +61,9 @@ Edit the config/routes.rb file.  Replace the line "devise_for :admins" with the 
 ```
 * Enter the command "test1".  The test should now pass.
 
+### Admin Sign Up Page
+Delete the Admin Sign Up page.  Enter the command "git rm app/views/admins/registrations/new.html.erb".
+
 ### Stylesheet
 * Add the following lines to the end of the file app/assets/stylesheets/custom.scss:
 
