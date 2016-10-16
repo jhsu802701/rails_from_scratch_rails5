@@ -261,6 +261,9 @@ end
 ### Test Helper
 * Add the following lines to the end of the test/test_helper.rb file:
 ```
+# rubocop:disable Metrics/AbcSize
+# rubocop:disable Metrics/MethodLength
+# rubocop:disable Metrics/ParameterLists
 def sign_up_user(name_u, name_l, name_f, e, p1, p2)
   visit root_path
   assert page.has_link?('Sign up now!', href: new_user_registration_path)
@@ -278,6 +281,9 @@ def sign_up_user(name_u, name_l, name_f, e, p1, p2)
   fill_in('Password confirmation', with: p2)
   click_button('Sign up')
 end
+# rubocop:enable Metrics/AbcSize
+# rubocop:enable Metrics/MethodLength
+# rubocop:enable Metrics/ParameterLists
 ```
 * 
 
