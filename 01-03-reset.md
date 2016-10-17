@@ -12,7 +12,6 @@ It's a good idea to reset your development environment occasionally.  Because yo
 ### Factors that Increase the Risk Of Dependency Mismanagement
 * When you install a gem with the "gem install" command (instead of putting it in the Gemfile and entering "bundle install" or "bundle update"), your risk of dependency mismanagement increases.  This is the case, because entering the "gem install" command to install a gem does not add it to the source code.  In contrast, the Gemfile is part of the source code.
 * If you edit the Gemfile (ESPECIALLY if you delete gems), your risk of dependency mismanagement increases.  If you forget to enter "bundle install" or "bundle update" immediately afterwards, then your source code has changed, but your development environment has not.  This can lead to a false sense of security about this change.
-* If you edit the test/test_helper.rb script. your risk of dependency mismanagement increases.  The conditions of your development environment at the instant that you saved the changes may be different from the original development environment.  This is especially true when you first add features provided by the minitest-reporters gem.
 
 ### Resetting the Docker Container
 
