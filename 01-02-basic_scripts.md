@@ -236,10 +236,16 @@ echo "$NAME"
 git config --global user.name "$NAME"
 echo
 ```
+* Enter the command "sh credentials.sh" to run this script.
+* Enter the command "sh git_check.sh".
+* Enter the following commands:
+```
+git add .
+git commit -m "Added credentials.sh"
+git push origin 01-02-basic_scripts
+```
 
 ### Wrapping Up
-* Enter the command "sh git_check.sh".  There should be no new files or changes left to add.
-* Enter the command "git push origin 01-02-basic_scripts".
 * Go to the GitHub repository and click on the "Compare and pull request" button for this 01-02-basic_scripts branch.
 * Accept this pull request to merge it with the master branch, but do NOT delete this branch.
 * Enter the following commands:
