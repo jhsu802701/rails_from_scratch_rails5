@@ -188,6 +188,7 @@ git commit -m "Added git_check.sh"
 
 # This script provides one-stop shopping for entering your credentials.
 # Please run this script when you reset the Docker container.
+# The "git commit" command will not work without your Git credentials.
 
 # Output:
 # First argument if it is not blank
