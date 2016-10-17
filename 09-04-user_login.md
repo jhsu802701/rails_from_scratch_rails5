@@ -17,7 +17,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
 
   test 'Home page provides access to user login page' do
     visit root_path
-    assert page.has_link?('Login', href: new_user_session)
+    assert page.has_link?('Login', href: new_user_session_path)
   end
 
   test 'User login page has expected content' do
@@ -46,6 +46,19 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
 
   test 'Successful user login and logout, with remembering' do
     login_user('sconnery', 'Goldfinger', true)
+    assert page.has_text?('Signed in successfully.')
+    click_on 'Logout'
+    assert page.has_text?('Signed out successfully.')
+  end
+
+  test 'Successful new user login and logout' do
+    sign_up_user('jhiggins', 'Higgins', 'Jonathan',
+                 'jhiggins@example.com', 'Zeus and Apollo',
+                 'Zeus and Apollo')
+    open_email('jhiggins@example.com')
+    current_email.click_link 'Confirm my account'
+    assert page.has_text?('Your email address has been successfully confirmed.')
+    login_user('jhiggins', 'Zeus and Apollo', false)
     assert page.has_text?('Signed in successfully.')
     click_on 'Logout'
     assert page.has_text?('Signed out successfully.')
@@ -120,17 +133,16 @@ end
         <%-# BEGIN: VARIABLE SECTION -%>
         <%-######################### -%>
         <% if user_signed_in? %>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              User<br>Menu <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="divider"></li>
-              <li>
-                <%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>
-              </li>
-            </ul>
+          <%-##################### -%>
+          <%-# BEGIN: USER SECTION -%>
+          <%-##################### -%>
+          <li>
+          <%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>
           </li>
+          <%-################### -%>
+          <%-# END: USER SECTION -%>
+          <%-################### -%>
+        </li>
         <% else %>
           <li><%= link_to 'Login', new_user_session_path %></li>
         <% end %>
@@ -145,4 +157,22 @@ end
   </div>
 </header>
 ```
+### Test Helper
+* Add the following lines to the end of the file test/test_helper.rb:
+```
+def login_user(str_uname, str_pwd, status_remember)
+  visit root_path
+  click_on 'Login'
+  fill_in('Username', with: str_uname)
+  fill_in('Password', with: str_pwd)
+  if status_remember == true
+    check('Remember me')
+  else
+    uncheck('Remember me')
+  end
+  click_button('Log in')
+end
+```
+* Enter the command "test1".
+
 ### Wrapping Up
