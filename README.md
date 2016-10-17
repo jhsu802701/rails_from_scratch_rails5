@@ -32,14 +32,9 @@ Because this app is a platform for other apps and not intended as a stand-alone 
 * In the /home/winner/shared directory, enter the command "git clone (GitHub URL)".
 * Enter tmux mode.  In the first tmux screen, enter your project's root directory.  If necessary, enter "git checkout (name of branch)" to switch to the appropriate branch.
 * Enter the command "sh all.sh; sh server.sh".
+* While you wait for the build process to complete, start a second tmux window.  In this second window, enter the command "sh credentials.sh" to enter your GitHub and Heroku credentials.  The "git commit" command will not work without your Git credentials, and you cannot push to Heroku without your Heroku credentails.
 * Once the local server is running, open your web browser and view your project.
 * If the setup process and the local appearance and behavior of your app are as expected, then you have no dependency mismanagement problems.  If your project didn't behave as expected, it's time to figure out what's missing, and you should be thankful that you spotted the dependency mismanagement problem early on.
-* Before you can successfully use the "git commit" command, you need to reconfigure your Git with your GitHub credentials with the following commands (and providing your GitHub email address and name, respectively):
-```
-git config --global user.email "you@example.com"
-git config --global user.name "Your Name"
-```
-* Follow the instructions in the comments in heroku.sh to restore your ability to push to Heroku.  Enter the command "sh heroku.sh" to confirm that you have completed this step.
 
 ## Things Worth Remembering
 * Do NOT mix files and comments on the same line in .gitignore.  The filename/path MUST have its own dedicated line.
@@ -55,4 +50,4 @@ git config --global user.name "Your Name"
 
 ## Excluded Features
 * Guard is excluded.  Reasons for this omission are explained in the Quick Testing Chapter (Unit 3 Chapter 2).
-* SimpleCov and the Code Climate Test Coverage badge are excluded.  The biggest problem I encountered was showing the models to be uncovered in spite of the inclusion of model tests.  Additionally, I encountered divergences between the local environment's coverage results and Code Climate's coverage results.
+* SimpleCov and the Code Climate Test Coverage badge are excluded.  SimpleCov sometimes showed models to be uncovered in spite of the inclusion of model tests.  Additionally, I encountered divergences between the local environment's coverage results and Code Climate's coverage results.
