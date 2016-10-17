@@ -243,10 +243,10 @@ echo
 ```
 git add .
 git commit -m "Added credentials.sh"
-git push origin 01-02-basic_scripts
 ```
 
 ### Wrapping Up
+* Enter the command "git push origin 01-02-basic_scripts".
 * Go to the GitHub repository and click on the "Compare and pull request" button for this 01-02-basic_scripts branch.
 * Accept this pull request to merge it with the master branch, but do NOT delete this branch.
 * Enter the following commands:
