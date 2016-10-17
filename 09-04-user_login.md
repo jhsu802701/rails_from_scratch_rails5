@@ -103,9 +103,46 @@ end
 
 <%= render "users/shared/links" %>
 ```
-* In your web browser, go to the URL http://localhost:3000/users/sign_in (replacing the "localhost" and "3000" if necessary).  Now the desired user login form appears, but it doesn't work properly.
+* In your web browser, go to the URL http://localhost:3000/users/sign_in (replacing the "localhost" and "3000" if necessary).  Now the desired user login form appears, and you can log in as one of the seeded users.
+* Enter the command "test1".  The test for the expected content on the user signin page will be the only one that passes.
 
-### User Sessions Controller
-* Edit the file app/controllers/users/sessions_controller.rb and 
+### Home Page
+* Replace the contents of app/views/layouts/_header.html.erb with the following:
+```
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <%= link_to "sample app", root_path, id: "logo" %>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Home",   root_path %></li>
 
+        <%-######################### -%>
+        <%-# BEGIN: VARIABLE SECTION -%>
+        <%-######################### -%>
+        <% if user_signed_in? %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              User<br>Menu <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="divider"></li>
+              <li>
+                <%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>
+              </li>
+            </ul>
+          </li>
+        <% else %>
+          <li><%= link_to 'Login', new_user_session_path %></li>
+        <% end %>
+        <%-####################### -%>
+        <%-# END: VARIABLE SECTION -%>
+        <%-####################### -%>
+
+        <li><%= link_to "About",   about_path %></li>
+        <li><%= link_to "Contact",   contact_path %></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+```
 ### Wrapping Up
