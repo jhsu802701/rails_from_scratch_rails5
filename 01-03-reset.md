@@ -36,14 +36,6 @@ It's a good idea to reset your development environment occasionally.  Because yo
 *  If your project didn't behave as expected, it's time to figure out what's missing, and you should be thankful that you spotted the dependency mismanagement problem early on.
 *  Because your local server is occupying the first tmux screen, you need to start a second tmux screen to continue entering commands.
 
-### Reconfiguring Git
-
-Before you can successfully use the "git commit" command, you need to reconfigure your Git with your GitHub credentials with the following commands (and providing your GitHub email address and name, respectively): 
-```
-git config --global user.email "you@example.com"
-git config --global user.name "Your Name"
-```
-
 ### Conclusions
 
 *  If all goes well, it only takes a few minutes to check for dependency mismanagement problems.
