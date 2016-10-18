@@ -134,9 +134,9 @@ alias test1='(command provided in test results with the TESTOPTS part omitted)'
 ```
 git add .
 git commit -m "Added successful Capybara test"
-git push origin 03-03-capybara
 ```
 ### Wrapping Up
+* Enter the command "git push origin 03-03-capybara".
 * Go to the GitHub repository and click on the "Compare and pull request" button for this branch.
 * Accept this pull request to merge it with the master branch, but do NOT delete this branch.
 * Enter the following commands:
