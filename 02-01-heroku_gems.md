@@ -1,7 +1,7 @@
 # Unit 2
 # Chapter 1: Gems for Heroku
 
-In this chapter, you will deploy the project to Heroku.  Do NOT create a new Git branch in this chapter.  Remain in the master branch, because that is what will be deployed to Heroku.
+In this chapter, you will revise the Gemfile.  The main change is the addition of the pg (PostgreSQL) gem for the production environment.  If you do not make this change, you will not be able to deploy your app to Heroku.
 
 ### New Branch
 Enter the command "git checkout -b 02-01-heroku_gems"
