@@ -55,12 +55,11 @@ end
 * Enter the command "rake routes".  Now you'll see the routes "root", "about", and "contact".
 * Enter the command "sh testc.sh".  You'll see that the controller tests now pass.
 * Enter the command "sh testcl.sh".  You'll see that RuboCop and Rails Best Practices raise issues.
-* Enter the command "rm app/helpers/static_pages_helper.rb".
+* Enter the command "rm app/helpers/static_pages_helper.rb".  (You won't be using this helper.)
 * In the files app/controllers/static_pages_controller.rb, add the following line immediately before the line beginning with "class":
 ```
 #
 ```
-* Delete the file app/helpers/static_pages_helper.rb, because you won't be using this helper.
 * Enter the command "sh testcl.sh".  The only issue remaining is the unused method full_title in the application helper.  Again, you will address this later.
 * Enter the command "sh git_check.sh".
 * Enter the following commands:
