@@ -63,7 +63,7 @@ rails generate devise ADMIN
 ```
 * Note that the db/migrate directory now contains scripts that create the admin and user tables in the database and sets the parameters.
 * Enter the command "rails db:migrate" to implement these database migrations.  Until you do so, the admin and user tables will not exist.
-* Enter the command "sh git_check.sh".  You'll see some RuboCop offenses.
+* Enter the command "sh git_check.sh".  You'll see some RuboCop offenses and a long list of failing tests.
 * Add new lines consisting of just "#" prior to the class definitions in app/models/admins.rb and app/models/users.rb files.
 * Replace the test/fixtures/admins.yml and test/fixtures/users.yml files with the following content:
 ```
