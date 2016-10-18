@@ -17,6 +17,7 @@
 git push heroku master
 heroku run rails db:migrate
 ```
+* In your web browser, refresh the tab with your app's Heroku URL.  Now your app has replaced the Heroku splash screen.
 
 ### credentials.sh
 Add the following lines to the end of the credentials.sh file:
