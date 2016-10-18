@@ -213,7 +213,11 @@ end
   </script>
 <![endif]-->
 ```
-* Download a [Ruby on Rails logo] (https://bytebucket.org/railstutorial/sample_app_4th_ed/raw/c9d26c71bc901a9f2e2bb59f5bafc0fc82be7ffb/app/assets/images/rails.png) in png format and save it as app/assets/images/rails.png.
+* At this point, all of the static tests still fail.  However, you no longer get an error message when you try to view your site locally.
+* Download the Ruby on Rails logo by entering the following command:
+```
+curl -o app/assets/images/rails.png -OL railstutorial.org/rails.png
+```
 * Replace the content of app/views/static_pages/home.html.erb with the following content:
 ```
 <% provide(:title, '') %>
