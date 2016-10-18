@@ -32,3 +32,8 @@ git commit -m "New README.md page with badges"
 git push origin master
 ```
 * Enter the command "sh heroku.sh".
+
+### Conclusions
+* When you evaluate a pull request, check the test results provided before accepting it.
+* After you update the master branch, check the status badges on your app's GitHub page.
+* If the Circle CI build badge shows that your build failed even though it didn't fail in your local development environment, this is a red flag warning you of a potential dependency mismanagement issue.
