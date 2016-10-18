@@ -8,10 +8,15 @@
 
 ### Initial Deployment
 * Enter the command "heroku create".
-* In your browser, visit your assigned URL.  You will see the initial Heroku splash screen.
+* In your browser, visit your assigned URL.  You will see the initial Heroku splash screen, because the Heroku server does not yet have your source code.
 * Change your app's name (and URL) by entering the command "heroku rename (name)".
-* In your browser, visit your new URL.  You will see the initial Heroku splash screen.
+* In your browser, visit your new URL.  You will again see the initial Heroku splash screen.
 * To see which Heroku project you are currently configured to push to, enter the command "git remote -v".
+* To deploy your app, enter the following commands:
+```
+git push heroku master
+heroku run rails db:migrate
+```
 
 ### credentials.sh
 Add the following lines to the end of the credentials.sh file:
