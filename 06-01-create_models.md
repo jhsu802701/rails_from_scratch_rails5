@@ -20,10 +20,10 @@ git commit -m "Installed Devise gem"
 
 ### Configuring Devise
 * Enter the command "rails generate devise:install".
-* Create admin authentication controllers.  Enter the command "rails generate devise:controllers admins".  This creates admin authentication controllers that will be needed later.
-* Create admin authentication pages.  Enter the command "rails generate devise:views admins".  This creates admin authentication pages that you will use later.
 * Create user authentication controllers.  Enter the command "rails generate devise:controllers users".  This creates user authentication controllers that will be needed later.
 * Create user authentication pages.  Enter the command "rails generate devise:views users".  This creates user authentication pages that you will use later.
+* Create admin authentication controllers.  Enter the command "rails generate devise:controllers admins".  This creates admin authentication controllers that will be needed later.
+* Create admin authentication pages.  Enter the command "rails generate devise:views admins".  This creates admin authentication pages that you will use later.
 * Edit the files config/environments/development.rb AND config/environments/test.rb so that they look like this:
 
 ```
@@ -78,10 +78,10 @@ rails generate devise ADMIN
 ```
 git add .
 git commit -m "Added the admin and user models"
-git push origin 06-01-create_models
 ```
 
 ### Wrapping Up
+* Enter the command "git push origin 06-01-create_models".
 * Go to the GitHub repository and click on the "Compare and pull request" button for this branch.
 * Accept this pull request to merge it with the master branch, but do NOT delete this branch.
 * Enter the following commands:
