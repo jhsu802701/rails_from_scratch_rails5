@@ -2,7 +2,7 @@
 ## Chapter 2: Deploying to Heroku
 
 ### Configuration
-* If you have not already done so, create an account on [Heroku](https://www.heroku.com/).
+* If you have not already done so, create a free account on [Heroku](https://www.heroku.com/).
 * Enter the command "heroku login".
 * Enter the command "heroku keys:add".
 
@@ -47,6 +47,7 @@ echo '-------------'
 echo 'git remote -v'
 git remote -v
 ```
+* To enter your Git and Heroku credentials, enter the command "sh credentials.sh".
 
 ### heroku.sh
 * In the project's root path, create the file heroku.sh with the following contents:
@@ -65,25 +66,21 @@ echo '-------------'
 echo 'git remote -v'
 git remote -v
 ```
-* Create your own free account on Heroku if you do not already have one.
-* Follow the instructions in heroku.sh for configuring your local development environment and starting the new Heroku project.
-* Enter the command "sh heroku.sh" to deploy your project to Heroku.
-* Go to the URL of your Heroku app.  You should now see the "Welcome to public/index.html!" screen instead of the Heroku splash screen.  If you didn't already have the index.html file in your public directory, you would see an error message.  For some reason, Heroku does not display the initial Rails splash screen like your local server does.
+* To push your source code to Heroku, enter the command "sh heroku.sh".
 * Enter the command "sh git_check.sh".
 * Enter the following commands:
 ```
 git add .
-git commit -m "Added heroku.sh"
+git commit -m "Added scripts for deploying to Heroku"
 git push origin master
 ```
 * Enter the command "sh heroku.sh".
 
 ### Reset
-* When you reset your Docker container, you will need to reconfigure it to connect to Heroku again.  Because the process of setting up Heroku is still fresh in your mind, this is a good time to practice how to set up your local development environment for a legacy project instead of a new one.
 * Begin following the steps in Unit 1 Chapter 3 for resetting your development environment and downloading the source code.
-* After you have downloaded the source code, go to the first tmux screen, cd into the root directory of your project, and enter the command "sh all.sh; sh server.sh". (Remember that the test_code.sh script and tools like RuboCop and Rails Best Practices were not yet in place back in Unit 1 Chapter 3.)
-* Follow the steps needed to restore your ability to successfully use the "git commit" command.
-* Follow the steps in the heroku.sh script for restoring your ability to push to Heroku again. You should be able to push to Heroku again by entering the command "sh heroku.sh".
+* After you have downloaded the source code, go to the first tmux screen, cd into the root directory of your project, and enter the command "sh all.sh; sh server.sh".
+* While you wait for the previous step to be completed, open a second tmux window.  Go to the root directory of your project, and enter the command "sh credentials.sh".
+* Enter the command "sh heroku.sh".  There's nothing new to deploy, but if all goes well, you'll see that you can connect to your app on Heroku.
 
 ### Conclusions
 
