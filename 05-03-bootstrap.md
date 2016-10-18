@@ -146,7 +146,7 @@ git add .
 git commit -m "Configured Bootstrap styling"
 ```
 ### Wrapping Up
-* ENter the command "git push origin 05-03-bootstrap".
+* Enter the command "git push origin 05-03-bootstrap".
 * Go to the GitHub repository and click on the "Compare and pull request" button for this branch.
 * Accept this pull request to merge it with the master branch, but do NOT delete this branch.
 * Enter the following commands:
