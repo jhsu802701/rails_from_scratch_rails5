@@ -252,10 +252,10 @@ Email address: <%= raw(EmailMunger.encode('somebody@rubyonracetracks.com')) %>
 ```
 git add .
 git commit -m "Added static pages"
-git push origin 05-02-static_pages
 ```
 
 ### Wrapping Up
+* Enter the command "git push origin 05-02-static_pages".
 * Go to the GitHub repository and click on the "Compare and pull request" button for this branch.
 * Accept this pull request to merge it with the master branch, but do NOT delete this branch.
 * Enter the following commands:
