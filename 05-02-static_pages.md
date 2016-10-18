@@ -40,6 +40,7 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
 end
 ```
 * Enter the command "sh testc.sh".  You'll see that all of these static page controller tests fail.
+* Enter the command "rake routes".  This lists the routes available.  Given that the routes "root", "about", and "contact" (the paths listed in the static controller tests), it should be no surprise that the tests failed.
 * Replace the content of config/routes.rb with the following code:
 ```
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -51,6 +52,7 @@ Rails.application.routes.draw do
   # END: static pages
 end
 ```
+* Enter the command "rake routes".  Now you'll see the routes "root", "about", and "contact".
 * Enter the command "sh testc.sh".  You'll see that the controller tests now pass.
 * Enter the command "sh testcl.sh".  You'll see that RuboCop and Rails Best Practices raise issues.
 * In the file app/controllers/static_pages_controller.rb add the following line immediately before the one beginning with "class StaticPagesController":
