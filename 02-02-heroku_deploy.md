@@ -1,29 +1,43 @@
 # Unit 2
 ## Chapter 2: Deploying to Heroku
 
+### Configuration
+* If you have not already done so, create an account on [Heroku](https://www.heroku.com/).
+* Enter the command "heroku login".
+* Enter the command "heroku keys:create".
+
+### Initial Deployment
+* Enter the command "heroku create".
+* In your browser, visit your assigned URL.  You will see the initial Heroku splash screen.
+* Change your app's name (and URL) by entering the command "heroku rename (name)".
+* In your browser, visit your new URL.  You will see the initial Heroku splash screen.
+* To see which Heroku project you are currently configured to push to, enter the command "git remote -v".
+
+### credentials.sh
+Add the following lines to the end of the credentials.sh file:
+```
+echo
+echo "Enter your app's name on Heroku:"
+read APP_NAME
+
+HEROKU_NAME=$APP_NAME
+echo '--------------------'
+echo 'git remote rm heroku'
+git remote rm heroku
+
+echo '-----------------------------------------------------'
+echo "git remote add heroku git@heroku.com:$HEROKU_NAME.git"
+git remote add heroku git@heroku.com:$HEROKU_NAME.git
+
+echo '-------------'
+echo 'git remote -v'
+git remote -v
+```
+
 ### heroku.sh
 * In the project's root path, create the file heroku.sh with the following contents:
 ```
 #!/bin/bash
-
-# STARTING A NEW HEROKU PROJECT:
-# 1. Enter the command "heroku login".
-# 2. Enter the command "heroku keys:add".
-# 3. Enter the command "heroku create".
-# 4. In your browser, visit your assigned URL.  You will see the initial Heroku splash screen.
-# 5. Enter the command "heroku rename <name>".
-# 6. In your browser, visit your new URL.  You will see the initial Heroku splash screen.
-
-# SHOWING WHICH HEROKU PROJECT YOU ARE CURRENTLY CONFIGURED TO PUSH TO:
-# git remote -v
-
-# CONNECTING YOUR LOCAL DEVELOPMENT ENVIRONMENT TO A LEGACY HEROKU PROJECT:
-# (necessary when you git clone this project or switch from one Heroku project to another):
-# 1. Enter the command "heroku login".
-# 2. Enter the command "heroku keys:add".
-# 3. Enter the command "HEROKU_NAME='<name>' # Please fill in the name of your Heroku project".
-# 4. Enter the command "git remote rm heroku".
-# 5. Enter the command "git remote add heroku git@heroku.com:$HEROKU_NAME.git".
 
 echo '----------------------'
 echo 'git push heroku master'
