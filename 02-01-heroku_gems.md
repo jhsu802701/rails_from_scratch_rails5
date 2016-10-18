@@ -83,7 +83,6 @@ git push origin 02-01-heroku_gems
 * While you wait for the setup process to complete, open a second tmux window, go to your app's root directory, and enter the command "sh credentials.sh".
 * Once the local server is running, open your web browser and view your project.
 * If your project passed all tests, you are able to view your local app in the browser, and the outcome of running the all.sh script was as expected, then this means that you have covered all bases through the Docker image build scripts and the build_fast.sh script.
-* Follow the steps in Unit 1 Chapter 3 to restore your ability to use the "git commit" command.
 
 ### Wrapping Up 
 * Go to the GitHub repository and click on the "Compare and pull request" button for this 02-01-heroku_gems branch.
