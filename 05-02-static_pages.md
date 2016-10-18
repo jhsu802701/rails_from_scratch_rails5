@@ -55,7 +55,7 @@ end
 * Enter the command "rake routes".  Now you'll see the routes "root", "about", and "contact".
 * Enter the command "sh testc.sh".  You'll see that the controller tests now pass.
 * Enter the command "sh testcl.sh".  You'll see that RuboCop and Rails Best Practices raise issues.
-* In the file app/controllers/static_pages_controller.rb add the following line immediately before the one beginning with "class StaticPagesController":
+* In the files app/controllers/static_pages_controller.rb and app/helpers/static_pages_helper.rb, add the following line immediately before the lines beginning with "class":
 ```
 #
 ```
