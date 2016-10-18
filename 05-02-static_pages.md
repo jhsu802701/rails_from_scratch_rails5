@@ -83,9 +83,10 @@ git rm test/integration/test3_test.rb
 * Replace the content of the file test/integration_test/static_pages_test.rb with the following code:
 ```
 require 'test_helper'
-include ApplicationHelper
 
 class StaticPagesTest < ActionDispatch::IntegrationTest
+  include ApplicationHelper
+
   test 'home page has expected content' do
     visit root_path
     assert page.has_css?('title', text: full_title(''), visible: false)
