@@ -4,7 +4,7 @@
 ### Configuration
 * If you have not already done so, create an account on [Heroku](https://www.heroku.com/).
 * Enter the command "heroku login".
-* Enter the command "heroku keys:create".
+* Enter the command "heroku keys:add".
 
 ### Initial Deployment
 * Enter the command "heroku create".
@@ -16,6 +16,14 @@
 ### credentials.sh
 Add the following lines to the end of the credentials.sh file:
 ```
+echo '------------'
+echo 'heroku login'
+heroku login
+
+echo '---------------'
+echo 'heroku keys:add'
+heroku keys:add
+
 echo
 echo "Enter your app's name on Heroku:"
 read APP_NAME
