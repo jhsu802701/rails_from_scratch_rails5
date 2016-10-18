@@ -166,5 +166,6 @@ git checkout master
 git pull
 ```
 
-### Conclusion
-Be sure to run the RuboCop, Rails Best Practices, and Brakeman tools before entering a "git commit" command.  These steps are covered in the git_check.sh script.  Fix all violations prior to entering the "git add" and "git commit" commands.
+### Conclusions
+* Be sure to run the RuboCop, Rails Best Practices, and Brakeman tools before entering a "git commit" command.  These steps are covered in the git_check.sh script.  Fix all violations prior to entering the "git add" and "git commit" commands.
+* Run the all.sh command when you set up your app after resetting the Docker container.
