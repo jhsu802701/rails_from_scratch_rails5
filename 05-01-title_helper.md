@@ -46,10 +46,10 @@ end
 ```
 git add .
 git commit -m "Added title helper"
-git push origin 05-01-title_helper
 ```
 
 ### Wrapping Up
+* Enter the command "git push origin 05-01-title_helper".
 * Go to the GitHub repository and click on the "Compare and pull request" button for this branch.
 * Accept this pull request to merge it with the master branch, but do NOT delete this branch.
 * Enter the following commands:
