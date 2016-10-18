@@ -92,9 +92,9 @@ AllCops:
 Metrics/LineLength:
 . . .
 ```
+* Enter the command "sh test_code.sh".  There should be no RuboCop offenses remaining.
 * Enter the command "rails_best_practices -g" to generate the Rails Best Practices configuration file at config/rails_best_practices.yml.  When Rails Best Practices generates false alarms later, this file will be modified to suppress them.
-* Enter the command "sh test_code.sh" to run this script.
-* Enter the command "sh git_check.sh; rubocop -D; rails_best_practices".  The file gemsurance_report.html should be NOT listed.
+* Enter the command "sh git_check.sh; rails_best_practices .".
 * Enter the following commands:
 ```
 git add .
