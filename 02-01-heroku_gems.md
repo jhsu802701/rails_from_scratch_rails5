@@ -76,7 +76,7 @@ git commit -m "Updated Gemfile for Heroku"
 git push origin 02-01-heroku_gems
 ```
 ### Reset
-* While you have not actually changed the list of gems in your app (because you only rearranged the Gemfile and didn't delete gems), it's still a good idea at this point to reset everything to guard against dependency mismanagement risks.  If there are any problems, it's easier to resolve things now than later.
+* While you have not removed gems from the Gemfile, it's still a good idea at this point to reset everything to guard against dependency mismanagement risks.  If there are any problems, it's easier to resolve things now than later.
 * Begin following the steps in Unit 1 Chapter 3 for resetting your development environment and downloading the source code.
 * After you have downloaded the source code, go to the first tmux screen, cd into the root directory of your project, and enter the command "git checkout 02-01-heroku_gems".  This switches you from the master branch to the 02-01-heroku branch and downloads the source code revisions of this alternate branch.
 * Enter the command "sh all.sh; sh server.sh". (Remember that the test_code.sh script and tools like RuboCop and Rails Best Practices were not yet in place back in Unit 1 Chapter 3.)
