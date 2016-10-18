@@ -154,6 +154,9 @@ class StaticPagesTest < ActionDispatch::IntegrationTest
   end
 end
 ```
+* Enter the command "rails test".  All of the static pages tests will fail.
+* Enter the command "alias test1='(command provided in test results with the TESTOPTS part omitted)'".
+* Enter the command "test1".
 * Replace the content of the file app/views/layouts/application.html.erb with the following:
 ```
 <!DOCTYPE html>
@@ -179,6 +182,7 @@ end
   </body>
 </html>
 ```
+* If you look at your local site in your web browser, you'll see an error message due to missing layout pages.
 * Add the file app/views/layouts/_header.html.erb with the following content:
 ```
 <header class="navbar navbar-fixed-top navbar-inverse">
