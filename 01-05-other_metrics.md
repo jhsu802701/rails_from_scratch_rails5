@@ -136,6 +136,8 @@ git commit -m "Updated git_check.sh"
 ```
 #!/bin/bash
 
+# Run this script to set up your project again after resetting the Docker container.
+
 clear
 
 sh build_fast.sh
