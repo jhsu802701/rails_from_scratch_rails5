@@ -29,6 +29,9 @@ git commit -m "Installed Capybara gems"
 ### Setting Up Capybara
 * Add the following code to the end of the test/test_helper.rb file:
 ```
+#######################
+# BEGIN: Capybara setup
+#######################
 require 'capybara/rails'
 require 'capybara/email'
 
@@ -44,6 +47,9 @@ class ActionDispatch::IntegrationTest
     Capybara.use_default_driver
   end
 end
+#######################
+# END: Capybara setup
+#######################
 ```
 * Enter the command "sh git_check.sh".
 * Enter the following commands:
