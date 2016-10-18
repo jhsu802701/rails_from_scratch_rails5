@@ -4,7 +4,7 @@
 In this chapter, you will deploy the project to Heroku.  Do NOT create a new Git branch in this chapter.  Remain in the master branch, because that is what will be deployed to Heroku.
 
 ### New Branch
-Enter the command "git checkout -b 02-01-heroku"
+Enter the command "git checkout -b 02-01-heroku_gems"
 
 ### Gemfile
 * Heroku will not accept your attempt to deploy if your master branch does not specify the use of the pg (PostgreSQL) gem in production.  (As you can see in the original Gemfile, the pg gem is not specified.)
@@ -73,19 +73,19 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 ```
 git add .
 git commit -m "Updated Gemfile for Heroku"
-git push origin 02-01-heroku
+git push origin 02-01-heroku_gems
 ```
 ### Reset
 * While you have not actually changed the list of gems in your app (because you only rearranged the Gemfile and didn't delete gems), it's still a good idea at this point to reset everything to guard against dependency mismanagement risks.  If there are any problems, it's easier to resolve things now than later.
 * Begin following the steps in Unit 1 Chapter 3 for resetting your development environment and downloading the source code.
-* After you have downloaded the source code, go to the first tmux screen, cd into the root directory of your project, and enter the command "git checkout 02-01-heroku".  This switches you from the master branch to the 02-01-heroku branch and downloads the source code revisions of this alternate branch.
+* After you have downloaded the source code, go to the first tmux screen, cd into the root directory of your project, and enter the command "git checkout 02-01-heroku_gems".  This switches you from the master branch to the 02-01-heroku branch and downloads the source code revisions of this alternate branch.
 * Enter the command "sh all.sh; sh server.sh". (Remember that the test_code.sh script and tools like RuboCop and Rails Best Practices were not yet in place back in Unit 1 Chapter 3.)
 * Once the local server is running, open your web browser and view your project.
 * If your project passed all tests, you are able to view your local app in the browser, and the outcome of running the all.sh script was as expected, then this means that you have covered all bases through the Docker image build scripts and the build_fast.sh script.
 * Follow the steps in Unit 1 Chapter 3 to restore your ability to use the "git commit" command.
 
 ### Wrapping Up 
-* Go to the GitHub repository and click on the "Compare and pull request" button for this 02-01-heroku branch.
+* Go to the GitHub repository and click on the "Compare and pull request" button for this 02-01-heroku_gems branch.
 * Accept this pull request to merge it with the master branch, but do NOT delete this branch.
 * Enter the following commands:
 ```
