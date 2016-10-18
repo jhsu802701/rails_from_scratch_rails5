@@ -31,3 +31,4 @@ git add .
 git commit -m "New README.md page with badges"
 git push origin master
 ```
+* Enter the command "sh heroku.sh".
