@@ -1,6 +1,5 @@
 # Unit 2
 ## Chapter 4: Disabling Dangerous Tasks in Production
-No new branch is needed in this chapter.
 
 ### Configuration
 *  Making it easy to destroy data in the development and test environments is desirable.  However, there should be barriers to this in the production environment to prevent disasters.
