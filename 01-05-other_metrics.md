@@ -30,7 +30,7 @@ end
 git add .
 git commit -m "Installed additional code analysis gems" 
 ```
-### test_code.sh
+### Configuration
 * Create the file test_code.sh with the following content:
 ```
 #!/bin/bash
@@ -74,10 +74,11 @@ rails_best_practices .
 echo '----------------------------------------------'
 echo 'gemsurance --output log/gemsurance_report.html'
 gemsurance --output log/gemsurance_report.html
-echo 'The Gemsurance Report is in log/gemsurance_report.html .'
+echo 'The Gemsurance Report is at log/gemsurance_report.html .'
 ```
 * The Gemsurance Report shows which gems are up to date, which are out of date, and which have known security issues and thus more urgently need to be updated.
-* In the .rubocop.yml file, add the tmp/vulnerabilities/lib/* files, tmp/vulnerabilities/spec/* files, and tmp/vulnerabilities/Rakefile to the list of AllCops exclusions.  (These files are automatically generated when you run the test_code.sh script.)  The .rubucop.yml file should look like:
+* Running gemsurance creates files in the tmp/vulnerabilities directory, which are flagged by RuboCop.  Enter the command "rubocop -D" to see the offenses in these files.
+* In the .rubocop.yml file, add the tmp/vulnerabilities/lib/\* files, tmp/vulnerabilities/spec/\* files, and tmp/vulnerabilities/Rakefile to the list of AllCops exclusions.  (These files are automatically generated when you run the test_code.sh script.)  The .rubucop.yml file should look like:
 ```
 AllCops:
   Exclude:
@@ -91,6 +92,7 @@ AllCops:
 Metrics/LineLength:
 . . .
 ```
+* Enter the command "rails_best_practices -g" to generate the Rails Best Practices configuration file at config/rails_best_practices.yml.  When Rails Best Practices generates false alarms later, this file will be modified to suppress them.
 * Enter the command "sh test_code.sh" to run this script.
 * Enter the command "sh git_check.sh; rubocop -D; rails_best_practices".  The file gemsurance_report.html should be NOT listed.
 * Enter the following commands:
