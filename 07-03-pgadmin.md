@@ -13,7 +13,7 @@ pgAdmin is a GUI browser tool that you can install in your host environment to v
 * If your host environment is OS X or Windows, go to the [pgAdmin page](https://www.pgadmin.org/). Follow the instructions for downloading and installing SQLite Browser.
 
 ### Setting up PostgreSQL
-* Enter the command "sh pg_setup.sh; sh seed.sh".
+* Enter the command "sh pg_setup.sh; sh seed.sh".  (NOTE: You should seed the database BEFORE using pgAdmin to connect to it.  If you seed the database when you already have an active connection through pgAdmin, you may get an error message warning you that the database is being accessed by others.)
 * Get the development database name from the config/database.yml file.
 * Open the file config/application.yml.  Get the username and password from it.  The format of the contents of this file is:
 ```
