@@ -371,7 +371,7 @@ end
 rails generate migration add_params_to_admins last_name:string first_name:string username:string super:boolean
 rails db:migrate:reset
 ```
-* In the (time)_devise_create_admins.rb file, uncomment the lines under "## Confirmable" and "## Lockable" and the lines beginning with "add_index".
+* In the db/migrate/(time)_devise_create_admins.rb file, uncomment the lines under "## Confirmable" and "## Lockable" and the lines beginning with "add_index".
 * Enter the command "rails db:migrate:reset".
 * Replace the contents of the app/models/admin.rb file with the following:
 ```
