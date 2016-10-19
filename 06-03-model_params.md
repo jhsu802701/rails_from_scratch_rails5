@@ -1,9 +1,9 @@
 # Unit 6
-## Chapter 2: Model Parameters
+## Chapter 3: Model Parameters
 In this chapter, you will add parameters to the admin and user models.
 
 ### New Branch
-Enter the command "git checkout -b 06-02-model_params".
+Enter the command "git checkout -b 06-03-model_params".
 
 ### Adding Admin Parameters
 * Create admin model tests.  Replace the contents of test/models/admin_test.rb with the following:
@@ -478,10 +478,10 @@ blofeld:
 ```
 git add .
 git commit -m "Passes user model tests"
-git push origin 06-02-model_params
 ```
 
 ### Wrapping Up
+* Enter the command "git push origin 06-03-model_params".
 * Go to the GitHub repository and click on the "Compare and pull request" button for this branch.
 * Accept this pull request to merge it with the master branch, but do NOT delete this branch.
 * Enter the following commands:
