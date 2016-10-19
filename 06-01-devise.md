@@ -52,33 +52,6 @@ Style/CommentIndentation:
 git add .
 git commit -m "Configured Devise"
 ```
-### Creating the Admin and User Models
-* Create the user model by entering the following command:
-```
-rails generate devise USER
-```
-* Create the admin model by entering the following command:
-```
-rails generate devise ADMIN
-```
-* Note that the db/migrate directory now contains scripts that create the admin and user tables in the database and sets the parameters.
-* Enter the command "rails db:migrate" to implement these database migrations.  Until you do so, the admin and user tables will not exist.
-* Enter the command "sh git_check.sh".  You'll see some RuboCop offenses and a long list of failing tests.
-* Add new lines consisting of just "#" prior to the class definitions in app/models/admins.rb and app/models/users.rb files.
-* Replace the test/fixtures/admins.yml and test/fixtures/users.yml files with the following content:
-```
-# Read about fixtures at
-# http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-# These fixtures are disabled initially.
-# The original fixtures created by the Devise gem cause all tests to fail.
-```
-* Enter the command "sh git_check.sh".
-* Enter the following commands:
-```
-git add .
-git commit -m "Added the admin and user models"
-```
 
 ### Wrapping Up
 * Enter the command "git push origin 06-01-devise".
