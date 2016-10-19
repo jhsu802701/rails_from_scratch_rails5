@@ -18,7 +18,7 @@ rails generate devise ADMIN
 * Note that the db/migrate directory now contains scripts that create the admin and user tables in the database and sets the parameters.
 * Enter the command "rails db:migrate" to implement these database migrations. Until you do so, the admin and user tables will not exist.
 * Enter the command "sh git_check.sh". You'll see some RuboCop offenses and a long list of failing tests.
-* Refresh your local view of your app in your browser.  You will see error messages.
+* Refresh your local view of your app in your browser.  You will see an error message flagging devise_for as an undefined method.
 
 ### Fixing The App
 * Replace the test/fixtures/admins.yml and test/fixtures/users.yml files with the following content:
