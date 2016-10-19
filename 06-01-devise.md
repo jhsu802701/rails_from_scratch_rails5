@@ -1,10 +1,10 @@
 # Unit 6
-## Chapter 1: Creating Admin and User Models
+## Chapter 1: Devise
 
-In this chapter, you will create admin and user models with the Devise gem.  While Rails Tutorial shows how to create an authentication system, the Devise gem has much more credibility.  The purpose of the roll-your-own authentication system in the Rails Tutorial Sample App is to illustrate how authentication works, not to provide the best authentication system.
+In this chapter, you will install and configure Devise, the most popular gem for an authentication system.  While Rails Tutorial shows how to create an authentication system, the Devise gem has much more credibility.  The purpose of the roll-your-own authentication system in the Rails Tutorial Sample App is to illustrate how authentication works, not to provide the best authentication system.
 
 ### New Branch
-Start a new branch by entering the command "git checkout -b 06-01-create_models".
+Start a new branch by entering the command "git checkout -b 06-01-devise".
 
 ### Gemfile
 * Add the following line to the end of your Gemfile:
@@ -81,7 +81,7 @@ git commit -m "Added the admin and user models"
 ```
 
 ### Wrapping Up
-* Enter the command "git push origin 06-01-create_models".
+* Enter the command "git push origin 06-01-devise".
 * Go to the GitHub repository and click on the "Compare and pull request" button for this branch.
 * Accept this pull request to merge it with the master branch, but do NOT delete this branch.
 * Enter the following commands:
