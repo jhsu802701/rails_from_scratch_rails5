@@ -256,8 +256,8 @@ puts
 ```
 git add .
 git commit -m "Added PostgreSQL setup scripts"
-git push origin 07-02-postgresql
 ```
+* Enter the command "git push origin 07-02-postgresql".
 
 ### Using the PostgreSQL Scripts
 * The Generic App Template uses SQLite in the development environment.  These PostgreSQL scripts are provided to make it easy to switch from SQLite to PostgreSQL WITHOUT forcing the use of it.  Because executing these PostgreSQL scripts makes changes in the source code, you will NOT be entering any more Git commands in the rest of this chapter.
