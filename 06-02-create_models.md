@@ -4,7 +4,7 @@
 In this chapter, you will create the user and admin models.
 
 ### New Branch
-Enter the command "git checkout 06-02-create_models".
+Enter the command "git checkout -b 06-02-create_models".
 
 ### Adding Models
 * Create the user model by entering the following command:
