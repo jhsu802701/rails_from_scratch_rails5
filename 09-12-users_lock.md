@@ -1,5 +1,5 @@
 # Unit 9
-## Chapter 12: User Lock
+## Chapter 12: Users Lock
 
 ### New Branch
 
