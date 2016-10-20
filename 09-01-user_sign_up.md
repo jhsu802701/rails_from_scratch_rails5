@@ -68,15 +68,8 @@ end
   <h1>Home</h1>
   Welcome to Generic App Template!
   <br><br>
-  <% if user_signed_in? %>
-    You are logged in as a user (<%= current_user.username %>).
-  <% elsif admin_signed_in? %>
-    You are logged in as an admin (<%= current_admin.username %>).
-  <% else %>
-    <div class="center jumbotron">
-      <%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-lg btn-primary" %>
-    </div>
-  <% end %>
+  <%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-lg btn-primary" %>
+  <br><br>
   <%= link_to image_tag("rails.png", alt: "Rails logo"),
               'http://rubyonrails.org/' %>
 </div>
@@ -149,7 +142,7 @@ to create much better passwords AND store them in encrypted form.
 * Go to the user sign up page.  The expected content appears, but the appearance leaves something to be desired.  (Additions to the app/assets/stylesheets/custom.scss stylesheet will take care of this later.)  If you fill out the user sign up form, you'll get error messages telling you that your email address, last name, and first name cannot be blank.  (Modifications to the controller will take care of this later.)
 
 ### Stylesheet
-Add the following code to the end of the file app/assets/stylesheets/custom.scss:
+* Add the following code to the end of the file app/assets/stylesheets/custom.scss:
 ```
 /* forms */
 
@@ -193,6 +186,7 @@ input {
   margin-left: 0;
 }
 ```
+* Go to the user sign up page.  The form looks better but still does not provide the desired functionality.
 
 ### User Registration Controller
 * Edit the file app/controllers/users/registrations_controller.rb and replace the content with the following:
@@ -261,7 +255,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 end
 ```
-* At this point, the local server will allow you to sign up, but the second two integration tests will still fail.
+* Go to the user sign up page.  At this point, the local server will allow you to sign up, but the second two integration tests will still fail.
 
 ### Test Helper
 * Add the following lines to the end of the test/test_helper.rb file:
