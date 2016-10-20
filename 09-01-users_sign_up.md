@@ -259,6 +259,41 @@ end
 * The user registration controller above uses the default Devise setup EXCEPT when instructed otherwise.  Because the default Devise behavior is not desired in some cases, the exceptions must be specified in the user registration controller.
 * Go to the user sign up page.  At this point, the local server will allow you to sign up, but the second two integration tests will still fail.
 
+### Stylesheet (Flash)
+* When you successfully sign up as a user at this point, you will see the message "A message with a confirmation link has been sent to your email address. Please follow the link to activate your account."  This message will be in black letters on white text, but it would be desirable to display it in dark green letters in a light green box.  If you view the source, you'll see that the message about the confirmation link is within a div tag of class "alert alert-notice".
+* Add the following lines to the end of the file app/assets/stylesheets/custom.scss:
+```
+/*flash*/
+.alert-error {
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+    text-align: left;
+ }
+
+.alert-alert {
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+    text-align: left;
+ }
+
+.alert-success {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #468847;
+    text-align: left;
+ }
+
+.alert-notice {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #468847;
+    text-align: left;
+ }
+```
+* Now flashes messages will appear with special colors to alert you that an action was successful or unsuccessful.  However, there are still two failing integration tests to take care of.
+
 ### Test Helper
 * Add the following lines to the end of the test/test_helper.rb file:
 ```
@@ -287,6 +322,7 @@ end
 # rubocop:enable Metrics/ParameterLists
 ```
 * Enter the command "test1".  All tests should pass now.
+
 * Enter the command "sh git_check.sh".
 * Enter the following commands:
 ```
