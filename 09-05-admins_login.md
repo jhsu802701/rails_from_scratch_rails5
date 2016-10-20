@@ -93,45 +93,44 @@ end
   # BEGIN: admin
   devise_for :admins,
              controllers: { registrations: 'admins/registrations',
-                            sessions: 'users/sessions' }
+                            sessions: 'admins/sessions' }
   # END: admin
 ```
 * In your web browser, refresh the admin login page. You'll still see the generic Devise sign in page, but the controller is now "admins sessions".
 
-### Header
-* Replace the variable section of app/views/layouts/_header.html.erb with the following:
+### Admin Login Form
+* Replace the contents of the file app/views/admins/sessions/new.html.erb with the following:
 ```
-        <%-######################### -%>
-        <%-# BEGIN: VARIABLE SECTION -%>
-        <%-######################### -%>
-        <% if user_signed_in? %>
-          <%-##################### -%>
-          <%-# BEGIN: USER SECTION -%>
-          <%-##################### -%>
-          <li>
-          <%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>
-          </li>
-          <%-################### -%>
-          <%-# END: USER SECTION -%>
-          <%-################### -%>
-        </li>
-        <% elsif user_signed_in? %>
-          <%-###################### -%>
-          <%-# BEGIN: ADMIN SECTION -%>
-          <%-###################### -%>
-          <li>
-          <%= link_to 'Logout', destroy_admin_session_path, :method=>'delete' %>
-          </li>
-          <%-#################### -%>
-          <%-# END: ADMIN SECTION -%>
-          <%-#################### -%>        
-        <% else %>
-          <li><%= link_to 'Login', new_user_session_path %></li>
-        <% end %>
-        <%-####################### -%>
-        <%-# END: VARIABLE SECTION -%>
-        <%-####################### -%>
+<% provide(:title, 'Admin Login') %>
+
+<h1>Admin Login</h1>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end -%>
+
+  <div class="actions">
+    <%= f.submit "Log in" %>
+  </div>
+<% end %>
+
+<%= render "admins/shared/links" %>
 ```
+* In your web browser, refresh the admin login page. Now the desired admin login form appears.
 
 ### Home Page
 * Edit the file app/views/static_pages/home.html.erb and replace its contents with the following:
