@@ -33,15 +33,18 @@ end
 alias test1='(command provided in test results with the TESTOPTS part omitted)'
 ```
 * Enter the command "test1" to repeat just the admin signup test.
+* In your web browser, go to the URL http://localhost:3000/admins/sign_up (replacing the "localhost" and "3000" if necessary).  You'll see the generic sign up form provided by Devise.  In the debug window, you'll see the "devise/registrations" controller with the method "new".
 
 ### Routing
-Edit the config/routes.rb file.  Replace the line "devise_for :admins" with the following:
+* Edit the config/routes.rb file.  Replace the line "devise_for :admins" with the following:
 ```
   # BEGIN: admin
   devise_for :admins,
              controllers: { registrations: 'admins/registrations' }
   # END: admin
 ```
+* In your web browser, go to the URL http://localhost:3000/admins/sign_up (replacing the "localhost" and "3000" if necessary).  You'll still see the generic sign up form provided by Devise, but the debug window will show the "devise/registrations" controller instead.
+
 ### Admin Registration Controller
 * Edit the app/controllers/admins/registrations_controller.rb file.
 * Add the line "#" immediately above the line that begins with "class Admins".
