@@ -15,6 +15,18 @@ require 'test_helper'
 class UsersLoginTest < ActionDispatch::IntegrationTest
   include ApplicationHelper
 
+  def post_user_login(username)
+    # Flash
+    assert page.has_text?('Signed in successfully.')
+
+    # Successful login -> home page
+    assert page.has_css?('title', text: full_title(''), visible: false)
+    assert page.has_css?('h1', text: 'Home')
+
+    # Special message on home page
+    assert page.has_text?("You are logged in as a user (#{username}).")
+  end
+
   test 'Home page provides access to user login page' do
     visit root_path
     assert page.has_link?('Login', href: new_user_session_path)
@@ -39,27 +51,35 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
 
   test 'Successful user login and logout, no remembering' do
     login_user('sconnery', 'Goldfinger', false)
-    assert page.has_text?('Signed in successfully.')
+    post_user_login('sconnery')
     click_on 'Logout'
     assert page.has_text?('Signed out successfully.')
   end
 
   test 'Successful user login and logout, with remembering' do
     login_user('sconnery', 'Goldfinger', true)
-    assert page.has_text?('Signed in successfully.')
+    post_user_login('sconnery')
     click_on 'Logout'
     assert page.has_text?('Signed out successfully.')
   end
 
-  test 'Successful new user login and logout' do
+  test 'Proper response for new user login and logout' do
     sign_up_user('jhiggins', 'Higgins', 'Jonathan',
                  'jhiggins@example.com', 'Zeus and Apollo',
                  'Zeus and Apollo')
+
+    # Logging in before confirmation
+    login_user('jhiggins', 'Zeus and Apollo', false)
+    assert page.has_text?('You have to confirm your email address before continuing.')
+
+    # Confirmation
     open_email('jhiggins@example.com')
     current_email.click_link 'Confirm my account'
     assert page.has_text?('Your email address has been successfully confirmed.')
+
+    # Logging in after confirmation
     login_user('jhiggins', 'Zeus and Apollo', false)
-    assert page.has_text?('Signed in successfully.')
+    post_user_login('jhiggins')
     click_on 'Logout'
     assert page.has_text?('Signed out successfully.')
   end
@@ -84,7 +104,7 @@ end
 ```
 * In your web browser, refresh/visit the URL http://localhost:3000/users/sign_in (replacing the "localhost" and "3000" if necessary).  A login form appears.  You'll still see the generic Devise sign in page, but the controller is now "users sessions".
 
-### Home Page
+### Header
 * Replace the contents of app/views/layouts/_header.html.erb with the following:
 ```
 <header class="navbar navbar-fixed-top navbar-inverse">
@@ -122,7 +142,8 @@ end
   </div>
 </header>
 ```
-
+* Enter the command "test1".  The first integration test passes, but the rest fail.
+* In your web browser, go to your app's home page.  Click on the "Login" link in the header to visit the user sign in page, which is still the generic form provided by Devise.
 
 ### User Login Form
 * Replace the content of the app/views/users/sessions/new.html.erb file with the following:
@@ -156,10 +177,10 @@ end
 
 <%= render "users/shared/links" %>
 ```
+* Enter the command "test1".  The first two integration tests will pass, but the rest will still fail.
 * In your web browser, go to the URL http://localhost:3000/users/sign_in (replacing the "localhost" and "3000" if necessary).  Now the desired user login form appears, and you can log in as one of the seeded users.
-* Enter the command "test1".  The test for the expected content on the user signin page will be the only one that passes.
 
-### Test Helper
+### Test Helper (def login_user)
 * Add the following lines to the end of the file test/test_helper.rb:
 ```
 def login_user(str_uname, str_pwd, status_remember)
@@ -175,6 +196,87 @@ def login_user(str_uname, str_pwd, status_remember)
   click_button('Log in')
 end
 ```
-* Enter the command "test1".
+* Enter the command "test1".  The first 4 tests pass, but the last 3 still fail because the home page does not explicity say, "You are logged in as a user."
+* When you visit your app as a logged-in user, you'll still see the "Sign up now!" button on the home page.  Clicking on that button will simply give you a message telling you that you are already signed in.  However, you still need to remove this button, because it looks bad to provide options that are not actually viable.
+
+### Home Page
+* Replace the contents of the file app/views/static_pages/home.html.erb with the following:
+```
+<% provide(:title, '') %>
+
+<div class="center jumbotron">
+  <h1>Home</h1>
+  Welcome to Generic App Template!
+  <br><br>
+  <%-######################### -%>
+  <%-# BEGIN: VARIABLE SECTION -%>
+  <%-######################### -%>
+  <% if user_signed_in? %>
+    You are logged in as a user (<%= current_user.username %>).
+  <% else %>
+    <div class="center jumbotron">
+      <%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-lg btn-primary" %>
+    </div>
+  <% end %>
+  <%-####################### -%>
+  <%-# END: VARIABLE SECTION -%>
+  <%-####################### -%>
+  <br><br>
+  <%= link_to image_tag("rails.png", alt: "Rails logo"),
+              'http://rubyonrails.org/' %>
+</div>
+```
+* Enter the command "test1".  Now the first 4 tests and last test pass, but 2 tests still fail, because they rely on the user test fixtures that were not actually loaded.
+
+### Test Helper (Capybara)
+* In the file test/test_helper.rb, replace the Capybara section with the following code:
+```
+#######################
+# BEGIN: Capybara setup
+#######################
+require 'capybara/rails'
+require 'capybara/email'
+
+class ActionDispatch::IntegrationTest
+  # Make the Capybara DSL available in all integration tests
+  include Capybara::DSL
+  include Capybara::Email::DSL
+
+  # Load up test fixtures at the beginning of each test
+  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable Metrics/MethodLength
+  def setup
+    @a1 = admins(:elle_woods)
+    @a2 = admins(:vivian_kensington)
+    @a3 = admins(:emmett_richmond)
+    @a4 = admins(:paulette_bonafonte)
+    @a5 = admins(:professor_callahan)
+    @a6 = admins(:warner_huntington)
+
+    @u1 = users(:connery)
+    @u2 = users(:lazenby)
+    @u3 = users(:moore)
+    @u4 = users(:dalton)
+    @u5 = users(:brosnan)
+    @u6 = users(:craig)
+    @u7 = users(:blofeld)
+  end
+  # rubocop:enable Metrics/AbcSize
+  # rubocop:enable Metrics/MethodLength
+
+  # Reset sessions and driver between tests
+  # Use super wherever this method is redefined in your individual test classes
+  def teardown
+    Capybara.reset_sessions!
+    Capybara.use_default_driver
+  end
+end
+#######################
+# END: Capybara setup
+#######################
+```
+* Enter the command "test1".  Now all of the new integration tests should pass.
+* Enter the command "sh git_check.sh".  All tests should pass, and there should be no 
+
 
 ### Wrapping Up
