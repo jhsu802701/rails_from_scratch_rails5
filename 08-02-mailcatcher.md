@@ -44,7 +44,6 @@ echo 'If you are using Docker Machine, replace "localhost" with the appropriate 
 ```
 git add .
 git commit -m "Added mailcatcher.sh"
-git push origin 08-02-mailcatcher
 ```
 
 ### Wrapping Up
