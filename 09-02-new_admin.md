@@ -1,10 +1,10 @@
 # Unit 9
-## Chapter 2: New Admin
+## Chapter 2: New Admins
 
 In this chapter, you will add scripts for creating a new admin.  Because the admin role is not intended to be available to the general public, scripts are used for creating new admins.
 
 ### New Branch
-Enter the command "git checkout -b 09-02-new_admin".
+Enter the command "git checkout -b 09-02-new_admins".
 
 ### admin_create.rb
 * Create the file admin_create.rb with the following content:
