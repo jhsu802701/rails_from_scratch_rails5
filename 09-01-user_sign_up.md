@@ -62,6 +62,7 @@ end
 * Replace the contents of the app/views/static_pages/home.html.erb with the following:
 ```
 <% provide(:title, '') %>
+
 <div class="center jumbotron">
   <h1>Home</h1>
   Welcome to Generic App Template!
