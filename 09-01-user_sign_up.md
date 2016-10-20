@@ -56,6 +56,7 @@ end
 * Enter the command "sh build_fast.sh".  All 4 of your new integration tests will fail.
 * Enter the command "alias test1=(command for running failed tests minus TESTOPTS portion)".
 * Enter the command "test1" to run just these tests again.
+* In your browser, go to the URL http://localhost:3000/users/sign_up .  (Replace "localhost" and/or "3000" if your setup calls for that.)  You'll see the standard Devise sign up form.  The debug window will show that the controller in use is "devise/registrations", and the action in use is "new".
 
 ### Home Page
 * Replace the contents of the app/views/static_pages/home.html.erb with the following:
