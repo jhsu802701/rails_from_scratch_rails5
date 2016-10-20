@@ -71,7 +71,7 @@ end
 * Enter the command "sh build_fast.sh".  All of the new integration tests will fail.
 * Enter the command "alias test1='(insert command to rerun failed tests, minus the TESTOPTS portion)'".
 * Enter the command "test1".
-* In your web browser, go to the URL http://localhost:3000/users/sign_in (replacing the "localhost" and "3000" if necessary).  You'll get a routing error message.
+* In your web browser, go to the URL http://localhost:3000/users/sign_in (and replace the "localhost" and "3000" if necessary).  You'll see a generic Devise sign in page.  The debug box will show the "devise/sessions" controller and the action "new".
 
 ### Routing
 * In the config/routes.rb file, replace the user section with the following:
@@ -82,42 +82,7 @@ end
                             sessions: 'users/sessions' }
   # END: user section
 ```
-* In your web browser, go to the URL http://localhost:3000/users/sign_in (replacing the "localhost" and "3000" if necessary).  A login form appears.  The next step is to replace the user login form.
-
-### User Login Form
-* Replace the content of the app/views/users/sessions/new.html.erb file with the following:
-```
-<% provide(:title, "User Login") %>
-
-<h1>User Login</h1>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
-```
-* In your web browser, go to the URL http://localhost:3000/users/sign_in (replacing the "localhost" and "3000" if necessary).  Now the desired user login form appears, and you can log in as one of the seeded users.
-* Enter the command "test1".  The test for the expected content on the user signin page will be the only one that passes.
+* In your web browser, refresh/visit the URL http://localhost:3000/users/sign_in (replacing the "localhost" and "3000" if necessary).  A login form appears.  You'll still see the generic Devise sign in page, but the controller is now "users sessions".
 
 ### Home Page
 * Replace the contents of app/views/layouts/_header.html.erb with the following:
@@ -157,6 +122,43 @@ end
   </div>
 </header>
 ```
+
+
+### User Login Form
+* Replace the content of the app/views/users/sessions/new.html.erb file with the following:
+```
+<% provide(:title, "User Login") %>
+
+<h1>User Login</h1>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end -%>
+
+  <div class="actions">
+    <%= f.submit "Log in" %>
+  </div>
+<% end %>
+
+<%= render "users/shared/links" %>
+```
+* In your web browser, go to the URL http://localhost:3000/users/sign_in (replacing the "localhost" and "3000" if necessary).  Now the desired user login form appears, and you can log in as one of the seeded users.
+* Enter the command "test1".  The test for the expected content on the user signin page will be the only one that passes.
+
 ### Test Helper
 * Add the following lines to the end of the file test/test_helper.rb:
 ```
