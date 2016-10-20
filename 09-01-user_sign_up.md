@@ -94,7 +94,7 @@ end
 ```
 * At this point, the test results will not change.  In your local web browser, the sign up page looks the same.  However, the debug window on the page shows that the "users/registration" controller is in use.  (The action in use is still "new".)
 
-## User Signup Page
+### User Signup Page
 * Edit the user signup page.  Replace the contents of app/views/users/registrations/new.html.erb with the following:
 ```
 <% provide(:title, "New User") %>
