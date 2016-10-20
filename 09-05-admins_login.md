@@ -129,6 +129,14 @@ end
 <%= render "admins/shared/links" %>
 ```
 * In your web browser, refresh the admin login page. Now the desired admin login form appears.
+* Enter the command "test1".  The test for the expected content on the admin login page will pass, but the other 7 tests will fail.
+
+### User Login Page
+* Add the following lines to the end of the file app/views/users/sessions/new.html.erb:
+```
+<br><br>
+<%= link_to "Admin Login", new_admin_session_path %><br />
+```
 
 ### Home Page
 * Edit the file app/views/static_pages/home.html.erb and replace its contents with the following:
