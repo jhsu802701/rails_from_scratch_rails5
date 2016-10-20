@@ -2,7 +2,7 @@
 ## Chapter 4: User Login
 
 ### New Branch
-Enter the command "git checkout -b 09-04-user_login".
+Enter the command "git checkout -b 09-04-users_login".
 
 ### Integration Test
 * Enter the command "rails generate integration_test users_login".
