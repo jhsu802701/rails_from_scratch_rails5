@@ -197,7 +197,7 @@ def login_user(str_uname, str_pwd, status_remember)
   click_button('Log in')
 end
 ```
-* Enter the command "test1".  The first 4 tests pass, but the last 3 still fail because the home page does not explicity say, "You are logged in as a user."
+* Enter the command "test1".  The first 4 tests pass, but the last 3 still fail because the home page does not explicity say, "You are logged in as a user" and list the username.
 * When you visit your app as a logged-in user, you'll still see the "Sign up now!" button on the home page.  Clicking on that button will simply give you a message telling you that you are already signed in.  However, you still need to remove this button, because it looks bad to provide options that are not actually viable.
 
 ### Home Page
