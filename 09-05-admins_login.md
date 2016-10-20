@@ -139,6 +139,23 @@ end
 ```
 * Enter the command "test1".  The first two tests should pass, but the other 6 will still fail.
 
+### Test Helper
+* Add the following lines to the end of the test/test_helper.rb file:
+```
+def login_admin(str_uname, str_pwd, status_remember)
+  visit_admin_login
+  fill_in('Username', with: str_uname)
+  fill_in('Password', with: str_pwd)
+  if status_remember == true
+    check('Remember me')
+  else
+    uncheck('Remember me')
+  end
+  click_button('Log in')
+end
+```
+
+
 ### Home Page
 * Edit the file app/views/static_pages/home.html.erb and replace its contents with the following:
 ```
