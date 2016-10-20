@@ -142,6 +142,7 @@ end
 ### Test Helper
 * Add the following lines to the end of the test/test_helper.rb file:
 ```
+# rubocop:disable Metrics/MethodLength
 def login_admin(str_uname, str_pwd, status_remember)
   visit root_path
   click_on 'Login'
@@ -155,6 +156,7 @@ def login_admin(str_uname, str_pwd, status_remember)
   end
   click_button('Log in')
 end
+# rubocop:enable Metrics/MethodLength
 ```
 * Enter the command "test1".  The first 4 tests pass, but the 4 remaining tests fail because not all of the expected content appears on the home page when logged in as an admin.
 
