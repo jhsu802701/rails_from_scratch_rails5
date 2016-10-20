@@ -1,5 +1,5 @@
 # Unit 9
-## Chapter 4: User Login
+## Chapter 4: Users Login
 
 ### New Branch
 Enter the command "git checkout -b 09-04-users_login".
