@@ -143,7 +143,9 @@ end
 * Add the following lines to the end of the test/test_helper.rb file:
 ```
 def login_admin(str_uname, str_pwd, status_remember)
-  visit_admin_login
+  visit root_path
+  click_on 'Login'
+  click_on 'Admin Login'
   fill_in('Username', with: str_uname)
   fill_in('Password', with: str_pwd)
   if status_remember == true
