@@ -34,9 +34,7 @@ class AdminsLoginTest < ActionDispatch::IntegrationTest
   end
 
   test 'Admin login page has expected content' do
-    visit root_path
-    click_on 'Login'
-    click_on 'Admin Login'
+    visit new_admin_session_path
     assert page.has_css?('title', text: full_title('Admin Login'), visible: false)
     assert page.has_css?('h1', text: 'Admin Login')
   end
