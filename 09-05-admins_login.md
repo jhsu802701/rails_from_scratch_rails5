@@ -128,7 +128,7 @@ end
 
 <%= render "admins/shared/links" %>
 ```
-* In your web browser, refresh the admin login page. Now the desired admin login form appears.
+* In your web browser, refresh the admin login page. Now the desired admin login form appears, and you can log in as one of the seeded admins.
 * Enter the command "test1".  The test for the expected content on the admin login page will pass, but the other 7 tests will fail.
 
 ### User Login Page
@@ -137,6 +137,7 @@ end
 <br><br>
 <%= link_to "Admin Login", new_admin_session_path %><br />
 ```
+* Enter the command "test1".  The first two tests should pass, but the other 6 will still fail.
 
 ### Home Page
 * Edit the file app/views/static_pages/home.html.erb and replace its contents with the following:
