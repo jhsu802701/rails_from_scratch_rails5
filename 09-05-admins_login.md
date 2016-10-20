@@ -99,15 +99,8 @@ end
 * In your web browser, refresh the admin login page. You'll still see the generic Devise sign in page, but the controller is now "admins sessions".
 
 ### Header
-* Replace the contents of app/views/layouts/_header.html.erb with the following:
+* Replace the variable section of app/views/layouts/_header.html.erb with the following:
 ```
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-    <%= link_to "sample app", root_path, id: "logo" %>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home",   root_path %></li>
-
         <%-######################### -%>
         <%-# BEGIN: VARIABLE SECTION -%>
         <%-######################### -%>
@@ -138,13 +131,6 @@ end
         <%-####################### -%>
         <%-# END: VARIABLE SECTION -%>
         <%-####################### -%>
-
-        <li><%= link_to "About",   about_path %></li>
-        <li><%= link_to "Contact",   contact_path %></li>
-      </ul>
-    </nav>
-  </div>
-</header>
 ```
 
 ### Home Page
