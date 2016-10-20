@@ -124,7 +124,7 @@ git commit -m "Added admin_create.sh"
 ```
 
 ### Wrapping Up
-* Enter the command "git push origin 09-02-new_admin".
+* Enter the command "git push origin 09-02-new_admins".
 * Go to the GitHub repository and click on the "Compare and pull request" button for this branch.
 * Accept this pull request to merge it with the master branch, but do NOT delete this branch.
 * Enter the following commands:
