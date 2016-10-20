@@ -278,6 +278,19 @@ end
 ```
 * Enter the command "test1".  Now all of the new integration tests should pass.
 * Enter the command "sh git_check.sh".  All tests should pass, and there should be no 
-
+* Enter the following commands:
+```
+git add .
+git commit -m "Added user signup"
+```
 
 ### Wrapping Up
+* Enter the command "git push origin 09-04-users_login".
+* Go to the GitHub repository and click on the "Compare and pull request" button for this branch.
+* Accept this pull request to merge it with the master branch, but do NOT delete this branch.
+* Enter the following commands:
+```
+git checkout master
+git pull
+sh heroku.sh
+```
