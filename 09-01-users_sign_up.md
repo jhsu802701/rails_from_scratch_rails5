@@ -256,6 +256,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 end
 ```
+* The user registration controller above uses the default Devise setup EXCEPT when instructed otherwise.  Because the default Devise behavior is not desired in some cases, the exceptions must be specified in the user registration controller.
 * Go to the user sign up page.  At this point, the local server will allow you to sign up, but the second two integration tests will still fail.
 
 ### Test Helper
