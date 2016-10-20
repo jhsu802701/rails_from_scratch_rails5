@@ -186,7 +186,8 @@ input {
   margin-left: 0;
 }
 ```
-* Go to the user sign up page.  The form looks better but still does not provide the desired functionality.
+* The checkbox and session_remember_me specifications in the stylesheet will be used for logging in as a user or admin.  Logging in will be covered later.
+* In your browser, go to the user sign up page.  The form looks better but still does not provide the desired functionality.
 
 ### User Registration Controller
 * Edit the file app/controllers/users/registrations_controller.rb and replace the content with the following:
