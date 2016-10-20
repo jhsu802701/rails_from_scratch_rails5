@@ -4,7 +4,7 @@
 In this chapter, you will provide the general public the ability to sign up for a user account.
 
 ### New Branch
-Enter the command "git checkout -b 09-01-user_sign_up".
+Enter the command "git checkout -b 09-01-users_sign_up".
 
 ### Integration Test
 * Enter the command "rails generate integration_test users_signup".
@@ -293,7 +293,7 @@ git commit -m "Added user signup"
 ```
 
 ### Wrapping Up
-* Enter the command "git push origin 09-01-user_sign_up".
+* Enter the command "git push origin 09-01-users_sign_up".
 * Go to the GitHub repository and click on the "Compare and pull request" button for this branch.
 * Accept this pull request to merge it with the master branch, but do NOT delete this branch.
 * Enter the following commands:
