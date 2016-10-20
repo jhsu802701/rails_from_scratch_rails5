@@ -156,11 +156,56 @@ def login_admin(str_uname, str_pwd, status_remember)
   click_button('Log in')
 end
 ```
-
+* Enter the command "test1".  The first 4 tests pass, but the 4 remaining tests fail because not all of the expected content appears on the home page when logged in as an admin.
 
 ### Home Page
-* Edit the file app/views/static_pages/home.html.erb and replace its contents with the following:
+* In the file app/views/static_pages/home.html.erb replace the variable section with the following code:
 ```
+  <%-######################### -%>
+  <%-# BEGIN: VARIABLE SECTION -%>
+  <%-######################### -%>
+  <% if user_signed_in? %>
+    You are logged in as a user (<%= current_user.username %>).
+  <% elsif admin_signed_in? %>
+    You are logged in as an admin (<%= current_admin.username %>).
+  <% else %>
+    <div class="center jumbotron">
+      <%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-lg btn-primary" %>
+    </div>
+  <% end %>
+  <%-####################### -%>
+  <%-# END: VARIABLE SECTION -%>
+  <%-####################### -%>
+```
+* Enter the command "test1".  Now the last 4 tests fail because the Logout link is not available.
+
+### Header
+* In the file app/views/layouts/_header.html.erb, replace the variable section with the following code:
+```
+        <%-######################### -%>
+        <%-# BEGIN: VARIABLE SECTION -%>
+        <%-######################### -%>
+        <% if user_signed_in? %>
+          <li>
+          <%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>
+          </li>
+        <% elsif admin_signed_in? %>
+          <li>
+          <%= link_to 'Logout', destroy_admin_session_path, :method=>'delete' %>
+          </li>
+        <% else %>
+          <li><%= link_to 'Login', new_user_session_path %></li>
+        <% end %>
+        <%-####################### -%>
+        <%-# END: VARIABLE SECTION -%>
+        <%-####################### -%>
+```
+* Enter the command "test1".  Now all of the tests pass.
+* Enter the command "sh git_check.sh".  All tests should pass, and RuboCop and Rails Best Practices should show no offenses.
+* Enter the following commands:
+```
+git add .
+git commit -m "Added admin login"
 ```
 
 ### Wrapping Up
