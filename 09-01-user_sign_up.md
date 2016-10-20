@@ -54,7 +54,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
 end
 ```
 * Enter the command "sh build_fast.sh".  All 4 of your new integration tests will fail.
-* From the error outputs, use the alias command to create the "test1" alias that tests all of these new integration tests.
+* Enter the command "alias test1=(command for running failed tests minus TESTOPTS portion)".
 * Enter the command "test1" to run just these tests again.
 
 ### Home Page
