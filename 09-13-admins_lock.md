@@ -1,5 +1,5 @@
 # Unit 9
-## Chapter 13: Admin Lock
+## Chapter 13: Admins Lock
 
 ### New Branch
 
