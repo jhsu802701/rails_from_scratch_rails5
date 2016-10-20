@@ -1,5 +1,5 @@
 # Unit 9
-## Chapter 1: User Sign Up
+## Chapter 1: Users Sign Up
 
 In this chapter, you will provide the general public the ability to sign up for a user account.
 
