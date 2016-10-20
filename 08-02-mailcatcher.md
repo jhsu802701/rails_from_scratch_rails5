@@ -48,6 +48,7 @@ git push origin 08-02-mailcatcher
 ```
 
 ### Wrapping Up
+* Enter the command "git push origin 08-02-mailcatcher".
 * Go to the GitHub repository and click on the "Compare and pull request" button for this branch.
 * Accept this pull request to merge it with the master branch, but do NOT delete this branch.
 * Enter the following commands:
