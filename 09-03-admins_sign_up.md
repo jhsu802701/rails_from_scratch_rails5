@@ -43,7 +43,7 @@ alias test1='(command provided in test results with the TESTOPTS part omitted)'
              controllers: { registrations: 'admins/registrations' }
   # END: admin
 ```
-* In your web browser, go to the URL http://localhost:3000/admins/sign_up (replacing the "localhost" and "3000" if necessary).  You'll still see the generic sign up form provided by Devise, but the debug window will show the "devise/registrations" controller instead.
+* In your web browser, go to the URL http://localhost:3000/admins/sign_up (replacing the "localhost" and "3000" if necessary).  You'll still see the generic sign up form provided by Devise, but the debug window will show the "admins/registrations" controller instead.
 
 ### Admin Registration Controller
 * Edit the app/controllers/admins/registrations_controller.rb file.
@@ -65,41 +65,7 @@ alias test1='(command provided in test results with the TESTOPTS part omitted)'
 * Enter the command "test1".  The test should now pass.
 
 ### Admin Sign Up Page
-Delete the Admin Sign Up page.  Enter the command "git rm app/views/admins/registrations/new.html.erb".
-
-### Stylesheet
-* Add the following lines to the end of the file app/assets/stylesheets/custom.scss:
-
-```
-/*flash*/
-.alert-error {
-    background-color: #f2dede;
-    border-color: #eed3d7;
-    color: #b94a48;
-    text-align: left;
- }
-
-.alert-alert {
-    background-color: #f2dede;
-    border-color: #eed3d7;
-    color: #b94a48;
-    text-align: left;
- }
-
-.alert-success {
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-    color: #468847;
-    text-align: left;
- }
-
-.alert-notice {
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-    color: #468847;
-    text-align: left;
- }
- ```
+* Delete the Admin Sign Up page.  Enter the command "git rm app/views/admins/registrations/new.html.erb".
 * In your browser window, go to the URL http://localhost:3000/admins/sign_up (replacing "localhost" and/or "3000" if necessary).  You should be automatically forwarded to the home page, and you should see the message "Admin sign-ups are disabled." highlighted in red.
 
 ### Rails Best Practices
