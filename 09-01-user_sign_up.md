@@ -59,6 +59,7 @@ end
 * In your browser, go to the URL http://localhost:3000/users/sign_up .  (Replace "localhost" and/or "3000" if your setup calls for that.)  You'll see the standard Devise sign up form.  The debug window will show that the controller in use is "devise/registrations", and the action in use is "new".
 
 ### Home Page
+* In this section, you will provide access to the user sign up page from the home page.
 * Replace the contents of the app/views/static_pages/home.html.erb with the following:
 ```
 <% provide(:title, '') %>
@@ -81,6 +82,7 @@ end
 </div>
 ```
 * Enter the command "test1".  The first integration test will pass, but the other three will fail.
+* In your web browser, go to the home page in your local app.  Click on the "Sign up now!" button.  You'll find yourself back in the user sign up form, with the "devise/registrations" controller and "new" action once again being utilized.
 
 ### Routing
 * Edit the config/routes.rb file.  Replace the line "devise_for :users" with the following lines:
