@@ -96,7 +96,7 @@ end
                             sessions: 'admins/sessions' }
   # END: admin
 ```
-* In your web browser, refresh the admin login page. You'll still see the generic Devise sign in page, but the controller is now "admins sessions".
+* In your web browser, refresh the admin login page. You'll still see the generic Devise sign in page, but the controller is now "admins/sessions".
 
 ### Admin Login Form
 * Replace the contents of the file app/views/admins/sessions/new.html.erb with the following:
