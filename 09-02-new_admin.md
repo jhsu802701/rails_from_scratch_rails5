@@ -1,10 +1,10 @@
 # Unit 9
-## Chapter 1: New Admins
+## Chapter 2: New Admin
 
 In this chapter, you will add scripts for creating a new admin.  Because the admin role is not intended to be available to the general public, scripts are used for creating new admins.
 
 ### New Branch
-Enter the command "git checkout -b 09-01-new_admin".
+Enter the command "git checkout -b 09-02-new_admin".
 
 ### admin_create.rb
 * Create the file admin_create.rb with the following content:
@@ -121,10 +121,10 @@ bundle exec rails runner "eval(File.read 'admin_create.rb')"
 ```
 git add .
 git commit -m "Added admin_create.sh"
-git push origin 09-01-new_admin
 ```
 
 ### Wrapping Up
+* Enter the command "git push origin 09-02-new_admin".
 * Go to the GitHub repository and click on the "Compare and pull request" button for this branch.
 * Accept this pull request to merge it with the master branch, but do NOT delete this branch.
 * Enter the following commands:
