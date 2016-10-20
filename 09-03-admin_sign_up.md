@@ -1,10 +1,10 @@
 # Unit 9
-## Chapter 2: New Admin Sign Up
+## Chapter 3: New Admin Sign Up
 
 In this chapter, you will disable the new user registration capability.  Anyone who visits the URL for registering a new admin should be automatically forwarded to the home page and see a flash message noting that new admin registrations are disabled.
 
 ### New Branch
-Enter the command "git checkout -b 09-02-admin_sign_up".
+Enter the command "git checkout -b 09-03-admin_sign_up".
 
 ### Integration Test
 * Enter the command "rails generate integration_test admins_signup".
@@ -113,9 +113,9 @@ RemoveUnusedMethodsInControllersCheck: { except_methods: [],
 ```
 git add .
 git commit -m "Disabled admin sign-up"
-git push origin 09-02-admin_sign_up
 ```
 ### Wrapping Up
+* Enter the command "git push origin 09-03-admin_sign_up".
 * Go to the GitHub repository and click on the "Compare and pull request" button for this branch.
 * Accept this pull request to merge it with the master branch, but do NOT delete this branch.
 * Enter the following commands:
