@@ -1,5 +1,5 @@
 # Unit 9
-## Chapter 7: Admin Edit
+## Chapter 7: Admins Edit
 
 ### New Branch
 
