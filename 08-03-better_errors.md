@@ -17,4 +17,5 @@ end
 git add .
 git commit -m "Added better_errors and binding_of_caller"
 git push origin master
+sh heroku.sh
 ```
