@@ -179,6 +179,7 @@ end
 ```
 * Enter the command "test1".  The first two integration tests will pass, but the rest will still fail.
 * In your web browser, go to the URL http://localhost:3000/users/sign_in (replacing the "localhost" and "3000" if necessary).  Now the desired user login form appears, and you can log in as one of the seeded users.
+* When you visit your app as a logged-in user, you'll still see the "Sign up now!" button on the home page. Clicking on that button will simply give you a message telling you that you are already signed in. However, you still need to remove this button, because it looks bad to provide options that are not actually viable.  (You'll get to this later.)
 
 ### Test Helper (def login_user)
 * Add the following lines to the end of the file test/test_helper.rb:
