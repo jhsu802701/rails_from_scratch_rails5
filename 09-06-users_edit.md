@@ -195,6 +195,7 @@ end
 //= require_tree .
 ```
 * Users can now access the link to edit settings from the menu bar.  The next step is to customize the page where users can edit their settings.
+* The "require bootstrap" part is the critical part that allows the dropdown menu to work properly.
 
 ### User Edit Page
 * Edit the app/views/users/registrations/edit.html.erb and replace its content with the following:
