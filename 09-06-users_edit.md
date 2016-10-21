@@ -8,175 +8,114 @@ Enter the command "git checkout -b 09-06-users_edit".
 * Enter the command "rails generate integration_test users_edit".
 * Replace the contents of the file test/integration/users_edit_test.rb with the following:
 ```
-ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../../config/environment', __FILE__)
-require 'rails/test_help'
+# rubocop:disable Metrics/AbcSize
+# rubocop:disable Metrics/MethodLength
+# rubocop:disable Metrics/ParameterLists
 
-# BEGIN: use minitest-reporters
-# AwesomeReporter configuration from
-# http://chriskottom.com/blog/2014/06/dress-up-your-minitest-output/
-# RakeRerunReporter from
-# https://gist.github.com/foton/141b9f73caccf13ccfcc
+require 'test_helper'
 
-require 'minitest/reporters'
-require 'rake_rerun_reporter'
-Minitest::Reporters.use!
+class UsersEditTest < ActionDispatch::IntegrationTest
+  include ApplicationHelper
 
-module Minitest
-  module Reporters
-    class AwesomeReporter < DefaultReporter
-      GREEN = '1;32'.freeze
-      RED = '1;31'.freeze
+  # Edit all parameters except email
+  def edit_all_but_email(u, uname, fname, lname, password_n, password_c)
+    edit_user_start(u)
+    fill_in('Username', with: uname)
+    fill_in('First name', with: fname)
+    fill_in('Last name', with: lname)
+    fill_in('user_password', with: password_n)
+    fill_in('user_password_confirmation', with: password_n)
+    fill_in('Current password', with: password_c)
+    click_button('Update')
+    assert page.has_text?('Your account has been updated successfully.')
+    click_on 'Edit Settings'
+    page.assert_selector(:xpath, xpath_input_str(uname))
+    page.assert_selector(:xpath, xpath_input_str(fname))
+    page.assert_selector(:xpath, xpath_input_str(lname))
+    click_on 'Logout'
+    login_user(uname, password_n, false)
+    assert page.has_text?('Signed in successfully.')
+    click_on 'Logout'
+  end
 
-      def color_up(string, color)
-        color? ? "\e\[#{color}m#{string}#{ANSI::Code::ENDCODE}" : string
-      end
+  # Edit all parameters, including email
+  def edit_all(u, uname, e, fname, lname, password_n, password_c)
+    edit_user_start(u)
+    fill_in('Username', with: uname)
+    fill_in('Email', with: e)
+    fill_in('First name', with: fname)
+    fill_in('Last name', with: lname)
+    fill_in('user_password', with: password_n)
+    fill_in('user_password_confirmation', with: password_n)
+    fill_in('Current password', with: password_c)
+    click_button('Update')
+    assert page.has_text?('You updated your account successfully,')
+    assert page.has_text?('but we need to verify your new email address.')
+    assert page.has_text?('Please check your email and follow the confirm link')
+    assert page.has_text?('to confirm your new email address.')
 
-      def red(string)
-        color_up(string, RED)
-      end
+    # Confirm new email address
+    open_email(e)
+    current_email.click_link 'Confirm my account'
+    assert page.has_text?('Your email address has been successfully confirmed.')
+    clear_emails # Clear the message queue
 
-      def green(string)
-        color_up(string, GREEN)
-      end
+    # Check new settings
+    visit_root
+    click_on 'Edit Settings'
+    page.assert_selector(:xpath, xpath_input_str(uname))
+    page.assert_selector(:xpath, xpath_input_str(fname))
+    page.assert_selector(:xpath, xpath_input_str(lname))
+    click_on 'Logout'
+
+    login_user(uname, password_n, false)
+    assert page.has_text?('Signed in successfully.')
+    click_on 'Logout'
+  end
+
+  test 'user can access the page for editing settings' do
+    login_as(@u1, scope: :user)
+    visit root_path
+    assert page.has_link?('Edit Settings', href: edit_user_registration_path(@u1))
+    visit about_path
+    assert page.has_link?('Edit Settings', href: edit_user_registration_path(@u1))
+    visit contact_path
+    assert page.has_link?('Edit Settings', href: edit_user_registration_path(@u1))
+  end
+
+  test 'user edit page has the expected content' do
+    login_as(@u1, scope: :user)
+    visit root_path
+    click_on 'Edit Settings'
+    assert page.has_css?('title', text: full_title('User Edit'), visible: false)
+    assert page.has_css?('h1', text: 'User Edit')
+    assert page.has_text?('password management program')
+    assert page.has_text?('create much better passwords')
+    assert page.has_link?('KeePassX', href: 'http://www.keepassx.org')
+  end
+
+  test 'user can edit all parameters besides email' do
+    edit_all_but_email(@u1, 'jbond', 'James', 'Bond',
+                       'You Only Live Twice', 'Goldfinger')
+  end
+
+  test 'user can edit all parameters, including email' do
+    edit_all(@u1, 'jbond', '007@example.com',
+             'James', 'Bond', 'You Only Live Twice', 'Goldfinger')
+  end
+
+  test 'user can delete self' do
+    assert_difference 'User.count', -1 do
+      edit_user_start(@u7)
+      click_on 'Cancel my account'
+      assert page.has_text?('Your account has been successfully cancelled.')
     end
   end
 end
 
-reporter_options = { color: true, slow_count: 5, verbose: false, rerun_prefix: 'rm -f log/test.log && bundle exec' }
-Minitest::Reporters.use! [Minitest::Reporters::AwesomeReporter.new(reporter_options),
-                          Minitest::Reporters::HtmlReporter.new,
-                          Minitest::Reporters::RakeRerunReporter.new(reporter_options)]
-# END: use minitest-reporters
-
-class ActiveSupport::TestCase
-  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-  fixtures :all
-
-  # Add more helper methods to be used by all tests here...
-end
-
-#######################
-# BEGIN: Capybara setup
-#######################
-require 'capybara/rails'
-require 'capybara/email'
-
-class ActionDispatch::IntegrationTest
-  # Make the Capybara DSL available in all integration tests
-  include Capybara::DSL
-  include Capybara::Email::DSL
-
-  # Load up test fixtures at the beginning of each test
-  # rubocop:disable Metrics/AbcSize
-  # rubocop:disable Metrics/MethodLength
-  def setup
-    @a1 = admins(:elle_woods)
-    @a2 = admins(:vivian_kensington)
-    @a3 = admins(:emmett_richmond)
-    @a4 = admins(:paulette_bonafonte)
-    @a5 = admins(:professor_callahan)
-    @a6 = admins(:warner_huntington)
-
-    @u1 = users(:connery)
-    @u2 = users(:lazenby)
-    @u3 = users(:moore)
-    @u4 = users(:dalton)
-    @u5 = users(:brosnan)
-    @u6 = users(:craig)
-    @u7 = users(:blofeld)
-  end
-  # rubocop:enable Metrics/AbcSize
-  # rubocop:enable Metrics/MethodLength
-
-  # Reset sessions and driver between tests
-  # Use super wherever this method is redefined in your individual test classes
-  def teardown
-    Capybara.reset_sessions!
-    Capybara.use_default_driver
-  end
-end
-#######################
-# END: Capybara setup
-#######################
-
-# rubocop:disable Metrics/AbcSize
-# rubocop:disable Metrics/MethodLength
-# rubocop:disable Metrics/ParameterLists
-def sign_up_user(name_u, name_l, name_f, e, p1, p2)
-  visit root_path
-  assert page.has_link?('Sign up now!', href: new_user_registration_path)
-  click_on 'Sign up now!'
-  assert page.has_css?('title', text: full_title('New User'), visible: false)
-  assert page.has_css?('h1', text: 'New User')
-  assert page.has_text?('password management program')
-  assert page.has_text?('create much better passwords')
-  assert page.has_link?('KeePassX', href: 'http://www.keepassx.org')
-  fill_in('Last name', with: name_l)
-  fill_in('First name', with: name_f)
-  fill_in('Username', with: name_u)
-  fill_in('Email', with: e)
-  fill_in('Password', with: p1) # not yet changed
-  fill_in('Password confirmation', with: p2)
-  click_button('Sign up')
-end
 # rubocop:enable Metrics/AbcSize
 # rubocop:enable Metrics/MethodLength
 # rubocop:enable Metrics/ParameterLists
-
-def login_user(str_uname, str_pwd, status_remember)
-  visit root_path
-  click_on 'Login'
-  fill_in('Username', with: str_uname)
-  fill_in('Password', with: str_pwd)
-  if status_remember == true
-    check('Remember me')
-  else
-    uncheck('Remember me')
-  end
-  click_button('Log in')
-end
-
-# rubocop:disable Metrics/MethodLength
-def login_admin(str_uname, str_pwd, status_remember)
-  visit root_path
-  click_on 'Login'
-  click_on 'Admin Login'
-  fill_in('Username', with: str_uname)
-  fill_in('Password', with: str_pwd)
-  if status_remember == true
-    check('Remember me')
-  else
-    uncheck('Remember me')
-  end
-  click_button('Log in')
-end
-# rubocop:enable Metrics/MethodLength
-
-# Needed for using Devise tools in testing, such as login_as
-include Warden::Test::Helpers
-
-# rubocop:disable Metrics/AbcSize
-def edit_user_start(user1)
-  login_as(user1, scope: :user)
-  visit root_path
-  assert page.has_link?('Edit Settings', href: edit_user_registration_path(user1))
-  click_on 'Edit Settings'
-  assert page.has_css?('title', text: full_title('User Edit'), visible: false)
-  assert page.has_css?('h1', text: 'User Edit')
-  assert page.has_text?('password management program')
-  assert page.has_text?('create much better passwords')
-  assert page.has_link?('KeePassX', href: 'http://www.keepassx.org')
-end
-# rubocop:enable Metrics/AbcSize
-
-def xpath_input_str(str_input)
-  str1 = './/input[@value="'
-  str2 = str_input
-  str3 = '"]'
-  output = "#{str1}#{str2}#{str3}"
-  output
-end
 ```
 * Enter the command "rails test".  All 5 of the new integration tests will fail due to undefined methods.
 * Enter the command "alias test1='(command from test results minus the TESTOPTS portion)'".
