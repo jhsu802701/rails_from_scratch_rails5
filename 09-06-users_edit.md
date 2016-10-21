@@ -9,6 +9,7 @@ Enter the command "git checkout -b 09-06-users_edit".
 * Replace the contents of the file test/integration/users_edit_test.rb with the following:
 ```
 # rubocop:disable Metrics/AbcSize
+# rubocop:disable Metrics/LineLength
 # rubocop:disable Metrics/MethodLength
 # rubocop:disable Metrics/ParameterLists
 
@@ -114,8 +115,10 @@ class UsersEditTest < ActionDispatch::IntegrationTest
 end
 
 # rubocop:enable Metrics/AbcSize
+# rubocop:enable Metrics/LineLength
 # rubocop:enable Metrics/MethodLength
 # rubocop:enable Metrics/ParameterLists
+
 ```
 * Enter the command "rails test".  All 5 of the new integration tests will fail due to undefined methods.
 * Enter the command "alias test1='(command from test results minus the TESTOPTS portion)'".
