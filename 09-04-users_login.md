@@ -209,19 +209,25 @@ end
   <h1>Home</h1>
   Welcome to Generic App Template!
   <br><br>
-  <%-######################### -%>
-  <%-# BEGIN: VARIABLE SECTION -%>
-  <%-######################### -%>
+  <% ######################### %>
+  <% # BEGIN: VARIABLE SECTION %>
+  <% ######################### %>
   <% if user_signed_in? %>
+    <% ##################### %>
+    <% # BEGIN: USER SECTION %>
+    <% ##################### %>
     You are logged in as a user (<%= current_user.username %>).
+    <% ################### %>
+    <% # END: USER SECTION %>
+    <% ################### %>
   <% else %>
     <div class="center jumbotron">
       <%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-lg btn-primary" %>
     </div>
   <% end %>
-  <%-####################### -%>
-  <%-# END: VARIABLE SECTION -%>
-  <%-####################### -%>
+  <% ####################### %>
+  <% # END: VARIABLE SECTION %>
+  <% ####################### %>
   <br><br>
   <%= link_to image_tag("rails.png", alt: "Rails logo"),
               'http://rubyonrails.org/' %>
@@ -272,9 +278,9 @@ class ActionDispatch::IntegrationTest
     Capybara.use_default_driver
   end
 end
-#######################
+#####################
 # END: Capybara setup
-#######################
+#####################
 ```
 * Enter the command "test1".  Now all of the new integration tests should pass.
 * Enter the command "sh git_check.sh".  All tests should pass, and there should be no 
