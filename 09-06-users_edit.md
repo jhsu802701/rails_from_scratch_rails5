@@ -62,7 +62,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     clear_emails # Clear the message queue
 
     # Check new settings
-    visit_root
+    visit root_path
     click_on 'Edit Settings'
     page.assert_selector(:xpath, xpath_input_str(uname))
     page.assert_selector(:xpath, xpath_input_str(fname))
