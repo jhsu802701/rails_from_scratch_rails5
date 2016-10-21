@@ -201,6 +201,9 @@ end
 ```
 
 ```
+* At this point, the updating process does not yet work.  (Do NOT be fooled by the message stating that you successfully changed your settings, because you'll see when you click on the "Edit Settings" button that the old settings are still in place.)  The next step is to update the user registration controller.
+
+### User Registration Controller
 
 ### Wrapping Up
 * Enter the command "git push origin 09-04-users_login".
