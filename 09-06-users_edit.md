@@ -200,7 +200,73 @@ end
 ### User Edit Page
 * Edit the app/views/users/registrations/edit.html.erb and replace its content with the following:
 ```
+<% provide(:title, "User Edit") %>
 
+<h1>User Edit</h1>
+
+Using the same password for all of your accounts is risky.
+Limiting yourself to passwords that you can easily remember is risky.
+You should use a password management program like <a href='http://www.keepassx.org'>KeePassX</a>
+to create much better passwords AND store them in encrypted form.
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email %>
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  NOTE: Leave the "new password" and "new password confirmation" fields blank if you do not
+  wish to change your password.
+  <div class="field">
+    <b>New Password</b>
+    <% if @minimum_password_length %>
+      <br />
+      <em><%= @minimum_password_length %> characters minimum</em>
+    <% end %>
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <b>New Password Confirmation</b>
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.password_field :current_password, autocomplete: "off" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
+
+<h3>Cancel my account</h3>
+
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+<%= link_to "Back", :back %>
 ```
 * At this point, the updating process does not yet work.  (Do NOT be fooled by the message stating that you successfully changed your settings, because you'll see when you click on the "Edit Settings" button that the old settings are still in place.)  The next step is to update the user registration controller.
 
