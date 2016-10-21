@@ -151,9 +151,9 @@ end
 ### Header
 * Replace the user portion of the file app/views/layouts/_header.html.erb with the following:
 ```
-          <%-##################### -%>
-          <%-# BEGIN: USER SECTION -%>
-          <%-##################### -%>
+          <% ##################### %>
+          <% # BEGIN: USER SECTION %>
+          <% ##################### %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               User<br>Menu <b class="caret"></b>
@@ -166,9 +166,9 @@ end
               </li>
             </ul>
           </li>
-          <%-################### -%>
-          <%-# END: USER SECTION -%>
-          <%-################### -%>
+          <% ################### %>
+          <% # END: USER SECTION %>
+          <% ################### %>
 ```
 * Enter the command "test1".  The first test passes, but the other 4 still fail.
 * In theory, you should be able to access the link to edit settings from the menu bar.  If you use the "view source" option in your browser, you'll see that the link is there.  In practice, you cannot access it.
