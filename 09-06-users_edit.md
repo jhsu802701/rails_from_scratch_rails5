@@ -15,6 +15,8 @@ Enter the command "git checkout -b 09-06-users_edit".
 require 'test_helper'
 
 class UsersEditTest < ActionDispatch::IntegrationTest
+  include ApplicationHelper
+
   # Edit all parameters except email
   def edit_all_but_email(u, uname, fname, lname, password_n, password_c)
     edit_user_start(u)
@@ -115,7 +117,7 @@ end
 # rubocop:enable Metrics/MethodLength
 # rubocop:enable Metrics/ParameterLists
 ```
-* Enter the command "rails test".  All 3 of the new integration tests will fail due to undefined methods.
+* Enter the command "rails test".  All 5 of the new integration tests will fail due to undefined methods.
 * Enter the command "alias test1='(command from test results minus the TESTOPTS portion)'".
 * Enter the command "test1".
 
@@ -144,6 +146,59 @@ def xpath_input_str(str_input)
   output = "#{str1}#{str2}#{str3}"
   output
 end
+```
+
+### Header
+* Replace the user portion of the file app/views/layouts/_header.html.erb with the following:
+```
+          <%-##################### -%>
+          <%-# BEGIN: USER SECTION -%>
+          <%-##################### -%>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              User<br>Menu <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Edit Settings", edit_user_registration_path(current_user) %></li>
+              <li class="divider"></li>
+              <li>
+                <%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>
+              </li>
+            </ul>
+          </li>
+          <%-################### -%>
+          <%-# END: USER SECTION -%>
+          <%-################### -%>
+```
+* Enter the command "test1".  The first test passes, but the other 4 still fail.
+* In theory, you should be able to access the link to edit settings from the menu bar.  If you use the "view source" option in your browser, you'll see that the link is there.  In practice, you cannot access it.
+
+### app/assets/javascripts/application.js
+* Replace the content in the app/assets/javascripts/application.js file with the following:
+```
+// This is a manifest file that'll be compiled into application.js, which will include all the files
+// listed below.
+//
+// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
+// or any plugin's vendor/assets/javascripts directory can be referenced here using a relative path.
+//
+// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
+// compiled file. JavaScript code in this file should be added after the last require_* statement.
+//
+// Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
+// about supported directives.
+//
+//= require jquery
+//= require jquery_ujs
+//= require bootstrap
+//= require turbolinks
+//= require_tree .
+```
+* Users can now access the link to edit settings from the menu bar.  The next step is to customize the page where users can edit their settings.
+
+### User Edit Page
+* Edit the app/views/users/registrations/edit.html.erb and replace its content with the following:
+```
 
 ```
 
