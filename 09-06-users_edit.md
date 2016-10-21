@@ -122,7 +122,7 @@ end
 * Enter the command "test1".
 
 ### Test Helper
-* Define the undefined methods of the integration test by adding these lines to the end of the test/test_helper.rb file:
+Define the undefined methods of the integration test by adding these lines to the end of the test/test_helper.rb file:
 ```
 # Needed for using Devise tools in testing, such as login_as
 include Warden::Test::Helpers
