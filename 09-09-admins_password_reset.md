@@ -74,7 +74,10 @@ end
 # rubocop:enable Metrics/LineLength
 # rubocop:enable Metrics/MethodLength
 ```
-* Enter the command "sh build_fast.sh".
+* Enter the command "sh build_fast.sh".  The first test will pass, but the other three will fail.
+* Enter the command "alias test1='(command from test results minus the TESTOPTS portion)'".
+* Enter the command "test1".
+* In your web browser, go to the Admin Login page and click on "Forgot your password?".  In the debug box, you'll see that the controller is "devise/passwords".
 
 ### Routing
 * Replace the admin section of config/routes.rb with the following code:
@@ -86,7 +89,7 @@ end
                             passwords: 'admins/passwords' }
   # END: admin
 ```
-
+* Refresh your web browser.  In the debug box, you'll see that the controller is now "admins/passwords".
 
 ### app/views/admins/passwords/new.html.erb
 * Replace the contents of app/views/admins/passwords/new.html.erb with the following code:
@@ -110,6 +113,7 @@ end
 
 <%= render "admins/shared/links" %>
 ```
+* Enter the command "test1".  Now the first two tests pass, but the remaining two tests fail due to the undefined method begin_admin_password_reset.
 
 ### Test Helper
 * Add the following code to the end of the file test/test_helper.rb:
@@ -123,6 +127,7 @@ def begin_admin_password_reset(e)
   click_on 'Send me reset password instructions'
 end
 ```
+* Enter the command "test1".  The remaining two tests now fail due to missing content.
 
 ### app/views/admins/passwords/edit.html.erb
 * Replace the contents of app/views/admins/passwords/edit.html.erb with the following code:
@@ -159,6 +164,13 @@ to create much better passwords AND store them in encrypted form.
 <% end %>
 
 <%= render "admins/shared/links" %>
+```
+* Enter the command "test1".  All 4 tests should now pass.
+* Enter the command "sh git_check.sh".
+* Enter the following commands:
+```
+git add .
+git commit -m "Added admins password reset capability"
 ```
 
 ### Wrapping Up
