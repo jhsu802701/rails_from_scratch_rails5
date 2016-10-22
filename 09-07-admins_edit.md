@@ -96,9 +96,7 @@ class AdminsEditTest < ActionDispatch::IntegrationTest
   end
 
   test 'admin edit page has the expected content for super admin' do
-    login_as(@a1, scope: :admin)
-    visit root_path
-    click_on 'Edit Settings'
+    edit_admin_start(@a1)
     assert page.has_css?('title', text: full_title('Admin Edit'), visible: false)
     assert page.has_css?('h1', text: 'Admin Edit')
     assert page.has_text?('password management program')
@@ -107,9 +105,7 @@ class AdminsEditTest < ActionDispatch::IntegrationTest
   end
 
   test 'admin edit page has the expected content for regular admin' do
-    login_as(@a4, scope: :admin)
-    visit root_path
-    click_on 'Edit Settings'
+    edit_admin_start(@a4)
     assert page.has_css?('title', text: full_title('Admin Edit'), visible: false)
     assert page.has_css?('h1', text: 'Admin Edit')
     assert page.has_text?('password management program')
