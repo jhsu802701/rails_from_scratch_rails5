@@ -85,9 +85,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
   end
 
   test 'user edit page has the expected content' do
-    login_as(@u1, scope: :user)
-    visit root_path
-    click_on 'Edit Settings'
+    edit_user_start(@u1)
     assert page.has_css?('title', text: full_title('User Edit'), visible: false)
     assert page.has_css?('h1', text: 'User Edit')
     assert page.has_text?('password management program')
