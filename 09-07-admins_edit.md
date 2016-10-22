@@ -264,7 +264,6 @@ to create much better passwords AND store them in encrypted form.
     <%= f.submit "Update" %>
   </div>
 <% end %>
-```
 
 <h3>Cancel my account</h3>
 
