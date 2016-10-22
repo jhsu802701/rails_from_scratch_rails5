@@ -29,7 +29,7 @@ class UsersPasswordResetTest < ActionDispatch::IntegrationTest
     assert page.has_css?('h1', text: 'User: Reset Forgotten Password')
   end
 
-  test 'successfully resets super user password' do
+  test 'successfully resets user password' do
     begin_user_password_reset('sean_connery@example.com')
     assert page.has_text?('instructions on how to reset your password')
 
