@@ -130,19 +130,11 @@ Define the undefined methods of the integration test by adding these lines to th
 # Needed for using Devise tools in testing, such as login_as
 include Warden::Test::Helpers
 
-# rubocop:disable Metrics/AbcSize
 def edit_user_start(user1)
   login_as(user1, scope: :user)
   visit root_path
-  assert page.has_link?('Edit Settings', href: edit_user_registration_path(user1))
   click_on 'Edit Settings'
-  assert page.has_css?('title', text: full_title('User Edit'), visible: false)
-  assert page.has_css?('h1', text: 'User Edit')
-  assert page.has_text?('password management program')
-  assert page.has_text?('create much better passwords')
-  assert page.has_link?('KeePassX', href: 'http://www.keepassx.org')
 end
-# rubocop:enable Metrics/AbcSize
 
 def xpath_input_str(str_input)
   str1 = './/input[@value="'
