@@ -161,9 +161,12 @@ end
 # rubocop:enable Metrics/MethodLength
 # rubocop:enable Metrics/ParameterLists
 ```
+* Enter the command "sh build_fast.sh".  All 10 of the new tests will fail.
+* Enter the command "alias test1='(command from test results minus the TESTOPTS portion)'".
+* Enter the command "test1".
 
 ### Test Helper
-Add the following lines to the end of the file test/test_helper.rb:
+* Add the following lines to the end of the file test/test_helper.rb:
 ```
 def edit_admin_start(admin1)
   login_as(admin1, scope: :admin)
@@ -171,6 +174,8 @@ def edit_admin_start(admin1)
   click_on 'Edit Settings'
 end
 ```
+* Enter the command "test1".  All 10 tests will still fail, but the missing definition of edit_admin_start is no longer the culprit.
+
 ### Header
 * Replace the admin section of app/views/layouts/_header.html.erb with the following code:
 ```
@@ -193,6 +198,8 @@ end
           <% # END: ADMIN SECTION %>
           <% #################### %>
 ```
+* Enter the command "test1".  The first 4 tests pass, but the second 6 tests still fail.  
+
 ### Admin Edit Form
 * Replace the contents of app/views/admins/registrations/edit.html.erb with the following code:
 ```
@@ -257,6 +264,7 @@ to create much better passwords AND store them in encrypted form.
     <%= f.submit "Update" %>
   </div>
 <% end %>
+```
 
 <h3>Cancel my account</h3>
 
