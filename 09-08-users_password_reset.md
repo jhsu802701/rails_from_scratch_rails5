@@ -61,6 +61,10 @@ end
 
 # rubocop:enable Metrics/LineLength
 ```
+* Enter the command "sh build_fast.sh".  The first test will pass, but the other two will fail.
+* Enter the command "alias test1='(command provided by test results minus the TESTOPTS portion)'".
+* Enter the command "test1".
+* In your web browser, go to the Home page.  Click on "Login", and then click on "Forgot your password?".  Note that the controller in the debug box is "devise/passwords".
 
 ### Routing
 * Replace the user section in config/routes.rb with the following code:
@@ -72,6 +76,8 @@ end
                             passwords: 'users/passwords' }
   # END: user section
 ```
+* Refresh the browser.  Now the controller listed in the debug box is "users/passwords".
+
 
 ### app/views/users/passwords/new.html.erb
 * Replace the contents of app/views/users/passwords/new.html.erb with the following code:
@@ -95,6 +101,9 @@ end
 
 <%= render "users/shared/links" %>
 ```
+* Enter the command "test1".  Now the first two tests pass, but the third test still fails due to the missing method begin_user_password_reset.
+* Refresh the web browser.  Now you see the desired form.
+
 ### Test Helper
 * Add the following code to the end of test/test_helper.rb:
 ```
@@ -106,6 +115,8 @@ def begin_user_password_reset(e)
   click_on 'Send me reset password instructions'
 end
 ```
+* Enter the command "test1".  The third test still fails, but it's now due to missing content.
+
 ### app/views/users/passwords/edit.html.erb
 * Replace the contents of app/views/users/passwords/edit.html.erb with the following code:
 ```
@@ -141,7 +152,13 @@ to create much better passwords AND store them in encrypted form.
 <% end %>
 
 <%= render "users/shared/links" %>
-
+```
+* Enter the command "test1".  ALl tests should now pass.
+* Enter the command "sh git_check.sh".
+* Enter the following commands:
+```
+git add .
+git commit -m "Added user password reset capability"
 ```
 
 ### Wrapping Up
