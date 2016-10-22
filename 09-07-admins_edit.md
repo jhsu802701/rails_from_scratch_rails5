@@ -181,7 +181,7 @@ end
 ```
           <% ###################### %>
           <% # BEGIN: ADMIN SECTION %>
-          <% ###################### %>        
+          <% ###################### %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               Admin<br>Menu <b class="caret"></b>
@@ -341,6 +341,13 @@ class Admins::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 end
+```
+* Enter the command "test1".  Now all 10 of the tests pass.
+* Enter the command "sh git_check.sh".  
+* Enter the following commands:
+```
+git add .
+git commit -m "Added admins edit capability"
 ```
 
 ### Wrapping Up
