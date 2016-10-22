@@ -153,7 +153,7 @@ to create much better passwords AND store them in encrypted form.
 
 <%= render "users/shared/links" %>
 ```
-* Enter the command "test1".  ALl tests should now pass.
+* Enter the command "test1".  All tests should now pass.
 * Enter the command "sh git_check.sh".
 * Enter the following commands:
 ```
