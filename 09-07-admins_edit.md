@@ -271,8 +271,9 @@ to create much better passwords AND store them in encrypted form.
 
 <%= link_to "Back", :back %>
 ```
+* Enter the command "test1".  Now 6 of the 10 tests pass.  The remaining 4 tests that fail are the ones that involve changing admin parameters.  The registrations controller needs permission to change these parameters.
 
-### Registration Controller
+### Registrations Controller
 * Replace the content of app/controllers/admins/registrations_controller.rb with the following code:
 ```
 #
