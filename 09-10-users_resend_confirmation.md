@@ -8,6 +8,8 @@ Enter the command "git checkout -b 09-10-users_resend_conf".
 * Enter the command "rails generate integration_test users_resend_conf".
 * Replace the content of test/integration/users_resend_conf_test.rb with the following code:
 ```
+# rubocop:disable Metrics/BlockLength
+
 require 'test_helper'
 
 class UsersResendConfTest < ActionDispatch::IntegrationTest
@@ -87,7 +89,13 @@ class UsersResendConfTest < ActionDispatch::IntegrationTest
     click_on 'Logout'
   end
 end
+
+# rubocop:enable Metrics/BlockLength
 ```
+* Enter the command "sh build_fast.sh".  Both tests fail.
+* Enter the command "alias test1='(command provided by test results minus TESTOPTS portion)'".
+* Enter the command "test1".
+* In your web browser, go to the home page.  Click on "Login" and then "Didn't receive confirmation instructions?".  In the debug box, you'll see that the controller is "devise/confirmations".
 
 ### Routing
 * Replace the user section in config/routes.rb with the following code:
@@ -100,6 +108,7 @@ end
                             confirmations: 'users/confirmations' }
   # END: user section
 ```
+* Refresh the web browser.  In the debug box, you'll see that the controller is "users/confirmations".
 
 ### Resend Confirmation Form
 * Replace the contents of app/views/users/confirmations/new.html.erb with the following code:
@@ -123,7 +132,7 @@ end
 
 <%= render "users/shared/links" %>
 ```
-* Enter the command "test1".
+* Enter the command "test1".  Both tests should now pass.
 * Enter the command "sh git_check.sh".
 * Enter the following commands:
 ```
