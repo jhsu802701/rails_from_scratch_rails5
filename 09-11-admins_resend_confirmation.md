@@ -57,31 +57,6 @@ class AdminsResendConfTest < ActionDispatch::IntegrationTest
     click_on 'Logout'
   end
 
-  def password_reset(uname, e, password_n)
-    begin_admin_password_reset(e)
-    clear_emails # Lose email
-
-    # Request new confirmation
-    visit_root
-    click_on 'Login'
-    click_on 'Admin Login'
-    click_on "Didn't receive confirmation instructions?"
-    assert page.has_css?('title', text: full_title('Admin: Resend Confirmation'),
-                                  visible: false)
-    assert page.has_css?('h1', text: 'Admin: Resend Confirmation')
-    fill_in('Email', with: e)
-    click_on 'Resend confirmation instructions'
-
-    # Open and follow instructions
-    open_email(e)
-    current_email.click_link 'Confirm my account'
-    clear_emails # Clear the message queue
-
-    login_admin(uname, password_n, false)
-    assert page.has_text?('Signed in successfully.')
-    click_on 'Logout'
-  end
-
   test 'resend confirmation from super admin changing all params' do
     edit(@a1, 'rwitherspoon', 'reese_witherspoon@example.com',
          'Reese', 'Witherspoon', 'Just Like Heaven', 'endorphins')
