@@ -1,6 +1,8 @@
 # Unit 9
 ## Chapter 12: Users Lock
 
+In this chapter, you will configure the app to lock users after an excessive number of unsuccessful logins.  Locked users receive an email message providing a link to unlock their accounts so that they can log in again.  The purpose of locking accounts is to prevent denial-of-service attacks that can bring down your Rails site.
+
 ### New Branch
 Enter the command "git checkout -b 09-12-users_lock".
 
@@ -134,6 +136,9 @@ end
 
 # rubocop:enable Metrics/LineLength
 ```
+* Enter the command "sh build_fast.sh".  All 6 of the new integration tests fail.
+* Enter the command "alias test1='(command from test results minus TESTOPTS portion)'".
+
 ### Devise Configuration
 * Edit the file config/initializers/devise.rb.  Make the following changes:
   * Uncomment the line "config.lock_strategy = :failed_attempts".
@@ -142,9 +147,10 @@ end
   * Uncomment the line containing "config.maximum_attempts" and change it to "config.maximum_attempts = 6".
   * Uncomment the line containing "config.unlock_in" and change it to "config.unlock_in = 30.minutes".
   * Uncomment the line "config.last_attempt_warning = true".
-* Enter the command "test1".
+* Enter the command "test1".  5 of the tests pass, but 1 test still fails.  This remaining failing test concerns the content of the page for requesting a link to unlock a user account.
 
 ### Routing
+* In your web browser, go to the home page.  Click on "Login", and then click on "Didn't receive unlock instructions?".  The debug box shows that the controller in use is "devise/unlocks".
 * In config/routes.rb, replace the user section with the following:
 ```
   # BEGIN: user section
@@ -156,6 +162,7 @@ end
                             unlocks: 'users/unlocks' }
   # END: user section
 ```
+* Refresh your web browser.  The debug box now shows that the controller in use is "users/unlocks".
 
 ### app/views/users/unlocks/new.html.erb
 * Replace the contents of app/views/users/unlocks/new.html.erb with the following:
@@ -178,9 +185,14 @@ end
 <% end %>
 
 <%= render "users/shared/links" %>
-
 ```
-
+* Enter the command "test1".  Now all of the tests shoud pass.
+* Enter the command "sh git_check.sh".
+* Enter the following commands:
+```
+git add .
+git commit -m "Added user locking capability"
+```
 
 ### Wrapping Up
 * Enter the command "git push origin 09-12-users_lock".
