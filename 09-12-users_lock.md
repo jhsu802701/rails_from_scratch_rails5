@@ -18,12 +18,14 @@ git add .
 git commit -m "Added timecop gem"
 ```
 
-
 ### Integration Test
 * Enter the command "rails generate integration_test users_lock".
-* with the following code:
+* Replace the contents of test/integration/users_lock_test.rb with the following code:
 ```
+# rubocop:disable Metrics/LineLength
+
 require 'test_helper'
+require 'timecop'
 
 class UsersLockTest < ActionDispatch::IntegrationTest
   include ApplicationHelper
@@ -38,7 +40,7 @@ class UsersLockTest < ActionDispatch::IntegrationTest
   def login_correct
     login_user('sconnery', 'Goldfinger', false)
   end
-  
+
   test 'warning about account locking' do
     N_WARNING.times do
       login_incorrect
@@ -54,7 +56,7 @@ class UsersLockTest < ActionDispatch::IntegrationTest
     login_correct
     assert page.has_text?('Your account is locked.')
   end
-  
+
   test 'user can be unlocked by email' do
     N_LOCK.times do
       login_incorrect
@@ -75,28 +77,31 @@ class UsersLockTest < ActionDispatch::IntegrationTest
       login_incorrect
     end
 
-    # Change time of lock to 29 minutes ago
-    u = User.find_by(username: 'sconnery')
-    u.locked_at = 29.minutes.ago
-    puts Time.now.to_i - u.locked_at.to_i
+    t_lock = Time.now
+    t29 = t_lock + 29.minutes
+    t31 = t_lock + 31.minutes
+
+    # 29 minutes after the lock begins
+    Timecop.travel(t29)
     login_correct
     assert page.has_text?('Your account is locked.')
 
-    # Change time of lock to 31 minutes ago
-    u.locked_at = 331.minutes.ago
-    puts Time.now.to_i - u.locked_at.to_i
+    # 31 minutes after the lock begins
+    Timecop.travel(t31)
     login_correct
-    puts page.body
     assert page.has_text?('Signed in successfully.')
     assert page.has_text?('You are logged in as a user (sconnery).')
+    Timecop.return
   end
 
   test 'unlock request page has expected content' do
     visit root_path
     click_on 'Login'
     click_on "Didn't receive unlock instructions?"
+    assert page.has_css?('title', text: full_title('User Unlock'), visible: false)
+    assert page.has_css?('h1', text: 'User Unlock')
   end
-  
+
   test 'user can request another unlock link' do
     N_LOCK.times do
       login_incorrect
@@ -127,11 +132,55 @@ class UsersLockTest < ActionDispatch::IntegrationTest
   end
 end
 
+# rubocop:enable Metrics/LineLength
 ```
+### Devise Configuration
+* Edit the file config/initializers/devise.rb.  Make the following changes:
+  * Uncomment the line "config.lock_strategy = :failed_attempts".
+  * Uncomment the line "config.unlock_keys = [:email]".
+  * Uncomment the line "config.unlock_strategy = :both".
+  * Uncomment the line containing "config.maximum_attempts" and change it to "config.maximum_attempts = 6".
+  * Uncomment the line containing "config.unlock_in" and change it to "config.unlock_in = 30.minutes".
+  * Uncomment the line "config.last_attempt_warning = true".
+* Enter the command "test1".
 
 ### Routing
+* In config/routes.rb, replace the user section with the following:
+```
+  # BEGIN: user section
+  devise_for :users,
+             controllers: { registrations: 'users/registrations',
+                            sessions: 'users/sessions',
+                            passwords: 'users/passwords',
+                            confirmations: 'users/confirmations',
+                            unlocks: 'users/unlocks' }
+  # END: user section
+```
 
-### Devise Configuration
+### app/views/users/unlocks/new.html.erb
+* Replace the contents of app/views/users/unlocks/new.html.erb with the following:
+```
+<% provide(:title, "User Unlock") %>
+
+<h1>User Unlock</h1>
+
+<%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Resend unlock instructions" %>
+  </div>
+<% end %>
+
+<%= render "users/shared/links" %>
+
+```
+
 
 ### Wrapping Up
 * Enter the command "git push origin 09-12-users_lock".
