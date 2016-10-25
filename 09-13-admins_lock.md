@@ -55,7 +55,7 @@ class AdminsLockTest < ActionDispatch::IntegrationTest
       login_incorrect_super
     end
     assert page.has_text?('Your account is locked.')
-    login_correct
+    login_correct_super
     assert page.has_text?('Your account is locked.')
   end
 
@@ -64,28 +64,43 @@ class AdminsLockTest < ActionDispatch::IntegrationTest
       login_incorrect_regular
     end
     assert page.has_text?('Your account is locked.')
-    login_correct
+    login_correct_regular
     assert page.has_text?('Your account is locked.')
   end
 
-  test 'user can be unlocked by email' do
+  test 'Super admin can be unlocked by email' do
     N_LOCK.times do
-      login_incorrect
+      login_incorrect_super
     end
-    open_email('sean_connery@example.com')
+    open_email('elle_woods@example.com')
     current_email.click_link 'Unlock my account'
     assert page.has_text?('Your account has been unlocked successfully.')
     assert page.has_text?('Please sign in to continue.')
     clear_emails # Clear the message queue
-    login_correct
+    login_correct_super
     assert page.has_text?('Signed in successfully.')
-    assert page.has_text?('You are logged in as a user (sconnery).')
+    assert page.has_text?('You are logged in as a admin (ewoods).')
     clear_emails # Clear the message queue
   end
 
-  test 'user can be unlocked by time' do
+  test 'Regular admin can be unlocked by email' do
     N_LOCK.times do
-      login_incorrect
+      login_incorrect_regular
+    end
+    open_email('paulette_bonafonte@example.com')
+    current_email.click_link 'Unlock my account'
+    assert page.has_text?('Your account has been unlocked successfully.')
+    assert page.has_text?('Please sign in to continue.')
+    clear_emails # Clear the message queue
+    login_correct_regular
+    assert page.has_text?('Signed in successfully.')
+    assert page.has_text?('You are logged in as a admin (ewoods).')
+    clear_emails # Clear the message queue
+  end
+
+  test 'super admin can be unlocked by time' do
+    N_LOCK.times do
+      login_incorrect_super
     end
 
     t_lock = Time.now
@@ -94,14 +109,36 @@ class AdminsLockTest < ActionDispatch::IntegrationTest
 
     # 29 minutes after the lock begins
     Timecop.travel(t29)
-    login_correct
+    login_correct_regular
     assert page.has_text?('Your account is locked.')
 
     # 31 minutes after the lock begins
     Timecop.travel(t31)
     login_correct
     assert page.has_text?('Signed in successfully.')
-    assert page.has_text?('You are logged in as a user (sconnery).')
+    assert page.has_text?('You are logged in as a admin (ewoods).')
+    Timecop.return
+  end
+
+  test 'regular admin can be unlocked by time' do
+    N_LOCK.times do
+      login_incorrect_regular
+    end
+
+    t_lock = Time.now
+    t29 = t_lock + 29.minutes
+    t31 = t_lock + 31.minutes
+
+    # 29 minutes after the lock begins
+    Timecop.travel(t29)
+    login_correct_regular
+    assert page.has_text?('Your account is locked.')
+
+    # 31 minutes after the lock begins
+    Timecop.travel(t31)
+    login_correct
+    assert page.has_text?('Signed in successfully.')
+    assert page.has_text?('You are logged in as a admin (ewoods).')
     Timecop.return
   end
 
@@ -109,13 +146,13 @@ class AdminsLockTest < ActionDispatch::IntegrationTest
     visit root_path
     click_on 'Login'
     click_on "Didn't receive unlock instructions?"
-    assert page.has_css?('title', text: full_title('User Unlock'), visible: false)
-    assert page.has_css?('h1', text: 'User Unlock')
+    assert page.has_css?('title', text: full_title('Admin Unlock'), visible: false)
+    assert page.has_css?('h1', text: 'Admin Unlock')
   end
 
-  test 'user can request another unlock link' do
+  test 'super admin can request another unlock link' do
     N_LOCK.times do
-      login_incorrect
+      login_incorrect_super
     end
 
     # Lose email
@@ -125,11 +162,11 @@ class AdminsLockTest < ActionDispatch::IntegrationTest
     visit root_path
     click_on 'Login'
     click_on "Didn't receive unlock instructions?"
-    fill_in('Email', with: 'sean_connery@example.com')
+    fill_in('Email', with: 'elle_woods@example.com')
     click_on 'Resend unlock instructions'
 
     # Follow unlock instructions
-    open_email('sean_connery@example.com')
+    open_email('elle_woods@example.com')
     current_email.click_link 'Unlock my account'
     assert page.has_text?('Your account has been unlocked successfully.')
     assert page.has_text?('Please sign in to continue.')
@@ -138,7 +175,36 @@ class AdminsLockTest < ActionDispatch::IntegrationTest
     # Login
     login_correct
     assert page.has_text?('Signed in successfully.')
-    assert page.has_text?('You are logged in as a user (sconnery).')
+    assert page.has_text?('You are logged in as a admin (ewoods).')
+    clear_emails # Clear the message queue
+  end
+
+  test 'regular admin can request another unlock link' do
+    N_LOCK.times do
+      login_incorrect_regular
+    end
+
+    # Lose email
+    clear_emails # Clear the message queue
+
+    # Request unlock instructions
+    visit root_path
+    click_on 'Login'
+    click_on "Didn't receive unlock instructions?"
+    fill_in('Email', with: 'paulette_bonafonte@example.com')
+    click_on 'Resend unlock instructions'
+
+    # Follow unlock instructions
+    open_email('paulette_bonafonte@example.com')
+    current_email.click_link 'Unlock my account'
+    assert page.has_text?('Your account has been unlocked successfully.')
+    assert page.has_text?('Please sign in to continue.')
+    clear_emails # Clear the message queue
+
+    # Login
+    login_correct
+    assert page.has_text?('Signed in successfully.')
+    assert page.has_text?('You are logged in as a admin (pbonafonte).')
     clear_emails # Clear the message queue
   end
 end
