@@ -212,10 +212,42 @@ end
 # rubocop:enable Metrics/LineLength
 ```
 ### Routing
+* In your web browser, go to the home page. Click on "Login", click on "Admin Login", and then click on "Didn't receive unlock instructions?". The debug box shows that the controller in use is "devise/unlocks".
+* Replace the admins section in config/routes.rb with the following:
+```
+  # BEGIN: admin
+  devise_for :admins,
+             controllers: { registrations: 'admins/registrations',
+                            sessions: 'admins/sessions',
+                            passwords: 'admins/passwords',
+                            confirmations: 'admins/confirmations',
+                            unlocks: 'admins/unlocks'  }
+  # END: admin
+```
+* Refresh your web browser.  The debug box should now show that the controller in use is "admins/unlocks".
 
-### app/views/users/unlocks/new.html.erb
+### app/views/admins/unlocks/new.html.erb
+Replace the contents of app/views/admins/unlocks/new.html.erb with the following:
+```
+<% provide(:title, "Admin Unlock") %>
 
+<h1>Admin Unlock</h1>
 
+<%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Resend unlock instructions" %>
+  </div>
+<% end %>
+
+<%= render "admins/shared/links" %>
+```
 
 ### Wrapping Up
 * Enter the command "git push origin 09-13-admins_lock".
