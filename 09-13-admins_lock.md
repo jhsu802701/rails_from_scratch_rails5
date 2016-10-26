@@ -9,6 +9,7 @@ Enter the command "git checkout -b 09-13-admins_lock".
 * Enter the command "rails generate integration_test admins_lock".
 * Replace the contents of test/integration/admins_lock_test.rb with the following code:
 ```
+# rubocop:disable Metrics/ClassLength
 # rubocop:disable Metrics/LineLength
 
 require 'test_helper'
@@ -79,7 +80,7 @@ class AdminsLockTest < ActionDispatch::IntegrationTest
     clear_emails # Clear the message queue
     login_correct_super
     assert page.has_text?('Signed in successfully.')
-    assert page.has_text?('You are logged in as a admin (ewoods).')
+    assert page.has_text?('You are logged in as an admin (ewoods).')
     clear_emails # Clear the message queue
   end
 
@@ -94,7 +95,7 @@ class AdminsLockTest < ActionDispatch::IntegrationTest
     clear_emails # Clear the message queue
     login_correct_regular
     assert page.has_text?('Signed in successfully.')
-    assert page.has_text?('You are logged in as a admin (ewoods).')
+    assert page.has_text?('You are logged in as an admin (pbonafonte).')
     clear_emails # Clear the message queue
   end
 
@@ -109,14 +110,14 @@ class AdminsLockTest < ActionDispatch::IntegrationTest
 
     # 29 minutes after the lock begins
     Timecop.travel(t29)
-    login_correct_regular
+    login_correct_super
     assert page.has_text?('Your account is locked.')
 
     # 31 minutes after the lock begins
     Timecop.travel(t31)
-    login_correct
+    login_correct_super
     assert page.has_text?('Signed in successfully.')
-    assert page.has_text?('You are logged in as a admin (ewoods).')
+    assert page.has_text?('You are logged in as an admin (ewoods).')
     Timecop.return
   end
 
@@ -136,15 +137,16 @@ class AdminsLockTest < ActionDispatch::IntegrationTest
 
     # 31 minutes after the lock begins
     Timecop.travel(t31)
-    login_correct
+    login_correct_regular
     assert page.has_text?('Signed in successfully.')
-    assert page.has_text?('You are logged in as a admin (ewoods).')
+    assert page.has_text?('You are logged in as an admin (pbonafonte).')
     Timecop.return
   end
 
   test 'unlock request page has expected content' do
     visit root_path
     click_on 'Login'
+    click_on 'Admin Login'
     click_on "Didn't receive unlock instructions?"
     assert page.has_css?('title', text: full_title('Admin Unlock'), visible: false)
     assert page.has_css?('h1', text: 'Admin Unlock')
@@ -161,6 +163,7 @@ class AdminsLockTest < ActionDispatch::IntegrationTest
     # Request unlock instructions
     visit root_path
     click_on 'Login'
+    click_on 'Admin Login'
     click_on "Didn't receive unlock instructions?"
     fill_in('Email', with: 'elle_woods@example.com')
     click_on 'Resend unlock instructions'
@@ -173,9 +176,9 @@ class AdminsLockTest < ActionDispatch::IntegrationTest
     clear_emails # Clear the message queue
 
     # Login
-    login_correct
+    login_correct_super
     assert page.has_text?('Signed in successfully.')
-    assert page.has_text?('You are logged in as a admin (ewoods).')
+    assert page.has_text?('You are logged in as an admin (ewoods).')
     clear_emails # Clear the message queue
   end
 
@@ -190,6 +193,7 @@ class AdminsLockTest < ActionDispatch::IntegrationTest
     # Request unlock instructions
     visit root_path
     click_on 'Login'
+    click_on 'Admin Login'
     click_on "Didn't receive unlock instructions?"
     fill_in('Email', with: 'paulette_bonafonte@example.com')
     click_on 'Resend unlock instructions'
@@ -202,27 +206,15 @@ class AdminsLockTest < ActionDispatch::IntegrationTest
     clear_emails # Clear the message queue
 
     # Login
-    login_correct
+    login_correct_regular
     assert page.has_text?('Signed in successfully.')
-    assert page.has_text?('You are logged in as a admin (pbonafonte).')
+    assert page.has_text?('You are logged in as an admin (pbonafonte).')
     clear_emails # Clear the message queue
   end
 end
 
+# rubocop:enable Metrics/ClassLength
 # rubocop:enable Metrics/LineLength
-```
-### Routing
-* In your web browser, go to the home page. Click on "Login", click on "Admin Login", and then click on "Didn't receive unlock instructions?". The debug box shows that the controller in use is "devise/unlocks".
-* Replace the admins section in config/routes.rb with the following:
-```
-  # BEGIN: admin
-  devise_for :admins,
-             controllers: { registrations: 'admins/registrations',
-                            sessions: 'admins/sessions',
-                            passwords: 'admins/passwords',
-                            confirmations: 'admins/confirmations',
-                            unlocks: 'admins/unlocks'  }
-  # END: admin
 ```
 * Refresh your web browser.  The debug box should now show that the controller in use is "admins/unlocks".
 
