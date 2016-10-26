@@ -11,3 +11,10 @@ Upgrade rails, pg, and nokogiri to the latest versions in the custom Docker imag
 
 Replace instances of "Generic App Template" with the title of your app
 ```
+* Enter the following commands:
+```
+git add .
+git commit -m "Added notes/TO_DO.txt"
+git push origin master
+sh heroku.sh
+```
