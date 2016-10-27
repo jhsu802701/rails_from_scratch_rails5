@@ -19,7 +19,6 @@ class AdminsLockTest < ActionDispatch::IntegrationTest
   include ApplicationHelper
 
   N_WARNING = 5 # Number of incorrect logins for triggering warning
-  N_LOCK = 6 # Number of incorrect logins for triggering lock
 
   def login_incorrect_super
     login_admin('ewoods', 'Yale Law School', false)
@@ -37,72 +36,39 @@ class AdminsLockTest < ActionDispatch::IntegrationTest
     login_admin('pbonafonte', "Neptune's Beauty Nook", false)
   end
 
-  test 'warns super admin about account locking' do
+  def lock_super
     N_WARNING.times do
       login_incorrect_super
     end
     assert page.has_text?('You have one more attempt before your account is locked.')
-  end
-
-  test 'warns regular admin about account locking' do
-    N_WARNING.times do
-      login_incorrect_regular
-    end
-    assert page.has_text?('You have one more attempt before your account is locked.')
-  end
-
-  test 'locks super admin' do
-    N_LOCK.times do
-      login_incorrect_super
-    end
+    login_incorrect_super
     assert page.has_text?('Your account is locked.')
     login_correct_super
     assert page.has_text?('Your account is locked.')
   end
 
-  test 'locks regular admin' do
-    N_LOCK.times do
+  def lock_regular
+    N_WARNING.times do
       login_incorrect_regular
     end
+    assert page.has_text?('You have one more attempt before your account is locked.')
+    login_incorrect_regular
     assert page.has_text?('Your account is locked.')
     login_correct_regular
     assert page.has_text?('Your account is locked.')
   end
 
-  test 'Super admin can be unlocked by email' do
-    N_LOCK.times do
-      login_incorrect_super
-    end
-    open_email('elle_woods@example.com')
-    current_email.click_link 'Unlock my account'
-    assert page.has_text?('Your account has been unlocked successfully.')
-    assert page.has_text?('Please sign in to continue.')
-    clear_emails # Clear the message queue
-    login_correct_super
-    assert page.has_text?('Signed in successfully.')
-    assert page.has_text?('You are logged in as an admin (ewoods).')
-    clear_emails # Clear the message queue
-  end
-
-  test 'Regular admin can be unlocked by email' do
-    N_LOCK.times do
-      login_incorrect_regular
-    end
-    open_email('paulette_bonafonte@example.com')
-    current_email.click_link 'Unlock my account'
-    assert page.has_text?('Your account has been unlocked successfully.')
-    assert page.has_text?('Please sign in to continue.')
-    clear_emails # Clear the message queue
-    login_correct_regular
-    assert page.has_text?('Signed in successfully.')
-    assert page.has_text?('You are logged in as an admin (pbonafonte).')
-    clear_emails # Clear the message queue
+  test 'unlock request page has expected content' do
+    visit root_path
+    click_on 'Login'
+    click_on 'Admin Login'
+    click_on "Didn't receive unlock instructions?"
+    assert page.has_css?('title', text: full_title('Admin Unlock'), visible: false)
+    assert page.has_css?('h1', text: 'Admin Unlock')
   end
 
   test 'super admin can be unlocked by time' do
-    N_LOCK.times do
-      login_incorrect_super
-    end
+    lock_super
 
     t_lock = Time.now
     t29 = t_lock + 29.minutes
@@ -122,9 +88,7 @@ class AdminsLockTest < ActionDispatch::IntegrationTest
   end
 
   test 'regular admin can be unlocked by time' do
-    N_LOCK.times do
-      login_incorrect_regular
-    end
+    lock_regular
 
     t_lock = Time.now
     t29 = t_lock + 29.minutes
@@ -143,19 +107,8 @@ class AdminsLockTest < ActionDispatch::IntegrationTest
     Timecop.return
   end
 
-  test 'unlock request page has expected content' do
-    visit root_path
-    click_on 'Login'
-    click_on 'Admin Login'
-    click_on "Didn't receive unlock instructions?"
-    assert page.has_css?('title', text: full_title('Admin Unlock'), visible: false)
-    assert page.has_css?('h1', text: 'Admin Unlock')
-  end
-
   test 'super admin can request another unlock link' do
-    N_LOCK.times do
-      login_incorrect_super
-    end
+    lock_super
 
     # Lose email
     clear_emails # Clear the message queue
@@ -183,9 +136,7 @@ class AdminsLockTest < ActionDispatch::IntegrationTest
   end
 
   test 'regular admin can request another unlock link' do
-    N_LOCK.times do
-      login_incorrect_regular
-    end
+    lock_regular
 
     # Lose email
     clear_emails # Clear the message queue
@@ -215,6 +166,19 @@ end
 
 # rubocop:enable Metrics/ClassLength
 # rubocop:enable Metrics/LineLength
+```
+
+### Routing
+* Replace the admin section of config/routes.rb with the following:
+```
+  # BEGIN: admin
+  devise_for :admins,
+             controllers: { registrations: 'admins/registrations',
+                            sessions: 'admins/sessions',
+                            passwords: 'admins/passwords',
+                            confirmations: 'admins/confirmations',
+                            unlocks: 'admins/unlocks' }
+  # END: admin
 ```
 * Refresh your web browser.  The debug box should now show that the controller in use is "admins/unlocks".
 
