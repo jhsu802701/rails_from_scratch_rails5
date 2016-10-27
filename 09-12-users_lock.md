@@ -33,7 +33,6 @@ class UsersLockTest < ActionDispatch::IntegrationTest
   include ApplicationHelper
 
   N_WARNING = 5 # Number of incorrect logins for triggering warning
-  N_LOCK = 6 # Number of incorrect logins for triggering lock
 
   def login_incorrect
     login_user('sconnery', 'Austin Powers', false)
@@ -43,41 +42,14 @@ class UsersLockTest < ActionDispatch::IntegrationTest
     login_user('sconnery', 'Goldfinger', false)
   end
 
-  test 'warning about account locking' do
+  test 'user can be unlocked by time' do
     N_WARNING.times do
       login_incorrect
     end
     assert page.has_text?('You have one more attempt before your account is locked.')
-  end
 
-  test 'implements account locking' do
-    N_LOCK.times do
-      login_incorrect
-    end
+    login_incorrect
     assert page.has_text?('Your account is locked.')
-    login_correct
-    assert page.has_text?('Your account is locked.')
-  end
-
-  test 'user can be unlocked by email' do
-    N_LOCK.times do
-      login_incorrect
-    end
-    open_email('sean_connery@example.com')
-    current_email.click_link 'Unlock my account'
-    assert page.has_text?('Your account has been unlocked successfully.')
-    assert page.has_text?('Please sign in to continue.')
-    clear_emails # Clear the message queue
-    login_correct
-    assert page.has_text?('Signed in successfully.')
-    assert page.has_text?('You are logged in as a user (sconnery).')
-    clear_emails # Clear the message queue
-  end
-
-  test 'user can be unlocked by time' do
-    N_LOCK.times do
-      login_incorrect
-    end
 
     t_lock = Time.now
     t29 = t_lock + 29.minutes
@@ -105,9 +77,13 @@ class UsersLockTest < ActionDispatch::IntegrationTest
   end
 
   test 'user can request another unlock link' do
-    N_LOCK.times do
+    N_WARNING.times do
       login_incorrect
     end
+    assert page.has_text?('You have one more attempt before your account is locked.')
+
+    login_incorrect
+    assert page.has_text?('Your account is locked.')
 
     # Lose email
     clear_emails # Clear the message queue
@@ -136,7 +112,7 @@ end
 
 # rubocop:enable Metrics/LineLength
 ```
-* Enter the command "sh build_fast.sh".  All 6 of the new integration tests fail.
+* Enter the command "sh build_fast.sh".  All of the new integration tests fail.
 * Enter the command "alias test1='(command from test results minus TESTOPTS portion)'".
 
 ### Devise Configuration
@@ -147,7 +123,7 @@ end
   * Uncomment the line containing "config.maximum_attempts" and change it to "config.maximum_attempts = 6".
   * Uncomment the line containing "config.unlock_in" and change it to "config.unlock_in = 30.minutes".
   * Uncomment the line "config.last_attempt_warning = true".
-* Enter the command "test1".  5 of the tests pass, but 1 test still fails.  This remaining failing test concerns the content of the page for requesting a link to unlock a user account.
+* Enter the command "test1".  All but one test should pass.  This remaining failing test concerns the content of the page for requesting a link to unlock a user account.
 
 ### Routing
 * In your web browser, go to the home page.  Click on "Login", and then click on "Didn't receive unlock instructions?".  The debug box shows that the controller in use is "devise/unlocks".
