@@ -21,7 +21,11 @@ git commit -m "Installed minitest-reporters"
 ### Configuration
 * Add the file test/rake_rerun_reporter.rb and give it the following contents:
 ```
-# From https://gist.github.com/foton/141b9f73caccf13ccfcc
+# Providing commands for running failed tests:
+# https://gist.github.com/foton/141b9f73caccf13ccfcc
+
+# Providing brighter colors in test reults:
+# http://chriskottom.com/blog/2014/06/dress-up-your-minitest-output/
 
 # rubocop:disable Metrics/AbcSize
 # rubocop:disable Metrics/LineLength
@@ -32,6 +36,21 @@ require 'minitest/reporters'
 module Minitest
   module Reporters
     class RakeRerunReporter < Minitest::Reporters::DefaultReporter
+      GREEN = '1;32'.freeze
+      RED = '1;31'.freeze
+
+      def color_up(string, color)
+        color? ? "\e\[#{color}m#{string}#{ANSI::Code::ENDCODE}" : string
+      end
+
+      def red(string)
+        color_up(string, RED)
+      end
+
+      def green(string)
+        color_up(string, GREEN)
+      end
+
       def initialize(options = {})
         @rerun_user_prefix = options.fetch(:rerun_prefix, '')
         super
