@@ -126,39 +126,12 @@ end
 require 'rails/test_help'
 
 # BEGIN: use minitest-reporters
-# AwesomeReporter configuration from
-# http://chriskottom.com/blog/2014/06/dress-up-your-minitest-output/
-# RakeRerunReporter from
-# https://gist.github.com/foton/141b9f73caccf13ccfcc
-
 require 'minitest/reporters'
 require 'rake_rerun_reporter'
 Minitest::Reporters.use!
 
-module Minitest
-  module Reporters
-    class AwesomeReporter < DefaultReporter
-      GREEN = '1;32'.freeze
-      RED = '1;31'.freeze
-
-      def color_up(string, color)
-        color? ? "\e\[#{color}m#{string}#{ANSI::Code::ENDCODE}" : string
-      end
-
-      def red(string)
-        color_up(string, RED)
-      end
-
-      def green(string)
-        color_up(string, GREEN)
-      end
-    end
-  end
-end
-
 reporter_options = { color: true, slow_count: 5, verbose: false, rerun_prefix: 'rm -f log/test.log && bundle exec' }
-Minitest::Reporters.use! [Minitest::Reporters::AwesomeReporter.new(reporter_options),
-                          Minitest::Reporters::HtmlReporter.new,
+Minitest::Reporters.use! [Minitest::Reporters::HtmlReporter.new,
                           Minitest::Reporters::RakeRerunReporter.new(reporter_options)]
 # END: use minitest-reporters
 
