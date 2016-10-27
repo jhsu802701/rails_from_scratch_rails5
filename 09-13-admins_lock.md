@@ -167,9 +167,12 @@ end
 # rubocop:enable Metrics/ClassLength
 # rubocop:enable Metrics/LineLength
 ```
-* Enter the command "sh build_fast.sh".  
+* Enter the command "sh build_fast.sh".  All tests pass except for the one specifying the title and header of the page where admins can request new email messages providing account unlocking links.
+* Enter the command "alias test1='(command provided in test results minus TESTOPTS portion)'".
+* Enter the command "test1".
 
 ### Routing
+* In your web browser, go to your app's home page.  Click on "Login", then "Admin Login", and finally "Didn't receive unlock instructions?".  The debug box shows that the "devise/unlocks" controller is in use.
 * Replace the admin section of config/routes.rb with the following:
 ```
   # BEGIN: admin
@@ -184,7 +187,7 @@ end
 * Refresh your web browser.  The debug box should now show that the controller in use is "admins/unlocks".
 
 ### app/views/admins/unlocks/new.html.erb
-Replace the contents of app/views/admins/unlocks/new.html.erb with the following:
+* Replace the contents of app/views/admins/unlocks/new.html.erb with the following:
 ```
 <% provide(:title, "Admin Unlock") %>
 
@@ -204,6 +207,13 @@ Replace the contents of app/views/admins/unlocks/new.html.erb with the following
 <% end %>
 
 <%= render "admins/shared/links" %>
+```
+* Enter the command "test1".  All tests should now pass.
+* Enter the command "sh git_check.sh".
+* Enter the following commands:
+```
+git add .
+git commit -m "Added admin locking capability"
 ```
 
 ### Wrapping Up
