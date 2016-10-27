@@ -167,6 +167,7 @@ end
 # rubocop:enable Metrics/ClassLength
 # rubocop:enable Metrics/LineLength
 ```
+* Enter the command "sh build_fast.sh".  
 
 ### Routing
 * Replace the admin section of config/routes.rb with the following:
