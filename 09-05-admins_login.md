@@ -11,70 +11,86 @@ Enter the command "git checkout -b 09-05-admins_login".
 # rubocop:disable Metrics/LineLength
 
 require 'test_helper'
+require 'timecop'
 
-class AdminsLoginTest < ActionDispatch::IntegrationTest
+class UsersLockTest < ActionDispatch::IntegrationTest
   include ApplicationHelper
 
-  def post_admin_login(username)
-    # Flash
-    assert page.has_text?('Signed in successfully.')
+  N_WARNING = 5 # Number of incorrect logins for triggering warning
 
-    # Successful login -> home page
-    assert page.has_css?('title', text: full_title(''), visible: false)
-    assert page.has_css?('h1', text: 'Home')
-
-    # Special message on home page
-    assert page.has_text?("You are logged in as an admin (#{username}).")
+  def login_incorrect
+    login_user('sconnery', 'Austin Powers', false)
   end
 
-  test 'User login page provides access to admin login page' do
+  def login_correct
+    login_user('sconnery', 'Goldfinger', false)
+  end
+
+  test 'user can be unlocked by time' do
+    N_WARNING.times do
+      login_incorrect
+    end
+    assert page.has_text?('You have one more attempt before your account is locked.')
+
+    login_incorrect
+    assert page.has_text?('Your account is locked.')
+
+    t_lock = Time.now
+    t29 = t_lock + 29.minutes
+    t31 = t_lock + 31.minutes
+
+    # 29 minutes after the lock begins
+    Timecop.travel(t29)
+    login_correct
+    assert page.has_text?('Your account is locked.')
+
+    # 31 minutes after the lock begins
+    Timecop.travel(t31)
+    login_correct
+    assert page.has_text?('Signed in successfully.')
+    assert page.has_text?('You are logged in as a user (sconnery).')
+    Timecop.return
+  end
+
+  test 'unlock request page has expected content' do
     visit root_path
     click_on 'Login'
-    assert page.has_link?('Admin Login', href: new_admin_session_path)
+    click_on "Didn't receive unlock instructions?"
+    assert page.has_css?('title', text: full_title('User Unlock'), visible: false)
+    assert page.has_css?('h1', text: 'User Unlock')
   end
 
-  test 'Admin login page has expected content' do
-    visit new_admin_session_path
-    assert page.has_css?('title', text: full_title('Admin Login'), visible: false)
-    assert page.has_css?('h1', text: 'Admin Login')
-  end
+  test 'user can request another unlock link' do
+    N_WARNING.times do
+      login_incorrect
+    end
+    assert page.has_text?('You have one more attempt before your account is locked.')
 
-  test 'Unsuccessful super admin login, no remembering' do
-    login_admin('ewoods', 'Yale Law School', false)
-    assert page.has_text?('Invalid Username or password.')
-  end
+    login_incorrect
+    assert page.has_text?('Your account is locked.')
 
-  test 'Unsuccessful regular admin login, with remembering' do
-    login_admin('ewoods', 'Yale Law School', true)
-    assert page.has_text?('Invalid Username or password.')
-  end
+    # Lose email
+    clear_emails # Clear the message queue
 
-  test 'Successful super admin login and logout, no remembering' do
-    login_admin('ewoods', 'endorphins', false)
-    post_admin_login('ewoods')
-    click_on 'Logout'
-    assert page.has_text?('Signed out successfully.')
-  end
+    # Request unlock instructions
+    visit root_path
+    click_on 'Login'
+    click_on "Didn't receive unlock instructions?"
+    fill_in('Email', with: 'sean_connery@example.com')
+    click_on 'Resend unlock instructions'
 
-  test 'Successful regular admin login and logout, no remembering' do
-    login_admin('pbonafonte', "Neptune's Beauty Nook", false)
-    post_admin_login('pbonafonte')
-    click_on 'Logout'
-    assert page.has_text?('Signed out successfully.')
-  end
+    # Follow unlock instructions
+    open_email('sean_connery@example.com')
+    current_email.click_link 'Unlock my account'
+    assert page.has_text?('Your account has been unlocked successfully.')
+    assert page.has_text?('Please sign in to continue.')
+    clear_emails # Clear the message queue
 
-  test 'Successful super admin login and logout, with remembering' do
-    login_admin('ewoods', 'endorphins', true)
-    post_admin_login('ewoods')
-    click_on 'Logout'
-    assert page.has_text?('Signed out successfully.')
-  end
-
-  test 'Successful regular admin login and logout, with remembering' do
-    login_admin('pbonafonte', "Neptune's Beauty Nook", true)
-    post_admin_login('pbonafonte')
-    click_on 'Logout'
-    assert page.has_text?('Signed out successfully.')
+    # Login
+    login_correct
+    assert page.has_text?('Signed in successfully.')
+    assert page.has_text?('You are logged in as a user (sconnery).')
+    clear_emails # Clear the message queue
   end
 end
 
