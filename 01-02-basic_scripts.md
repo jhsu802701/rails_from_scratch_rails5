@@ -75,8 +75,6 @@ echo '--------------'
 echo 'bundle install'
 bundle install
 
-echo '-----------------'
-echo 'sh kill_spring.sh'
 sh kill_spring.sh
 
 echo '----------------'
