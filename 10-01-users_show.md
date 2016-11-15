@@ -6,6 +6,9 @@ In this chapter, you will provide user profiles.  The only people who should be 
 ### New Branch
 Enter the command "git checkout -b 10-01-users_show".
 
+### User Controller
+* Enter the command `rails generate controller Users new`.
+
 ### Wrapping Up
 * Enter the command "git push origin 10-01-users_show".
 * Go to the GitHub repository and click on the "Compare and pull request" button for this branch.
