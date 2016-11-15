@@ -4,7 +4,7 @@
 In this chapter, you will provide user profiles.  The only people who should be allowed to view a user profile are that specific user and the admins.
 
 ### New Branch
-Enter the command "git checkout -b 10-01-users_show".
+Enter the command `git checkout -b 10-01-users_show`.
 
 ### User Controller
 * Enter the command `rails generate controller Users new`.
