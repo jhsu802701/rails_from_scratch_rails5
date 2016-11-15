@@ -9,6 +9,15 @@ Enter the command "git checkout -b 10-01-users_show".
 ### User Controller
 * Enter the command "rails generate controller Users new".
 * Enter the command "rm app/helpers/users_helper.rb".
+* Enter the command "rm app/views/users/new.html.erb".
+* Replace the contents of test with the following:
+* Replace the contents of controller with the following:
+* In the user section of config/routes.rb, add the following line:
+```
+resources :users, only: [:show]
+```
+
+### User Profile
 
 ### Wrapping Up
 * Enter the command "git push origin 10-01-users_show".
