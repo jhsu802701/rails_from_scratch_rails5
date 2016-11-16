@@ -253,20 +253,7 @@ class ActionDispatch::IntegrationTest
   # rubocop:disable Metrics/AbcSize
   # rubocop:disable Metrics/MethodLength
   def setup
-    @a1 = admins(:elle_woods)
-    @a2 = admins(:vivian_kensington)
-    @a3 = admins(:emmett_richmond)
-    @a4 = admins(:paulette_bonafonte)
-    @a5 = admins(:professor_callahan)
-    @a6 = admins(:warner_huntington)
-
-    @u1 = users(:connery)
-    @u2 = users(:lazenby)
-    @u3 = users(:moore)
-    @u4 = users(:dalton)
-    @u5 = users(:brosnan)
-    @u6 = users(:craig)
-    @u7 = users(:blofeld)
+    setup_universal
   end
   # rubocop:enable Metrics/AbcSize
   # rubocop:enable Metrics/MethodLength
@@ -274,13 +261,42 @@ class ActionDispatch::IntegrationTest
   # Reset sessions and driver between tests
   # Use super wherever this method is redefined in your individual test classes
   def teardown
-    Capybara.reset_sessions!
-    Capybara.use_default_driver
+    teardown_universal
   end
 end
 #####################
 # END: Capybara setup
 #####################
+
+# rubocop:disable Metrics/AbcSize
+# rubocop:disable Metrics/MethodLength
+# Assign variables to test fixtures
+# To be executed before each test
+def setup_universal
+  @a1 = admins(:elle_woods)
+  @a2 = admins(:vivian_kensington)
+  @a3 = admins(:emmett_richmond)
+  @a4 = admins(:paulette_bonafonte)
+  @a5 = admins(:professor_callahan)
+  @a6 = admins(:warner_huntington)
+
+  @u1 = users(:connery)
+  @u2 = users(:lazenby)
+  @u3 = users(:moore)
+  @u4 = users(:dalton)
+  @u5 = users(:brosnan)
+  @u6 = users(:craig)
+  @u7 = users(:blofeld)
+end
+# rubocop:enable Metrics/AbcSize
+# rubocop:enable Metrics/MethodLength
+
+# Reset sessions and driver
+# To be used after each test
+def teardown
+  Capybara.reset_sessions!
+  Capybara.use_default_driver
+end
 ```
 * Enter the command "test1".  Now all of the new integration tests should pass.
 * Enter the command "sh git_check.sh".  All tests should pass, and there should be no 
