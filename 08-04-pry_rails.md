@@ -3,7 +3,7 @@
 
 * Add the following lines to the end of the Gemfile:
 ```
-# Pry Rails: provides pry 
+# Pry Rails: provides Pry Ruby shell as an alternative to IRB
 gem 'pry-rails', group: :testing
 ```
 * Enter the command "sh git_check.sh".
