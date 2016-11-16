@@ -101,7 +101,30 @@ class UsersControllerTest < ActionController::TestCase
   end
 end
 ```
-* Replace the contents of controller with the following:
+* Replace the contents of the file app/controllers/users_controller.rb with the following:
+```
+#
+class UsersController < ApplicationController
+  before_action :may_show_user, only: [:show]
+  before_action :may_index_user, only: [:index]
+
+  def show
+    @user = User.find(params[:id])
+  end
+
+  private
+
+  def admin_or_correct_user
+    current_user == User.find(params[:id]) || admin_signed_in?
+  end
+  helper_method :admin_or_correct_user
+
+  def may_show_user
+    return redirect_to(root_path) unless admin_or_correct_user
+  end
+  helper_method :may_show_user
+end
+```
 * In the user section of config/routes.rb, add the following line:
 ```
 resources :users, only: [:show]
