@@ -9,9 +9,7 @@ Enter the command "git checkout -b 09-12-users_lock".
 ### Gemfile
 * Add the following lines to the end of the Gemfile:
 ```
-group :testing do
-  gem 'timecop' # Changes current time, needed for testing the lock duration
-end
+gem 'timecop', group: :testing # Changes current time, needed for testing the lock duration
 ```
 * Enter the command "sh git_check.sh".
 * Enter the following commands:
