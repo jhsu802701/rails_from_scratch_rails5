@@ -49,6 +49,7 @@ Metrics/LineLength:
     - db/seeds.rb
     - Gemfile
     - Rakefile
+    - test/integration/*
     - test/test_helper.rb
 
 Style/ClassAndModuleChildren:
