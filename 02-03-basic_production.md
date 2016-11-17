@@ -6,7 +6,7 @@
 *  Edit the config/environments/production.rb file and uncomment the line containing "config.force_ssl = true".
 This means that SSL is automatically enabled.
 * Enter the command "sh git_check.sh".
-*  Enter the following commands to push this change to GitHub and Heroku:
+*  Enter the following commands to push this change to GitHub:
 ```
 git add .
 git commit -m "Use SSL in production"
@@ -44,7 +44,7 @@ end
 web: bundle exec puma -C config/puma.rb
 ```
 * Enter the command "sh git_check.sh".
-*  Enter the following commands to push this change to GitHub and Heroku:
+*  Enter the following commands to push this change to GitHub:
 ```
 git add .
 git commit -m "Use Puma web server in production"
