@@ -43,13 +43,18 @@ class ActionDispatch::IntegrationTest
   # Reset sessions and driver between tests
   # Use super wherever this method is redefined in your individual test classes
   def teardown
-    Capybara.reset_sessions!
-    Capybara.use_default_driver
+    teardown_universal
   end
 end
 #######################
 # END: Capybara setup
 #######################
+
+def teardown_universal
+  Capybara.reset_sessions!
+  Capybara.use_default_driver
+end
+
 ```
 * Enter the command "sh git_check.sh".
 * Enter the following commands:
