@@ -1,6 +1,6 @@
 # Unit 8
 ## Chapter 4: Pry Rails
-
+* Enter the sandbox.
 * Add the following lines to the end of the Gemfile:
 ```
 # Pry Rails: provides Pry Ruby shell as an alternative to IRB
