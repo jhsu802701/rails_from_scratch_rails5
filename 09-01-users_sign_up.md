@@ -326,8 +326,17 @@ end
 # rubocop:enable Metrics/ParameterLists
 ```
 * Enter the command "test1".  All tests should pass now.
+* Enter the command "sh git_check.sh".  All tests should pass, but you'll see RuboCop offenses.
 
-* Enter the command "sh git_check.sh".
+### RuboCop Compliance
+* In the .rubocop.yml file, add config/initializers/devise.rb to the list of files exempt from the Metrics/LineLength cop.
+* In the .rubocop.yml file, add "app/controllers/users/*" to the list of files excluded from the Style/ClassAndModuleChildren cop.
+* Add the following lines to the end of .rubocop.yml:
+```
+Style/CommentIndentation:
+  Exclude:
+    - app/controllers/users/*
+```
 * Enter the following commands:
 ```
 git add .
