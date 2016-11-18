@@ -16,7 +16,7 @@ END: continuous integration badges (markdown format)
 
 Welcome to the Generic App Template!
 This is the template created by following the 
-[Rails From Scratch] (https://github.com/jhsu802701/rails_from_scratch) protocol 
+[Rails From Scratch] (https://github.com/jhsu802701/rails_from_scratch_rails5) protocol 
 and is designed to be the basic for a wide range of new Rails apps.
 This template is used in the 
 [GenericApp] (https://github.com/jhsu802701/generic_app)
