@@ -11,7 +11,7 @@ Start a new branch by entering the command "git checkout -b 06-01-devise".
 ```
 gem 'devise' # Provides admin/user authentication
 ```
-* Enter the command "sh git_check.sh".
+* Enter the command "bundle install".
 * Enter the following commands:
 ```
 git add .
@@ -62,5 +62,5 @@ git commit -m "Configured Devise"
 ```
 git checkout master
 git pull
-sh heroku.sh
 ```
+* Enter the command "sh heroku.sh".
