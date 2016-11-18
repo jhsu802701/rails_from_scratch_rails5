@@ -337,6 +337,7 @@ Style/CommentIndentation:
   Exclude:
     - app/controllers/users/*
 ```
+* Enter the command "sh git_check.sh".  All tests should pass, and there should be no more RuboCop offenses.
 * Enter the following commands:
 ```
 git add .
