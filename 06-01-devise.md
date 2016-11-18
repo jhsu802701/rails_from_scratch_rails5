@@ -34,7 +34,6 @@ git commit -m "Installed Devise gem"
 end
 ```
 * In the .rubocop.yml file, add config/initializers/devise.rb to the list of files exempt from the Metrics/LineLength cop.
-
 * Enter the command "sh git_check.sh".
 * Enter the following commands:
 ```
