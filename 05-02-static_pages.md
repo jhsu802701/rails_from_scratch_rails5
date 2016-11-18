@@ -9,7 +9,7 @@ Enter the command "git checkout -b 05-02-static_pages".
 ```
 gem 'email_munger' # Encodes email address to prevent harvesting by bots
 ```
-* Enter the command "sh git_check.sh".
+* Enter the command "bundle install".
 * Enter the following commands:
 ```
 git add .
@@ -246,7 +246,7 @@ Email address: <%= raw(EmailMunger.encode('somebody@rubyonracetracks.com')) %>
 ```
 * Stop the local web server, and then restart it.  (If you don't, the contact page might not work properly.)
 * When you view the contact page in the web browser, the email address appears normal.  However, when you view the page source from the browser, you see that the characters in the email address have been encoded.  This allows human eyes to see the actual email address, but most bots attempting to harvest email addresses will see noise and thus miss this email address.
-* Enter the command "tests1".  All tests should pass.
+* Enter the command "test1".  All tests should pass.
 * Enter the command "sh git_check.sh".  All tests should pass, and RuboCop and Rails Best Practices should show no offenses.
 * Enter the following commands:
 ```
