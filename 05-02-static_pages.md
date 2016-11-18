@@ -40,7 +40,7 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
 end
 ```
 * Enter the command "sh testc.sh".  You'll see that all of these static page controller tests fail.
-* Enter the command "rake routes".  This lists the routes available.  Given that the routes "root", "about", and "contact" (the paths listed in the static controller tests), it should be no surprise that the tests failed.
+* Enter the command "rake routes".  This lists the routes available.  Given that the routes "root_path", "about_path", and "contact_path" (the paths listed in the static controller tests) are not specified, it should be no surprise that the tests failed.
 * Replace the content of config/routes.rb with the following code:
 ```
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
