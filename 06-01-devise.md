@@ -20,8 +20,6 @@ git commit -m "Installed Devise gem"
 
 ### Configuring Devise
 * Enter the command "rails generate devise:install".  This action creates the config/initializers/devise.rb and config/locales/devise.en.yml files.
-* Create admin authentication controllers.  Enter the command "rails generate devise:controllers admins".  This creates admin authentication controllers that will be needed later.
-* Create admin authentication pages.  Enter the command "rails generate devise:views admins".  This creates admin authentication pages that you will use later.
 * Edit the config/initializers/devise.rb file.  Change the value of config.mailer_sender to "somebody@rubyonracetracks.com" (in the interest of consistency with the email address shown on the Contact page).
 * Edit the files config/environments/development.rb AND config/environments/test.rb so that they look like this:
 
