@@ -96,6 +96,10 @@ end
 ```
 * In your web browser, refresh the admin login page. You'll still see the generic Devise sign in page, but the controller is now "admins/sessions".
 
+### Devise Controllers and Views
+* Create admin authentication controllers. Enter the command "rails generate devise:controllers admins". This creates admin authentication controllers that will be needed later.
+* Create admin authentication pages. Enter the command "rails generate devise:views admins". This creates admin authentication pages that you will use later.
+
 ### Admin Login Form
 * Replace the contents of the file app/views/admins/sessions/new.html.erb with the following:
 ```
