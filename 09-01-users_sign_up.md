@@ -90,8 +90,10 @@ end
 
 ### Devise Controllers and Views
 * Create user authentication controllers. Enter the command "rails generate devise:controllers users". This creates user authentication controllers.
+* In your web browser, visit the URL http://localhost:3000/users/sign_up .  Now the user sign up form appears, but the controller is now "users/registrations".
+* If you look at the app/views directory, you'll see that there is no user registration form available.  What you see in the browser is the default page provided by Devise.
 * Create user authentication pages. Enter the command "rails generate devise:views users". This creates user authentication pages.
-* 
+* Now there is a new user registration form at app/views/users/registrations/new.html.erb.  There are also various other forms in the app/views/users directory that can be customized.
 
 ### User Signup Page
 * Edit the user signup page.  Replace the contents of app/views/users/registrations/new.html.erb with the following:
