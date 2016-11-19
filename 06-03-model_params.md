@@ -367,7 +367,7 @@ class AdminTest < ActiveSupport::TestCase
   end
 end
 ```
-* Enter the command "sh testm.sh".  You'll see that these admin model tests fail.
+* Enter the command "sh testm.sh".  You'll see that all 13 admin model tests fail.
 * Update the admin model.  Enter the following commands to add parameters:
 ```
 rails generate migration add_params_to_admins last_name:string first_name:string username:string super:boolean
