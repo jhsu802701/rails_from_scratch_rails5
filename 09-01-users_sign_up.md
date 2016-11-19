@@ -333,7 +333,6 @@ end
 * Enter the command "sh git_check.sh".  All tests should pass, but you'll see RuboCop offenses.
 
 ### RuboCop Compliance
-* In the .rubocop.yml file, add config/initializers/devise.rb to the list of files exempt from the Metrics/LineLength cop.
 * In the .rubocop.yml file, add "app/controllers/users/*" to the list of files excluded from the Style/ClassAndModuleChildren cop.
 * Add the following lines to the end of .rubocop.yml:
 ```
