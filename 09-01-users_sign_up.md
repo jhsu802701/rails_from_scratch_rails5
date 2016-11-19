@@ -85,7 +85,7 @@ end
              controllers: { registrations: 'users/registrations' }
   # END: user section
 ```
-* In your web browser, attempts to refresh or visit the URL http://localhost:3000/users/sign_up give you a routing error with the message "uninitialized constant Users".  This is because the user registration page specified in the routing does not exist.
+* In your web browser, attempts to refresh or visit the URL http://localhost:3000/users/sign_up give you a routing error with the message "uninitialized constant Users".  This is because the user registration controller specified in the routing does not exist.
 
 
 ### Devise Controllers and Views
