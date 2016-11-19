@@ -7,7 +7,7 @@ In this chapter, you will add scripts for creating a new admin.  Because the adm
 Enter the command "git checkout -b 09-02-new_admins".
 
 ### admin_create.rb
-* Create the file admin_create.rb with the following content:
+Create the file admin_create.rb with the following content:
 ```
 #!/usr/bin/env ruby
 
@@ -90,11 +90,6 @@ puts "Last name: #{arg_last_name}"
 puts "Email: #{arg_email}"
 puts "Password: #{arg_pwd}"
 ```
-* Enter the following commands:
-```
-git add .
-git commit -m "Added admin_create.rb"
-```
 
 ### admin_create.sh
 * Create the file admin_create.sh with the following content:
@@ -120,7 +115,7 @@ bundle exec rails runner "eval(File.read 'admin_create.rb')"
 * Enter the following commands:
 ```
 git add .
-git commit -m "Added admin_create.sh"
+git commit -m "Added admin creation scripts"
 ```
 
 ### Wrapping Up
