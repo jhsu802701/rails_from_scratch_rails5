@@ -85,11 +85,13 @@ end
              controllers: { registrations: 'users/registrations' }
   # END: user section
 ```
-* At this point, the test results will not change.  In your local web browser, the sign up page looks the same.  However, the debug window on the page shows that the "users/registration" controller is in use.  (The action in use is still "new".)
+* In your web browser, attempts to refresh or visit the URL http://localhost:3000/users/sign_up give you a routing error with the message "uninitialized constant Users".  This is because the user registration page specified in the routing does not exist.
+
 
 ### Devise Controllers and Views
 * Create user authentication controllers. Enter the command "rails generate devise:controllers users". This creates user authentication controllers.
 * Create user authentication pages. Enter the command "rails generate devise:views users". This creates user authentication pages.
+* 
 
 ### User Signup Page
 * Edit the user signup page.  Replace the contents of app/views/users/registrations/new.html.erb with the following:
