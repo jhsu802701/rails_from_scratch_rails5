@@ -18,7 +18,7 @@ gem 'remove_double_blank'
 gem 'string_in_file'
 # END: gems used for setting up PostgreSQL in the development environment
 ```
-* Enter the command "sh git_check.sh".
+* Enter the command "bundle install".
 * Enter the following commands:
 ```
 git add .
