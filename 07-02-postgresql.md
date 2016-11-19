@@ -55,11 +55,6 @@ production:
   <<: *default
   database: DB_NAME_PRO
 ```
-* Enter the following commands:
-```
-git add .
-git commit -m "Added config/database-pg.yml"
-```
 
 ### Setup Scripts
 * Create the file pg_setup.sh with the following content:
