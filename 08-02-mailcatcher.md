@@ -10,7 +10,7 @@ Enter the command "git checkout -b 08-02-mailcatcher".
 Although MailCatcher is a gem, you should NOT add it to your Gemfile, because it will likely conflict with other gems sooner or later.
 
 ### Configuration
-* Edit the file config/environments/development.rb.  You will add code to the end of this file, which will look something like this:
+Edit the file config/environments/development.rb.  You will add code to the end of this file, which will look something like this:
 ```
 ...
   # From http://mailcatcher.me/
@@ -18,12 +18,7 @@ Although MailCatcher is a gem, you should NOT add it to your Gemfile, because it
   config.action_mailer.smtp_settings = { address: 'localhost', port: 1025 }
 end
 ```
-* Enter the command "sh git_check.sh".
-* Enter the following commands:
-```
-git add .
-git commit -m "Configured environments/development.rb for MailCatcher"
-```
+
 ### mailcatcher.sh
 * Add the file mailcatcher.sh with the following content:
 ```
