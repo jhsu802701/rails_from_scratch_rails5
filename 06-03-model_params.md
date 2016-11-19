@@ -375,6 +375,7 @@ rails db:migrate:reset
 ```
 * In the db/migrate/(time)_devise_create_admins.rb file, uncomment the lines under "## Confirmable" and "## Lockable" and the lines beginning with "add_index".
 * Enter the command "rails db:migrate:reset".
+* Enter the command "sh testm.sh".  8 of the tests should fail.
 * Replace the contents of the app/models/admin.rb file with the following:
 ```
 #
