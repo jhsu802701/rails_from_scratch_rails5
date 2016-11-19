@@ -10,7 +10,7 @@ pgAdmin is a GUI browser tool that you can install in your host environment to v
 
 ### Downloading and Installing pgAdmin
 * If your host environment is Debian Linux, Ubuntu Linux, or one of their derivatives, enter the command "sudo apt-get install pgadmin3" in the HOST environment. pgAdmin will install in a few minutes.
-* If your host environment is OS X or Windows, go to the [pgAdmin page](https://www.pgadmin.org/). Follow the instructions for downloading and installing SQLite Browser.
+* If your host environment is OS X or Windows, go to the [pgAdmin page](https://www.pgadmin.org/). Follow the instructions for downloading and installing this software.
 
 ### Setting up PostgreSQL
 * Enter the command "sh pg_setup.sh; sh seed.sh".  (NOTE: You should seed the database BEFORE using pgAdmin to connect to it.  If you seed the database when you already have an active connection through pgAdmin, you may get an error message warning you that the database is being accessed by others.)
