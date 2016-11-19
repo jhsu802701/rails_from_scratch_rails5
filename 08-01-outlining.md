@@ -17,7 +17,7 @@ group :development do
 end
 # END: for outline.sh
 ```
-* Enter the command "sh git_check.sh" to install these new gems.
+* Enter the command "bundle install" to install these new gems.
 * Enter the following commands:
 ```
 git add .
@@ -99,11 +99,6 @@ echo $file_vi
 echo
 ```
 * Enter the command "sh outline-short.sh".
-* Enter the following commands:
-```
-git add .
-git commit -m "Added outline-short.sh and automatically generated comments and outlines"
-```
 
 ### outline.sh
 * Create the file outline.sh with the following content:
@@ -143,11 +138,6 @@ echo $d_gems
 echo
 ```
 * Enter the command "sh outline.sh".
-* Enter the following commands:
-```
-git add .
-git commit -m "Added outline.sh"
-```
 
 ### all.sh
 * Edit the all.sh script.  Add the following code prior to the seed.sh section:
@@ -158,11 +148,6 @@ echo "sh outline.sh > $FILE_LOG_OUTLINE"
 sh outline.sh > $FILE_LOG_OUTLINE
 ```
 * Enter the command "sh all.sh".
-* Enter the following commands:
-```
-git add .
-git commit -m "Updated all.sh to include outline.sh"
-```
 
 ### git_check.sh
 * Add the following lines to the end of the git_check.sh script:
@@ -177,7 +162,7 @@ git status
 * Enter the following commands:
 ```
 git add .
-git commit -m "Updated git_check.sh to include outline-short.sh"
+git commit -m "Added outlining scripts"
 ```
 
 ### Wrapping Up
