@@ -222,7 +222,8 @@ end
         <% end %>
         <%-####################### -%>
         <%-# END: VARIABLE SECTION -%>
-        <%-####################### -%>```
+        <%-####################### -%>
+```
 * Enter the command "test1".  Now all of the tests pass.
 * Enter the command "sh git_check.sh".  All tests should pass, but there will be RoboCop offenses.
 
