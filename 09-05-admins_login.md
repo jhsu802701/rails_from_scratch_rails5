@@ -196,13 +196,26 @@ end
         <%-# BEGIN: VARIABLE SECTION -%>
         <%-######################### -%>
         <% if user_signed_in? %>
+          <%-##################### -%>
+          <%-# BEGIN: USER SECTION -%>
+          <%-##################### -%>
           <li>
           <%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>
           </li>
+          <%-################### -%>
+          <%-# END: USER SECTION -%>
+          <%-################### -%>
+        </li>
         <% elsif admin_signed_in? %>
+          <%-###################### -%>
+          <%-# BEGIN: ADMIN SECTION -%>
+          <%-###################### -%>          
           <li>
           <%= link_to 'Logout', destroy_admin_session_path, :method=>'delete' %>
           </li>
+          <%-#################### -%>
+          <%-# END: ADMIN SECTION -%>
+          <%-#################### -%>          
         <% else %>
           <li><%= link_to 'Login', new_user_session_path %></li>
         <% end %>
