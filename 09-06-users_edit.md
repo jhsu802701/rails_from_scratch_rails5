@@ -120,8 +120,61 @@ end
 * Enter the command "alias test1='(command from test results minus the TESTOPTS portion)'".
 * Enter the command "test1".
 
-### Test Helper
-Define the undefined methods of the integration test by adding these lines to the end of the test/test_helper.rb file:
+### test/test_helper.rb file
+* Replace the Capybara section with the following code:
+```
+#######################
+# BEGIN: Capybara setup
+#######################
+require 'capybara/rails'
+require 'capybara/email'
+
+class ActionDispatch::IntegrationTest
+  # Make the Capybara DSL available in all integration tests
+  include Capybara::DSL
+  include Capybara::Email::DSL
+
+  # Load up test fixtures at the beginning of each test
+  def setup
+    setup_universal
+  end
+
+  # Reset sessions and driver between tests
+  # Use super wherever this method is redefined in your individual test classes
+  def teardown
+    teardown_universal
+  end
+end
+#####################
+# END: Capybara setup
+#####################
+```
+* Add the following lines after the Capybara section:
+```
+# rubocop:disable Metrics/AbcSize
+# rubocop:disable Metrics/MethodLength
+# Assign variables to test fixtures
+# To be executed before each test
+def setup_universal
+  @a1 = admins(:elle_woods)
+  @a2 = admins(:vivian_kensington)
+  @a3 = admins(:emmett_richmond)
+  @a4 = admins(:paulette_bonafonte)
+  @a5 = admins(:professor_callahan)
+  @a6 = admins(:warner_huntington)
+
+  @u1 = users(:connery)
+  @u2 = users(:lazenby)
+  @u3 = users(:moore)
+  @u4 = users(:dalton)
+  @u5 = users(:brosnan)
+  @u6 = users(:craig)
+  @u7 = users(:blofeld)
+end
+# rubocop:enable Metrics/AbcSize
+# rubocop:enable Metrics/MethodLength
+```
+* Define the undefined methods of the integration test by adding these lines to the end of the test/test_helper.rb file:
 ```
 # Needed for using Devise tools in testing, such as login_as
 include Warden::Test::Helpers
