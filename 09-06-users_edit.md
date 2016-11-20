@@ -134,13 +134,12 @@ class ActionDispatch::IntegrationTest
   include Capybara::DSL
   include Capybara::Email::DSL
 
-  # Load up test fixtures at the beginning of each test
+  # Execute before each integration test
   def setup
     setup_universal
   end
 
-  # Reset sessions and driver between tests
-  # Use super wherever this method is redefined in your individual test classes
+  # Execute after each integration test
   def teardown
     teardown_universal
   end
