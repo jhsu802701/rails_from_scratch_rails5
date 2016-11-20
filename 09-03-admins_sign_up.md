@@ -52,8 +52,13 @@ alias test1='(command provided in test results with the TESTOPTS part omitted)'
 * Enter the command "rm app/views/admins/registrations/new.html.erb".  You won't need this form, because admin sign-ups will be disabled.
 
 ### Admin Registration Controller
-* In the app/controllers/admins/registrations_controller.rb file, replace the "# GET /resource/sign_up" and "# POST /resource" sections with the following:
+* Replace the contents of the app/controllers/admins/registrations_controller.rb file with the following:
 ```
+#
+class Admins::RegistrationsController < Devise::RegistrationsController
+  # before_action :configure_sign_up_params, only: [:create]
+  # before_action :configure_account_update_params, only: [:update]
+
   # GET /resource/sign_up
   def new
     flash[:alert] = 'Admin sign-ups are disabled.'
@@ -65,6 +70,53 @@ alias test1='(command provided in test results with the TESTOPTS part omitted)'
     flash[:alert] = 'Admin sign-ups are disabled.'
     redirect_to root_path
   end
+
+  # GET /resource/edit
+  # def edit
+  #   super
+  # end
+
+  # PUT /resource
+  # def update
+  #   super
+  # end
+
+  # DELETE /resource
+  # def destroy
+  #   super
+  # end
+
+  # GET /resource/cancel
+  # Forces the session data which is usually expired after sign
+  # in to be expired now. This is useful if the user wants to
+  # cancel oauth signing in/up in the middle of the process,
+  # removing all OAuth session data.
+  # def cancel
+  #   super
+  # end
+
+  # protected
+
+  # If you have extra params to permit, append them to the sanitizer.
+  # def configure_sign_up_params
+  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
+  # end
+
+  # If you have extra params to permit, append them to the sanitizer.
+  # def configure_account_update_params
+  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
+  # end
+
+  # The path used after sign up.
+  # def after_sign_up_path_for(resource)
+  #   super(resource)
+  # end
+
+  # The path used after sign up for inactive accounts.
+  # def after_inactive_sign_up_path_for(resource)
+  #   super(resource)
+  # end
+end
 ```
 * Enter the command "test1".  The test should now pass.
 * In your browser window, go to the URL http://localhost:3000/admins/sign_up (replacing "localhost" and/or "3000" if necessary).  You should be automatically forwarded to the home page, and you should see the message "Admin sign-ups are disabled." highlighted in red.
