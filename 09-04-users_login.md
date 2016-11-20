@@ -229,77 +229,12 @@ end
               'http://rubyonrails.org/' %>
 </div>
 ```
-* Enter the command "test1".  Now the first 4 tests and last test pass, but 2 tests still fail, because they rely on the user test fixtures that were not actually loaded.
-
-### Test Helper (Capybara)
-* In the file test/test_helper.rb, replace the Capybara section with the following code:
-```
-#######################
-# BEGIN: Capybara setup
-#######################
-require 'capybara/rails'
-require 'capybara/email'
-
-class ActionDispatch::IntegrationTest
-  # Make the Capybara DSL available in all integration tests
-  include Capybara::DSL
-  include Capybara::Email::DSL
-
-  # Load up test fixtures at the beginning of each test
-  # rubocop:disable Metrics/AbcSize
-  # rubocop:disable Metrics/MethodLength
-  def setup
-    setup_universal
-  end
-  # rubocop:enable Metrics/AbcSize
-  # rubocop:enable Metrics/MethodLength
-
-  # Reset sessions and driver between tests
-  # Use super wherever this method is redefined in your individual test classes
-  def teardown
-    teardown_universal
-  end
-end
-#####################
-# END: Capybara setup
-#####################
-
-# rubocop:disable Metrics/AbcSize
-# rubocop:disable Metrics/MethodLength
-# Assign variables to test fixtures
-# To be executed before each test
-def setup_universal
-  @a1 = admins(:elle_woods)
-  @a2 = admins(:vivian_kensington)
-  @a3 = admins(:emmett_richmond)
-  @a4 = admins(:paulette_bonafonte)
-  @a5 = admins(:professor_callahan)
-  @a6 = admins(:warner_huntington)
-
-  @u1 = users(:connery)
-  @u2 = users(:lazenby)
-  @u3 = users(:moore)
-  @u4 = users(:dalton)
-  @u5 = users(:brosnan)
-  @u6 = users(:craig)
-  @u7 = users(:blofeld)
-end
-# rubocop:enable Metrics/AbcSize
-# rubocop:enable Metrics/MethodLength
-
-# Reset sessions and driver
-# To be used after each test
-def teardown
-  Capybara.reset_sessions!
-  Capybara.use_default_driver
-end
-```
-* Enter the command "test1".  Now all of the new integration tests should pass.
+* Enter the command "test1".  Now all of the tests should pass.
 * Enter the command "sh git_check.sh".  All tests should pass, and there should be no 
 * Enter the following commands:
 ```
 git add .
-git commit -m "Added user signup"
+git commit -m "Added user login"
 ```
 
 ### Wrapping Up
