@@ -132,7 +132,6 @@ RemoveUnusedMethodsInControllersCheck: { except_methods: [],
 ### RuboCop Compliance
 * In the .rubocop.yml file, add "app/controllers/admins/*" to the list of files excluded from the Style/ClassAndModuleChildren cop.
 * In the .rubocop.yml file, add "app/controllers/admins/*" to the list of files excluded from the Style/CommentIndentation cop.
-* Add a new line consisting of just "#" to the beginning of the file app/controllers/admins/registrations_controller.rb.
 * Enter the command "sh git_check.sh".
 * Enter the following commands:
 ```
