@@ -8,7 +8,6 @@ Enter the command "git checkout -b 09-08-users_password_reset".
 * Enter the command "rails generate integration_test users_password_reset".
 * Replace the contents of test/integration/users_password_reset_test.rb with the following code:
 ```
-# rubocop:disable Metrics/LineLength
 
 require 'test_helper'
 
@@ -58,8 +57,6 @@ class UsersPasswordResetTest < ActionDispatch::IntegrationTest
     click_on 'Logout'
   end
 end
-
-# rubocop:enable Metrics/LineLength
 ```
 * Enter the command "sh build_fast.sh".  The first test will pass, but the other two will fail.
 * Enter the command "alias test1='(command provided by test results minus the TESTOPTS portion)'".
