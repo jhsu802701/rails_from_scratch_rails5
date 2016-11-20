@@ -9,7 +9,6 @@ Enter the command "git checkout -b 09-09-admins_password_reset".
 * Replace the contents of test/integration/admins_password_reset_test.rb with the following code:
 ```
 # rubocop:disable Metrics/AbcSize
-# rubocop:disable Metrics/LineLength
 # rubocop:disable Metrics/MethodLength
 
 require 'test_helper'
@@ -71,7 +70,6 @@ class AdminsPasswordResetTest < ActionDispatch::IntegrationTest
 end
 
 # rubocop:enable Metrics/AbcSize
-# rubocop:enable Metrics/LineLength
 # rubocop:enable Metrics/MethodLength
 ```
 * Enter the command "sh build_fast.sh".  The first test will pass, but the other three will fail.
