@@ -159,21 +159,33 @@ end
 ### Home Page
 * In the file app/views/static_pages/home.html.erb replace the variable section with the following code:
 ```
-  <%-######################### -%>
-  <%-# BEGIN: VARIABLE SECTION -%>
-  <%-######################### -%>
+  <% ######################### %>
+  <% # BEGIN: VARIABLE SECTION %>
+  <% ######################### %>
   <% if user_signed_in? %>
+    <% ##################### %>
+    <% # BEGIN: USER SECTION %>
+    <% ##################### %>
     You are logged in as a user (<%= current_user.username %>).
+    <% ################### %>
+    <% # END: USER SECTION %>
+    <% ################### %>
   <% elsif admin_signed_in? %>
+    <% ###################### %>
+    <% # BEGIN: ADMIN SECTION %>
+    <% ###################### %>
     You are logged in as an admin (<%= current_admin.username %>).
+    <% #################### %>
+    <% # END: ADMIN SECTION %>
+    <% #################### %>
   <% else %>
     <div class="center jumbotron">
       <%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-lg btn-primary" %>
     </div>
   <% end %>
-  <%-####################### -%>
-  <%-# END: VARIABLE SECTION -%>
-  <%-####################### -%>
+  <% ####################### %>
+  <% # END: VARIABLE SECTION %>
+  <% ####################### %>
 ```
 * Enter the command "test1".  Now the last 4 tests fail because the Logout link is not available.
 
