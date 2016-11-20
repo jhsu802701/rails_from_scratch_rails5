@@ -9,7 +9,6 @@ Enter the command "git checkout -b 09-11-admins_resend_conf".
 * Replace the contents of test/integration/admins_resend_conf_test.rb with the following code:
 ```
 # rubocop:disable Metrics/AbcSize
-# rubocop:disable Metrics/LineLength
 # rubocop:disable Metrics/MethodLength
 # rubocop:disable Metrics/ParameterLists
 
@@ -70,7 +69,6 @@ class AdminsResendConfTest < ActionDispatch::IntegrationTest
 end
 
 # rubocop:enable Metrics/AbcSize
-# rubocop:enable Metrics/LineLength
 # rubocop:enable Metrics/MethodLength
 # rubocop:enable Metrics/ParameterLists
 ```
