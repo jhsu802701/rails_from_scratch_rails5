@@ -10,7 +10,6 @@ Enter the command "git checkout -b 09-07-admins_edit".
 ```
 # rubocop:disable Metrics/AbcSize
 # rubocop:disable Metrics/ClassLength
-# rubocop:disable Metrics/LineLength
 # rubocop:disable Metrics/MethodLength
 # rubocop:disable Metrics/ParameterLists
 
@@ -153,7 +152,6 @@ end
 
 # rubocop:enable Metrics/AbcSize
 # rubocop:enable Metrics/ClassLength
-# rubocop:enable Metrics/LineLength
 # rubocop:enable Metrics/MethodLength
 # rubocop:enable Metrics/ParameterLists
 ```
