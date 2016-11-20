@@ -71,7 +71,6 @@ alias test1='(command provided in test results with the TESTOPTS part omitted)'
 
 ### Rails Best Practices
 * Entering the command "rails_best_practices" falsely shows unused methods in app/controllers/admins/registrations_controller.rb.  You need to suppress this warning.
-* Enter the command "rails_best_practices -g".  This generates the file config/rails_best_practices.yml.
 * Edit the file config/rails_best_practices.yml.  Replace the line beginning with "RemoveUnusedMethodsInControllersCheck" with the following:
 ```
 RemoveUnusedMethodsInControllersCheck: { except_methods: [],
