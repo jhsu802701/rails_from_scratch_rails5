@@ -9,7 +9,6 @@ Enter the command "git checkout -b 09-06-users_edit".
 * Replace the contents of the file test/integration/users_edit_test.rb with the following:
 ```
 # rubocop:disable Metrics/AbcSize
-# rubocop:disable Metrics/LineLength
 # rubocop:disable Metrics/MethodLength
 # rubocop:disable Metrics/ParameterLists
 
@@ -113,7 +112,6 @@ class UsersEditTest < ActionDispatch::IntegrationTest
 end
 
 # rubocop:enable Metrics/AbcSize
-# rubocop:enable Metrics/LineLength
 # rubocop:enable Metrics/MethodLength
 # rubocop:enable Metrics/ParameterLists
 
