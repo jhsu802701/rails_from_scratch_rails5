@@ -70,14 +70,18 @@ alias test1='(command provided in test results with the TESTOPTS part omitted)'
 * In your browser window, go to the URL http://localhost:3000/admins/sign_up (replacing "localhost" and/or "3000" if necessary).  You should be automatically forwarded to the home page, and you should see the message "Admin sign-ups are disabled." highlighted in red.
 
 ### Rails Best Practices
-* Entering the command "rails_best_practices" falsely shows unused methods in app/controllers/admins/registration
-s_controller.rb.  You need to suppress this warning.
+* Entering the command "rails_best_practices" falsely shows unused methods in app/controllers/admins/registrations_controller.rb.  You need to suppress this warning.
 * Enter the command "rails_best_practices -g".  This generates the file config/rails_best_practices.yml.
 * Edit the file config/rails_best_practices.yml.  Replace the line beginning with "RemoveUnusedMethodsInControllersCheck" with the following:
 ```
 RemoveUnusedMethodsInControllersCheck: { except_methods: [],
                                          ignored_files: ['app/controllers/admins/registrations_controller'] }
 ```
+
+### RuboCop Compliance
+* In the .rubocop.yml file, add "app/controllers/admins/*" to the list of files excluded from the Style/ClassAndModuleChildren cop.
+* In the .rubocop.yml file, add "app/controllers/admins/*" to the list of files excluded from the Style/CommentIndentation cop.
+* Add a new line consisting of just "#" to the beginning of the file app/controllers/admins/registrations_controller.rb.
 * Enter the command "sh git_check.sh".
 * Enter the following commands:
 ```
