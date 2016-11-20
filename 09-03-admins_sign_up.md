@@ -43,12 +43,12 @@ alias test1='(command provided in test results with the TESTOPTS part omitted)'
              controllers: { registrations: 'admins/registrations' }
   # END: admin
 ```
-* In your web browser, go to the URL http://localhost:3000/admins/sign_up (replacing the "localhost" and "3000" if necessary).  You'll still see the generic sign up form provided by Devise, but the debug window will show the "admins/registrations" controller instead.
+* Refresh your web browser.  You'll see that the URL http://localhost:3000/admins/sign_up (replacing the "localhost" and "3000" if necessary) now shows a routing error with the message "uninitialized constant Admins".  This is because the admin registration controller specified in the routing does not exist.
 
 ### Admin Registration Controller
-* Edit the app/controllers/admins/registrations_controller.rb file.
-* Add the line "#" immediately above the line that begins with "class Admins".
-* Replace the "# GET /resource/sign_up" and "# POST /resource" sections with the following:
+* Create user authentication controllers. Enter the command "rails generate devise:controllers admins". This creates user authentication controllers.
+* In your web browser, visit the URL http://localhost:3000/admins/sign_up . Now the generic admin sign up form appears once again, but the controller is now "admins/registrations".
+* In the app/controllers/admins/registrations_controller.rb file, replace the "# GET /resource/sign_up" and "# POST /resource" sections with the following:
 ```
   # GET /resource/sign_up
   def new
