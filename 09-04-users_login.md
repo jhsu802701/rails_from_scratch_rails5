@@ -88,7 +88,7 @@ end
 # rubocop:enable Metrics/LineLength
 ```
 
-* Enter the command "sh build_fast.sh".  All of the new integration tests will fail.
+* Enter the command "sh build_fast.sh".  All 7 of the new integration tests will fail.
 * Enter the command "alias test1='(insert command to rerun failed tests, minus the TESTOPTS portion)'".
 * Enter the command "test1".
 * In your web browser, go to the URL http://localhost:3000/users/sign_in (and replace the "localhost" and "3000" if necessary).  You'll see a generic Devise sign in page.  The debug box will show the "devise/sessions" controller and the action "new".
