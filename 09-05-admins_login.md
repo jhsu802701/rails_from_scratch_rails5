@@ -8,8 +8,6 @@ Enter the command "git checkout -b 09-05-admins_login".
 * Enter the command "rails generate integration_test admins_login".
 * Replace the contents of the file test/integration/admins_login_test.rb with the following code:
 ```
-# rubocop:disable Metrics/LineLength
-
 require 'test_helper'
 
 class AdminsLoginTest < ActionDispatch::IntegrationTest
@@ -77,8 +75,6 @@ class AdminsLoginTest < ActionDispatch::IntegrationTest
     assert page.has_text?('Signed out successfully.')
   end
 end
-
-# rubocop:enable Metrics/LineLength
 ```
 * Enter the command "rails test".  All 8 of these integration tests should fail.
 * Enter the command "alias test1='(command in test results minus the TESTOPTS portion)'.
