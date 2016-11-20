@@ -226,10 +226,6 @@ end
 ```
 * Enter the command "test1".  Now all of the tests pass.
 * Enter the command "sh git_check.sh".  All tests should pass, but there will be RoboCop offenses.
-
-### RuboCop Compliance
-* In the .rubocop.yml file, add "app/controllers/admins/*" to the list of files excluded from the Style/ClassAndModuleChildren cop.
-* In the .rubocop.yml file, add "app/controllers/admins/*" to the list of files excluded from the Style/CommentIndentation cop.
 * Enter the following commands:
 ```
 git add .
