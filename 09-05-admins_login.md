@@ -128,6 +128,7 @@ end
 * Enter the command "test1".  The test for the expected content on the admin login page will pass, but the other 7 tests will fail.
 
 ### User Login Page
+* Now it's time to provide access to the admin login page through the user login page.
 * Add the following lines to the end of the file app/views/users/sessions/new.html.erb:
 ```
 <br><br>
@@ -209,7 +210,7 @@ end
         <% elsif admin_signed_in? %>
           <%-###################### -%>
           <%-# BEGIN: ADMIN SECTION -%>
-          <%-###################### -%>          
+          <%-###################### -%>
           <li>
           <%= link_to 'Logout', destroy_admin_session_path, :method=>'delete' %>
           </li>
