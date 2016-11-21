@@ -15,8 +15,6 @@ Enter the command "git checkout -b 09-11-admins_resend_conf".
 require 'test_helper'
 
 class AdminsResendConfTest < ActionDispatch::IntegrationTest
-  include ApplicationHelper
-
   def edit(a, uname, e, fname, lname, password_n, password_c)
     edit_admin_start(a)
     fill_in('Username', with: uname)
