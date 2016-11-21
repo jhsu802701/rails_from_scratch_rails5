@@ -15,8 +15,6 @@ require 'test_helper'
 require 'timecop'
 
 class AdminsLockTest < ActionDispatch::IntegrationTest
-  include ApplicationHelper
-
   N_WARNING = 5 # Number of incorrect logins for triggering warning
 
   def login_incorrect_super
