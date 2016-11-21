@@ -12,8 +12,6 @@ Enter the command "git checkout -b 09-08-users_password_reset".
 require 'test_helper'
 
 class UsersPasswordResetTest < ActionDispatch::IntegrationTest
-  include ApplicationHelper
-
   test 'user password reset page is accessible' do
     visit root_path
     click_on 'Login'
