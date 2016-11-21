@@ -14,8 +14,6 @@ Enter the command "git checkout -b 09-09-admins_password_reset".
 require 'test_helper'
 
 class AdminsPasswordResetTest < ActionDispatch::IntegrationTest
-  include ApplicationHelper
-
   def password_reset(u, e, p)
     begin_admin_password_reset(e)
 
