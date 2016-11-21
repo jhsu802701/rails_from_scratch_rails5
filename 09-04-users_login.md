@@ -11,8 +11,6 @@ Enter the command "git checkout -b 09-04-users_login".
 require 'test_helper'
 
 class UsersLoginTest < ActionDispatch::IntegrationTest
-  include ApplicationHelper
-
   def post_user_login(username)
     # Flash
     assert page.has_text?('Signed in successfully.')
