@@ -11,8 +11,6 @@ Enter the command "git checkout -b 09-05-admins_login".
 require 'test_helper'
 
 class AdminsLoginTest < ActionDispatch::IntegrationTest
-  include ApplicationHelper
-
   def post_admin_login(username)
     # Flash
     assert page.has_text?('Signed in successfully.')
