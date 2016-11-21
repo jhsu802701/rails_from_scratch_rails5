@@ -22,8 +22,6 @@ git commit -m "Added timecop gem"
 * Enter the command "rails generate integration_test users_lock".
 * Replace the contents of test/integration/users_lock_test.rb with the following code:
 ```
-# rubocop:disable Metrics/LineLength
-
 require 'test_helper'
 require 'timecop'
 
@@ -107,8 +105,6 @@ class UsersLockTest < ActionDispatch::IntegrationTest
     clear_emails # Clear the message queue
   end
 end
-
-# rubocop:enable Metrics/LineLength
 ```
 * Enter the command "sh build_fast.sh".  All of the new integration tests fail.
 * Enter the command "alias test1='(command from test results minus TESTOPTS portion)'".
