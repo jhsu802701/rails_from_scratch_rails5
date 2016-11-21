@@ -16,8 +16,6 @@ Enter the command "git checkout -b 09-07-admins_edit".
 require 'test_helper'
 
 class AdminsEditTest < ActionDispatch::IntegrationTest
-  include ApplicationHelper
-
   # Edit all parameters except email
   def edit_all_but_email(a, uname, fname, lname, password_n, password_c)
     edit_admin_start(a)
