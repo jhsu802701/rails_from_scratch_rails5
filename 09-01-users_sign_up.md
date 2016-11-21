@@ -13,8 +13,6 @@ Enter the command "git checkout -b 09-01-users_sign_up".
 require 'test_helper'
 
 class UsersSignupTest < ActionDispatch::IntegrationTest
-  include ApplicationHelper
-
   test 'Home page provides access to user signup page' do
     visit root_path
     assert page.has_link?('Sign up now!', href: new_user_registration_path)
