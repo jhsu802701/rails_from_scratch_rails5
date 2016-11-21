@@ -106,8 +106,9 @@ class UsersLockTest < ActionDispatch::IntegrationTest
   end
 end
 ```
-* Enter the command "sh build_fast.sh".  All of the new integration tests fail.
+* Enter the command "sh build_fast.sh".  All 3 of the new integration tests fail.
 * Enter the command "alias test1='(command from test results minus TESTOPTS portion)'".
+* Enter the command "test1".
 
 ### Devise Configuration
 * Edit the file config/initializers/devise.rb.  Make the following changes:
