@@ -13,8 +13,6 @@ Enter the command "git checkout -b 09-03-admins_sign_up".
 require 'test_helper'
 
 class AdminsSignupTest < ActionDispatch::IntegrationTest
-  include ApplicationHelper
-
   test 'Cannot sign up as admin' do
     visit new_admin_registration_path
 
