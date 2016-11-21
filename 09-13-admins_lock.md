@@ -10,7 +10,6 @@ Enter the command "git checkout -b 09-13-admins_lock".
 * Replace the contents of test/integration/admins_lock_test.rb with the following code:
 ```
 # rubocop:disable Metrics/ClassLength
-# rubocop:disable Metrics/LineLength
 
 require 'test_helper'
 require 'timecop'
@@ -165,7 +164,6 @@ class AdminsLockTest < ActionDispatch::IntegrationTest
 end
 
 # rubocop:enable Metrics/ClassLength
-# rubocop:enable Metrics/LineLength
 ```
 * Enter the command "sh build_fast.sh".  All tests pass except for the one specifying the title and header of the page where admins can request new email messages providing account unlocking links.
 * Enter the command "alias test1='(command provided in test results minus TESTOPTS portion)'".
