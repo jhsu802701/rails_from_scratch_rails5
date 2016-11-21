@@ -13,8 +13,6 @@ Enter the command "git checkout -b 09-10-users_resend_conf".
 require 'test_helper'
 
 class UsersResendConfTest < ActionDispatch::IntegrationTest
-  include ApplicationHelper
-
   test 'resend confirmation for sign up' do
     sign_up_user('magnumpi', 'Magnum', 'Thomas', 'magnum_pi@example.com',
                  'Work the lock!', 'Work the lock!')
