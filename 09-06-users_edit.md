@@ -128,6 +128,10 @@ require 'capybara/rails'
 require 'capybara/email'
 
 class ActionDispatch::IntegrationTest
+  # Make app/helpers/application_helper.rb automatically available to
+  # all integration tests
+  include ApplicationHelper
+
   # Make the Capybara DSL available in all integration tests
   include Capybara::DSL
   include Capybara::Email::DSL
