@@ -11,7 +11,7 @@ Enter the command "git checkout -b 09-12-users_lock".
 ```
 gem 'timecop', group: :testing # Changes current time, needed for testing the lock duration
 ```
-* Enter the command "sh git_check.sh".
+* Enter the command "bundle install".
 * Enter the following commands:
 ```
 git add .
