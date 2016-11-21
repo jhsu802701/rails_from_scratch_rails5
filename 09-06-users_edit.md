@@ -15,8 +15,6 @@ Enter the command "git checkout -b 09-06-users_edit".
 require 'test_helper'
 
 class UsersEditTest < ActionDispatch::IntegrationTest
-  include ApplicationHelper
-
   # Edit all parameters except email
   def edit_all_but_email(u, uname, fname, lname, password_n, password_c)
     edit_user_start(u)
