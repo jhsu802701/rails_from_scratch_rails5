@@ -103,38 +103,12 @@ end
 ```
 * Enter the command "sh testc.sh".  All 4 user controller tests will fail because the expected routes are absent.
 
-
 ### Routing
 * In the user section of config/routes.rb, add the following line:
 ```
 resources :users, only: [:show]
 ```
 * Enter the command "sh testc.sh".  All 4 user controller tests will still fail because the show action is not found.
-
-### test/test_helper.rb
-* Add the following lines to the file test/test_helper.rb before the Capybara section:
-```
-##############################
-# BEGIN: controller test setup
-##############################
-class ActionController::TestCase
-  include Devise::Test::ControllerHelpers
-
-  # Execute before each integration test
-  def setup
-    setup_universal
-  end
-
-  # Execute after each integration test
-  def teardown
-    teardown_universal
-  end
-end
-############################
-# END: controller test setup
-############################
-```
-* Enter the command "sh testc.sh".  All 4 user controller tests will still fail because the route is missing..
 
 ### User Controller
 * Replace the contents of the file app/controllers/users_controller.rb with the following:
@@ -162,6 +136,31 @@ class UsersController < ApplicationController
 end
 ```
 * Enter the command "sh testc.sh".. All 4 user controller tests will still fail because the expected template is missing.
+
+### test/test_helper.rb
+* Add the following lines to the file test/test_helper.rb before the Capybara section:
+```
+##############################
+# BEGIN: controller test setup
+##############################
+class ActionController::TestCase
+  include Devise::Test::ControllerHelpers
+
+  # Execute before each integration test
+  def setup
+    setup_universal
+  end
+
+  # Execute after each integration test
+  def teardown
+    teardown_universal
+  end
+end
+############################
+# END: controller test setup
+############################
+```
+* Enter the command "sh testc.sh".  All 4 user controller tests will still fail because the route is missing..
 
 ### User Profile Page
 * Create the file app/views/users/show.html.erb with the following content:
