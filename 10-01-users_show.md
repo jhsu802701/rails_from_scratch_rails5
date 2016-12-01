@@ -116,6 +116,7 @@ end
 # END: controller test setup
 ############################
 ```
+* This section ensures that all controller tests in this app automatically include the devise test controller helpers, the setup_universal actions, and the teardown_universal actions.
 * Enter the command "sh testc.sh".  All 4 user controller tests will still fail because the route is missing.
 
 ### Routing
