@@ -101,7 +101,15 @@ class UsersControllerTest < ActionController::TestCase
   end
 end
 ```
-* Enter the command "sh testc.sh".  All 4 user controller tests will fail.
+* Enter the command "sh testc.sh".  All 4 user controller tests will fail because the expected routes are absent.
+
+
+### Routing
+* In the user section of config/routes.rb, add the following line:
+```
+resources :users, only: [:show]
+```
+* Enter the command "sh testc.sh".  All 4 user controller tests will still fail because the show action is not found.
 
 ### test/test_helper.rb
 * Add the following lines to the file test/test_helper.rb before the Capybara section:
@@ -127,13 +135,6 @@ end
 ############################
 ```
 * Enter the command "sh testc.sh".  All 4 user controller tests will still fail because the route is missing..
-
-### Routing
-* In the user section of config/routes.rb, add the following line:
-```
-resources :users, only: [:show]
-```
-* Enter the command "sh testc.sh".  All 4 user controller tests will still fail because the show action is not found.
 
 ### User Controller
 * Replace the contents of the file app/controllers/users_controller.rb with the following:
