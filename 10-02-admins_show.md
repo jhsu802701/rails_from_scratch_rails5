@@ -170,7 +170,6 @@ end
 ```
 git add .
 git commit -m "Added admin show page"
-git push origin master
 ```
 
 ### Wrapping Up
