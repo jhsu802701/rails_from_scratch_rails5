@@ -91,7 +91,32 @@ class UsersControllerTest < ActionController::TestCase
   end
 end
 ```
-* Enter the command "sh testc.sh".  All 4 user controller tests will fail because the expected routes are absent.
+* Enter the command "sh testc.sh".  All 4 new user controller tests will fail because of the unexpected method "sign_in".
+
+### test/test_helper.rb
+* Add the following lines to the file test/test_helper.rb before the Capybara section:
+```
+##############################
+# BEGIN: controller test setup
+##############################
+class ActionController::TestCase
+  include Devise::Test::ControllerHelpers
+
+  # Execute before each integration test
+  def setup
+    setup_universal
+  end
+
+  # Execute after each integration test
+  def teardown
+    teardown_universal
+  end
+end
+############################
+# END: controller test setup
+############################
+```
+* Enter the command "sh testc.sh".  All 4 user controller tests will still fail because the route is missing..
 
 ### Routing
 * In the user section of config/routes.rb, add the following line:
@@ -149,30 +174,7 @@ end
 ```
 * Enter the command "sh testc.sh".
 
-### test/test_helper.rb
-* Add the following lines to the file test/test_helper.rb before the Capybara section:
-```
-##############################
-# BEGIN: controller test setup
-##############################
-class ActionController::TestCase
-  include Devise::Test::ControllerHelpers
 
-  # Execute before each integration test
-  def setup
-    setup_universal
-  end
-
-  # Execute after each integration test
-  def teardown
-    teardown_universal
-  end
-end
-############################
-# END: controller test setup
-############################
-```
-* Enter the command "sh testc.sh".  All 4 user controller tests will still fail because the route is missing..
 
 * Enter the command "sh testc.sh".  Now all of the controller tests should pass.
 * Enter the command "sh testcl.sh".  All controller tests should pass, and there should be no flagged issues.
