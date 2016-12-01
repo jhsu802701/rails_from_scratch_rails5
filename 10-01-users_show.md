@@ -116,7 +116,7 @@ end
 # END: controller test setup
 ############################
 ```
-* Enter the command "sh testc.sh".  All 4 user controller tests will still fail because the route is missing..
+* Enter the command "sh testc.sh".  All 4 user controller tests will still fail because the route is missing.
 
 ### Routing
 * In the user section of config/routes.rb, add the following line:
