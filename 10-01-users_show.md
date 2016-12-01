@@ -135,7 +135,29 @@ class UsersController < ApplicationController
   helper_method :may_show_user
 end
 ```
-* Enter the command "sh testc.sh".. All 4 user controller tests will still fail because the expected template is missing.
+* Enter the command "sh testc.sh".  The first of the new user controller tests will pass, but the other three will still fail due to missing user profile pages.  
+
+### User Profile Page
+* Create the file app/views/users/show.html.erb with the following content:
+```
+<% require 'email_munger' %>
+<% provide(:title, "User: #{@user.first_name} #{@user.last_name}") %>
+
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+    <h1>
+    User: <%= @user.first_name %> <%= @user.last_name %>
+    </h1>
+    Username: <%= @user.username %>
+    <br>
+    Email: <%= raw(EmailMunger.encode(@user.email)) %>
+    <br>
+    </section>
+  </aside>
+</div>
+```
+* Enter the command "sh testc.sh".
 
 ### test/test_helper.rb
 * Add the following lines to the file test/test_helper.rb before the Capybara section:
@@ -162,26 +184,6 @@ end
 ```
 * Enter the command "sh testc.sh".  All 4 user controller tests will still fail because the route is missing..
 
-### User Profile Page
-* Create the file app/views/users/show.html.erb with the following content:
-```
-<% require 'email_munger' %>
-<% provide(:title, "User: #{@user.first_name} #{@user.last_name}") %>
-
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-    <h1>
-    User: <%= @user.first_name %> <%= @user.last_name %>
-    </h1>
-    Username: <%= @user.username %>
-    <br>
-    Email: <%= raw(EmailMunger.encode(@user.email)) %>
-    <br>
-    </section>
-  </aside>
-</div>
-```
 * Enter the command "sh testc.sh".  Now all of the controller tests should pass.
 * Enter the command "sh testcl.sh".  All controller tests should pass, and there should be no flagged issues.
 * Enter the command "sh git_check.sh".  All tests should pass, and there should be no flagged issues.
