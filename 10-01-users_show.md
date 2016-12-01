@@ -6,7 +6,7 @@ In this chapter, you will provide user profiles.  The only people who should be 
 ### New Branch
 Enter the command "git checkout -b 10-01-users_show".
 
-### User Controller
+### User Controller Test
 * Enter the command "rails generate controller Users new".
 * Enter the command "rm app/helpers/users_helper.rb".
 * Enter the command "rm app/views/users/new.html.erb".
@@ -101,6 +101,41 @@ class UsersControllerTest < ActionController::TestCase
   end
 end
 ```
+* Enter the command "sh testc.sh".  All 4 user controller tests will fail.
+
+### test/test_helper.rb
+* Add the following lines to the file test/test_helper.rb before the Capybara section:
+```
+##############################
+# BEGIN: controller test setup
+##############################
+class ActionController::TestCase
+  include Devise::Test::ControllerHelpers
+
+  # Execute before each integration test
+  def setup
+    setup_universal
+  end
+
+  # Execute after each integration test
+  def teardown
+    teardown_universal
+  end
+end
+############################
+# END: controller test setup
+############################
+```
+* Enter the command "sh testc.sh".  All 4 user controller tests will still fail because the route is missing..
+
+### Routing
+* In the user section of config/routes.rb, add the following line:
+```
+resources :users, only: [:show]
+```
+* Enter the command "sh testc.sh".  All 4 user controller tests will still fail because the show action is not found.
+
+### User Controller
 * Replace the contents of the file app/controllers/users_controller.rb with the following:
 ```
 #
@@ -125,12 +160,37 @@ class UsersController < ApplicationController
   helper_method :may_show_user
 end
 ```
-* In the user section of config/routes.rb, add the following line:
-```
-resources :users, only: [:show]
-```
+* Enter the command "sh testc.sh".. All 4 user controller tests will still fail because the expected template is missing.
 
 ### User Profile Page
+* Create the file app/views/users/show.html.erb with the following content:
+```
+<% require 'email_munger' %>
+<% provide(:title, "User: #{@user.first_name} #{@user.last_name}") %>
+
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+    <h1>
+    User: <%= @user.first_name %> <%= @user.last_name %>
+    </h1>
+    Username: <%= @user.username %>
+    <br>
+    Email: <%= raw(EmailMunger.encode(@user.email)) %>
+    <br>
+    </section>
+  </aside>
+</div>
+```
+* Enter the command "sh testc.sh".  Now all of the controller tests should pass.
+* Enter the command "sh testcl.sh".  All controller tests should pass, and there should be no flagged issues.
+* Enter the command "sh git_check.sh".  All tests should pass, and there should be no flagged issues.
+* Enter the following commands:
+```
+git add .
+git commit -m "Added user show page"
+git push origin master
+```
 
 ### Wrapping Up
 * Enter the command "git push origin 10-01-users_show".
