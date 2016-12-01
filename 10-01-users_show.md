@@ -172,10 +172,6 @@ end
   </aside>
 </div>
 ```
-* Enter the command "sh testc.sh".
-
-
-
 * Enter the command "sh testc.sh".  Now all of the controller tests should pass.
 * Enter the command "sh testcl.sh".  All controller tests should pass, and there should be no flagged issues.
 * Enter the command "sh git_check.sh".  All tests should pass, and there should be no flagged issues.
