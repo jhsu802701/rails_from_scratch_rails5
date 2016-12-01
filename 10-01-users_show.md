@@ -132,7 +132,6 @@ resources :users, only: [:show]
 #
 class UsersController < ApplicationController
   before_action :may_show_user, only: [:show]
-  before_action :may_index_user, only: [:index]
 
   def show
     @user = User.find(params[:id])
