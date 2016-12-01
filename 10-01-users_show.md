@@ -15,16 +15,6 @@ Enter the command "git checkout -b 10-01-users_show".
 require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
-  include Devise::Test::ControllerHelpers
-
-  def setup
-    setup_universal
-  end
-
-  def teardown
-    teardown_universal
-  end
-
   test 'should redirect profile page when not logged in' do
     get :show, params: { id: @u1 }
     assert_redirected_to root_path
