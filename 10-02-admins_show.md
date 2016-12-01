@@ -57,7 +57,7 @@ class AdminsControllerTest < ActionController::TestCase
     assert :success
   end
 
-  test 'should not redirect profile page when logged in as another admin' do
+  test 'should not redirect profile page when logged in a regular admin' do
     sign_in admins(:emmett_richmond)
 
     # Self
