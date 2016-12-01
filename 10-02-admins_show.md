@@ -135,7 +135,7 @@ class AdminsController < ApplicationController
   helper_method :may_destroy_admin
 end
 ```
-* Enter the command "sh testc.sh". The first of the new admin controller tests will pass, but the other three will still fail due to missing admin profile pages.
+* Enter the command "sh testc.sh". The first two of the new admin controller tests will pass, but the other two will still fail due to missing admin profile pages.
 
 ### Admin Profile Page
 * Create the file app/views/admins/show.html.erb with the following content:
