@@ -1,2 +1,4 @@
 # Unit 10
-## Chapter 7: Reset
+## Chapter 3: Reset
+
+Follow the instructions in README.md for resetting your Docker container.
