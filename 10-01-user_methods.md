@@ -89,6 +89,38 @@ class UsersControllerTest < ActionController::TestCase
     get :show, params: { id: @u7 }
     assert :success
   end
+
+  test 'should redirect index page when not logged in' do
+    get :index
+    assert_redirected_to root_path
+  end
+
+  test 'should redirect index page when logged in as a user' do
+    get :index
+    assert_redirected_to root_path
+  end
+
+  test 'should not allow visitor to delete user' do
+  end
+
+  # NOTE: User can delete self through the registration mechanism of Devise.
+  test 'should not allow user to delete self' do
+  end
+  
+  test 'should not allow user to delete another user' do
+    get :destroy, params: { id: @a5 }
+    assert_redirected_to root_path
+  end
+
+  test 'should allow regular admin to delete user' do
+    sign_in users(:blofeld)
+    get :destroy, params: { id: @a5 }
+    assert_redirected_to root_path
+    logout :user
+  end
+
+  test 'should allow super admin to delete user' do
+  end
 end
 ```
 * Enter the command "sh testc.sh".  All 4 new user controller tests will fail because of the unexpected method "sign_in".
