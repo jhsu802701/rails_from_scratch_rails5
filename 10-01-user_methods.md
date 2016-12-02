@@ -1,10 +1,10 @@
 # Unit 10
-## Chapter 1: Showing Users
+## Chapter 1: User Methods
 
 In this chapter, you will provide user profiles.  The only people who should be allowed to view a user profile are that specific user and the admins.
 
 ### New Branch
-Enter the command "git checkout -b 10-01-users_show".
+Enter the command "git checkout -b 10-01-user_methods".
 
 ### User Controller Test
 * Enter the command "rails generate controller Users new".
@@ -183,7 +183,7 @@ git push origin master
 ```
 
 ### Wrapping Up
-* Enter the command "git push origin 10-01-users_show".
+* Enter the command "git push origin 10-01-user_methods".
 * Go to the GitHub repository and click on the "Compare and pull request" button for this branch.
 * The email display on the user profile page will be flagged by Hakiri.  Mark this as a false positive by clicking on Details -> 1 warning -> admin view -> 1 warning -> Mark as False Positive.
 * Accept this pull request to merge it with the master branch, but do NOT delete this branch.
