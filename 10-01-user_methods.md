@@ -125,6 +125,12 @@ end
 ```
 * Enter the command "sh testc.sh".  All 4 new user controller tests will fail because of the unexpected method "sign_in".
 
+### User Show Integration Test
+
+### User Index Integration Test
+
+### User Delete Integration Test
+
 ### test/test_helper.rb
 * Add the following lines to the file test/test_helper.rb before the Capybara section:
 ```
