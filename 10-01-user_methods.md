@@ -15,6 +15,7 @@ Enter the command "git checkout -b 10-01-user_methods".
 require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
+  # PART 1: SHOW
   test 'should redirect profile page when not logged in' do
     get :show, params: { id: @u1 }
     assert_redirected_to root_path
@@ -90,21 +91,37 @@ class UsersControllerTest < ActionController::TestCase
     assert :success
   end
 
+  # PART 2: INDEX
   test 'should redirect index page when not logged in' do
     get :index
     assert_redirected_to root_path
   end
 
   test 'should redirect index page when logged in as a user' do
+    sign_in users(:elle_woods)
     get :index
     assert_redirected_to root_path
   end
 
+  test 'should not redirect index page when logged in as a super admin' do
+    sign_in admins(:elle_woods)
+  end
+
+  test 'should not redirect index page when logged in as a regular admin' do
+    sign_in admins(:emmett_richmond)
+  end
+
   test 'should not allow visitor to delete user' do
+    get :destroy, id: @u1
+    assert_redirected_to root_path
   end
 
   # NOTE: User can delete self through the registration mechanism of Devise.
   test 'should not allow user to delete self' do
+    sign_in :user, @u1
+    
+    get :destroy, id: @u1
+    assert_redirected_to root_path
   end
   
   test 'should not allow user to delete another user' do
