@@ -151,13 +151,27 @@ class UsersControllerTest < ActionController::TestCase
 end
 # rubocop:enable Metrics/ClassLength
 ```
-* Enter the command "sh testc.sh".  All 4 new user controller tests will fail because of the unexpected method "sign_in".
+* Enter the command "sh testc.sh".  All 13 new user controller tests will fail because of the unexpected method "sign_in".
 
 ### User Show Integration Test
+* Enter the command "rails generate integration_test users_show".
+* Replace the contents of the file test/integration/users_show_test.rb with the following:
+```
+
+```
 
 ### User Index Integration Test
+* Enter the command "rails generate integration_test users_index".
+* Replace the contents of the file test/integration/users_index_test.rb with the following:
+```
+
+```
 
 ### User Delete Integration Test
+* Enter the command "rails generate integration_test users_delete".
+* Replace the contents of the file test/integration/users_delete_test.rb with the following:
+```
+```
 
 ### test/test_helper.rb
 * Add the following lines to the file test/test_helper.rb before the Capybara section:
