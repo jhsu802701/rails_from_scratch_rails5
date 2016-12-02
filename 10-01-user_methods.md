@@ -220,6 +220,10 @@ git commit -m "Added user show page"
 git push origin master
 ```
 
+### User Index Page
+
+### User Delete Button
+
 ### Wrapping Up
 * Enter the command "git push origin 10-01-user_methods".
 * Go to the GitHub repository and click on the "Compare and pull request" button for this branch.
