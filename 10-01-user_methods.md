@@ -14,6 +14,7 @@ Enter the command "git checkout -b 10-01-user_methods".
 ```
 require 'test_helper'
 
+# rubocop:disable Metrics/ClassLength
 class UsersControllerTest < ActionController::TestCase
   # PART 1: SHOW
   test 'should redirect profile page when not logged in' do
@@ -105,40 +106,50 @@ class UsersControllerTest < ActionController::TestCase
 
   test 'should not redirect index page when logged in as a super admin' do
     sign_in admins(:elle_woods)
+    get :index
+    assert :success
   end
 
   test 'should not redirect index page when logged in as a regular admin' do
     sign_in admins(:emmett_richmond)
+    get :index
+    assert :success
   end
 
+  # PART 3: DELETE
   test 'should not allow visitor to delete user' do
-    get :destroy, id: @u1
+    get :destroy, params: { id: @u7 }
     assert_redirected_to root_path
   end
 
-  # NOTE: User can delete self through the registration mechanism of Devise.
+  # NOTE: User can delete self through edit registration form.
   test 'should not allow user to delete self' do
-    sign_in :user, @u1
-    
-    get :destroy, id: @u1
+    sign_in :user, @u7
+    get :destroy, params: { id: @u7 }
     assert_redirected_to root_path
   end
-  
+
   test 'should not allow user to delete another user' do
-    get :destroy, params: { id: @a5 }
+    sign_in :user, @u1
+    get :destroy, params: { id: @u7 }
+    assert_redirected_to root_path
+  end
+
+  test 'should allow super admin to delete user' do
+    sign_in admins(:elle_woods)
+    get :destroy, params: { id: @u7 }
+    assert :success
     assert_redirected_to root_path
   end
 
   test 'should allow regular admin to delete user' do
-    sign_in users(:blofeld)
-    get :destroy, params: { id: @a5 }
+    sign_in admins(:emmett_richmond)
+    get :destroy, params: { id: @u7 }
+    assert :success
     assert_redirected_to root_path
-    logout :user
-  end
-
-  test 'should allow super admin to delete user' do
   end
 end
+# rubocop:enable Metrics/ClassLength
 ```
 * Enter the command "sh testc.sh".  All 4 new user controller tests will fail because of the unexpected method "sign_in".
 
