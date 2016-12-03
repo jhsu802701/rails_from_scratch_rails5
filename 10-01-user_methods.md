@@ -403,55 +403,42 @@ gem 'bootstrap-will_paginate' # Twitter Bootstrap for pagination
 
 * Replace the contents of the file app/controllers/users_controller.rb with the following:
 ```
-#
-class UsersController < ApplicationController
-  before_action :may_show_user, only: [:show]
-  before_action :may_index_user, only: [:index]
-  before_action :may_destroy_user, only: [:destroy]
+require 'test_helper'
 
-  def index
-    @users = User.paginate(page: params[:page])
+class UsersDeleteTest < ActionDispatch::IntegrationTest
+  def delete_user(u)
+    visit user_path(u)
+    assert_difference 'User.count', -1 do
+      click_on 'Delete'
+    end
   end
 
-  def show
-    @search = User.search(params[:q])
-    @users = @search.result.paginate(page: params[:page])
-    @search.build_condition if @search.conditions.empty?
-    @search.build_sort if @search.sorts.empty?
+  def check_delete(a)
+    login_as(a, scope: :admin)
+    delete_user(@u1)
+    delete_user(@u2)
+    delete_user(@u3)
+    delete_user(@u4)
+    delete_user(@u5)
+    delete_user(@u6)
+    delete_user(@u7)
   end
 
-  def destroy
-    User.find(params[:id]).destroy
-    flash[:success] = 'User deleted'
-    redirect_to(users_path)
+  test 'user does not get button to delete self' do
+    login_as(@u1, scope: :user)
+    visit user_path(@u1)
+    assert page.has_no_link?('Delete', href: user_path(@u1))
   end
 
-  private
-
-  def admin_or_correct_user
-    current_user == User.find(params[:id]) || admin_signed_in?
+  test 'super admin gets button to delete user' do
+    check_delete(@a1)
   end
-  helper_method :admin_or_correct_user
 
-  def may_show_user
-    return redirect_to(root_path) unless admin_or_correct_user
+  test 'regular admin gets button to delete user' do
+    check_delete(@a4)
   end
-  helper_method :may_show_user
-
-  def may_index_user
-    return redirect_to(root_path) unless admin_signed_in?
-  end
-  helper_method :may_index_user
-
-  def may_destroy_user
-    return redirect_to(root_path) unless admin_signed_in?
-  end
-  helper_method :may_destroy_user
 end
 ```
-* Enter the command "sh testc.sh".  The first of the new user controller tests will pass, but the other three will still fail due to missing user profile pages.  
-
-### User Profile Page
 * Create the file app/views/users/show.html.erb with the following content:
 ```
 <% require 'email_munger' %>
@@ -467,10 +454,58 @@ end
     <br>
     Email: <%= raw(EmailMunger.encode(@user.email)) %>
     <br>
+    <%= link_to Delete", new_user_registration_path, class: "btn btn-lg btn-primary" %>
+    
+    <%= link_to "Delete #{user.first_name} #{user.last_name} (#{user.username})", user, 
+      class: "btn", method: :delete,
+      data: { confirm: "Are you sure you wish to delete #{user.first_name} #{user.last_name}?" } %>
     </section>
   </aside>
 </div>
 ```
+* Create the file app/views/users/index.html.erb
+```
+<% provide(:title, 'User Index') %>
+<br><br>
+
+<%= search_form_for @search, url: search_users_path, method: :post do |f| %>
+  <%= f.condition_fields do |c| %>
+    <%= render "condition_fields", f: c %>
+  <% end %>
+  <p><%= link_to_add_fields "Add Conditions", f, :condition %></p>
+  <div class="field">
+    Sort:
+    <%= f.sort_fields do |s| %>
+      <%= s.sort_select %>
+    <% end %>
+  </div>
+  <div class="actions"><%= f.submit "Search" %></div>
+<% end %>
+
+<h1>User Index</h1>
+<%= will_paginate %>
+<table class="users">
+  <tr>
+    <td><b>Last Name</b></td>
+    <td><b>First Name</b></td>
+    <td><b>Username</b></td>
+    <td><b>Email</b></td>
+  </tr>
+  <%= render @users %>
+</table>
+<%= will_paginate %>
+```
+* Create the file app/views/users/_user.html.erb with the following content:
+```
+<% require 'email_munger' %>
+<tr>
+  <td><%= user.last_name %></td>
+  <td><%= user.first_name %></td>
+  <td><%= link_to user.username, user %></td>
+  <td><%= link_to raw(EmailMunger.encode(user.email)), user %></td>
+</tr>
+```
+
 * Enter the command "sh testc.sh".  Now all of the controller tests should pass.
 * Enter the command "sh testcl.sh".  All controller tests should pass, and there should be no flagged issues.
 * Enter the command "sh git_check.sh".  All tests should pass, and there should be no flagged issues.
