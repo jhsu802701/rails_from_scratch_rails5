@@ -261,7 +261,7 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
                                   visible: false)
   end
 
-  def check_index_disabled_for_users(u)
+  def check_index_disabled_for_user(u)
     login_as(u, scope: :user)
     check_index_disabled
   end
@@ -302,13 +302,13 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
   end
 
   test 'users index page is not accessible to users' do
-    check_index_disabled_for_users(@u1)
-    check_index_disabled_for_users(@u2)
-    check_index_disabled_for_users(@u3)
-    check_index_disabled_for_users(@u4)
-    check_index_disabled_for_users(@u5)
-    check_index_disabled_for_users(@u6)
-    check_index_disabled_for_users(@u7)
+    check_index_disabled_for_user(@u1)
+    check_index_disabled_for_user(@u2)
+    check_index_disabled_for_user(@u3)
+    check_index_disabled_for_user(@u4)
+    check_index_disabled_for_user(@u5)
+    check_index_disabled_for_user(@u6)
+    check_index_disabled_for_user(@u7)
   end
 
   test 'users index page is accessible to super admins' do
