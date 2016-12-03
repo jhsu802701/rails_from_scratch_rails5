@@ -157,14 +157,170 @@ end
 * Enter the command "rails generate integration_test users_show".
 * Replace the contents of the file test/integration/users_show_test.rb with the following:
 ```
+require 'test_helper'
+require 'email_munger'
 
+class UsersShowTest < ActionDispatch::IntegrationTest
+  def test_profile_disabled(u)
+    visit user_path(u)
+    assert page.has_css?('title', text: full_title('Home'),
+                                  visible: false)
+  end
+
+  def user_view_other_profile(u1, u2)
+    login_as(u1, scope: :user)
+    visit test_profile_disabled(u2)
+  end
+
+  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable Metrics/MethodLength
+  def check_page(u)
+    fn = u.first_name
+    ln = u.last_name
+    un = u.username
+    e = EmailMunger.encode(u.email)
+    visit user_path(u)
+    assert page.has_css?('title', text: full_title("User: #{fn} #{ln}"),
+                                  visible: false)
+    assert page.has_css?('h1', text: "User: #{fn} #{ln}",
+                               visible: false)
+    assert page.has_text?("Username: #{un}")
+    assert page.has_text?("Email: #{e}")
+  end
+  # rubocop:enable Metrics/AbcSize
+  # rubocop:enable Metrics/MethodLength
+
+  def check_own_page(u)
+    login_as(u, scope: :user)
+    check_page(u)
+  end
+
+  test 'unregistered visitors may not view user profile pages' do
+    test_profile_disabled(@u1)
+    test_profile_disabled(@u2)
+    test_profile_disabled(@u3)
+    test_profile_disabled(@u4)
+    test_profile_disabled(@u5)
+    test_profile_disabled(@u6)
+    test_profile_disabled(@u7)
+  end
+
+  test 'user may not view profiles of other users' do
+    user_view_other_profile(@u1, @u2)
+    user_view_other_profile(@u1, @u3)
+    user_view_other_profile(@u1, @u4)
+    user_view_other_profile(@u1, @u5)
+    user_view_other_profile(@u1, @u6)
+    user_view_other_profile(@u1, @u7)
+  end
+
+  test 'users can view their own profiles' do
+    check_own_page(@u1)
+    check_own_page(@u2)
+    check_own_page(@u3)
+    check_own_page(@u4)
+    check_own_page(@u5)
+    check_own_page(@u6)
+    check_own_page(@u7)
+  end
+
+  test 'super admin can view user profile' do
+    login_as(@a1, scope: :admin)
+    check_page(u1)
+    check_page(u2)
+    check_page(u3)
+    check_page(u4)
+    check_page(u5)
+    check_page(u6)
+    check_page(u7)
+  end
+
+  test 'regular admin can view user profiles' do
+    login_as(@a4, scope: :admin)
+    check_page(u1)
+    check_page(u2)
+    check_page(u3)
+    check_page(u4)
+    check_page(u5)
+    check_page(u6)
+    check_page(u7)
+  end
+end
 ```
 
 ### User Index Integration Test
 * Enter the command "rails generate integration_test users_index".
 * Replace the contents of the file test/integration/users_index_test.rb with the following:
 ```
+require 'test_helper'
 
+class UsersIndexTest < ActionDispatch::IntegrationTest
+  def check_index_disabled
+    visit users_path
+    assert page.has_css?('title', text: full_title('Home'),
+                                  visible: false)
+  end
+
+  def check_index_disabled_for_users(u)
+    login_as(u, scope: :user)
+    check_index_disabled
+  end
+
+  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable Metrics/MethodLength
+  def check_index
+    visit users_path
+    assert page.has_css?('title', text: full_title('User Index'),
+                                  visible: false)
+    assert page.has_css?('h1', text: 'User Index')
+    assert page.has_text?('Connery')
+    assert page.has_text?('Lazenby')
+    assert page.has_text?('Moore')
+    assert page.has_text?('Dalton')
+    assert page.has_text?('Brosnan')
+    assert page.has_text?('Craig')
+    assert page.has_text?('Blofeld')
+
+    # Verify that index page provides access to profile pages
+    assert page.has_link?('sconnery', href: user_path(@u1))
+    assert page.has_link?('glazenby', href: user_path(@u2))
+    assert page.has_link?('rmoore', href: user_path(@u3))
+    assert page.has_link?('tdalton', href: user_path(@u4))
+    assert page.has_link?('pbrosnan', href: user_path(@u5))
+    assert page.has_link?('dcraig', href: user_path(@u6))
+    assert page.has_link?('eblofeld', href: user_path(@u7))
+
+    # Verify that root page provides access to index page
+    click_on 'Home'
+    assert page.has_link?('User Index', href: users_path)
+  end
+  # rubocop:enable Metrics/AbcSize
+  # rubocop:enable Metrics/MethodLength
+
+  test 'users index page is not accessible to visitors' do
+    check_index_disabled
+  end
+
+  test 'users index page is not accessible to users' do
+    check_index_disabled_for_users(@u1)
+    check_index_disabled_for_users(@u2)
+    check_index_disabled_for_users(@u3)
+    check_index_disabled_for_users(@u4)
+    check_index_disabled_for_users(@u5)
+    check_index_disabled_for_users(@u6)
+    check_index_disabled_for_users(@u7)
+  end
+
+  test 'users index page is accessible to super admins' do
+    login_as(@a1, scope: :admin)
+    check_index
+  end
+
+  test 'users index page is accessible to regular admins' do
+    login_as(@a4, scope: :admin)
+    check_index
+  end
+end
 ```
 
 ### User Delete Integration Test
