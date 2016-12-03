@@ -405,47 +405,48 @@ gem 'bootstrap-will_paginate' # Twitter Bootstrap for pagination
 ```
 #
 class UsersController < ApplicationController
-  before_action :may_show_user, only: [:index, :show]
+  before_action :may_show_user, only: [:show]
+  before_action :may_index_user, only: [:index]
   before_action :may_destroy_user, only: [:destroy]
 
   def index
-    @s = Admin.paginate(page: params[:page])
+    @users = User.paginate(page: params[:page])
   end
 
   def show
-    @admin = Admin.find(params[:id])
+    @search = User.search(params[:q])
+    @users = @search.result.paginate(page: params[:page])
+    @search.build_condition if @search.conditions.empty?
+    @search.build_sort if @search.sorts.empty?
   end
 
   def destroy
-    Admin.find(params[:id]).destroy
-    flash[:success] = 'Admin deleted'
-    redirect_to(admins_path)
+    User.find(params[:id]).destroy
+    flash[:success] = 'User deleted'
+    redirect_to(users_path)
   end
 
   private
 
-  def may_show_admin
-    return redirect_to(root_path) unless admin_signed_in? == true
+  def admin_or_correct_user
+    current_user == User.find(params[:id]) || admin_signed_in?
   end
+  helper_method :admin_or_correct_user
 
-  helper_method :may_show_admin
-
-  def no_destroy
-    ta = Admin.find(params[:id]) # Target admin
-    ca = current_admin
-    # Do not delete if:
-    # 1.  current_admin is nil OR
-    # 2.  Attempting to delete self OR
-    # 3.  Not a super admin OR
-    # 4.  Target is super admin
-    ca.nil? || ca == ta || ca.super != true || ta.super == true
+  def may_show_user
+    return redirect_to(root_path) unless admin_or_correct_user
   end
+  helper_method :may_show_user
 
-  def may_destroy_admin
-    return redirect_to(root_path) if no_destroy == true
+  def may_index_user
+    return redirect_to(root_path) unless admin_signed_in?
   end
+  helper_method :may_index_user
 
-  helper_method :may_destroy_admin
+  def may_destroy_user
+    return redirect_to(root_path) unless admin_signed_in?
+  end
+  helper_method :may_destroy_user
 end
 ```
 * Enter the command "sh testc.sh".  The first of the new user controller tests will pass, but the other three will still fail due to missing user profile pages.  
