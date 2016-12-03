@@ -173,8 +173,8 @@ end
 ```
 ```
 
-### test/test_helper.rb
-* Add the following lines to the file test/test_helper.rb before the Capybara section:
+### Getting the User Controller Tests to Pass
+* Automatically provide Devise test controller helpers, the setup_universal actions, and the teardown_universal actions to all controller tests.  Edit the file test/test_helper.rb and add the following lines before the Capybara section:
 ```
 ##############################
 # BEGIN: controller test setup
@@ -196,38 +196,65 @@ end
 # END: controller test setup
 ############################
 ```
-* This section ensures that all controller tests in this app automatically include the devise test controller helpers, the setup_universal actions, and the teardown_universal actions.
-* Enter the command "sh testc.sh".  All 4 user controller tests will still fail because the route is missing.
-
-### Routing
-* In the user section of config/routes.rb, add the following line:
+* Update the routing.  Edit the file config/routes.rb and add the following lines to the user section:
 ```
-resources :users, only: [:show]
+  resources :users, only: [:show, :index, :delete]
+  resources :users do
+    collection { post :search, to: 'users#index' }
+  end
 ```
-* Enter the command "sh testc.sh".  All 4 user controller tests will still fail because the show action is not found.
+* Add the following line to the end of the Gemfile:
+```
+# Pagination gems
+gem 'will_paginate' # For pagination
+gem 'bootstrap-will_paginate' # Twitter Bootstrap for pagination
+```
 
-### User Controller
 * Replace the contents of the file app/controllers/users_controller.rb with the following:
 ```
 #
 class UsersController < ApplicationController
-  before_action :may_show_user, only: [:show]
+  before_action :may_show_user, only: [:index, :show]
+  before_action :may_destroy_user, only: [:destroy]
+
+  def index
+    @s = Admin.paginate(page: params[:page])
+  end
 
   def show
-    @user = User.find(params[:id])
+    @admin = Admin.find(params[:id])
+  end
+
+  def destroy
+    Admin.find(params[:id]).destroy
+    flash[:success] = 'Admin deleted'
+    redirect_to(admins_path)
   end
 
   private
 
-  def admin_or_correct_user
-    current_user == User.find(params[:id]) || admin_signed_in?
+  def may_show_admin
+    return redirect_to(root_path) unless admin_signed_in? == true
   end
-  helper_method :admin_or_correct_user
 
-  def may_show_user
-    return redirect_to(root_path) unless admin_or_correct_user
+  helper_method :may_show_admin
+
+  def no_destroy
+    ta = Admin.find(params[:id]) # Target admin
+    ca = current_admin
+    # Do not delete if:
+    # 1.  current_admin is nil OR
+    # 2.  Attempting to delete self OR
+    # 3.  Not a super admin OR
+    # 4.  Target is super admin
+    ca.nil? || ca == ta || ca.super != true || ta.super == true
   end
-  helper_method :may_show_user
+
+  def may_destroy_admin
+    return redirect_to(root_path) if no_destroy == true
+  end
+
+  helper_method :may_destroy_admin
 end
 ```
 * Enter the command "sh testc.sh".  The first of the new user controller tests will pass, but the other three will still fail due to missing user profile pages.  
