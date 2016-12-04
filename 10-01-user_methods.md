@@ -472,6 +472,8 @@ end
 # Pagination gems
 gem 'will_paginate' # For pagination
 gem 'bootstrap-will_paginate' # Twitter Bootstrap for pagination
+
+gem 'ransack' # For searching users
 ```
 * Enter the command "bundle install" to install the pagination gems.
 * Create the file app/views/users/index.html.erb
