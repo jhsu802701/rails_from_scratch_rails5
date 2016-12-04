@@ -322,7 +322,6 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
   end
 end
 ```
-
 ### User Delete Integration Test
 * Enter the command "rails generate integration_test users_delete".
 * Replace the contents of the file test/integration/users_delete_test.rb with the following:
@@ -394,13 +393,6 @@ end
     collection { post :search, to: 'users#index' }
   end
 ```
-* Add the following line to the end of the Gemfile:
-```
-# Pagination gems
-gem 'will_paginate' # For pagination
-gem 'bootstrap-will_paginate' # Twitter Bootstrap for pagination
-```
-
 * Replace the contents of the file app/controllers/users_controller.rb with the following:
 ```
 require 'test_helper'
@@ -463,6 +455,13 @@ end
   </aside>
 </div>
 ```
+* Add the following line to the end of the Gemfile:
+```
+# Pagination gems
+gem 'will_paginate' # For pagination
+gem 'bootstrap-will_paginate' # Twitter Bootstrap for pagination
+```
+* Enter the command "bundle install" to install the pagination gems.
 * Create the file app/views/users/index.html.erb
 ```
 <% provide(:title, 'User Index') %>
