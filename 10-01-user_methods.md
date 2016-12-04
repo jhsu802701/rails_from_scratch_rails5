@@ -434,6 +434,11 @@ class UsersController < ApplicationController
     return redirect_to(root_path) unless admin_signed_in?
   end
   helper_method :may_index_user
+
+  def may_destroy_user
+    return redirect_to(root_path) unless admin_signed_in?
+  end
+  helper_method :may_destroy_user
 end
 
 ```
