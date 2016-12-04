@@ -395,41 +395,47 @@ end
 ```
 * Replace the contents of the file app/controllers/users_controller.rb with the following:
 ```
-require 'test_helper'
+#
+class UsersController < ApplicationController
+  before_action :may_show_user, only: [:show]
+  before_action :may_index_user, only: [:index]
+  before_action :may_destroy_user, only: [:destroy]
 
-class UsersDeleteTest < ActionDispatch::IntegrationTest
-  def delete_user(u)
-    visit user_path(u)
-    assert_difference 'User.count', -1 do
-      click_on 'Delete'
-    end
+  def show
+    @user = User.find(params[:id])
   end
 
-  def check_delete(a)
-    login_as(a, scope: :admin)
-    delete_user(@u1)
-    delete_user(@u2)
-    delete_user(@u3)
-    delete_user(@u4)
-    delete_user(@u5)
-    delete_user(@u6)
-    delete_user(@u7)
+  def index
+    @search = User.search(params[:q])
+    @users = @search.result.paginate(page: params[:page])
+    @search.build_condition if @search.conditions.empty?
+    @search.build_sort if @search.sorts.empty?
   end
 
-  test 'user does not get button to delete self' do
-    login_as(@u1, scope: :user)
-    visit user_path(@u1)
-    assert page.has_no_link?('Delete', href: user_path(@u1))
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = 'User deleted'
+    redirect_to(users_path)
   end
 
-  test 'super admin gets button to delete user' do
-    check_delete(@a1)
-  end
+  private
 
-  test 'regular admin gets button to delete user' do
-    check_delete(@a4)
+  def admin_or_correct_user
+    current_user == User.find(params[:id]) || admin_signed_in?
   end
+  helper_method :admin_or_correct_user
+
+  def may_show_user
+    return redirect_to(root_path) unless admin_or_correct_user
+  end
+  helper_method :may_show_user
+
+  def may_index_user
+    return redirect_to(root_path) unless admin_signed_in?
+  end
+  helper_method :may_index_user
 end
+
 ```
 * Create the file app/views/users/show.html.erb with the following content:
 ```
