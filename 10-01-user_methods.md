@@ -35,7 +35,7 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test 'should redirect users from profiles other than their own' do
-    sign_in users(:connery)
+    sign_in users(:connery, scope: :user)
 
     # Self
     get :show, params: { id: @u1 }
@@ -57,7 +57,7 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test 'should not redirect profile page when logged in as a super admin' do
-    sign_in admins(:elle_woods)
+    sign_in @a1, scope: :admin
     get :show, params: { id: @u1 }
     assert :success
     get :show, params: { id: @u2 }
@@ -75,7 +75,7 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test 'should not redirect profile page when logged in as a regular admin' do
-    sign_in admins(:emmett_richmond)
+    sign_in @a4, scope: :admin
     get :show, params: { id: @u1 }
     assert :success
     get :show, params: { id: @u2 }
@@ -99,19 +99,19 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test 'should redirect index page when logged in as a user' do
-    sign_in users(:elle_woods)
+    sign_in @u1, scope: :user
     get :index
     assert_redirected_to root_path
   end
 
   test 'should not redirect index page when logged in as a super admin' do
-    sign_in admins(:elle_woods)
+    sign_in @a1, scope: :admin
     get :index
     assert :success
   end
 
   test 'should not redirect index page when logged in as a regular admin' do
-    sign_in admins(:emmett_richmond)
+    sign_in @a4, scope: admin
     get :index
     assert :success
   end
@@ -124,26 +124,26 @@ class UsersControllerTest < ActionController::TestCase
 
   # NOTE: User can delete self through edit registration form.
   test 'should not allow user to delete self' do
-    sign_in :user, @u7
+    sign_in @u7, scope: :user
     get :destroy, params: { id: @u7 }
     assert_redirected_to root_path
   end
 
   test 'should not allow user to delete another user' do
-    sign_in :user, @u1
+    sign_in @u1, scope: :user
     get :destroy, params: { id: @u7 }
     assert_redirected_to root_path
   end
 
   test 'should allow super admin to delete user' do
-    sign_in admins(:elle_woods)
+    sign_in @a1, scope: :admin
     get :destroy, params: { id: @u7 }
     assert :success
     assert_redirected_to root_path
   end
 
   test 'should allow regular admin to delete user' do
-    sign_in admins(:emmett_richmond)
+    sign_in @a4, scope: :admin
     get :destroy, params: { id: @u7 }
     assert :success
     assert_redirected_to root_path
