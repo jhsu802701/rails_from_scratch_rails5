@@ -442,6 +442,9 @@ class UsersController < ApplicationController
 end
 
 ```
+* Create the file app/views/users/show.html.erb.  Don't give it any content yet.  (You'll take care of this later.)
+* Create the file app/views/users/index.html.erb.  Don't give it any content yet.  (You'll take care of this later.)
+
 * Create the file app/views/users/show.html.erb with the following content:
 ```
 <% require 'email_munger' %>
@@ -457,8 +460,6 @@ end
     <br>
     Email: <%= raw(EmailMunger.encode(@user.email)) %>
     <br>
-    <%= link_to Delete", new_user_registration_path, class: "btn btn-lg btn-primary" %>
-    
     <%= link_to "Delete #{user.first_name} #{user.last_name} (#{user.username})", user, 
       class: "btn", method: :delete,
       data: { confirm: "Are you sure you wish to delete #{user.first_name} #{user.last_name}?" } %>
