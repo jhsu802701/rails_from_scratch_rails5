@@ -552,19 +552,34 @@ gem 'ransack' # For searching users
   <%= link_to "remove", '#', class: "remove_fields" %>
 </div>
 ```
-* Add the following content to the app/assets/javascripts/users.coffee file to allow the buttons for adding and removing fields in the search form:
+* Add the following lines to the end of app/helpers/application_helper.rb (just before the final "end" command):
 ```
-<div class="field">
-  <%= f.attribute_fields do |a| %>
-    <%= a.attribute_select associations: [:category] %>
-  <% end %>
-  <%= f.predicate_select %>
-  <%= f.value_fields do |v| %>
-    <%= v.text_field :value %>
-  <% end %>
-  <%= link_to "remove", '#', class: "remove_fields" %>
-</div>
+  def link_to_add_fields(name, f, type)
+    new_object = f.object.send "build_#{type}"
+    id = "new_#{type}"
+    fields = f.send("#{type}_fields", new_object, child_index: id) do |builder|
+      render(type.to_s + '_fields', f: builder)
+    end
+    link_to(name, '#', class: 'add_fields',
+                       data: { id: id, fields: fields.delete("\n") })
+  end
 ```
+* Enter the command "sh testc.sh".  All of the controller tests should now pass.
+
+### Integration Tests to Pass
+* Enter the command "test1".  All 5 of the integration tests should now pass.
+* Enter the command "test2".  Two of the tests fail, because the expected "User Index" link is not present.
+* Add the following line to the beginning of the admin section in app/views/layouts/_header.html.erb:
+```
+<li><%= link_to "User Index",   users_path %></li>
+```
+* Enter the command "test2".  Now all 4 of the integration tests should pass.
+* Enter the command "test3".  Now all 3 of the integration tests should pass.
+
+### Updating the User Index Appearance
+* Log in to your local app as an admin.
+* 
+*
 * Add the following content to app/assets/stylesheets/custom.scss to format the table in the users index page:
 ```
 /* Users index */
@@ -581,18 +596,21 @@ gem 'ransack' # For searching users
   }
 }
 ```
-* Add the following lines to the end of app/helpers/application_helper.rb (just before the final "end" command):
+
+* Add the following content to the app/assets/javascripts/users.coffee file to allow the buttons for adding and removing fields in the search form:
 ```
-  def link_to_add_fields(name, f, type)
-    new_object = f.object.send "build_#{type}"
-    id = "new_#{type}"
-    fields = f.send("#{type}_fields", new_object, child_index: id) do |builder|
-      render(type.to_s + '_fields', f: builder)
-    end
-    link_to(name, '#', class: 'add_fields',
-                       data: { id: id, fields: fields.delete("\n") })
-  end
+<div class="field">
+  <%= f.attribute_fields do |a| %>
+    <%= a.attribute_select associations: [:category] %>
+  <% end %>
+  <%= f.predicate_select %>
+  <%= f.value_fields do |v| %>
+    <%= v.text_field :value %>
+  <% end %>
+  <%= link_to "remove", '#', class: "remove_fields" %>
+</div>
 ```
+
 * Add the following lines to app/models/user.rb immediately after the line beginning with "class User":
 ```
   # BEGIN: parameters for the index page
@@ -606,10 +624,7 @@ gem 'ransack' # For searching users
   end
   # END: parameters for the index page
 ```
-* Add the following line to the beginning of the admin section in app/views/layouts/_header.html.erb:
-```
-<li><%= link_to "User Index",   users_path %></li>
-```
+
 * In the file config/rails_best_practices.yml, make the following changes:
   * Replace the line beginning with "MoveModelLogicIntoModelCheck" with the following line:
   ```
