@@ -388,7 +388,7 @@ end
 # END: controller test setup
 ############################
 ```
-* Update the routing.  Edit the file config/routes.rb and add the following lines to the user section:
+* Update the routing.  Edit the file config/routes.rb and add the following lines to the end of the user section:
 ```
   resources :users, only: [:show, :index, :delete]
   resources :users do
@@ -407,12 +407,20 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  # rubocop:disable Metrics/AbcSize
   def index
-    @search = User.search(params[:q])
+    @search = User.search(params[:q].presence)
     @users = @search.result.paginate(page: params[:page])
+    # NOTE: The following line specifies the sort order.
+    # This is reflected in the default sort criteria shown.
+    # The user is free to remove these default criteria.
+    @search.sorts = 'last_name asc' if @search.sorts.empty?
     @search.build_condition if @search.conditions.empty?
     @search.build_sort if @search.sorts.empty?
+    @users = @search.result
+    @users = @users.order('last_name').page(params[:page])
   end
+  # rubocop:enable Metrics/AbcSize
 
   def destroy
     User.find(params[:id]).destroy
@@ -442,11 +450,7 @@ class UsersController < ApplicationController
   end
   helper_method :may_destroy_user
 end
-
 ```
-* Create the file app/views/users/show.html.erb.  Don't give it any content yet.  (You'll take care of this later.)
-* Create the file app/views/users/index.html.erb.  Don't give it any content yet.  (You'll take care of this later.)
-
 * Create the file app/views/users/show.html.erb with the following content:
 ```
 <% require 'email_munger' %>
@@ -462,9 +466,11 @@ end
     <br>
     Email: <%= raw(EmailMunger.encode(@user.email)) %>
     <br>
-    <%= link_to "Delete #{user.first_name} #{user.last_name} (#{user.username})", user, 
-      class: "btn", method: :delete,
-      data: { confirm: "Are you sure you wish to delete #{user.first_name} #{user.last_name}?" } %>
+    <% if admin_signed_in? %>
+      <%= link_to "Delete #{@user.first_name} #{@user.last_name} (#{@user.username})", @user,
+        class: "btn btn-primary", method: :delete,
+        data: { confirm: "Are you sure you wish to delete #{@user.first_name} #{@user.last_name}?" } %>
+    <% end %>
     </section>
   </aside>
 </div>
@@ -477,10 +483,11 @@ gem 'bootstrap-will_paginate' # Twitter Bootstrap for pagination
 
 gem 'ransack' # For searching users
 ```
-* Enter the command "bundle install" to install the pagination gems.
-* Create the file app/views/users/index.html.erb
+* Enter the command "bundle install" to install these new gems.
+* Create the file app/views/users/index.html.erb with the following content:
 ```
 <% provide(:title, 'User Index') %>
+
 <br><br>
 
 <%= search_form_for @search, url: search_users_path, method: :post do |f| %>
@@ -510,7 +517,7 @@ gem 'ransack' # For searching users
 </table>
 <%= will_paginate %>
 ```
-* Create the file app/views/users/_user.html.erb with the following content:
+* Create the file app/views/users/_user.html.erb with the following content to show information on each user in the index:
 ```
 <% require 'email_munger' %>
 <tr>
@@ -520,7 +527,86 @@ gem 'ransack' # For searching users
   <td><%= link_to raw(EmailMunger.encode(user.email)), user %></td>
 </tr>
 ```
+* Create the file _condition_fields.html.erb with the following content to provide the ability to display and remove fields in the search form:
+```
+<div class="field">
+  <%= f.attribute_fields do |a| %>
+    <%= a.attribute_select associations: [:category] %>
+  <% end %>
+  <%= f.predicate_select %>
+  <%= f.value_fields do |v| %>
+    <%= v.text_field :value %>
+  <% end %>
+  <%= link_to "remove", '#', class: "remove_fields" %>
+</div>
+```
+* Add the following content to the app/assets/javascripts/users.coffee file to allow the buttons for adding and removing fields in the search form:
+```
+<div class="field">
+  <%= f.attribute_fields do |a| %>
+    <%= a.attribute_select associations: [:category] %>
+  <% end %>
+  <%= f.predicate_select %>
+  <%= f.value_fields do |v| %>
+    <%= v.text_field :value %>
+  <% end %>
+  <%= link_to "remove", '#', class: "remove_fields" %>
+</div>
+```
+* Add the following content to app/assets/stylesheets/custom.scss to format the table in the users index page:
+```
+/* Users index */
+.users {
+  td {
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+  }
+  th {
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+  }
+}
+```
+* Add the following lines to the end of app/helpers/application_helper.rb (just before the final "end" command):
+```
+  def link_to_add_fields(name, f, type)
+    new_object = f.object.send "build_#{type}"
+    id = "new_#{type}"
+    fields = f.send("#{type}_fields", new_object, child_index: id) do |builder|
+      render(type.to_s + '_fields', f: builder)
+    end
+    link_to(name, '#', class: 'add_fields',
+                       data: { id: id, fields: fields.delete("\n") })
+  end
+```
+* Add the following lines to app/models/user.rb immediately after the line beginning with "class User":
+```
+  # BEGIN: parameters for the index page
+  # Specify the number of entries per page given use of the will_paginate gem
+  self.per_page = 50
 
+  # Parameters available for searching
+  RANSACKABLE_ATTRIBUTES = %w(email username last_name first_name).freeze
+  def self.ransackable_attributes auth_object = nil
+    RANSACKABLE_ATTRIBUTES + _ransackers.keys
+  end
+  # END: parameters for the index page
+```
+* Add the following line to the beginning of the admin section in app/views/layouts/_header.html.erb:
+```
+<li><%= link_to "User Index",   users_path %></li>
+```
+* In the file config/rails_best_practices.yml, make the following changes:
+  * Replace the line beginning with "MoveModelLogicIntoModelCheck" with the following line:
+  ```
+  MoveModelLogicIntoModelCheck: { ignored_files: ['app/controllers/users_controller.rb'] }
+  ```
+  * Replace the line beginning with "RestrictAutoGeneratedRoutesCheck" with the following line:
+  ```
+  RestrictAutoGeneratedRoutesCheck: { ignored_files: ['config/routes'] }
+  ```
 * Enter the command "sh testc.sh".  Now all of the controller tests should pass.
 * Enter the command "sh testcl.sh".  All controller tests should pass, and there should be no flagged issues.
 * Enter the command "sh git_check.sh".  All tests should pass, and there should be no flagged issues.
@@ -531,9 +617,8 @@ git commit -m "Added user show page"
 git push origin master
 ```
 
-### User Index Page
 
-### User Delete Button
+
 
 ### Wrapping Up
 * Enter the command "git push origin 10-01-user_methods".
