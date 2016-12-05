@@ -627,6 +627,7 @@ jQuery ->
     RANSACKABLE_ATTRIBUTES + _ransackers.keys
   end
 ```
+* Refresh your web browser.  Now the only searchable fields should be the email address, username, last name, and first name.
 
 ### Rails Best Practices
 * Enter the command "sh git_check.sh".  All of the tests should pass, but 
