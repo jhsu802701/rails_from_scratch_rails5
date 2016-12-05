@@ -151,7 +151,7 @@ class UsersControllerTest < ActionController::TestCase
 end
 # rubocop:enable Metrics/ClassLength
 ```
-* Enter the command "sh testc.sh".  All 13 new user controller tests will fail because of the unexpected method "sign_in".
+* Enter the command "sh testc.sh".  All 13 new user controller tests will fail due to the undefined method sign_in or due to missing routes.
 
 ### User Show Integration Test
 * Enter the command "rails generate integration_test users_show".
