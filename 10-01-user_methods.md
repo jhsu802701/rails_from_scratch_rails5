@@ -373,7 +373,8 @@ end
 * Enter the command "test3".  All 3 tests will fail.
 
 ### Getting the User Controller Tests to Pass
-* Automatically provide Devise test controller helpers, the setup_universal actions, and the teardown_universal actions to all controller tests.  Edit the file test/test_helper.rb and add the following lines before the Capybara section:
+* Enter the command "sh testc.sh".  Several of the tests will fail due to the undefined method sign_in, and others will fail due to missing routes.
+* Automatically provide Devise test controller helpers (which provide the method sign_in), the setup_universal actions, and the teardown_universal actions to all controller tests.  Edit the file test/test_helper.rb and add the following lines before the Capybara section:
 ```
 ##############################
 # BEGIN: controller test setup
@@ -395,6 +396,7 @@ end
 # END: controller test setup
 ############################
 ```
+* Enter the command "sh testc.sh".  13 tests still fail, and all of these failures are due to missing routes.
 * Update the routing.  Edit the file config/routes.rb and add the following lines to the end of the user section:
 ```
   resources :users, only: [:show, :index, :delete]
@@ -402,6 +404,7 @@ end
     collection { post :search, to: 'users#index' }
   end
 ```
+* Enter the command "sh testc.sh".  Now the 13 tests fail due to missing actions.
 * Replace the contents of the file app/controllers/users_controller.rb with the following:
 ```
 #
@@ -458,6 +461,7 @@ class UsersController < ApplicationController
   helper_method :may_destroy_user
 end
 ```
+* Enter the command "sh testc.sh".  5 failures remain.  3 of them are due to missing templates for the show action, and tackling this issue is the next step.  (The other 2 are due to the undefined method search.  You will take care of this issue later.)
 * Create the file app/views/users/show.html.erb with the following content:
 ```
 <% require 'email_munger' %>
@@ -482,6 +486,7 @@ end
   </aside>
 </div>
 ```
+* Enter the command "sh testc.sh".  2 failures remain, and both are due to the undefined method search.
 * Add the following line to the end of the Gemfile:
 ```
 # Pagination gems
@@ -534,7 +539,7 @@ gem 'ransack' # For searching users
   <td><%= link_to raw(EmailMunger.encode(user.email)), user %></td>
 </tr>
 ```
-* Create the file _condition_fields.html.erb with the following content to provide the ability to display and remove fields in the search form:
+* Create the file app/views/users/_condition_fields.html.erb with the following content to provide the ability to display and remove fields in the search form:
 ```
 <div class="field">
   <%= f.attribute_fields do |a| %>
