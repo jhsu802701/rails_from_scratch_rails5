@@ -615,35 +615,21 @@ jQuery ->
 * Now the buttons for adding and removing fields in the user index search form should work.  Try them out on the browser in your local app to verify this.
 
 ### Limiting Searchable Fields
-* So far, the search form offers all parameters for filtering search results.  This is confusing and not desirable.
-* Edit the file app/models/user.rb and add the following lines to the beginning (just after the line that starts with 
-```
-  ############################################
-  # BEGIN: limit parameters for the index page
-  ############################################
-  # Specify the number of entries per page given use of the will_paginate gem
-  self.per_page = 50
-
-  # Parameters available for searching
-  RANSACKABLE_ATTRIBUTES = %w(email username last_name first_name).freeze
-  #########################################
-  # END: limitparameters for the index page
-  #########################################
-```
+* So far, the search form offers all parameters for filtering search results.  This is confusing and not desirable.  In addition, let's also change the number of entries listed per page from 30 (default value) to 50.
 * Add the following lines to app/models/user.rb immediately after the line beginning with "class User":
 ```
-  # BEGIN: parameters for the index page
   # Specify the number of entries per page given use of the will_paginate gem
   self.per_page = 50
 
-  # Parameters available for searching
+  # Limit the parameters available for searching the user database
   RANSACKABLE_ATTRIBUTES = %w(email username last_name first_name).freeze
-  def self.ransackable_attributes auth_object = nil
+  def self.ransackable_attributes(_auth_object = nil)
     RANSACKABLE_ATTRIBUTES + _ransackers.keys
   end
-  # END: parameters for the index page
 ```
 
+### Rails Best Practices
+* Enter the command "sh git_check.sh".  All of the tests should pass, but 
 * In the file config/rails_best_practices.yml, make the following changes:
   * Replace the line beginning with "MoveModelLogicIntoModelCheck" with the following line:
   ```
