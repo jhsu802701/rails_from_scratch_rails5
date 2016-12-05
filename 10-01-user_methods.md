@@ -597,20 +597,39 @@ gem 'ransack' # For searching users
 ```
 * Refresh the user index page.  Now the table looks better.
 
-* Add the following content to the app/assets/javascripts/users.coffee file to allow the buttons for adding and removing fields in the search form:
+### Adding and Removing Fields
+* The search form appears at the top of the user index page, but the buttons for adding and removing fields do not work yet.
+* Add the following content to the end of the app/assets/javascripts/users.coffee file to allow the buttons for adding and removing fields in the search form:
 ```
-<div class="field">
-  <%= f.attribute_fields do |a| %>
-    <%= a.attribute_select associations: [:category] %>
-  <% end %>
-  <%= f.predicate_select %>
-  <%= f.value_fields do |v| %>
-    <%= v.text_field :value %>
-  <% end %>
-  <%= link_to "remove", '#', class: "remove_fields" %>
-</div>
-```
+jQuery ->
+  $('form').on 'click', '.remove_fields', (event) ->
+    $(this).closest('.field').remove()
+    event.preventDefault()
 
+  $('form').on 'click', '.add_fields', (event) ->
+    time = new Date().getTime()
+    regexp = new RegExp($(this).data('id'), 'g')
+    $(this).before($(this).data('fields').replace(regexp, time))
+    event.preventDefault()
+```
+* Now the buttons for adding and removing fields in the user index search form should work.  Try them out on the browser in your local app to verify this.
+
+### Limiting Searchable Fields
+* So far, the search form offers all parameters for filtering search results.  This is confusing and not desirable.
+* Edit the file app/models/user.rb and add the following lines to the beginning (just after the line that starts with 
+```
+  ############################################
+  # BEGIN: limit parameters for the index page
+  ############################################
+  # Specify the number of entries per page given use of the will_paginate gem
+  self.per_page = 50
+
+  # Parameters available for searching
+  RANSACKABLE_ATTRIBUTES = %w(email username last_name first_name).freeze
+  #########################################
+  # END: limitparameters for the index page
+  #########################################
+```
 * Add the following lines to app/models/user.rb immediately after the line beginning with "class User":
 ```
   # BEGIN: parameters for the index page
