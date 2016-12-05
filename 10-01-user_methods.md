@@ -630,7 +630,8 @@ jQuery ->
 * Refresh your web browser.  Now the only searchable fields should be the email address, username, last name, and first name.
 
 ### Rails Best Practices
-* Enter the command "sh git_check.sh".  All of the tests should pass, but 
+* Enter the command "sh git_check.sh".  All of the tests should pass, but Rails Best Practices flags app/controllers/users_controller.rb with the message "move model logic into model and config/routes.rb with the message "restrict auto
+-generated routes".  Because I was unable to figure out how to make the suggested changes and believe that these are false alarms, the next step is to update config/rails_best_practices.yml
 * In the file config/rails_best_practices.yml, make the following changes:
   * Replace the line beginning with "MoveModelLogicIntoModelCheck" with the following line:
   ```
