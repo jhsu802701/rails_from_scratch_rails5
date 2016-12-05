@@ -247,6 +247,8 @@ class UsersShowTest < ActionDispatch::IntegrationTest
   end
 end
 ```
+* Enter the command "alias test1='rails test test/integration/users_show_test.rb'".
+* Enter the command "test1".  This runs only the tests in test/integration/users_show_test.rb.  All 5 of the tests will fail.
 
 ### User Index Integration Test
 * Enter the command "rails generate integration_test users_index".
@@ -323,6 +325,9 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
   end
 end
 ```
+* Enter the command "alias test2='rails test test/integration/users_index_test.rb'".
+* Enter the command "test2".  This tests only the tests in test/integration/users_index_test.rb.  All 4 tests will fail.
+
 ### User Delete Integration Test
 * Enter the command "rails generate integration_test users_delete".
 * Replace the contents of the file test/integration/users_delete_test.rb with the following:
@@ -364,6 +369,8 @@ class UsersDeleteTest < ActionDispatch::IntegrationTest
   end
 end
 ```
+* Enter the command "alias test3='rails test test/integration/users_delete_test.rb'".
+* Enter the command "test3".  All 3 tests will fail.
 
 ### Getting the User Controller Tests to Pass
 * Automatically provide Devise test controller helpers, the setup_universal actions, and the teardown_universal actions to all controller tests.  Edit the file test/test_helper.rb and add the following lines before the Capybara section:
