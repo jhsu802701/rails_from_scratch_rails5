@@ -566,7 +566,7 @@ gem 'ransack' # For searching users
 ```
 * Enter the command "sh testc.sh".  All of the controller tests should now pass.
 
-### Integration Tests to Pass
+### Getting Integration Tests To Pass
 * Enter the command "test1".  All 5 of the integration tests should now pass.
 * Enter the command "test2".  Two of the tests fail, because the expected "User Index" link is not present.
 * Add the following line to the beginning of the admin section in app/views/layouts/_header.html.erb:
@@ -578,12 +578,11 @@ gem 'ransack' # For searching users
 
 ### Updating the User Index Appearance
 * Log in to your local app as an admin.
-* 
-*
-* Add the following content to app/assets/stylesheets/custom.scss to format the table in the users index page:
+* Go to the URL http://localhost:3000/users.  The user index will appear, but the table would look far better with lines between each entry.
+* Add the following content to the end of app/assets/stylesheets/custom.scss to format the table in the users index page:
 ```
-/* Users index */
-.users {
+/* Users and admins indices */
+.users, .admins {
   td {
     border: 1px solid black;
     padding: 5px;
@@ -596,6 +595,7 @@ gem 'ransack' # For searching users
   }
 }
 ```
+* Refresh the user index page.  Now the table looks better.
 
 * Add the following content to the app/assets/javascripts/users.coffee file to allow the buttons for adding and removing fields in the search form:
 ```
