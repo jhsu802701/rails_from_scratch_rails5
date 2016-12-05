@@ -35,7 +35,7 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test 'should redirect users from profiles other than their own' do
-    sign_in users(:connery, scope: :user)
+    sign_in @u1, scope: :user
 
     # Self
     get :show, params: { id: @u1 }
@@ -111,7 +111,7 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test 'should not redirect index page when logged in as a regular admin' do
-    sign_in @a4, scope: admin
+    sign_in @a4, scope: :admin
     get :index
     assert :success
   end
@@ -139,14 +139,14 @@ class UsersControllerTest < ActionController::TestCase
     sign_in @a1, scope: :admin
     get :destroy, params: { id: @u7 }
     assert :success
-    assert_redirected_to root_path
+    assert_redirected_to users_path
   end
 
   test 'should allow regular admin to delete user' do
     sign_in @a4, scope: :admin
     get :destroy, params: { id: @u7 }
     assert :success
-    assert_redirected_to root_path
+    assert_redirected_to users_path
   end
 end
 # rubocop:enable Metrics/ClassLength
@@ -158,18 +158,18 @@ end
 * Replace the contents of the file test/integration/users_show_test.rb with the following:
 ```
 require 'test_helper'
-require 'email_munger'
 
 class UsersShowTest < ActionDispatch::IntegrationTest
-  def test_profile_disabled(u)
+  def check_profile_disabled(u)
     visit user_path(u)
-    assert page.has_css?('title', text: full_title('Home'),
+    assert page.has_css?('title', text: full_title(''),
                                   visible: false)
+    assert page.has_css?('h1', text: 'Home', visible: false)
   end
 
   def user_view_other_profile(u1, u2)
     login_as(u1, scope: :user)
-    visit test_profile_disabled(u2)
+    check_profile_disabled(u2)
   end
 
   # rubocop:disable Metrics/AbcSize
@@ -178,7 +178,7 @@ class UsersShowTest < ActionDispatch::IntegrationTest
     fn = u.first_name
     ln = u.last_name
     un = u.username
-    e = EmailMunger.encode(u.email)
+    e = u.email
     visit user_path(u)
     assert page.has_css?('title', text: full_title("User: #{fn} #{ln}"),
                                   visible: false)
@@ -196,13 +196,13 @@ class UsersShowTest < ActionDispatch::IntegrationTest
   end
 
   test 'unregistered visitors may not view user profile pages' do
-    test_profile_disabled(@u1)
-    test_profile_disabled(@u2)
-    test_profile_disabled(@u3)
-    test_profile_disabled(@u4)
-    test_profile_disabled(@u5)
-    test_profile_disabled(@u6)
-    test_profile_disabled(@u7)
+    check_profile_disabled(@u1)
+    check_profile_disabled(@u2)
+    check_profile_disabled(@u3)
+    check_profile_disabled(@u4)
+    check_profile_disabled(@u5)
+    check_profile_disabled(@u6)
+    check_profile_disabled(@u7)
   end
 
   test 'user may not view profiles of other users' do
@@ -226,24 +226,24 @@ class UsersShowTest < ActionDispatch::IntegrationTest
 
   test 'super admin can view user profile' do
     login_as(@a1, scope: :admin)
-    check_page(u1)
-    check_page(u2)
-    check_page(u3)
-    check_page(u4)
-    check_page(u5)
-    check_page(u6)
-    check_page(u7)
+    check_page(@u1)
+    check_page(@u2)
+    check_page(@u3)
+    check_page(@u4)
+    check_page(@u5)
+    check_page(@u6)
+    check_page(@u7)
   end
 
   test 'regular admin can view user profiles' do
     login_as(@a4, scope: :admin)
-    check_page(u1)
-    check_page(u2)
-    check_page(u3)
-    check_page(u4)
-    check_page(u5)
-    check_page(u6)
-    check_page(u7)
+    check_page(@u1)
+    check_page(@u2)
+    check_page(@u3)
+    check_page(@u4)
+    check_page(@u5)
+    check_page(@u6)
+    check_page(@u7)
   end
 end
 ```
@@ -257,8 +257,9 @@ require 'test_helper'
 class UsersIndexTest < ActionDispatch::IntegrationTest
   def check_index_disabled
     visit users_path
-    assert page.has_css?('title', text: full_title('Home'),
+    assert page.has_css?('title', text: full_title(''),
                                   visible: false)
+    assert page.has_css?('h1', text: 'Home', visible: false)
   end
 
   def check_index_disabled_for_user(u)
@@ -334,6 +335,7 @@ class UsersDeleteTest < ActionDispatch::IntegrationTest
     assert_difference 'User.count', -1 do
       click_on 'Delete'
     end
+    assert_text 'User deleted'
   end
 
   def check_delete(a)
