@@ -15,12 +15,12 @@ Enter the command "git checkout -b 01-05-other_metrics".
 
 # BEGIN: gems used in test_code.sh script
 group :development, :testing do
-  gem 'bundler-audit' # Checks for vulnerable versions of gems
   gem 'brakeman' # Checks for security vulnerabilities
-  gem 'sandi_meter' # Checks for compliance with Sandi Metz' four rules
-  gem 'rubocop' # Checks for violations of the Ruby Style Guide, not recommended for legacy apps
-  gem 'rails_best_practices' # Checks the quality of Rails code, not recommended for legacy apps
+  gem 'bundler-audit' # Checks for vulnerable versions of gems
   gem 'gemsurance' # Checks for outdated and insecure gems
+  gem 'rails_best_practices' # Checks the quality of Rails code, not recommended for legacy apps
+  gem 'rubocop' # Checks for violations of the Ruby Style Guide, not recommended for legacy apps
+  gem 'sandi_meter' # Checks for compliance with Sandi Metz' four rules
 end
 # END: gems used in test_code.sh script
 ```
