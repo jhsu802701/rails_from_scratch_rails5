@@ -86,9 +86,9 @@ AllCops:
     - bin/spring
     - db/migrate/*
     - db/schema.rb
+    - tmp/vulnerabilities/*
     - tmp/vulnerabilities/lib/*
     - tmp/vulnerabilities/spec/*
-    - tmp/vulnerabilities/Rakefile
     
 Metrics/LineLength:
 . . .
