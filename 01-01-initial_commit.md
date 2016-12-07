@@ -1,6 +1,8 @@
 # Unit 1
 ## Chapter 1: Initial Commit
 
+In this chapter, you will start a new project and commit the source code to GitHub.
+
 ### Creating the New App
 
 Open your Docker container from the appropriate rbenv-general Docker image (as discussed in the README.md file).  In the shell window, go to the /home/winner/shared directory.  To create a new app named after the current date, enter the following commands:
