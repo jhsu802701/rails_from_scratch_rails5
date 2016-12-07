@@ -27,9 +27,9 @@ source 'https://rubygems.org'
 # You should specify versions.
 # Enter the following command to see which versions you have installed locally:
 # gem list "^rails$"; gem list pg; gem list nokogiri
-gem 'rails'
-gem 'pg' # Not necessary in development and testing if you're using SQLite
 gem 'nokogiri'
+gem 'pg' # Not necessary in development and testing if you're using SQLite
+gem 'rails'
 
 # BEGIN: SQLite
 # NOTE: This section is automatically deleted in the pg_setup.rb script
@@ -38,13 +38,13 @@ group :development, :test do
 end
 # END: SQLite
 
+gem 'coffee-rails' # Use CoffeeScript for .coffee assets and views
+gem 'jbuilder' # Build JSON APIs with ease
+gem 'jquery-rails' # Use jquery as the JavaScript library
 gem 'puma' # Server
 gem 'sass-rails' # Stylesheets
-gem 'uglifier' # Compressor for JavaScript assets
-gem 'coffee-rails' # Use CoffeeScript for .coffee assets and views
-gem 'jquery-rails' # Use jquery as the JavaScript library
 gem 'turbolinks' # Makes navigating your web application faster
-gem 'jbuilder' # Build JSON APIs with ease
+gem 'uglifier' # Compressor for JavaScript assets
 
 # Call 'byebug' anywhere in the code to stop execution and get a debugger console
 group :development, :test do
@@ -52,9 +52,9 @@ group :development, :test do
 end
 
 group :development do
+  gem 'listen'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console'
-  gem 'listen'
   # Spring speeds up development by keeping your application running in the background.
   # Read more at https://github.com/rails/spring .
   gem 'spring'
