@@ -4,6 +4,8 @@
 
 RuboCop is a Ruby code analyzer that points out violations of the Ruby Style Guide.  Violations don't cause the code to fail but can slow down expert Rubyists when they read and analyze the code.  It's best to add RuboCop very early in a project, because it gets increasingly difficult to introduce later on.
 
+SPECIAL NOTE: The number of RuboCop offenses you get may be different from the number listed here.  The point is to eliminate offenses by fixing the issues cited or by configuring the .rubocop.yml file to ignore them.
+
 ### New Branch
 
 Enter the command "git checkout -b 01-04-rubocop".
@@ -63,7 +65,8 @@ Style/ClassAndModuleChildren:
 *  In the config/puma.rb file, replace the double-quotes cited by RuboCop with single-quotes.  Enter the command "rubocop -D" again.  8 offenses remain.
 *  In the config/environments/production.rb file, replace the double-quotes cited by Rubocop, and get rid of the extra spaces it cited.  Entering the command "rubocop -D" shows that 5 offenses remain.
 *  In the app/helpers/application_helper.rb, app/controllers/application_controller.rb, app/mailers/application_mailer.rb, and app/models/application_record.rb files, add a "#" directly above the "class" statements cited.  Entering the command "rubocop -D" shows that 1 offense remains.
-* Remove the extra blank lines in the Gemfile that were cited by RuboCop.  Enter the command "rubocop -D" again.  There should be just 1 offense remaining.
+* Remove the extra blank lines in the Gemfile that were cited by RuboCop.  Enter the command "rubocop -D" again.  There should be no offenses remaining.
+* If there are any additional offenses remaining, correct them or configure the .rubocop.yml file to ignore them.
 * Enter the command "sh git_check.sh".  Everything should proceed as expected.
 * Enter the following commands:
 ```
