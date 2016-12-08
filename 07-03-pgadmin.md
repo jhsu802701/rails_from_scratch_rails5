@@ -35,3 +35,13 @@ pgAdmin is a GUI browser tool that you can install in your host environment to v
 * In the object browser, go to Server Groups -> Servers -> generic_rails -> Databases -> (development database name) -> Schemas -> public -> Tables.
 * In pgAdmin, select the admin table and then right-click -> View Data -> View All Rows.  You'll see the table containing all of the admin data.
 * Repeat the above step for users.  You'll see the table containing all of the user data.
+
+### Wrapping Up
+* Go to the GitHub repository and click on the "Compare and pull request" button for the 07-02-postgresql branch, which you pushed in the previous chapter.
+* Accept this pull request to merge it with the master branch, but do NOT delete this branch.
+* Enter the following commands:
+```
+git checkout master
+git pull
+sh heroku.sh
+```
