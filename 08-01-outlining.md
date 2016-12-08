@@ -135,6 +135,7 @@ echo 'outline.sh OUTPUT FILES:'
 echo $d_mo
 echo $d_co
 echo $d_gems
+echo 'Directory trees are in the notes directory.'
 echo
 ```
 * Enter the command "sh outline.sh".
@@ -155,6 +156,7 @@ echo 'outline.sh OUTPUT FILES:'
 echo $d_mo
 echo $d_co
 echo $d_gems
+echo 'Directory trees are in the notes directory.'
 ```
 * Enter the command "sh all.sh".
 
