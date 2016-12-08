@@ -130,7 +130,7 @@ class UserTest < ActiveSupport::TestCase
   end
 end
 ```
-* Enter the command "sh testm.sh".  You'll see that 9 of the 13 user model tests fail.
+* Enter the command "sh testm.sh".  You'll see that all 13 user model tests fail.
 * Update the user model.  Enter the following commands to add parameters:
 ```
 rails generate migration add_params_to_users last_name:string first_name:string username:string
