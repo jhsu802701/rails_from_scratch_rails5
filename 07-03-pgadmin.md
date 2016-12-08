@@ -39,5 +39,3 @@ pgAdmin is a GUI browser tool that you can install in your host environment to v
 ### Wrapping Up
 * Go to the GitHub repository and click on the "Compare and pull request" button for the 07-02-postgresql branch, which you pushed in the previous chapter.
 * Accept this pull request to merge it with the master branch, but do NOT delete this branch.
-* Follow the procedure in the README.md page for resetting your Docker container.
-* Enter the command "sh heroku.sh".
