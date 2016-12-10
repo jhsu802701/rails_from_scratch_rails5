@@ -223,7 +223,7 @@ end
         <%-####################### -%>
 ```
 * Enter the command "test1".  Now all of the tests pass.
-* Enter the command "sh git_check.sh".  All tests should pass, but there will be RoboCop offenses.
+* Enter the command "sh git_check.sh".  All tests should pass, and there should be no offenses.
 * Enter the following commands:
 ```
 git add .
