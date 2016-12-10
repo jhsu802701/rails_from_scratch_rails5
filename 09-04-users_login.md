@@ -227,7 +227,7 @@ end
 </div>
 ```
 * Enter the command "test1".  Now all of the tests should pass.
-* Enter the command "sh git_check.sh".  All tests should pass, and there should be no 
+* Enter the command "sh git_check.sh".  All tests should pass, and there should be no offenses.
 * Enter the following commands:
 ```
 git add .
