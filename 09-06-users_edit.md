@@ -318,7 +318,7 @@ to create much better passwords AND store them in encrypted form.
 * Enter the command "test1".  3 tests pass, but 2 tests still fail because the process of updating user settings does not work.  (If you try it out in the browser, do NOT be fooled by the message stating that you successfully changed your settings, because you'll see when you click on the "Edit Settings" button that the old settings are still in place.)  The next step is to update the user registration controller.
 
 ### User Registration Controller
-* Replace the contents of the file /app/controllers/users/registrations_controller.rb with the following:
+* Replace the contents of the file app/controllers/users/registrations_controller.rb with the following:
 ```
 #
 class Users::RegistrationsController < Devise::RegistrationsController
