@@ -391,7 +391,7 @@ end
 * Enter the following commands:
 ```
 git add .
-git commit -m "Added user update capability"
+git commit -m "Added user edit capability"
 ```
 
 ### Wrapping Up
