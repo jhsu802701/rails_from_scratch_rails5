@@ -490,8 +490,8 @@ end
 * Add the following line to the end of the Gemfile:
 ```
 # Pagination gems
-gem 'will_paginate' # For pagination
 gem 'bootstrap-will_paginate' # Twitter Bootstrap for pagination
+gem 'will_paginate' # For pagination
 
 gem 'ransack' # For searching users
 ```
