@@ -648,7 +648,7 @@ jQuery ->
 * Enter the following commands:
 ```
 git add .
-git commit -m "Added user show page"
+git commit -m "Added user methods"
 ```
 
 ### Wrapping Up
