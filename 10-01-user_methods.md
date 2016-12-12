@@ -1,7 +1,7 @@
 # Unit 10
 ## Chapter 1: User Methods
 
-In this chapter, you will provide user profiles.  The only people who should be allowed to view a user profile are that specific user and the admins.
+In this chapter, you will provide user profiles.  The only people who should be allowed to view a user profile are that specific user and the admins.  Brace yourself for a long chapter.
 
 ### New Branch
 Enter the command "git checkout -b 10-01-user_methods".
@@ -577,6 +577,7 @@ gem 'ransack' # For searching users
 * Enter the command "test3".  Now all 3 of the integration tests should pass.
 
 ### Updating the User Index Appearance
+* If you have not already done so, restart the local server, and then refresh the browser.  (If you do not, you'll may get an error message when you attempt to view the user index.)
 * Log in to your local app as an admin.
 * Go to the URL http://localhost:3000/users.  The user index will appear, but the table would look far better with lines between each entry.
 * Add the following content to the end of app/assets/stylesheets/custom.scss to format the table in the users index page:
