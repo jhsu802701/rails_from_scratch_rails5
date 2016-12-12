@@ -161,8 +161,86 @@ class UsersControllerTest < ActionController::TestCase
 end
 # rubocop:enable Metrics/ClassLength
 ```
+* Enter the command "sh testc.sh".
 
 ### Admin Show Integration Test
+* Enter the command "rails generate integration_test users_show".
+* Replace the contents of the file test/integration/admins_show_test.rb with the following:
+```
+require 'test_helper'
+
+class AdminsShowTest < ActionDispatch::IntegrationTest
+  def check_profile_disabled(a)
+    visit admin_path(u)
+    assert page.has_css?('title', text: full_title(''),
+                                  visible: false)
+    assert page.has_css?('h1', text: 'Home', visible: false)
+  end
+
+  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable Metrics/MethodLength
+  def check_page(a)
+    fn = a.first_name
+    ln = a.last_name
+    un = a.username
+    e = a.email
+    visit admin_path(a)
+    assert page.has_css?('title', text: full_title("User: #{fn} #{ln}"),
+                                  visible: false)
+    assert page.has_css?('h1', text: "User: #{fn} #{ln}",
+                               visible: false)
+    assert page.has_text?("Username: #{un}")
+    assert page.has_text?("Email: #{e}")
+  end
+  # rubocop:enable Metrics/AbcSize
+  # rubocop:enable Metrics/MethodLength
+
+  def check_own_page(a)
+    login_as(a, scope: :admin)
+    check_page(a)
+  end
+
+  test 'unregistered visitors may not view admin profile pages' do
+    check_profile_disabled(@a1)
+    check_profile_disabled(@a2)
+    check_profile_disabled(@a3)
+    check_profile_disabled(@a4)
+    check_profile_disabled(@a5)
+    check_profile_disabled(@a6)
+  end
+
+  test 'user may not view admin profile pages' do
+    login_as(@u1, scope: :user)
+    check_profile_disabled(@a1)
+    check_profile_disabled(@a2)
+    check_profile_disabled(@a3)
+    check_profile_disabled(@a4)
+    check_profile_disabled(@a5)
+    check_profile_disabled(@a6)
+  end
+
+  test 'regular admin can view all admin profiles' do
+    login_as(@a4, scope: :admin)
+    check_page(@a1)
+    check_page(@a2)
+    check_page(@a3)
+    check_page(@a4)
+    check_page(@a5)
+    check_page(@a6)
+  end
+
+  test 'super admin can view all admin profiles' do
+    login_as(@a1, scope: :admin)
+    check_page(@a1)
+    check_page(@a2)
+    check_page(@a3)
+    check_page(@a4)
+    check_page(@a5)
+    check_page(@a6)
+  end
+end
+```
+
 
 ### Admin Index Integration Test
 
