@@ -1,7 +1,9 @@
 # Unit 10
 ## Chapter 1: User Methods
 
-In this chapter, you will provide user profiles.  The only people who should be allowed to view a user profile are that specific user and the admins.  Brace yourself for a long chapter.
+In this chapter, you will provide user methods.  The only people who should be allowed to view a user profile are that specific user and the admins.  Users should not be able to view the profiles of other users or the user index and should not be able to delete themselves or other users.  (However, users can delete themselves through the registration edit process.)  Admins should have access to all user profiles and the user index, and admins should be able to delete users.
+
+NOTE: Brace yourself for a long chapter.
 
 ### New Branch
 Enter the command "git checkout -b 10-01-user_methods".
