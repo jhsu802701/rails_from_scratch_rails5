@@ -296,13 +296,12 @@ class AdminsIndexTest < ActionDispatch::IntegrationTest
   end
 
   test 'admins index page is not accessible to users' do
-    check_index_disabled_for_user(@u1)
-    check_index_disabled_for_user(@u2)
-    check_index_disabled_for_user(@u3)
-    check_index_disabled_for_user(@u4)
-    check_index_disabled_for_user(@u5)
-    check_index_disabled_for_user(@u6)
-    check_index_disabled_for_user(@u7)
+    check_index_disabled_for_user(@a1)
+    check_index_disabled_for_user(@a2)
+    check_index_disabled_for_user(@a3)
+    check_index_disabled_for_user(@a4)
+    check_index_disabled_for_user(@a5)
+    check_index_disabled_for_user(@a6)
   end
 
   test 'users index page is accessible to regular admins' do
@@ -320,6 +319,42 @@ end
 * Enter the command "test2". This tests only the tests in test/integration/admins_index_test.rb.
 
 ### Admin Delete Integration Test
+* Enter the command "rails generate integration_test admins_delete".
+* Replace the contents of the file test/integration/admins_delete_test.rb with the following:
+```
+require 'test_helper'
+
+class AdminsDeleteTest < ActionDispatch::IntegrationTest
+  test 'regular admin does not get button to delete self' do
+    login_as(@a6, scope: :admin)
+    visit admin_path(@a6)
+    assert page.has_no_link?('Delete', href: admin_path(@a6))
+  end
+
+  test 'super admin does not get button to delete self' do
+    login_as(@a5, scope: :admin)
+    visit admin_path(@a5)
+    assert page.has_no_link?('Delete', href: admin_path(@a5))
+  end
+
+  test 'regular admin does not get button to delete super admin' do
+    login_as(@a6, scope: :admin)
+    visit admin_path(@a5)
+    assert page.has_no_link?('Delete', href: admin_path(@a5))
+  end
+
+  test 'super admin can delete regular admin' do
+    login_as(a1, scope: :admin)
+    visit root_path
+    click_on 'Admin Index'
+    assert_difference 'Admin.count', -1 do
+      click_on 'whuntington'
+      click_on 'Delete'
+    end
+    assert_text 'Admin deleted'
+  end
+end
+```
 
 
 ### Getting the Admin Controller Tests to Pass
