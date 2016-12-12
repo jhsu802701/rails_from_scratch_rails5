@@ -107,36 +107,56 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   # PART 3: DELETE
-  test 'should not allow visitor to delete regular admin' do
+  test 'should not allow visitor to delete admin' do
+    get :destroy, params: { id: @a5 }
+    assert_redirected_to root_path
     get :destroy, params: { id: @a6 }
     assert_redirected_to root_path
   end
 
-  # NOTE: User can delete self through edit registration form.
-  test 'should not allow user to delete self' do
-    sign_in @u7, scope: :user
-    get :destroy, params: { id: @u7 }
-    assert_redirected_to root_path
-  end
-
-  test 'should not allow user to delete another user' do
+  test 'should not allow user to delete admin' do
     sign_in @u1, scope: :user
-    get :destroy, params: { id: @u7 }
+    get :destroy, params: { id: @a5 }
+    assert_redirected_to root_path
+    get :destroy, params: { id: @a6 }
     assert_redirected_to root_path
   end
 
-  test 'should allow super admin to delete user' do
-    sign_in @a1, scope: :admin
-    get :destroy, params: { id: @u7 }
-    assert :success
-    assert_redirected_to users_path
+  # NOTE: Admin can delete self through edit registration form.
+  test 'should not allow regular admin to delete self' do
+    sign_in @a6, scope: :admin
+    get :destroy, params: { id: @a6 }
+    assert_redirected_to root_path
   end
 
-  test 'should allow regular admin to delete user' do
+  test 'should not allow super admin to delete self' do
+    sign_in @a5, scope: :admin
+    get :destroy, params: { id: @a5 }
+    assert_redirected_to root_path
+  end
+
+  test 'should not allow regular admin to delete another regular admin' do
     sign_in @a4, scope: :admin
-    get :destroy, params: { id: @u7 }
+    get :destroy, params: { id: @a6 }
+    assert_redirected_to root_path
+  end
+
+  test 'should not allow regular admin to delete super admin' do
+    sign_in @a6, scope: :admin
+    get :destroy, params: { id: @a5 }
+    assert_redirected_to root_path
+  end
+
+  test 'should not allow super admin to delete super admin' do
+    sign_in @a1, scope: :admin
+    get :destroy, params: { id: @a5 }
+    assert_redirected_to root_path
+  end
+  
+  test 'should allow super admin to delete regular admin' do
+    sign_in @u5, scope: :admin
+    get :destroy, params: { id: @a6 }
     assert :success
-    assert_redirected_to users_path
   end
 end
 # rubocop:enable Metrics/ClassLength
