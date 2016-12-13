@@ -164,7 +164,7 @@ end
 * Enter the command "sh testc.sh".  All 16 new controller tests will fail.
 
 ### Admin Show Integration Test
-* Enter the command "rails generate integration_test users_show".
+* Enter the command "rails generate integration_test admins_show".
 * Replace the contents of the file test/integration/admins_show_test.rb with the following:
 ```
 require 'test_helper'
