@@ -16,7 +16,7 @@ Enter the command "git checkout -b 10-02-admin_methods".
 require 'test_helper'
 
 # rubocop:disable Metrics/ClassLength
-class UsersControllerTest < ActionController::TestCase
+class AdminsControllerTest < ActionController::TestCase
   # PART 1: SHOW
   test 'should redirect profile page when not logged in' do
     get :show, params: { id: @a1 }
