@@ -356,7 +356,7 @@ class AdminsDeleteTest < ActionDispatch::IntegrationTest
 end
 ```
 * Enter the command "alias test3='rails test test/integration/admins_delete_test.rb'".
-* Enter the command "test3". All 3 tests will fail.
+* Enter the command "test3". All 4 tests will fail.
 
 ### Getting the Admin Controller Tests to Pass
 * Enter the command "sh testc.sh".
