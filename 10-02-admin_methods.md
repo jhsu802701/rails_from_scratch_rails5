@@ -161,7 +161,7 @@ class AdminsControllerTest < ActionController::TestCase
 end
 # rubocop:enable Metrics/ClassLength
 ```
-* Enter the command "sh testc.sh".
+* Enter the command "sh testc.sh".  All 16 new controller tests will fail.
 
 ### Admin Show Integration Test
 * Enter the command "rails generate integration_test users_show".
