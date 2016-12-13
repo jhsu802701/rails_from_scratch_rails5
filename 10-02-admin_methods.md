@@ -355,9 +355,122 @@ class AdminsDeleteTest < ActionDispatch::IntegrationTest
   end
 end
 ```
-
+* Enter the command "alias test3='rails test test/integration/admins_delete_test.rb'".
+* Enter the command "test3". All 3 tests will fail.
 
 ### Getting the Admin Controller Tests to Pass
+* Enter the command "sh testc.sh".
+* Update the routing.  Edit the file config/routes.rb and add the following line to the end of the admin section:
+```
+  resources :admins, only: [:show, :index, :delete]
+```
+* Enter the command "sh testc.sh".
+* Replace the contents of the file app/controllers/admins_controller.rb with the following:
+```
+#
+class AdminsController < ApplicationController
+  before_action :may_show_admin, only: [:index, :show]
+  before_action :may_destroy_admin, only: [:destroy]
+
+  def index
+    @admins = Admin.paginate(page: params[:page])
+  end
+
+  def show
+    @admin = Admin.find(params[:id])
+  end
+
+  def destroy
+    Admin.find(params[:id]).destroy
+    flash[:success] = 'Admin deleted'
+    redirect_to(admins_path)
+  end
+
+  private
+
+  def may_show_admin
+    return redirect_to(root_path) unless admin_signed_in? == true
+  end
+  helper_method :may_show_admin
+
+  def no_destroy
+    ta = Admin.find(params[:id]) # Target admin
+    ca = current_admin
+    # Do not delete if:
+    # 1.  current_admin is nil OR
+    # 2.  Attempting to delete self OR
+    # 3.  Not a super admin OR
+    # 4.  Target is super admin
+    ca.nil? || ca == ta || ca.super != true || ta.super == true
+  end
+
+  def may_destroy_admin
+    return redirect_to(root_path) if no_destroy == true
+  end
+  helper_method :may_destroy_admin
+end
+```
+* Enter the command "sh testc.sh".
+* Create the file app/views/admins/show.html.erb with the following content:
+```
+<% require 'email_munger' %>
+
+<% provide(:title, "Admin: #{@admin.first_name} #{@admin.last_name}") %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+      Admin: <%= @admin.first_name %> <%= @admin.last_name %>
+      </h1>
+      Username: <%= @admin.username %>
+      <br>
+      Email: <%= raw(EmailMunger.encode(@admin.email)) %>
+      <br>
+      <% if @admin.super != true && current_admin.super == true %>
+        <%= link_to "Delete", @admin, method: :delete,
+                              data: { confirm: "Are you sure you wish to delete this admin?" },
+                              class: "btn btn-lg btn-primary"
+        %>
+      <% end %>
+    </section>
+  </aside>
+</div>
+```
+* Enter the command "sh testc.sh".
+* Create the file app/views/admins/index.html.erb with the following content:
+```
+<% provide(:title, 'Admin Index') %>
+
+<h1>Admin Index</h1>
+
+<table class="admins">
+  <tr>
+    <td><b>Last Name</b></td>
+    <td><b>First Name</b></td>
+    <td><b>Super?</b></td>
+    <td><b>Username</b></td>
+  </tr>
+  <%= render @admins %>
+</table>
+<%= will_paginate %>
+```
+* Create the file app/views/admins/_admin.html.erb with the following content to show information on each admin in the index:
+```
+<% require 'email_munger' %>
+<tr>
+  <td><%= admin.last_name %></td>
+  <td><%= admin.first_name %></td>
+  <td>
+  <% if admin.super == true  %>
+    Y
+  <% else %>
+    N
+  <% end %>
+  </td>
+  <td><%= link_to admin.username, admin %></td>
+</tr>
+```
+* Enter the command "sh testc.sh". All of the controller tests should now pass.
 
 ### Getting the Integration Tests to Pass
 
