@@ -359,11 +359,12 @@ end
 * Enter the command "test3". All 4 tests will fail.
 
 ### Getting the Admin Controller Tests to Pass
-* Enter the command "sh testc.sh".
+* Enter the command "sh testc.sh".  All 16 tests will fail because the expected routes are not present.
 * Update the routing.  Edit the file config/routes.rb and add the following line to the end of the admin section:
 ```
   resources :admins, only: [:show, :index, :delete]
 ```
+* In the config/routes.rb file, remove the line "get 'admins/new'", because this capability is not used in this app.
 * Enter the command "sh testc.sh".
 * Replace the contents of the file app/controllers/admins_controller.rb with the following:
 ```
