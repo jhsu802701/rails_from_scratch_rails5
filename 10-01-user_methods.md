@@ -406,6 +406,7 @@ end
     collection { post :search, to: 'users#index' }
   end
 ```
+* In the config/routes.rb file, remove the line "get 'users/new'".  This is covered by the Devise registration feature.
 * Enter the command "sh testc.sh".  Now the 13 tests fail due to missing actions.
 * Replace the contents of the file app/controllers/users_controller.rb with the following:
 ```
