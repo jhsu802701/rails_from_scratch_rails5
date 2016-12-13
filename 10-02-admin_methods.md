@@ -473,5 +473,15 @@ end
 * Enter the command "sh testc.sh". All of the controller tests should now pass.
 
 ### Getting the Integration Tests to Pass
+* Enter the command "test1".
+* Enter the command "test2".
+* In the admin section in app/views/layouts/_header.html.erb, add the following line just after the one containing "User Index":
+```
+<li><%= link_to "Admin Index",   admins_path %></li>
+```
+* Enter the command "test2".
+* Enter the command "test3".
+
+### Rails Best Practices
 
 ### Wrapping Up
