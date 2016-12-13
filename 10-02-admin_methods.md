@@ -344,7 +344,7 @@ class AdminsDeleteTest < ActionDispatch::IntegrationTest
   end
 
   test 'super admin can delete regular admin' do
-    login_as(a1, scope: :admin)
+    login_as(a5, scope: :admin)
     visit root_path
     click_on 'Admin Index'
     assert_difference 'Admin.count', -1 do
