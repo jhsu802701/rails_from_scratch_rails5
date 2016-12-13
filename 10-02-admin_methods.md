@@ -365,7 +365,7 @@ end
   resources :admins, only: [:show, :index, :delete]
 ```
 * In the config/routes.rb file, remove the line "get 'admins/new'", because this capability is not used in this app.
-* Enter the command "sh testc.sh".
+* Enter the command "sh testc.sh".  All 16 tests still fail.  Some fail because the show action is not available, some fail because the index action is not available, and some fail because the destroy route is not available.
 * Replace the contents of the file app/controllers/admins_controller.rb with the following:
 ```
 #
