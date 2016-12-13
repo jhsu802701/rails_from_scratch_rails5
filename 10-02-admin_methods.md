@@ -316,7 +316,7 @@ class AdminsIndexTest < ActionDispatch::IntegrationTest
 end
 ```
 * Enter the command "alias test2='rails test test/integration/admins_index_test.rb'".
-* Enter the command "test2". This tests only the tests in test/integration/admins_index_test.rb.
+* Enter the command "test2". This tests only the tests in test/integration/admins_index_test.rb.  All 4 integration tests will fail.
 
 ### Admin Delete Integration Test
 * Enter the command "rails generate integration_test admins_delete".
