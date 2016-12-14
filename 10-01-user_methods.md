@@ -401,7 +401,7 @@ end
 * Enter the command "sh testc.sh".  13 tests still fail, and all of these failures are due to missing routes.
 * Update the routing.  Edit the file config/routes.rb and add the following lines to the end of the user section:
 ```
-  resources :users, only: [:show, :index, :delete]
+  resources :users, only: [:show, :index, :destroy]
   resources :users do
     collection { post :search, to: 'users#index' }
   end
