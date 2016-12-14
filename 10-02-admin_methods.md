@@ -437,7 +437,7 @@ end
   </aside>
 </div>
 ```
-* Enter the command "sh testc.sh".
+* Enter the command "sh testc.sh".  4 of the tests still fail due to missing templates.
 * Create the file app/views/admins/index.html.erb with the following content:
 ```
 <% provide(:title, 'Admin Index') %>
