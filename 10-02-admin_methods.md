@@ -171,7 +171,7 @@ require 'test_helper'
 
 class AdminsShowTest < ActionDispatch::IntegrationTest
   def check_profile_disabled(a)
-    visit admin_path(u)
+    visit admin_path(a)
     assert page.has_css?('title', text: full_title(''),
                                   visible: false)
     assert page.has_css?('h1', text: 'Home', visible: false)
