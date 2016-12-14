@@ -344,7 +344,7 @@ class AdminsDeleteTest < ActionDispatch::IntegrationTest
   end
 
   test 'super admin can delete regular admin' do
-    login_as(a5, scope: :admin)
+    login_as(@a5, scope: :admin)
     visit root_path
     click_on 'Admin Index'
     assert_difference 'Admin.count', -1 do
@@ -474,12 +474,12 @@ end
 
 ### Getting the Integration Tests to Pass
 * Enter the command "test1".  All tests should pass.
-* Enter the command "test2".
+* Enter the command "test2".  2 of the tests will fail because of the lack of a link to the admin index page.
 * In the admin section in app/views/layouts/_header.html.erb, add the following line just after the one containing "User Index":
 ```
 <li><%= link_to "Admin Index",   admins_path %></li>
 ```
-* Enter the command "test2".
+* Enter the command "test2".  All tests should pass.
 * Enter the command "test3".
 
 ### Rails Best Practices
