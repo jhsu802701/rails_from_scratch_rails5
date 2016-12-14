@@ -362,7 +362,7 @@ end
 * Enter the command "sh testc.sh".  All 16 tests will fail because the expected routes are not present.
 * Update the routing.  Edit the file config/routes.rb and add the following line to the end of the admin section:
 ```
-  resources :admins, only: [:show, :index, :delete]
+  resources :admins, only: [:show, :index, :destroy]
 ```
 * In the config/routes.rb file, remove the line "get 'admins/new'", because this capability is not used in this app.
 * Enter the command "sh testc.sh".  All 16 tests still fail.  Some fail because the show action is not available, some fail because the index action is not available, and some fail because the destroy route is not available.
