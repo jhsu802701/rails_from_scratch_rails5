@@ -277,12 +277,12 @@ class AdminsIndexTest < ActionDispatch::IntegrationTest
     assert page.has_text?('Huntington')
 
     # Verify that index page provides access to profile pages
-    assert page.has_link?('ewoods', href: user_path(@a1))
-    assert page.has_link?('vkensington', href: user_path(@a2))
-    assert page.has_link?('erichmond', href: user_path(@a3))
-    assert page.has_link?('pbonafonte', href: user_path(@a4))
-    assert page.has_link?('pcallahan', href: user_path(@a5))
-    assert page.has_link?('whuntington', href: user_path(@a6))
+    assert page.has_link?('ewoods', href: admin_path(@a1))
+    assert page.has_link?('vkensington', href: admin_path(@a2))
+    assert page.has_link?('erichmond', href: admin_path(@a3))
+    assert page.has_link?('pbonafonte', href: admin_path(@a4))
+    assert page.has_link?('pcallahan', href: admin_path(@a5))
+    assert page.has_link?('whuntington', href: admin_path(@a6))
 
     # Verify that root page provides access to index page
     click_on 'Home'
@@ -473,7 +473,7 @@ end
 * Enter the command "sh testc.sh". All of the controller tests should now pass.
 
 ### Getting the Integration Tests to Pass
-* Enter the command "test1".
+* Enter the command "test1".  All tests should pass.
 * Enter the command "test2".
 * In the admin section in app/views/layouts/_header.html.erb, add the following line just after the one containing "User Index":
 ```
