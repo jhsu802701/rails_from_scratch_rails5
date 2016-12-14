@@ -185,9 +185,9 @@ class AdminsShowTest < ActionDispatch::IntegrationTest
     un = a.username
     e = a.email
     visit admin_path(a)
-    assert page.has_css?('title', text: full_title("User: #{fn} #{ln}"),
+    assert page.has_css?('title', text: full_title("Admin: #{fn} #{ln}"),
                                   visible: false)
-    assert page.has_css?('h1', text: "User: #{fn} #{ln}",
+    assert page.has_css?('h1', text: "Admin: #{fn} #{ln}",
                                visible: false)
     assert page.has_text?("Username: #{un}")
     assert page.has_text?("Email: #{e}")
