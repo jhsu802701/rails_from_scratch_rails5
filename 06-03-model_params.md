@@ -434,7 +434,7 @@ vivian_kensington:
   username: 'vkensington'
   last_name: 'Kensington'
   first_name: 'Vivian'
-  email: 'vanessa_kensingston@example.com'
+  email: 'vivian_kensingston@example.com'
   super: true
   encrypted_password: <%= Admin.new.send(:password_digest, 'nice outfit') %>
   confirmed_at: <%= Time.zone.now %>
