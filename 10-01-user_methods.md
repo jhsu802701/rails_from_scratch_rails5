@@ -118,7 +118,7 @@ class UsersControllerTest < ActionController::TestCase
     assert :success
   end
 
-  # PART 3: DESTROY
+  # PART 3: DELETE
   test 'should not allow visitor to delete user' do
     get :destroy, params: { id: @u7 }
     assert_redirected_to root_path
