@@ -11,9 +11,9 @@ Enter the command "git checkout -b 08-01-outline".
 ```
 # BEGIN: for outline.sh
 group :development do
-  gem 'rails-erd' # Generates block diagrams
-  gem 'railroady' # Generates block diagrams
   gem 'annotate' # Adds comments listing parameters and the output of "rails routes"
+  gem 'railroady' # Generates block diagrams
+  gem 'rails-erd' # Generates block diagrams
 end
 # END: for outline.sh
 ```
