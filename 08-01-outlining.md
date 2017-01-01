@@ -21,7 +21,7 @@ end
 * Enter the following commands:
 ```
 git add .
-git commit -m "Installed rails-erd, railroady, and annotate"
+git commit -m "Installed annotate, railroady, and rails-erd"
 ```
 ### outline-short.sh
 * Create the file outline-short.sh with the following content:
