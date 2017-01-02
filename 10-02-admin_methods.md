@@ -35,7 +35,6 @@ class AdminsControllerTest < ActionController::TestCase
 
   test 'should redirect users from profile page' do
     sign_in @u1, scope: :user
-
     get :show, params: { id: @a1 }
     assert_redirected_to root_path
     get :show, params: { id: @a2 }
@@ -129,6 +128,7 @@ class AdminsControllerTest < ActionController::TestCase
     assert_redirected_to root_path
   end
 
+  # NOTE: Admin can delete self through edit registration form.
   test 'should not allow super admin to delete self' do
     sign_in @a5, scope: :admin
     get :destroy, params: { id: @a5 }
@@ -152,7 +152,7 @@ class AdminsControllerTest < ActionController::TestCase
     get :destroy, params: { id: @a5 }
     assert_redirected_to root_path
   end
-  
+
   test 'should allow super admin to delete regular admin' do
     sign_in @u5, scope: :admin
     get :destroy, params: { id: @a6 }
