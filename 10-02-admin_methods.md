@@ -462,6 +462,7 @@ end
     <td><b>First Name</b></td>
     <td><b>Super?</b></td>
     <td><b>Username</b></td>
+    <td><b>Email</b></td>
   </tr>
   <%= render @admins %>
 </table>
