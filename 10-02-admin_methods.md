@@ -482,6 +482,7 @@ end
   <% end %>
   </td>
   <td><%= link_to admin.username, admin %></td>
+  <td><%= link_to raw(EmailMunger.encode(admin.email)), admin %></td>
 </tr>
 ```
 * Enter the command "sh testc.sh". All of the controller tests should now pass.
@@ -491,7 +492,7 @@ end
 * Enter the command "test2".  2 of the tests will fail because of the lack of a link to the admin index page.
 * In the admin section in app/views/layouts/_header.html.erb, add the following line just after the one containing "User Index":
 ```
-<li><%= link_to "Admin Index",   admins_path %></li>
+<li><%= link_to "Admin Index", admins_path %></li>
 ```
 * Enter the command "test2".  All tests should pass.
 * Enter the command "test3".
