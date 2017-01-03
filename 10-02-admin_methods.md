@@ -495,9 +495,8 @@ end
 <li><%= link_to "Admin Index", admins_path %></li>
 ```
 * Enter the command "test2".  All tests should pass.
-* Enter the command "test3".
-
-### Rails Best Practices
+* Enter the command "test3".  All tests should pass.
+* Enter the command "sh git_check.sh".  All tests should pass, and there should be no offenses.
 
 ### Wrapping Up
 * Enter the command "git push origin 10-02-admin_methods".
