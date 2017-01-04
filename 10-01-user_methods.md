@@ -176,7 +176,7 @@ class UsersShowTest < ActionDispatch::IntegrationTest
 
   # rubocop:disable Metrics/AbcSize
   # rubocop:disable Metrics/MethodLength
-  def check_page(u)
+  def check_profile_enabled(u)
     fn = u.first_name
     ln = u.last_name
     un = u.username
@@ -194,7 +194,7 @@ class UsersShowTest < ActionDispatch::IntegrationTest
 
   def check_own_page(u)
     login_as(u, scope: :user)
-    check_page(u)
+    check_profile_enabled(u)
   end
 
   test 'unregistered visitors may not view user profile pages' do
@@ -228,24 +228,24 @@ class UsersShowTest < ActionDispatch::IntegrationTest
 
   test 'super admin can view user profile' do
     login_as(@a1, scope: :admin)
-    check_page(@u1)
-    check_page(@u2)
-    check_page(@u3)
-    check_page(@u4)
-    check_page(@u5)
-    check_page(@u6)
-    check_page(@u7)
+    check_profile_enabled(@u1)
+    check_profile_enabled(@u2)
+    check_profile_enabled(@u3)
+    check_profile_enabled(@u4)
+    check_profile_enabled(@u5)
+    check_profile_enabled(@u6)
+    check_profile_enabled(@u7)
   end
 
   test 'regular admin can view user profiles' do
     login_as(@a4, scope: :admin)
-    check_page(@u1)
-    check_page(@u2)
-    check_page(@u3)
-    check_page(@u4)
-    check_page(@u5)
-    check_page(@u6)
-    check_page(@u7)
+    check_profile_enabled(@u1)
+    check_profile_enabled(@u2)
+    check_profile_enabled(@u3)
+    check_profile_enabled(@u4)
+    check_profile_enabled(@u5)
+    check_profile_enabled(@u6)
+    check_profile_enabled(@u7)
   end
 end
 ```
