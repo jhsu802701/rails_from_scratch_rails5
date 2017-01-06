@@ -4,10 +4,21 @@
 * Create the file notes/TO_DO.txt with the following contents:
 ```
 GETTING STARTED
+* Run the credentials.sh script.
+* Start a Git repository for this app, and push this app into that repository.
+* Deploy this app to Heroku.  Instructions are provided below.
 * Replace instances of "Generic App Template" with the title of your app.
 * Replace instances of "somebody@rubyonracetracks.com" with the email address you wish to use as the source of this app's email messages and the email address listed on the Contact page.
 * Update the footer, header, and the rest of the layout.
 * Update the static pages.
+
+HEROKU DEPLOYMENT
+* Enter the command "heroku create".
+* In your browser, visit your assigned URL. You will see the initial Heroku splash screen, because the Heroku server does not yet have your source code.
+* Change your app's name (and URL) by entering the command "heroku rename (name)".
+* In your browser, visit your new URL. You will again see the initial Heroku splash screen.
+* To see which Heroku project you are currently configured to push to, enter the command "git remote -v".
+* To deploy your app, enter the command "sh heroku.sh".
 
 SHORT-TERM MAINTENANCE
 * Specify the Ruby version of this app in the Gemfile.
