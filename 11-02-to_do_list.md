@@ -1,5 +1,5 @@
-# Unit 12
-## Chapter 1: To Do List
+# Unit 11
+## Chapter 2: To Do List
 
 * Create the file notes/TO_DO.txt with the following contents:
 ```
