@@ -26,8 +26,7 @@ Because this app is a platform for other apps and not intended as a stand-alone 
 * Delete your project's source code from your local machine.
 * In the /home/winner/shared directory, enter the command "git clone (GitHub URL)".
 * Enter tmux mode.  In the first tmux screen, enter your project's root directory.  If necessary, enter "git checkout (name of branch)" to switch to the appropriate branch.
-* Enter the command "sh all.sh; sh server.sh".
-* While you wait for the build process to complete, start a second tmux window.  In this second window, enter the command "sh credentials.sh" to enter your GitHub and Heroku credentials.  The "git commit" command will not work without your Git credentials, and you cannot push to Heroku without your Heroku credentails.
+* Enter the command "sh credentials.sh; sh all.sh; sh server.sh".
 * Once the local server is running, open your web browser and view your project.
 * If the setup process and the local appearance and behavior of your app are as expected, then you have no dependency mismanagement problems.  If your project didn't behave as expected, it's time to figure out what's missing, and you should be thankful that you spotted the dependency mismanagement problem early on.
 
