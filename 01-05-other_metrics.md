@@ -107,6 +107,8 @@ git commit -m "Added test_code.sh"
 ```
 #!/bin/bash
 
+# Run this script before entering "git add" and "git commit".
+
 sh build_fast.sh
 
 echo '----------------'
