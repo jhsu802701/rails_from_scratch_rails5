@@ -78,6 +78,8 @@ git commit -m "RuboCop compliant"
 ```
 #!/bin/bash
 
+# Run this script before entering "git add" and "git commit".
+
 sh build_fast.sh
 
 echo '----------'
