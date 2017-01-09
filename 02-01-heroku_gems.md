@@ -23,9 +23,10 @@ gem 'rails'
 ############################################
 
 ```
-*  The pg gem (PostgreSQL) is needed in the production environment for Heroku, because it does NOT offer SQLite.  In the production environment, PostgreSQL is greatly preferred over SQLite.  While it's usually best to use the same database in the development and production environments, the use of SQLite in development and PostgreSQL in production (for Heroku) is usually used in tutorials.  If your production environment is not Heroku, it's best to use PostgreSQL in the development and testing environments and skip the use of SQLite completely.
-*  Enter the command "sh git_check.sh".
-*  Enter the following commands: 
+* The nokogiri gem is a dependency of minitest.
+* The pg gem (PostgreSQL) is needed in the production environment for Heroku, because it does NOT offer SQLite.  In the production environment, PostgreSQL is greatly preferred over SQLite.  While it's usually best to use the same database in the development and production environments, the use of SQLite in development and PostgreSQL in production (for Heroku) is usually used in tutorials.  If your production environment is not Heroku, it's best to use PostgreSQL in the development and testing environments and skip the use of SQLite completely.
+* Enter the command "sh git_check.sh".
+* Enter the following commands: 
 ```
 git add .
 git commit -m "Updated Gemfile for Heroku"
