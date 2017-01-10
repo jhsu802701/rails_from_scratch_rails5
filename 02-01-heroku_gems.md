@@ -13,7 +13,6 @@ Enter the command "git checkout -b 02-01-heroku_gems".
 ##############################################
 # BEGIN: gems that take a long time to install
 ##############################################
-# NOTE: These gems take a long time to install.
 # Please pre-install the proper versions in the Docker image.
 gem 'nokogiri'
 gem 'pg'
