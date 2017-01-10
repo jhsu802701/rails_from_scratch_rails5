@@ -4,7 +4,7 @@
 In this chapter, you will revise the Gemfile.  The main change is the addition of the pg (PostgreSQL) gem for the production environment.  If you do not make this change, you will not be able to deploy your app to Heroku.
 
 ### New Branch
-Enter the command "git checkout -b 02-01-heroku_gems"
+Enter the command "git checkout -b 02-01-heroku_gems".
 
 ### Adding pg
 * Heroku will not accept your attempt to deploy if your master branch does not specify the use of the pg (PostgreSQL) gem in production.  (As you can see in the original Gemfile, the pg gem is not specified.)
