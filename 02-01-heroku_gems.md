@@ -1,10 +1,21 @@
 # Unit 2
 # Chapter 1: Gems for Heroku
 
-In this chapter, you will revise the Gemfile.  The main change is the addition of the pg (PostgreSQL) gem for the production environment.  If you do not make this change, you will not be able to deploy your app to Heroku.  Additionally, the nokogiri, pg, and rails gems may be downgraded to the versions used in the current Rails Tutorial Sample App.  The specific versions of nokogiri, pg, and rails that are used in this tutorial app are pre-installed in my rbenv-general Docker image.  This pre-installation is necessary to minimize the amount of time needed to wait for these large gems to be installed.  (REMEMBER: While the "bundle install" command will automatically install the correct version of each gem needed, this process is much faster if the correct versions of the largest gems were pre-installed with the "gem install" command.)
+In this chapter, you will revise the Gemfile.  The main change is replacing the sqlite3 (SQLite) gem with pg (PostgreSQL) gem for the production environment.  If you do not make this change, you will not be able to deploy your app to Heroku.  Additionally, the nokogiri, pg, and rails gems may be downgraded to the versions used in the current Rails Tutorial Sample App.  The specific versions of nokogiri, pg, and rails that are used in this tutorial app are pre-installed in my rbenv-general Docker image.  This pre-installation is necessary to minimize the amount of time needed to wait for these large gems to be installed.  (REMEMBER: While the "bundle install" command will automatically install the correct version of each gem needed, this process is much faster if the correct versions of the largest gems were pre-installed with the "gem install" command.)
 
 ### New Branch
 Enter the command "git checkout -b 02-01-heroku_gems".
+
+### Removing sqlite3
+* Heroku will not accept your attempt to deploy if your master branch INCLUDES the use of the pg (SQlite) gem in production.  As you can see in the original Gemfile, the sqlite gem is used in all environments by default.  To disable sqlite in production, limit its use to the development and testing environments only by replacing the line beginning with "# Use sqlite3" and the line consting of "gem 'sqlite'" with the following:
+```
+# BEGIN: SQLite
+# NOTE: This section is automatically deleted by the pg_setup.rb script
+group :development, :test do
+  gem 'sqlite3'
+end
+# END: SQLite
+```
 
 ### Adding pg
 * Heroku will not accept your attempt to deploy if your master branch does not specify the use of the pg (PostgreSQL) gem in production.  (As you can see in the original Gemfile, the pg gem is not specified.)
