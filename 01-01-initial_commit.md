@@ -7,7 +7,7 @@ In this chapter, you will start a new project and commit the source code to GitH
 
 Open your Docker container from the appropriate rbenv-general Docker image (as discussed in the README.md file).  In the shell window, go to the /home/winner/shared directory.  To create a new app named after the current date, enter the following commands:
 ```
-DATE=`date +%Y-%m-%d-%H-%M``
+DATE=`date +%Y-%m-%d-%H-%M`
 rails new generic-rails-$DATE; cd generic-rails-$DATE
 ```
 
