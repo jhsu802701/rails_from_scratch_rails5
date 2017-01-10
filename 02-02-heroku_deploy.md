@@ -43,11 +43,22 @@ heroku keys:add
 ```
 #!/bin/bash
 
+PATH_HEROKU_NAME='config/heroku_name.txt'
+HEROKU_NAME=''
+if [ -e 'config/heroku_name.txt' ]
+then
+  HEROKU_NAME=$(cat $PATH_HEROKU_NAME)
+else
+  echo 'Enter the desired name of your app:'
+  read HEROKU_NAME
+  echo HEROKU_NAME > $PATH_HEROKU_NAME
+  echo ''
+end
+echo "Heroku app name: $HEROKU_NAME"
+
 echo '--------------------'
 echo 'git remote rm heroku'
 git remote rm heroku
-
-HEROKU_NAME=$(cat config/heroku_name.txt)
 
 echo '-----------------------------------------------------'
 echo "git remote add heroku git@heroku.com:$HEROKU_NAME.git"
