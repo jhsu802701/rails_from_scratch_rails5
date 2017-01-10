@@ -6,7 +6,7 @@ In this chapter, you will revise the Gemfile.  The main change is the addition o
 ### New Branch
 Enter the command "git checkout -b 02-01-heroku_gems"
 
-### Gemfile
+### Adding pg
 * Heroku will not accept your attempt to deploy if your master branch does not specify the use of the pg (PostgreSQL) gem in production.  (As you can see in the original Gemfile, the pg gem is not specified.)
 * Remove the line beginning with "# Bundle edge Rails instead" and the line beginning with "gem 'rails'".  Replace these lines with the following:
 ```
@@ -25,13 +25,25 @@ gem 'rails'
 ```
 * The nokogiri gem is a dependency of minitest.
 * The pg gem (PostgreSQL) is needed in the production environment for Heroku, because it does NOT offer SQLite.  In the production environment, PostgreSQL is greatly preferred over SQLite.  While it's usually best to use the same database in the development and production environments, the use of SQLite in development and PostgreSQL in production (for Heroku) is usually used in tutorials.  If your production environment is not Heroku, it's best to use PostgreSQL in the development and testing environments and skip the use of SQLite completely.
-* Enter the command "sh git_check.sh".
+* Enter the command "sh git_check.sh".  All tests should pass, and there should be offenses.
+* Enter the command "git diff Gemfile.lock".  Note that no gem has been upgraded or downgraded to a different version.
 * Enter the following commands: 
 ```
 git add .
 git commit -m "Updated Gemfile for Heroku"
+```
+
+### Pinning Gems
+* In this section, you will pin the version numbers of nokogiri, pg, and rails currently used in this app.
+* In the Gemfile.lock file, look up the specific version number of nokogiri.  The specific version number will NOT be modified by "~>" or ">=".
+* In the Gemfile, specify the current version number for nokogiri.  For example, if the current version of nokogiri is 1.7.0.1, Replace "gem 'nokogiri'" with "gem 'nokogiri', '1.7.0.1'".
+* Repeat the above steps for pg and rails.
+
+### Downgrading Gems
+```
 git push origin 02-01-heroku_gems
 ```
+
 ### Reset
 * While you have not removed gems from the Gemfile, it's still a good idea at this point to reset everything to guard against dependency mismanagement risks.  If there are any problems, it's easier to resolve things now than later.
 * Begin following the steps in Unit 1 Chapter 3 for resetting your development environment and downloading the source code.
