@@ -37,6 +37,11 @@ git commit -m "Updated Gemfile for Heroku"
 * In the Gemfile.lock file, look up the specific version number of nokogiri.  The specific version number will NOT be modified by "~>" or ">=".
 * In the Gemfile, specify the current version number for nokogiri.  For example, if the current version of nokogiri is 1.7.0.1, Replace "gem 'nokogiri'" with "gem 'nokogiri', '1.7.0.1'".
 * Repeat the above steps for pg and rails.
+* Enter the following commands:
+```
+git add .
+git commit -m "Pinned versions of nokogiri, pg, and rails".
+```
 
 ### Downgrading Gems
 ```
