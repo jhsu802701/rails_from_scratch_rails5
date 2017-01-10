@@ -86,7 +86,7 @@ git remote -v
 * Enter the following commands:
 ```
 git add .
-git commit -m "Added scripts for deploying to Heroku"
+git commit -m "Added script and config file for deploying to Heroku"
 git push origin master
 ```
 * Enter the command "sh heroku.sh".
