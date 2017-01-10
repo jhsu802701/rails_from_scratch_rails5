@@ -51,7 +51,7 @@ then
 else
   echo 'Enter the desired name of your app:'
   read HEROKU_NAME
-  echo HEROKU_NAME > $PATH_HEROKU_NAME
+  echo $HEROKU_NAME > $PATH_HEROKU_NAME
   echo ''
 fi
 echo '-----------------------------'
