@@ -54,6 +54,7 @@ else
   echo HEROKU_NAME > $PATH_HEROKU_NAME
   echo ''
 fi
+echo '-----------------------------'
 echo "Heroku app name: $HEROKU_NAME"
 
 echo '--------------------'
