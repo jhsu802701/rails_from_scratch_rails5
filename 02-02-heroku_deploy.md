@@ -9,7 +9,13 @@
 ### Initial Deployment
 * Enter the command "heroku create".
 * In your browser, visit your assigned URL.  You will see the initial Heroku splash screen, because the Heroku server does not yet have your source code.
-* Change your app's name (and URL) by entering the command "heroku rename (name)".
+* Enter the following commands:
+```
+echo "${PWD##*/}" > config/heroku_name.txt # Copies the name of your app to config/heroku_name.txt
+HEROKU_TMP=$(cat config/heroku_name.txt)
+echo $HEROKU_TMP # Displays the name of your app
+```
+* Change your app's name (and URL) by entering the command "heroku rename $HEROKU_TMP".
 * In your browser, visit your new URL.  You will again see the initial Heroku splash screen.
 * To see which Heroku project you are currently configured to push to, enter the command "git remote -v".
 * To deploy your app, enter the following commands:
@@ -29,15 +35,19 @@ heroku login
 echo '---------------'
 echo 'heroku keys:add'
 heroku keys:add
+```
+* To enter your Git and Heroku credentials, enter the command "sh credentials.sh".
 
-echo
-echo "Enter your app's name on Heroku:"
-read APP_NAME
+### heroku.sh
+* In the project's root path, create the file heroku.sh with the following contents:
+```
+#!/bin/bash
 
-HEROKU_NAME=$APP_NAME
 echo '--------------------'
 echo 'git remote rm heroku'
 git remote rm heroku
+
+HEROKU_NAME=$(cat config/heroku_name.txt)
 
 echo '-----------------------------------------------------'
 echo "git remote add heroku git@heroku.com:$HEROKU_NAME.git"
@@ -46,13 +56,6 @@ git remote add heroku git@heroku.com:$HEROKU_NAME.git
 echo '-------------'
 echo 'git remote -v'
 git remote -v
-```
-* To enter your Git and Heroku credentials, enter the command "sh credentials.sh".
-
-### heroku.sh
-* In the project's root path, create the file heroku.sh with the following contents:
-```
-#!/bin/bash
 
 echo '----------------------'
 echo 'git push heroku master'
