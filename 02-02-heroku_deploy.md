@@ -53,7 +53,7 @@ else
   read HEROKU_NAME
   echo HEROKU_NAME > $PATH_HEROKU_NAME
   echo ''
-end
+fi
 echo "Heroku app name: $HEROKU_NAME"
 
 echo '--------------------'
