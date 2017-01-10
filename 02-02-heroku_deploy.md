@@ -45,7 +45,7 @@ heroku keys:add
 
 PATH_HEROKU_NAME='config/heroku_name.txt'
 HEROKU_NAME=''
-if [ -e 'config/heroku_name.txt' ]
+if [ -e $PATH_HEROKU_NAME ]
 then
   HEROKU_NAME=$(cat $PATH_HEROKU_NAME)
 else
