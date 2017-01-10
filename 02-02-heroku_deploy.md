@@ -11,7 +11,7 @@
 * In your browser, visit your assigned URL.  You will see the initial Heroku splash screen, because the Heroku server does not yet have your source code.
 * Enter the following commands:
 ```
-echo "${PWD##*/}" > config/heroku_name.txt # Copies the name of your app to config/heroku_name.txt
+echo "${PWD##*/}" > config/heroku_name.txt # Stores the name of your app in config/heroku_name.txt
 HEROKU_TMP=$(cat config/heroku_name.txt)
 echo $HEROKU_TMP # Displays the name of your app
 ```
