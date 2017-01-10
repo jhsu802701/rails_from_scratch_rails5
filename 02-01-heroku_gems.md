@@ -1,7 +1,7 @@
 # Unit 2
 # Chapter 1: Gems for Heroku
 
-In this chapter, you will revise the Gemfile.  The main change is the addition of the pg (PostgreSQL) gem for the production environment.  If you do not make this change, you will not be able to deploy your app to Heroku.
+In this chapter, you will revise the Gemfile.  The main change is the addition of the pg (PostgreSQL) gem for the production environment.  If you do not make this change, you will not be able to deploy your app to Heroku.  Additionally, the nokogiri, pg, and rails gems may be downgraded to the versions used in the current Rails Tutorial Sample App.  The specific versions of nokogiri, pg, and rails that are used in this tutorial app are pre-installed in my rbenv-general Docker image.  This pre-installation is necessary to minimize the amount of time needed to wait for these large gems to be installed.  (REMEMBER: While the "bundle install" command will automatically install the correct version of each gem needed, this process is much faster if the correct versions of the largest gems were pre-installed with the "gem install" command.)
 
 ### New Branch
 Enter the command "git checkout -b 02-01-heroku_gems".
