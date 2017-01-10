@@ -248,7 +248,7 @@ git commit -m "Added credentials.sh"
 * Enter the following commands:
 ```
 git checkout master
-git pull origin master
+git pull
 ```
 
 ### Conclusions
