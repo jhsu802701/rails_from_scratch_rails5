@@ -44,16 +44,23 @@ git commit -m "Pinned versions of nokogiri, pg, and rails"
 ```
 
 ### Downgrading Gems
+* In this section, you will pin the version numbers of nokogiri, pg, and rails to those used in the Rails Tutorial Sample App.
+* Go to the source code for the current Rails Tutorial Sample App.  In the Gemfile.lock file, look up the specific version number of nokogiri.
+* In the Gemfile, specify the version of nokogiri used in the Rails Tutorial Sample App.  (Depending on how current the Rails Tutorial Sample App is, you may or may not need to downgrade the version number.)
+* Enter the command "bundle update nokogiri".
+* Repeat the above steps for the pg and rails gems.
+* Enter the following commands:
 ```
+git add .
+git commit -m "Downgraded nokogiri, pg, and rails to the versions in Rails Tutorial"
 git push origin 02-01-heroku_gems
 ```
 
 ### Reset
-* While you have not removed gems from the Gemfile, it's still a good idea at this point to reset everything to guard against dependency mismanagement risks.  If there are any problems, it's easier to resolve things now than later.
 * Begin following the steps in Unit 1 Chapter 3 for resetting your development environment and downloading the source code.
 * After you have downloaded the source code, go to the first tmux screen, cd into the root directory of your project, and enter the command "git checkout 02-01-heroku_gems".  This switches you from the master branch to the 02-01-heroku_gems branch and downloads the source code revisions of this alternate branch.
-* Enter your app's root directory, and enter the command "sh all.sh; sh server.sh". (Remember that the test_code.sh script and tools like RuboCop and Rails Best Practices were not yet in place back in Unit 1 Chapter 3.)
-* While you wait for the setup process to complete, open a second tmux window, go to your app's root directory, and enter the command "sh credentials.sh".
+* Enter your app's root directory, and enter the command "sh credentials.sh; sh all.sh; sh server.sh". (Remember that the test_code.sh script and tools like RuboCop and Rails Best Practices were not yet in place back in Unit 1 Chapter 3.)
+* pen a second tmux window and go to your app's root directory.  You will use this tmux window for entering commands.
 * Once the local server is running, open your web browser and view your project.
 * If your project passed all tests, you are able to view your local app in the browser, and the outcome of running the all.sh script was as expected, then this means that you have covered all bases through the Docker image build scripts and the build_fast.sh script.
 
