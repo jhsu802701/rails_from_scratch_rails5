@@ -49,6 +49,7 @@ git commit -m "Pinned versions of nokogiri, pg, and rails"
 * In the Gemfile, specify the version of nokogiri used in the Rails Tutorial Sample App.  (Depending on how current the Rails Tutorial Sample App is, you may or may not need to downgrade the version number.)
 * Enter the command "bundle update nokogiri".
 * Repeat the above steps for the pg and rails gems.
+* Enter the command "sh git_check.sh".  All tests should pass, and there should be no offenses.
 * Enter the command "git diff Gemfile.lock" to see the changes.  Note that if rails is downgraded, some of its dependencies may be downgraded as well.
 * Enter the following commands:
 ```
