@@ -40,7 +40,7 @@ git commit -m "Updated Gemfile for Heroku"
 * Enter the following commands:
 ```
 git add .
-git commit -m "Pinned versions of nokogiri, pg, and rails".
+git commit -m "Pinned versions of nokogiri, pg, and rails"
 ```
 
 ### Downgrading Gems
