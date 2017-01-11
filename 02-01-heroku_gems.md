@@ -29,7 +29,7 @@ gem 'rails'
 * Enter the following commands: 
 ```
 git add .
-git commit -m "Updated Gemfile for Heroku"
+git commit -m "Added pg for Heroku"
 ```
 
 ### Removing sqlite3
@@ -47,7 +47,7 @@ end
 * Enter the following commands:
 ```
 git add .
-git commit -m "Disabled sqlite3 in production"
+git commit -m "Disabled sqlite3 in production for Heroku"
 ```
 
 ### Pinning Gems
