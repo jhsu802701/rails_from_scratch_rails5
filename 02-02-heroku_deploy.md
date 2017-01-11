@@ -91,6 +91,8 @@ git commit -m "Added script and config file for deploying to Heroku"
 git push origin master
 ```
 * Enter the command "sh heroku.sh".
+* To see how the heroku.sh script asks for the name of your app, enter the command "rm config/heroku_name.txt; sh heroku.sh".
+* Enter "git status".  If you entered the name of your app correctly, you'll see no mention of changes in config/heroku_name.txt.
 
 ### Reset
 * Begin following the steps in Unit 1 Chapter 3 for resetting your development environment and downloading the source code.
