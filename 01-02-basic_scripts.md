@@ -133,6 +133,7 @@ screen.  To scroll within a tmux screen, press Ctrl-b and then your normal keys 
 </html>
 ```
 * Refresh your web browser tab.  The Ruby on Rails splash screen should now be replaced with a plain page that reads "Welcome to public.html!"
+* NOTE: While your local installation supports the Ruby on Rails default splash screen, Heroku (where you will deploy this app later) does not.  That is why you need the public/index.html file, which is supported in Heroku.
 * Enter the following commands:
 ```
 git status # server.sh and public/index.html
