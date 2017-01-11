@@ -82,6 +82,7 @@ echo 'git remote -v'
 git remote -v
 ```
 * To push your source code to Heroku, enter the command "sh heroku.sh".
+* Note that the name of your app on Heroku is stored at config/heroku_name.txt.
 * Enter the command "sh git_check.sh".
 * Enter the following commands:
 ```
