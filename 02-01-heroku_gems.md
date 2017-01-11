@@ -55,7 +55,7 @@ git commit -m "Disabled sqlite3 in production for Heroku"
 * In the Gemfile, specify the current version number for nokogiri.  For example, if the current version of nokogiri is 1.7.0.1, Replace "gem 'nokogiri'" with "gem 'nokogiri', '1.7.0.1'".
 * Repeat the above steps for pg and rails.
 * Enter the command "sh git_check.sh".
-* Enter the command "git diff Gemfile.lock" to see the changes.  Note that no gem has been upgraded or downgraded to a different version.
+* Enter the command "git diff Gemfile.lock" to see the changes.
 * Enter the following commands:
 ```
 git add .
