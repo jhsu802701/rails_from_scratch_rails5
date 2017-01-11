@@ -91,5 +91,5 @@ git push origin 02-01-heroku_gems
 * Enter the following commands:
 ```
 git checkout master
-git pull origin master
+git pull
 ```
