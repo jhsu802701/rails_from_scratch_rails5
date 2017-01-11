@@ -42,8 +42,7 @@ group :development, :test do
 end
 # END: SQLite
 ```
-* Enter the command "sh git_check.sh".  All tests should pass, and there should be no offenses.
-* Enter the command "git diff Gemfile.lock".  Note that no gem has been upgraded or downgraded to a different version.
+* Enter the command "sh git_check.sh".  All tests should pass, and there should be no offenses.  Note that the Gemfile.lock file is unchanged since the previous Git commit.
 * Enter the following commands:
 ```
 git add .
