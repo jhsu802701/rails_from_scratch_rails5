@@ -9,7 +9,7 @@ Enter the command "git checkout -b 05-02-static_pages".
 ```
 gem 'email_munger' # Encodes email address to prevent harvesting by bots
 ```
-* Enter the command "bundle install".
+* Enter the command "sh git_check.sh".  All tests should pass, and there should be no offenses other than the unused full_title application helper.
 * Enter the following commands:
 ```
 git add .
