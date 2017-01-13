@@ -251,7 +251,7 @@ Email address: <%= raw(EmailMunger.encode('somebody@rubyonracetracks.com')) %>
 ```
 * Stop the local web server, and then restart it.  (If you don't, the contact page might not work properly.)
 * When you view the contact page in the web browser, the email address appears normal.  However, when you view the page source from the browser, you see that the characters in the email address have been encoded.  This allows human eyes to see the actual email address, but most bots attempting to harvest email addresses will see noise and thus miss this email address.
-* Although the static pages work as expected, all tests will still fail the title test at this point.  That's because the integration test does not load the title helper.  To correct this, edit, the test/test_helper.rb file and replace the Capybara section with the following code:
+* Although the static pages work as expected, all tests will still fail the title test at this point.  That's because the integration test does not load the title helper.  To correct this, edit the test/test_helper.rb file and replace the Capybara section with the following code:
 ```
 #######################
 # BEGIN: Capybara setup
