@@ -18,13 +18,12 @@ Insert Code Climate GPA badge here
 
 END: continuous integration badges (markdown format)
 
-Welcome to the Generic App Template!
-This is the template created by following the 
-[Rails From Scratch] (https://github.com/jhsu802701/rails_from_scratch_rails5) protocol 
-and is designed to be the basis for a wide range of new Rails apps.
+Welcome to Generic App Template!
+This is a template created by following the 
+[Rails From Scratch] (http://www.rubyonracetracks.com/rails_from_scratch.html) protocol.
 This template is used in the 
 [GenericApp] (https://github.com/jhsu802701/generic_app)
-gem for starting off a new Rails with a high-quality pre-existing app already in place.
+gem for starting off a new app by copying a high-quality pre-existing app.
 This saves time, because it's MUCH quicker and easier to modify an existing app 
 than it is to create a new one completely from scratch.
 ```
