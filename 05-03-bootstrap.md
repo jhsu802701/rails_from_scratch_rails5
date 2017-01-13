@@ -11,7 +11,7 @@ Enter the command "git checkout -b 05-03-bootstrap".
 ```
 gem 'bootstrap-sass' # Bootstrap styling
 ```
-* Enter the command "bundle install".
+* Enter the command "sh git_check.sh".
 * Enter the following commands:
 ```
 git add .
