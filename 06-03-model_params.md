@@ -136,7 +136,7 @@ end
 rails generate migration add_params_to_users last_name:string first_name:string username:string
 rails db:migrate:reset
 ```
-* Make the users confirmable and lockable.  In the (date)_devise_create_users.rb file, uncomment the lines under "## Confirmable" and "## Lockable" and the lines beginning with "add_index".
+* Make the users confirmable and lockable.  In the db/migrate/(date)_devise_create_users.rb file, uncomment the lines under "## Confirmable" and "## Lockable" and the lines beginning with "add_index".
 * Enter the command "rails db:migrate:reset".
 * Replace the contents of app/models/user.rb with the following:
 ```
