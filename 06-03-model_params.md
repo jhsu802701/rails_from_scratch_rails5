@@ -180,7 +180,7 @@ end
 * Edit the config/initializers/devise.rb file. Change the value of the config.password_length parameter from "6..128" to "10..128".
 
 * Enter the command "sh testml.sh".  All tests should pass, and there should be no offenses cited by Brakeman, RuboCop, or Rails Best Practices.
-* Update the user test fixtures by replacing the contents of /test/fixtures/users.yml with the following:
+* Update the user test fixtures by replacing the contents of test/fixtures/users.yml with the following:
 ```
 # Read about fixtures at
 # http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
