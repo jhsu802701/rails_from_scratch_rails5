@@ -92,7 +92,7 @@ db_dev="${db_root}_dev"
 db_test="${db_root}_test"
 db_pro="${db_root}_pro"
 
-env_var_root_def="var_${db_root}_${n}"
+env_var_root_def="var_${db_root}"
 echo
 echo 'Default environmental variable names'
 echo "Username: ${env_var_root_def}_username"
