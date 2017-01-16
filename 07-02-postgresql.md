@@ -92,7 +92,7 @@ db_dev="${db_root}_dev"
 db_test="${db_root}_test"
 db_pro="${db_root}_pro"
 
-env_var_root_def="var_${dir_root}_${n}"
+env_var_root_def="var_${db_root}_${n}"
 echo
 echo 'Default environmental variable names'
 echo "Username: ${env_var_root_def}_username"
@@ -105,7 +105,7 @@ env_var_root=$(anti_blank $env_var_root_sel $env_var_root_def)
 env_var_username="${env_var_root}_username"
 env_var_password="${env_var_root}_password"
 
-db_username_def="username_${dir_root}_${n}"
+db_username_def="username_${db_root}_${n}"
 echo
 echo "Default username: ${db_username_def}"
 echo 'Enter the desired username for the database:'
