@@ -250,6 +250,7 @@ puts
 # rubocop:enable Style/PercentLiteralDelimiters
 # rubocop:enable Style/UnneededPercentQ
 ```
+* Do NOT run this script yet.  (You'll do this later.)
 * Enter the following commands:
 ```
 git add .
