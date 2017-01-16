@@ -80,6 +80,9 @@ db_root_def="db_generic_${n}" # Default root name of database
 echo '*******************************'
 echo 'SELECTING POSTGRESQL PARAMETERS'
 echo
+echo 'NOTE: Use letters, numbers, and underscores in parameter names.'
+echo 'Hyphens are prohibited.'
+echo
 echo "Default database root name: ${db_root_def}"
 echo "Default database name (development): ${db_root_def}_dev"
 echo "Default database name (testing): ${db_root_def}_test"
