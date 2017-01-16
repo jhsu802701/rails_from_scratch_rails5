@@ -76,7 +76,7 @@ anti_blank () {
 }
 
 dir_root=${PWD##*/} # This directory
-db_root_def="db_${dir_root}_${n}" # Default root name of database
+db_root_def="db_generic_${n}" # Default root name of database
 echo '*******************************'
 echo 'SELECTING POSTGRESQL PARAMETERS'
 echo
