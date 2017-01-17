@@ -345,6 +345,10 @@ git add .
 git commit -m "Added user signup"
 ```
 
+### Development Environment
+* Restart the local server.  Until you do so, the email confirmation message will not show up in the MailCatcher window.
+* Try out the user sign-up feature in the development environment.
+
 ### Wrapping Up
 * Enter the command "git push origin 09-01-users_sign_up".
 * Go to the GitHub repository and click on the "Compare and pull request" button for this branch.
