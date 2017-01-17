@@ -17,7 +17,7 @@ group :development do
 end
 # END: for outline.sh
 ```
-* Enter the command "bundle install" to install these new gems.
+* Enter the command "sh git_check.sh".
 * Enter the following commands:
 ```
 git add .
