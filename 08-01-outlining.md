@@ -173,7 +173,7 @@ git status
 * Enter the following commands:
 ```
 git add .
-git commit -m "Added outlining scripts"
+git commit -m "Added outlining scripts and annotations"
 ```
 
 ### Wrapping Up
