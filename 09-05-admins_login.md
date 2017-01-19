@@ -107,13 +107,14 @@ end
     <%= f.label :password %><br />
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
+  
+  <div class="field">
+    <%= f.label :remember_me, class: "checkbox inline" do %>
       <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end -%>
+      <br>
+      <span>Remember me on this computer (check the above box)</span>
+    <% end %>
+  </div>
 
   <div class="actions">
     <%= f.submit "Log in" %>
