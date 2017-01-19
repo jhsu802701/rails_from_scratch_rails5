@@ -130,8 +130,9 @@ end
 * Now it's time to provide access to the admin login page through the user login page.
 * Add the following lines to the end of the file app/views/users/sessions/new.html.erb:
 ```
-<br><br>
+<b>
 <%= link_to "Admin Login", new_admin_session_path %><br />
+</b>
 ```
 * Enter the command "test1".  The first two tests should pass, but the other 6 will still fail.
 
