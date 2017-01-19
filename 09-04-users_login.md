@@ -146,30 +146,34 @@ end
 
 <h1>User Login</h1>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username, autofocus: true %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field">
+        <%= f.label :username %><br />
+        <%= f.text_field :username, autofocus: true %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password %><br />
+        <%= f.password_field :password, autocomplete: "off" %>
+      </div>
+      <div class="field">
+        <%= f.label :remember_me, class: "checkbox inline" do %>
+          <%= f.check_box :remember_me %>
+          <br>
+          <span>Remember me on this computer (check the above box)</span>
+        <% end %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Log in" %>
+      </div>
+    <% end %>
+
+    <%= render "users/shared/links" %>
   </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+</div>
 ```
 * Enter the command "test1".  The first two integration tests will pass, but the rest will still fail.
 * In your web browser, go to the URL http://localhost:3000/users/sign_in (replacing the "localhost" and "3000" if necessary).  Now the desired user login form appears, and you can log in as one of the seeded users.
