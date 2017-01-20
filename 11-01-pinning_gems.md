@@ -8,7 +8,7 @@ In this chapter, you will pin the version numbers of all of the gems in the Gemf
 * The process of upgrading gems should be done in a series of small steps instead of one big step.  If tests fail, it's easy to identify the culprits when you upgrade the gems in small steps.
 
 ### New Branch
-Enter the command "git check -b 11-01-pinning_gems".
+Enter the command "git checkout -b 11-01-pinning_gems".
 
 ### Gemfile
 * For each gem listed in the Gemfile, enter the command "gem list (gem name)".
