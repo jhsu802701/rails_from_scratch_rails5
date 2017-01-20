@@ -161,79 +161,91 @@ end
 ```
 require 'test_helper'
 
-class UsersIndexTest < ActionDispatch::IntegrationTest
-  def check_index_disabled
-    visit users_path
+class UsersShowTest < ActionDispatch::IntegrationTest
+  def check_profile_disabled(u)
+    visit user_path(u)
     assert page.has_css?('title', text: full_title(''),
                                   visible: false)
     assert page.has_css?('h1', text: 'Home', visible: false)
   end
 
-  def check_index_disabled_for_user(u)
-    login_as(u, scope: :user)
-    check_index_disabled
+  def user_view_other_profile(u1, u2)
+    login_as(u1, scope: :user)
+    check_profile_disabled(u2)
   end
 
   # rubocop:disable Metrics/AbcSize
   # rubocop:disable Metrics/MethodLength
-  def check_index_enabled
-    visit users_path
-    assert page.has_css?('title', text: full_title('User Index'),
+  def check_profile_enabled(u)
+    fn = u.first_name
+    ln = u.last_name
+    un = u.username
+    e = u.email
+    visit user_path(u)
+    assert page.has_css?('title', text: full_title("User: #{fn} #{ln}"),
                                   visible: false)
-    assert page.has_css?('h1', text: 'User Index')
-    assert page.has_text?('Connery')
-    assert page.has_text?('Lazenby')
-    assert page.has_text?('Moore')
-    assert page.has_text?('Dalton')
-    assert page.has_text?('Brosnan')
-    assert page.has_text?('Craig')
-    assert page.has_text?('Blofeld')
-
-    # Verify that index page provides access to profile pages
-    assert page.has_link?('sconnery', href: user_path(@u1))
-    assert page.has_link?('sean_connery@example.com', href: user_path(@u1))
-    assert page.has_link?('glazenby', href: user_path(@u2))
-    assert page.has_link?('george_lazenby@example.com', href: user_path(@u2))
-    assert page.has_link?('rmoore', href: user_path(@u3))
-    assert page.has_link?('roger_moore@example.com', href: user_path(@u3))
-    assert page.has_link?('tdalton', href: user_path(@u4))
-    assert page.has_link?('timothy_dalton@example.com', href: user_path(@u4))
-    assert page.has_link?('pbrosnan', href: user_path(@u5))
-    assert page.has_link?('pierce_brosnan@example.com', href: user_path(@u5))
-    assert page.has_link?('dcraig', href: user_path(@u6))
-    assert page.has_link?('daniel_craig@example.com', href: user_path(@u6))
-    assert page.has_link?('eblofeld', href: user_path(@u7))
-    assert page.has_link?('ernst_blofeld@example.com', href: user_path(@u7))
-
-    # Verify that root page provides access to index page
-    click_on 'Home'
-    assert page.has_link?('User Index', href: users_path)
+    assert page.has_css?('h1', text: "User: #{fn} #{ln}",
+                               visible: false)
+    assert page.has_text?("Username: #{un}")
+    assert page.has_text?("Email: #{e}")
   end
   # rubocop:enable Metrics/AbcSize
   # rubocop:enable Metrics/MethodLength
 
-  test 'users index page is not accessible to visitors' do
-    check_index_disabled
+  def check_own_page(u)
+    login_as(u, scope: :user)
+    check_profile_enabled(u)
   end
 
-  test 'users index page is not accessible to users' do
-    check_index_disabled_for_user(@u1)
-    check_index_disabled_for_user(@u2)
-    check_index_disabled_for_user(@u3)
-    check_index_disabled_for_user(@u4)
-    check_index_disabled_for_user(@u5)
-    check_index_disabled_for_user(@u6)
-    check_index_disabled_for_user(@u7)
+  test 'unregistered visitors may not view user profile pages' do
+    check_profile_disabled(@u1)
+    check_profile_disabled(@u2)
+    check_profile_disabled(@u3)
+    check_profile_disabled(@u4)
+    check_profile_disabled(@u5)
+    check_profile_disabled(@u6)
+    check_profile_disabled(@u7)
   end
 
-  test 'users index page is accessible to super admins' do
+  test 'user may not view profiles of other users' do
+    user_view_other_profile(@u1, @u2)
+    user_view_other_profile(@u1, @u3)
+    user_view_other_profile(@u1, @u4)
+    user_view_other_profile(@u1, @u5)
+    user_view_other_profile(@u1, @u6)
+    user_view_other_profile(@u1, @u7)
+  end
+
+  test 'users can view their own profiles' do
+    check_own_page(@u1)
+    check_own_page(@u2)
+    check_own_page(@u3)
+    check_own_page(@u4)
+    check_own_page(@u5)
+    check_own_page(@u6)
+    check_own_page(@u7)
+  end
+
+  test 'super admin can view user profile' do
     login_as(@a1, scope: :admin)
-    check_index_enabled
+    check_profile_enabled(@u1)
+    check_profile_enabled(@u2)
+    check_profile_enabled(@u3)
+    check_profile_enabled(@u4)
+    check_profile_enabled(@u5)
+    check_profile_enabled(@u6)
+    check_profile_enabled(@u7)
   end
 
-  test 'users index page is accessible to regular admins' do
+  test 'regular admin can view user profiles' do
     login_as(@a4, scope: :admin)
-    check_index_enabled
+    check_profile_enabled(@u1)
+    check_profile_enabled(@u2)
+    check_profile_enabled(@u3)
+    check_profile_enabled(@u4)
+    check_profile_enabled(@u5)
+    check_profile_enabled(@u6)
+    check_profile_enabled(@u7)
   end
 end
 ```
