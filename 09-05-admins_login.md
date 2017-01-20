@@ -131,7 +131,7 @@ end
 * Enter the command "test1".  The test for the expected content on the admin login page will pass, but the other 7 tests will fail.
 
 ### Admin Shared Links
-Edit the file app/views/admins/shared/_links.html.erb.  Remove the "Sign up" link, because this feature is disabled for admins.
+Edit the file app/views/admins/shared/_links.html.erb.  Remove the "Sign up" link and the entire if statement containing this link.  This feature is disabled for admins.
 
 ### User Login Page
 * Now it's time to provide access to the admin login page through the user login page.
