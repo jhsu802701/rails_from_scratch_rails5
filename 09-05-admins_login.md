@@ -96,32 +96,36 @@ end
 <% provide(:title, 'Admin Login') %>
 
 <h1>Admin Login</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username, autofocus: true %>
-  </div>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field">
+        <%= f.label :username %><br />
+        <%= f.text_field :username, autofocus: true %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :remember_me, class: "checkbox inline" do %>
-      <%= f.check_box :remember_me %>
-      <br>
-      <span>Remember me on this computer (check the above box)</span>
+      <div class="field">
+        <%= f.label :password %><br />
+        <%= f.password_field :password, autocomplete: "off" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :remember_me, class: "checkbox inline" do %>
+          <%= f.check_box :remember_me %>
+          <br>
+          <span>Remember me on this computer (check the above box)</span>
+        <% end %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Log in" %>
+      </div>
     <% end %>
-  </div>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "admins/shared/links" %>
+    <%= render "admins/shared/links" %>
+    </div>
+</div>
 ```
 * In your web browser, refresh the admin login page. Now the desired admin login form appears, and you can log in as one of the seeded admins.
 * Enter the command "test1".  The test for the expected content on the admin login page will pass, but the other 7 tests will fail.
