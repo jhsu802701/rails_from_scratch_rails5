@@ -130,6 +130,9 @@ end
 * In your web browser, refresh the admin login page. Now the desired admin login form appears, and you can log in as one of the seeded admins.
 * Enter the command "test1".  The test for the expected content on the admin login page will pass, but the other 7 tests will fail.
 
+### Admin Shared Links
+Edit the file app/views/admins/shared/_links.html.erb.  Remove the "Sign up" link, because this feature is disabled.
+
 ### User Login Page
 * Now it's time to provide access to the admin login page through the user login page.
 * Add the following lines to the end of the file app/views/users/sessions/new.html.erb:
