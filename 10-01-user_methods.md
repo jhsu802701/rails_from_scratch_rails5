@@ -485,7 +485,7 @@ end
 </div>
 ```
 * Enter the command "sh testc.sh".  2 failures remain, and both are due to the undefined method search.
-* Add the following line to the end of the Gemfile:
+* Add the following lines to the end of the Gemfile:
 ```
 # Pagination gems
 gem 'bootstrap-will_paginate' # Twitter Bootstrap for pagination
