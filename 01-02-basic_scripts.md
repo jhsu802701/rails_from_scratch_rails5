@@ -198,14 +198,14 @@ anti_blank () {
   fi
 }
 
-echo '**************************'
-echo 'SETTING GITHUB CREDENTIALS'
+echo '***********************'
+echo 'SETTING GIT CREDENTIALS'
 EMAIL_DEF='you@example.com'
 
 echo
 echo "Default email address: ${EMAIL_DEF}"
 echo
-echo 'Enter your GitHub email address:'
+echo 'Enter your Git email address:'
 read EMAIL_SEL
 EMAIL=$(anti_blank $EMAIL_SEL $EMAIL_DEF)
 echo
@@ -220,7 +220,7 @@ NAME_DEF='Your Name'
 echo
 echo "Default name: ${NAME_DEF}"
 echo
-echo 'Enter your GitHub name:'
+echo 'Enter your Git name:'
 read NAME_SEL
 
 # NOTE: The double quotes are needed to avoid truncating the string
