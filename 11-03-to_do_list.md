@@ -1,7 +1,7 @@
 # Unit 11
 ## Chapter 3: To Do List
 
-* Create the file notes/TO_DO.txt with the following contents:
+* Create the file README-to_do.txt with the following contents:
 ```
 GETTING STARTED
 * Run the credentials.sh script.
