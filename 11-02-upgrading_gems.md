@@ -29,6 +29,7 @@ echo 'gemsurance --output log/gemsurance_report.html'
 gemsurance --output log/gemsurance_report.html
 echo 'The Gemsurance Report is at log/gemsurance_report.html .'
 ```
+* Enter the command "sh git_check.sh".  All tests should pass, and there should be no offenses.
 * Enter the following commands:
 ```
 git add .
