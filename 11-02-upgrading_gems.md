@@ -64,7 +64,7 @@ git commit -m "Upgraded gems outside of Gemfile"
 6. If you are unable to correct the test failures or offenses, repeat steps 1-3 using the old gem version.  The "git status" command should show no changes.
 
 ### Wrapping Up
-* Enter the command "sh test_code.sh".  Check the Gemsurance output to make sure that you have upgraded all gems that you intend to upgrade.
+* Enter the command "sh test_code.sh".  Check the Gemsurance output to make sure that you have completed all of your intended gem upgrades.
 * Enter the following commands:
 ```
 git add .
