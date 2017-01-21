@@ -35,7 +35,7 @@ LONG-TERM MAINTENANCE
 * Enter the following commands:
 ```
 git add .
-git commit -m "Added notes/TO_DO.txt"
+git commit -m "Added README-to_do.txt"
 git push origin master
 sh heroku.sh
 ```
