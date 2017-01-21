@@ -14,6 +14,7 @@ Enter the command "git checkout -b 11-01-pinning_gems".
 * For each gem listed in the Gemfile, enter the command "gem list (gem name)".
   * If you see just one gem version listed, this is the version to specify.  Remember, this chapter is about pinning the gem versions.  (The upgrading comes later.)
   * If you see more than one gem version listed, search through the Gemfile.lock file for the specific version used in the app.  This is the version to specify.
+  * Remember to scroll down through the ENTIRE Gemfile.  Yes, this is a long task.
 * When you are finished, enter the command "sh git_check.sh".  All tests should pass, and there should be no offenses.
 * Enter the command "git diff Gemfile.lock".  You should see see no major changes.
 * Enter the following commands:
