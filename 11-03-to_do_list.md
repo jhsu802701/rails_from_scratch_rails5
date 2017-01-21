@@ -26,6 +26,7 @@ SHORT-TERM MAINTENANCE
 * For each version of Ruby preinstalled in your Docker image, you should also include the mailcatcher gem and the current and expected future versions of the rails gem, the pg gem, the nokogiri gem, and any other gems that take a long time to install.  This makes it easier to upgrade the Gemfile.  (And if the upgrades require more work than anticipated, you can stick to the old versions until you resolve the upgrade issues.)
 
 LONG-TERM MAINTENANCE
+* Pin all gems in the Gemfile.
 * Run the upgrade_gems.sh script.
 * Upgrade the gem versions (other than rails/pg/nokogiri) in the Gemfile.
 * Upgrade the Ruby version of this app and the Ruby versions preinstalled in the custom Docker image.
