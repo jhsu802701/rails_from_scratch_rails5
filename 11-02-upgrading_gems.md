@@ -57,7 +57,7 @@ git commit -m "Upgraded gems outside of Gemfile"
 
 ### Upgrading An Individual Gem
 1. Specify the new version of the gem in the Gemfile.
-2. Enter the command "gem update (gem name)".
+2. Enter the command "bundle update (gem name)".
 3. Enter the command "sh git_check.sh" to make sure that all tests pass, and no offenses are found.
 4. If all goes well, use the "git add" and "git commit" the changes you just made.
 5. If there are any test failures or offenses, make the appropriate changes to the source code and repeat steps 2 and 3.
