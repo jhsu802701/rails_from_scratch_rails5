@@ -29,6 +29,11 @@ echo 'gemsurance --output log/gemsurance_report.html'
 gemsurance --output log/gemsurance_report.html
 echo 'The Gemsurance Report is at log/gemsurance_report.html .'
 ```
+* Enter the following commands:
+```
+git add .
+git commit -m "Added upgrade_gems.sh script"
+```
 
 ### Upgrading Gems
 * Enter the command "sh upgrade_gems.sh".  This upgrades all gems that can be upgraded without violating the conditions specified by the Gemfile.  The resulting log/gemsurance_report.html file shows which gems are up-to-date, which ones are outdated, and which ones have security issues that require updates.  The gems listed in boldface are listed in the Gemfile, and all other gems are dependencies.
