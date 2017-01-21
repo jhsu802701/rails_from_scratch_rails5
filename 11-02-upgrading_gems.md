@@ -44,15 +44,15 @@ git add .
 git commit -m "Upgraded gems outside of Gemfile"
 ```
 * On the other hand, if things did not pan out, do the following:
-  1. Note which gems were the stumbling blocks.
-  2. Enter the following commands:
+  * Note which gems were the stumbling blocks.
+  * Enter the following commands:
   ```
   git checkout Gemfile.lock
   git checkout Gemfile
   ```
-  3. Pin the version numbers of the offending gems to the old versions.
-  4. Enter the command "sh upgrade_gems.sh".
-  5. Repeat steps 1 through 4 until you have pinned all of the gems that were causing upgrade problems.
+  * Pin the version numbers of the offending gems to the old versions.
+  * Enter the command "sh upgrade_gems.sh".
+  * Repeat the previous steps until you have pinned all of the gems that were causing upgrade problems.
 * For each outdated gem listed in the Gemfile (except rails, pg, nokogiri, and any other gem that takes a long time to install), use the procedure below to upgrade.  Continue until you are finished.
 
 ### Upgrading An Individual Gem
