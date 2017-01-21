@@ -79,5 +79,7 @@ sh heroku.sh
 ```
 
 ### Recurring Maintenance Tasks
+* Be prepared to repeat the steps in the previous chapter and this chapter.
+* If you have upgrade problems, make the easy upgrades first.
 * Once you have completed the easy gem upgrades, tackle the more difficult ones.
 * Gems are constantly updated.  Be sure to check for outdated gems and insecure gems periodically.
