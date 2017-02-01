@@ -49,7 +49,7 @@ if [ -e $PATH_HEROKU_NAME ]
 then
   HEROKU_NAME=$(cat $PATH_HEROKU_NAME)
 else
-  echo 'Enter the desired name of your app:'
+  echo 'Enter the name of your app:'
   read HEROKU_NAME
   echo $HEROKU_NAME > $PATH_HEROKU_NAME
   echo ''
