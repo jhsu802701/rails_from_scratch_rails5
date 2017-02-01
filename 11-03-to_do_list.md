@@ -10,6 +10,7 @@ GETTING STARTED
 * Update the static pages.
 * If necessary, update the layout.
 * If necessary, switch from the default SQLite database to PostgreSQL.  Before running the pg_setup.sh script, modify it to automatically set the database names (for the development, testing, and production environments) and environment variables (for the username and password).  This prevents yourself and other members of the team from accidentally changing these values, which are part of the source code.  (The username and password themselves are kept out of the source code.)
+* Add continuous integration badges.  The URLs of the sites that provide them are listed below.
 
 HEROKU DEPLOYMENT
 * Enter the command "heroku create".
@@ -18,6 +19,12 @@ HEROKU DEPLOYMENT
 * In your browser, visit your new URL. You will again see the initial Heroku splash screen.
 * To see which Heroku project you are currently configured to push to, enter the command "git remote -v".
 * To deploy your app, enter the command "sh heroku.sh".
+
+CONTINOUS INTEGRATION BADGES
+* [CircleCI](https://circleci.com/)
+* [Gemnasium](https://www.gemnasium.com/)
+* [Hakiri](https://hakiri.io/)
+* [CodeClimate GPA Rating](https://codeclimate.com/)
 
 SHORT-TERM MAINTENANCE
 * Specify the Ruby version of this app in the Gemfile.
