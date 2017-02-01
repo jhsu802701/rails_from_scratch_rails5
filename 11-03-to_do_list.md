@@ -4,13 +4,12 @@
 * Create the file README-to_do.txt with the following contents:
 ```
 GETTING STARTED
-* Run the credentials.sh script.
+* Run the credentials.sh script.  (NOTE: If Heroku is not your production environment, remove the Heroku setup in this script, and remove the heroku.sh script as well.)
 * Start a Git repository for this app, and push this app into that repository.
-* Deploy this app to Heroku.  Instructions are provided below.
-* Replace instances of "Generic App Template" with the title of your app.
-* Replace instances of "somebody@rubyonracetracks.com" with the email address you wish to use as the source of this app's email messages and the email address listed on the Contact page.
-* Update the footer, header, and the rest of the layout.
+* Deploy this app to Heroku.  Instructions are provided below.  (Or deploy to your other chosen production environment.)
 * Update the static pages.
+* If necessary, update the layout.
+* If necessary, switch from the default SQLite database to PostgreSQL.  Before running the pg_setup.sh script, modify it to automatically set the database names (for the development, testing, and production environments) and environment variables (for the username and password).  This prevents yourself and other members of the team from accidentally changing these values, which are part of the source code.  (The username and password themselves are kept out of the source code.)
 
 HEROKU DEPLOYMENT
 * Enter the command "heroku create".
