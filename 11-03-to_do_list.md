@@ -21,10 +21,10 @@ HEROKU DEPLOYMENT
 * To deploy your app, enter the command "sh heroku.sh".
 
 CONTINOUS INTEGRATION BADGES
-* [CircleCI](https://circleci.com/)
-* [Gemnasium](https://www.gemnasium.com/)
-* [Hakiri](https://hakiri.io/)
-* [CodeClimate GPA Rating](https://codeclimate.com/)
+* CircleCI: https://circleci.com/
+* Gemnasium: https://www.gemnasium.com/
+* Hakiri: https://hakiri.io/
+* CodeClimate GPA Rating: https://codeclimate.com/
 
 SHORT-TERM MAINTENANCE
 * Specify the Ruby version of this app in the Gemfile.
