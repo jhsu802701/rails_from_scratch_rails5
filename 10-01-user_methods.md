@@ -478,22 +478,20 @@ end
 <% provide(:title, "User: #{@user.first_name} #{@user.last_name}") %>
 
 <div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-    <h1>
-    User: <%= @user.first_name %> <%= @user.last_name %>
-    </h1>
-    Username: <%= @user.username %>
-    <br>
-    Email: <%= raw(EmailMunger.encode(@user.email)) %>
-    <br>
-    <% if admin_signed_in? %>
-      <%= link_to "Delete #{@user.first_name} #{@user.last_name} (#{@user.username})", @user,
-        class: "btn btn-primary", method: :delete,
-        data: { confirm: "Are you sure you wish to delete #{@user.first_name} #{@user.last_name}?" } %>
-    <% end %>
-    </section>
-  </aside>
+  <section class="user_info">
+  <h1>
+  User: <%= @user.first_name %> <%= @user.last_name %>
+  </h1>
+  Username: <%= @user.username %>
+  <br>
+  Email: <%= raw(EmailMunger.encode(@user.email)) %>
+  <br>
+  <% if admin_signed_in? %>
+    <%= link_to "Delete #{@user.first_name} #{@user.last_name} (#{@user.username})", @user,
+      class: "btn btn-primary", method: :delete,
+      data: { confirm: "Are you sure you wish to delete #{@user.first_name} #{@user.last_name}?" } %>
+  <% end %>
+  </section>
 </div>
 ```
 * Enter the command "sh testc.sh".  2 failures remain, and both are due to the undefined method search.
