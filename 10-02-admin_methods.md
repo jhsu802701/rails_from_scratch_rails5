@@ -431,23 +431,21 @@ end
 
 <% provide(:title, "Admin: #{@admin.first_name} #{@admin.last_name}") %>
 <div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-      Admin: <%= @admin.first_name %> <%= @admin.last_name %>
-      </h1>
-      Username: <%= @admin.username %>
-      <br>
-      Email: <%= raw(EmailMunger.encode(@admin.email)) %>
-      <br>
-      <% if @admin.super != true && current_admin.super == true %>
-        <%= link_to "Delete", @admin, method: :delete,
-                              data: { confirm: "Are you sure you wish to delete this admin?" },
-                              class: "btn btn-lg btn-primary"
-        %>
-      <% end %>
-    </section>
-  </aside>
+  <section class="user_info">
+    <h1>
+    Admin: <%= @admin.first_name %> <%= @admin.last_name %>
+    </h1>
+    Username: <%= @admin.username %>
+    <br>
+    Email: <%= raw(EmailMunger.encode(@admin.email)) %>
+    <br>
+    <% if @admin.super != true && current_admin.super == true %>
+      <%= link_to "Delete", @admin, method: :delete,
+                            data: { confirm: "Are you sure you wish to delete this admin?" },
+                            class: "btn btn-lg btn-primary"
+      %>
+    <% end %>
+  </section>
 </div>
 ```
 * Create the file app/views/admins/index.html.erb with the following content:
