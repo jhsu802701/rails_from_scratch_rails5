@@ -63,9 +63,9 @@ echo '------------'
 echo 'bundle-audit'
 bundle-audit
 
-echo '----------'
-echo 'rubocop -D'
-rubocop -D
+echo '----------------------'
+echo 'bundle exec rubocop -D'
+bundle exec rubocop -D
 
 echo '----------------------'
 echo 'rails_best_practices .'
@@ -78,7 +78,7 @@ echo 'The Gemsurance Report is at log/gemsurance_report.html .'
 ```
 * Enter the command "sh test_code.sh".
 * The Gemsurance Report shows which gems are up to date, which are out of date, and which have known security issues and thus more urgently need to be updated.
-* Running gemsurance creates files in the tmp/vulnerabilities directory, which are flagged by RuboCop.  Enter the command "rubocop -D" to see the offenses in these files.
+* Running gemsurance creates files in the tmp/vulnerabilities directory, which are flagged by RuboCop.  Enter the command "bundle exec rubocop -D" to see the offenses in these files.
 * In the .rubocop.yml file, add the tmp/vulnerabilities/lib/\* files, tmp/vulnerabilities/spec/\* files, and tmp/vulnerabilities/Rakefile to the list of AllCops exclusions.  (These files are automatically generated when you run the test_code.sh script.)  The .rubucop.yml file should look like:
 ```
 AllCops:
@@ -115,9 +115,9 @@ echo '----------------'
 echo 'brakeman -Aq -w2'
 brakeman -Aq -w2
 
-echo '----------'
-echo 'rubocop -D'
-rubocop -D
+echo '----------------------'
+echo 'bundle exec rubocop -D'
+bundle exec rubocop -D
 
 echo '----------------------'
 echo 'rails_best_practices .'
