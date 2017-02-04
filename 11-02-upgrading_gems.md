@@ -24,9 +24,9 @@ bundle update
 
 sh git_check.sh
 
-echo '----------------------------------------------'
-echo 'gemsurance --output log/gemsurance_report.html'
-gemsurance --output log/gemsurance_report.html
+echo '----------------------------------------------------------'
+echo 'bundle exec gemsurance --output log/gemsurance_report.html'
+bundle exec gemsurance --output log/gemsurance_report.html
 echo 'The Gemsurance Report is at log/gemsurance_report.html .'
 ```
 * Enter the command "sh git_check.sh".  All tests should pass, and there should be no offenses.

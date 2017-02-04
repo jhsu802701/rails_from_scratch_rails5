@@ -71,9 +71,9 @@ echo '----------------------------------'
 echo 'bundle exec rails_best_practices .'
 bundle exec rails_best_practices .
 
-echo '----------------------------------------------'
-echo 'gemsurance --output log/gemsurance_report.html'
-gemsurance --output log/gemsurance_report.html
+echo '----------------------------------------------------------'
+echo 'bundle exec gemsurance --output log/gemsurance_report.html'
+bundle exec gemsurance --output log/gemsurance_report.html
 echo 'The Gemsurance Report is at log/gemsurance_report.html .'
 ```
 * Enter the command "sh test_code.sh".
