@@ -67,9 +67,9 @@ echo '----------------------'
 echo 'bundle exec rubocop -D'
 bundle exec rubocop -D
 
-echo '----------------------'
-echo 'rails_best_practices .'
-rails_best_practices .
+echo '----------------------------------'
+echo 'bundle exec rails_best_practices .'
+bundle exec rails_best_practices .
 
 echo '----------------------------------------------'
 echo 'gemsurance --output log/gemsurance_report.html'
@@ -94,8 +94,8 @@ Metrics/LineLength:
 . . .
 ```
 * Enter the command "sh test_code.sh".  There should be no RuboCop offenses remaining.
-* Enter the command "rails_best_practices -g" to generate the Rails Best Practices configuration file at config/rails_best_practices.yml.  When Rails Best Practices generates false alarms later, this file will be modified to suppress them.
-* Enter the command "sh git_check.sh; rails_best_practices .".
+* Enter the command "bundle exec rails_best_practices -g" to generate the Rails Best Practices configuration file at config/rails_best_practices.yml.  When Rails Best Practices generates false alarms later, this file will be modified to suppress them.
+* Enter the command "sh git_check.sh; bundle exec rails_best_practices .".
 * Enter the following commands:
 ```
 git add .
@@ -119,9 +119,9 @@ echo '----------------------'
 echo 'bundle exec rubocop -D'
 bundle exec rubocop -D
 
-echo '----------------------'
-echo 'rails_best_practices .'
-rails_best_practices .
+echo '----------------------------------'
+echo 'bundle exec rails_best_practices .'
+bundle exec rails_best_practices .
 
 echo '----------'
 echo 'git status'
