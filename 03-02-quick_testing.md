@@ -33,9 +33,9 @@ rails test test/helpers test/mailers
 
 # This is a slightly longer version of testh.sh.
 
-echo '----------------'
-echo 'brakeman -Aq -w2'
-brakeman -Aq -w2
+echo '----------------------------'
+echo 'bundle exec brakeman -Aq -w2'
+bundle exec brakeman -Aq -w2
 
 echo '----------------------'
 echo 'bundle exec rubocop -D'
@@ -77,9 +77,9 @@ rails test test/models
 
 # This is a slightly longer version of testm.sh.
 
-echo '----------------'
-echo 'brakeman -Aq -w2'
-brakeman -Aq -w2
+echo '----------------------------'
+echo 'bundle exec brakeman -Aq -w2'
+bundle exec brakeman -Aq -w2
 
 echo '----------------------'
 echo 'bundle exec rubocop -D'
@@ -121,9 +121,9 @@ rails test test/controllers
 
 # This is a slightly longer version of testc.sh.
 
-echo '----------------'
-echo 'brakeman -Aq -w2'
-brakeman -Aq -w2
+echo '----------------------------'
+echo 'bundle exec brakeman -Aq -w2'
+bundle exec brakeman -Aq -w2
 
 echo '----------------------'
 echo 'bundle exec rubocop -D'
