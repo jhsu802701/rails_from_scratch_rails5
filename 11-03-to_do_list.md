@@ -3,40 +3,8 @@
 
 * Create the file README-to_do.txt with the following contents:
 ```
-GETTING STARTED
-* Run the credentials.sh script.  (NOTE: If Heroku is not your production environment, remove the Heroku setup in this script, and remove the heroku.sh script as well.)
-* Start a Git repository for this app, and push this app into that repository.
-* Deploy this app to Heroku.  Instructions are provided below.  (Or deploy to your other chosen production environment.)
-* Update the static pages.
-* If necessary, update the layout.
-* If necessary, switch from the default SQLite database to PostgreSQL.  Before running the pg_setup.sh script, modify it to automatically set the database names (for the development, testing, and production environments) and environment variables (for the username and password).  This prevents yourself and other members of the team from accidentally changing these values, which are part of the source code.  (The username and password themselves are kept out of the source code.)
-* Add continuous integration badges.  The URLs of the sites that provide them are listed below.
-
-HEROKU DEPLOYMENT
-* Enter the command "heroku create".
-* In your browser, visit your assigned URL. You will see the initial Heroku splash screen, because the Heroku server does not yet have your source code.
-* Change your app's name (and URL) by entering the command "heroku rename (name)".
-* In your browser, visit your new URL. You will again see the initial Heroku splash screen.
-* To see which Heroku project you are currently configured to push to, enter the command "git remote -v".
-* To deploy your app, enter the command "sh heroku.sh".
-
-CONTINOUS INTEGRATION BADGES
-* CircleCI: https://circleci.com/
-* Gemnasium: https://www.gemnasium.com/
-* Hakiri: https://hakiri.io/
-* CodeClimate GPA Rating: https://codeclimate.com/
-
-SHORT-TERM MAINTENANCE
-* Specify the Ruby version of this app in the Gemfile.
-* Create a custom Docker image for this project.  The initial Docker image should include the version of Ruby you are currently using in this app.  When a new version of Ruby becomes available, update your Docker image to include this new version.
-* For each version of Ruby preinstalled in your Docker image, you should also include the mailcatcher gem and the current and expected future versions of the rails gem, the pg gem, the nokogiri gem, and any other gems that take a long time to install.  This makes it easier to upgrade the Gemfile.  (And if the upgrades require more work than anticipated, you can stick to the old versions until you resolve the upgrade issues.)
-
-LONG-TERM MAINTENANCE
-* Pin all gems in the Gemfile.
-* Run the upgrade_gems.sh script.
-* Upgrade the gem versions (other than rails/pg/nokogiri) in the Gemfile.
-* Upgrade the Ruby version of this app and the Ruby versions preinstalled in the custom Docker image.
-* Upgrade the rails/pg/nokogiri versions in the Gemfile and in the custom Docker image.
+Go the the following URL for more instructions:
+https://gist.github.com/jhsu802701/fdfd6e0732773b379413625463f2d2c0#file-generic_app_aftermath-md
 ```
 * Enter the following commands:
 ```
