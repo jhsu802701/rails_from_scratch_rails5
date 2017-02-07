@@ -585,7 +585,7 @@ gem 'ransack' # For searching users
 ```
 <li><%= link_to "User Index",   users_path %></li>
 ```
-* Add the following line immediately before the line containing "Edit Settings" in app/views/layouts/_header.html.erb:
+* In the user section of app/views/layouts/_header.html.erb, add the following line immediately before the line containing "Edit Settings" :
 ```
               <li><%= link_to "Your Profile", user_path(current_user) %></li>
 ```
