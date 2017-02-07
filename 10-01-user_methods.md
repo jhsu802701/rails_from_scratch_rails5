@@ -195,6 +195,10 @@ class UsersShowTest < ActionDispatch::IntegrationTest
   def check_own_page(u)
     login_as(u, scope: :user)
     check_profile_enabled(u)
+
+    # Can access profile page from menu bar
+    visit root_path
+    assert page.has_link?('Your Profile', href: user_path(u))
   end
 
   test 'unregistered visitors may not view user profile pages' do
@@ -580,6 +584,10 @@ gem 'ransack' # For searching users
 * Add the following line to the beginning of the admin section in app/views/layouts/_header.html.erb:
 ```
 <li><%= link_to "User Index",   users_path %></li>
+```
+* Add the following line immediately before the line containing "Edit Settings" in app/views/layouts/_header.html.erb:
+```
+              <li><%= link_to "Your Profile", user_path(current_user) %></li>
 ```
 * Enter the command "test2".  Now all 4 of the integration tests should pass.
 * Enter the command "test3".  Now all 3 of the integration tests should pass.
