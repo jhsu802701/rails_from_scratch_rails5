@@ -508,6 +508,10 @@ end
 ```
 <li><%= link_to "Admin Index", admins_path %></li>
 ```
+* In the admin section in app/views/layouts/_header.html.erb, add the following line just before the line containing "Edit Settings":
+```
+              <li><%= link_to "Your Profile", admin_path(current_admin) %>
+```
 * Enter the command "test2".  All tests should pass.
 * Enter the command "test3".  All tests should pass.
 * Enter the command "sh git_check.sh".  All tests should pass, and there should be no offenses.
