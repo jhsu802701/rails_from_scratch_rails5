@@ -179,6 +179,13 @@ class AdminsShowTest < ActionDispatch::IntegrationTest
 
   # rubocop:disable Metrics/AbcSize
   # rubocop:disable Metrics/MethodLength
+  def check_own_profile(a)
+    login_as(a, scope: :admin)
+    visit root_path
+    assert page.has_link?('Your Profile', href: admin_path(a))
+    click_on 'Logout'
+  end
+
   def check_profile_enabled(a)
     fn = a.first_name
     ln = a.last_name
@@ -233,6 +240,15 @@ class AdminsShowTest < ActionDispatch::IntegrationTest
     check_profile_enabled(@a5)
     check_profile_enabled(@a6)
   end
+
+  test 'admins can access their own profiles from the menu bar' do
+    check_own_profile(@a1)
+    check_own_profile(@a2)
+    check_own_profile(@a3)
+    check_own_profile(@a4)
+    check_own_profile(@a5)
+    check_own_profile(@a6)
+  end  
 end
 ```
 * Enter the command "alias test1='rails test test/integration/admins_show_test.rb'".
