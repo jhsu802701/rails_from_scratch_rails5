@@ -579,6 +579,10 @@ gem 'ransack' # For searching users
 * Enter the command "sh testc.sh".  All of the controller tests should now pass.
 
 ### Getting Integration Tests To Pass
+* In the user section in app/views/layouts/_header.html.erb, add the following line just before the line containing "Edit Settings":
+```
+              <li><%= link_to "Your Profile", user_path(current_user) %>
+```
 * Enter the command "test1".  All 5 of the integration tests should now pass.
 * Enter the command "test2".  Two of the tests fail, because the expected "User Index" link is not present.
 * Add the following line to the beginning of the admin section in app/views/layouts/_header.html.erb:
