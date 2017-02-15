@@ -155,7 +155,7 @@ end
 
 <%= render "users/shared/links" %>
 ```
-* Enter the command "test1".  Now all of the tests shoud pass.
+* Enter the command "test1".  Now all of the tests should pass.
 * Enter the command "sh git_check.sh".
 * Enter the following commands:
 ```
