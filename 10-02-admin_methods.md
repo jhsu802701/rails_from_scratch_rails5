@@ -502,15 +502,16 @@ end
 * Enter the command "sh testc.sh". All of the controller tests should now pass.
 
 ### Getting the Integration Tests to Pass
+* Enter the command "test1".  1 of the tests will fail because of the lack of a link to the current admin's profile.
+* In the admin section in app/views/layouts/_header.html.erb, add the following line just before the line containing "Edit Settings":
+```
+              <li><%= link_to "Your Profile", admin_path(current_admin) %>
+```
 * Enter the command "test1".  All tests should pass.
 * Enter the command "test2".  2 of the tests will fail because of the lack of a link to the admin index page.
 * In the admin section in app/views/layouts/_header.html.erb, add the following line just after the one containing "User Index":
 ```
 <li><%= link_to "Admin Index", admins_path %></li>
-```
-* In the admin section in app/views/layouts/_header.html.erb, add the following line just before the line containing "Edit Settings":
-```
-              <li><%= link_to "Your Profile", admin_path(current_admin) %>
 ```
 * Enter the command "test2".  All tests should pass.
 * Enter the command "test3".  All tests should pass.
