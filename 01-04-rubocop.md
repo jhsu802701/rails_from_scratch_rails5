@@ -90,7 +90,7 @@ echo '----------'
 echo 'git status'
 git status
 ```
-* Now you can easily check for RuboCop violations prior to executing the git add and git commit commands.  Enter the command "sh git_check.sh".  There should be no errors, RuboCop offenses, or new files other than the ones explicitly added in this chapter.
+* Now you can easily check for RuboCop violations prior to executing the git add and git commit commands.  Enter the command "sh git_check.sh".  There should be no errors, RuboCop offenses, or new files.
 * Enter the following commands:
 ```
 git add .
