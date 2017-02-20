@@ -126,7 +126,7 @@ Temporary Items
 
 ### Setting Up Git Locally
 
-*  Enter the following commands in your shell window (providing your GitHub email address and name, respectively):
+*  Enter the following commands in your shell window (providing your Git repository email address and name, respectively):
 ```
   git config --global user.email "you@example.com"
   git config --global user.name "Your Name"
