@@ -75,6 +75,10 @@ anti_blank () {
   fi
 }
 
+#######################################################################################
+# BEGIN: setting PostgreSQL database name parameters (db_root, db_dev, db_test, db_pro)
+#######################################################################################
+
 dir_root=${PWD##*/} # This directory
 db_root_def="db_generic_${n}" # Default root name of database
 echo '*******************************'
@@ -95,6 +99,14 @@ db_dev="${db_root}_dev"
 db_test="${db_root}_test"
 db_pro="${db_root}_pro"
 
+#################################################################################
+# FINISHED: setting PostgreSQL database name parameters (db_dev, db_test, db_pro)
+#################################################################################
+
+####################################################################################
+# BEGIN: setting names of environment variables (env_var_username, env_var_password)
+####################################################################################
+
 env_var_root_def="var_${db_root}"
 echo
 echo 'Default environmental variable names'
@@ -107,6 +119,10 @@ env_var_root=$(anti_blank $env_var_root_sel $env_var_root_def)
 
 env_var_username="${env_var_root}_username"
 env_var_password="${env_var_root}_password"
+
+#######################################################################################
+# FINISHED: setting names of environment variables (env_var_username, env_var_password)
+#######################################################################################
 
 db_username_def="username_${db_root}"
 echo
@@ -135,6 +151,10 @@ echo "Username: ${db_username}"
 echo "Password: ${db_password}"
 
 sh pg-start.sh
+
+echo '--------------------------'
+echo 'bundle install > /dev/null'
+bundle install > /dev/null
 
 ruby pg_setup.rb $db_dev $db_test $db_pro $env_var_username $env_var_password $db_username $db_password
 
