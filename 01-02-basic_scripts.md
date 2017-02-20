@@ -75,8 +75,6 @@ echo '--------------'
 echo 'bundle install'
 bundle install
 
-sh kill_spring.sh
-
 echo '----------------'
 echo 'rails db:migrate'
 rails db:migrate
