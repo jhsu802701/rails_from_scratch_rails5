@@ -141,8 +141,6 @@ git commit -m "Updated git_check.sh"
 
 # Run this script to set up your project again after resetting the Docker container.
 
-clear
-
 sh build_fast.sh
 
 FILE_LOG_TEST_CODE='log/all-test_code.log'
