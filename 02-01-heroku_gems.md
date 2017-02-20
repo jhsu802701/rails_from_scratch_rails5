@@ -79,11 +79,12 @@ git push origin 02-01-heroku_gems
 
 ### Reset
 * Begin following the steps in Unit 1 Chapter 3 for resetting your development environment and downloading the source code.
-* After you have downloaded the source code, go to the first tmux screen, cd into the root directory of your project, and enter the command "git checkout 02-01-heroku_gems".  This switches you from the master branch to the 02-01-heroku_gems branch and downloads the source code revisions of this alternate branch.
-* Enter your app's root directory, and enter the command "sh credentials.sh; sh all.sh; sh server.sh". (Remember that the test_code.sh script and tools like RuboCop and Rails Best Practices were not yet in place back in Unit 1 Chapter 3.)
+* After you have downloaded the source code, go to the first tmux window, cd into the root directory of your project, and enter the command "git checkout 02-01-heroku_gems".  This switches you from the master branch to the 02-01-heroku_gems branch and downloads the source code revisions of this alternate branch.
+* Enter your app's root directory, and enter the command "sh all.sh; sh server.sh". (Remember that the test_code.sh script and tools like RuboCop and Rails Best Practices were not yet in place back in Unit 1 Chapter 3.)
 * Open a second tmux window and go to your app's root directory.  You will use this tmux window for entering commands.
+* Enter the command "sh credentials.sh".
 * Once the local server is running, open your web browser and view your project.
-* If your project passed all tests, you are able to view your local app in the browser, and the outcome of running the all.sh script was as expected, then this means that you have covered all bases through the Docker image build scripts and the build_fast.sh script.
+* If your project passed all tests, you are able to view your local app in the browser, and the outcome of running the all.sh script was as expected, then this means that you have covered all bases through the Docker image build scripts and the all.sh script.
 
 ### Wrapping Up 
 * Go to the GitHub repository and click on the "Compare and pull request" button for this 02-01-heroku_gems branch.
