@@ -11,8 +11,7 @@
 * In your browser, visit your assigned URL.  You will see the initial Heroku splash screen, because the Heroku server does not yet have your source code.
 * Enter the following commands:
 ```
-echo "${PWD##*/}" > config/heroku_name.txt # Stores the name of your app in config/heroku_name.txt
-HEROKU_TMP=$(cat config/heroku_name.txt)
+HEROKU_TMP="${PWD##*/}"
 echo $HEROKU_TMP # Displays the name of your app
 ```
 * Change your app's name (and URL) by entering the command "heroku rename $HEROKU_TMP".
@@ -81,7 +80,8 @@ echo '-------------'
 echo 'git remote -v'
 git remote -v
 ```
-* To push your source code to Heroku, enter the command "sh heroku.sh".
+* Enter the command "echo $HEROKU_TMP" to view the name of your app.
+* To push your source code to Heroku, enter the command "sh heroku.sh".  When you are prompted for the name of your app, cut and paste the output of the "echo $HEROKU_TMP" command.
 * Note that the name of your app on Heroku is stored at config/heroku_name.txt.
 * Enter the command "sh git_check.sh".
 * Enter the following commands:
