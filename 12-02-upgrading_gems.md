@@ -1,4 +1,4 @@
-# Unit 11
+# Unit 12
 ## Chapter 2: Upgrading Gems
 
 In this chapter, you will upgrade the gems in your app.  The gem upgrading process is done in multiple stages.  Upgrading everything at once complicates any troubleshooting that needs to be done.

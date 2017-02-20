@@ -1,4 +1,4 @@
-# Unit 11
+# Unit 12
 ## Chapter 1: Pinning Gem Versions
 
 In this chapter, you will pin the version numbers of all of the gems in the Gemfile, but you will NOT upgrade any gems just yet.
