@@ -96,8 +96,8 @@ git push origin master
 
 ### Reset
 * Begin following the steps in Unit 1 Chapter 3 for resetting your development environment and downloading the source code.
-* After you have downloaded the source code, go to the first tmux screen, cd into the root directory of your project, and enter the command "sh credentials.sh; sh all.sh; sh server.sh".
-* While you wait for the previous step to be completed, open a second tmux window for entering commands.
+* After you have downloaded the source code, go to the first tmux screen, cd into the root directory of your project, and enter the command "sh all.sh; sh server.sh".
+* While you wait for the previous step to be completed, open a second tmux window and enter the command "sh credentials.sh".
 * After everything has been set up, enter the command "sh heroku.sh".  There's nothing new to deploy, but if all goes well, you'll see that you can connect to your app on Heroku.
 
 ### Conclusions
