@@ -65,9 +65,6 @@ git commit -m "Added kill_spring.sh"
 
 # This is Joel Spolsky's one-step build process at work.
 
-# Killing the spring server is usually not necessary, but it's better to 
-# include this script and not need it than to need it but not have it.
-
 sh pg-start.sh
 
 echo '--------------'
@@ -77,12 +74,6 @@ bundle install
 echo '----------------'
 echo 'rails db:migrate'
 rails db:migrate
-
-echo '-----------------'
-echo 'sh kill_spring.sh'
-sh kill_spring.sh
-
-echo "\n\n\n\n\n\n\n\n\n\n"
 
 echo '----------'
 echo 'rails test'
