@@ -53,18 +53,6 @@ git commit -m "Added kill_spring.sh"
 ```
 #!/bin/bash
 
-# After you use the reset.sh script to return the Docker container to a
-# fresh Ruby on Rails environment and use the "git clone" command to 
-# download this project's source code, running this script sets up this 
-# project AND runs all tests.
-
-# Resetting the Docker container to its original state AND running this 
-# script ensures that you are on top of all dependencies and can avoid 
-# being stopped in your tracks by the infamous "works on my machine" 
-# problem.
-
-# This is Joel Spolsky's one-step build process at work.
-
 sh pg-start.sh
 
 echo '--------------'
