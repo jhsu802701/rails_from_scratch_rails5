@@ -162,6 +162,33 @@ end
 * Enter the command "rails test".  All of the static pages tests will fail.
 * Enter the command "alias test1='(command provided in test results with the TESTOPTS part omitted)'".
 * Enter the command "test1".  All 9 tests will fail.  Some of the tests will fail because the expected links are missing, and some tests will fail because the method full_title is undefined.
+* Although the method full_title is defined, the integration test does not load the title helper.  To correct this, edit the test/test_helper.rb file and replace the Capybara section with the following code:
+```
+#######################
+# BEGIN: Capybara setup
+#######################
+require 'capybara/rails'
+require 'capybara/email'
+
+class ActionDispatch::IntegrationTest
+  # Make app/helpers/application_helper.rb automatically available to
+  # all integration tests
+  include ApplicationHelper
+
+  # Make the Capybara DSL available in all integration tests
+  include Capybara::DSL
+  include Capybara::Email::DSL
+
+  # Reset sessions and driver after each test
+  def teardown
+    teardown_universal
+  end
+end
+#####################
+# END: Capybara setup
+#####################
+```
+
 * Replace the content of the file app/views/layouts/application.html.erb with the following:
 ```
 <!DOCTYPE html>
@@ -251,32 +278,7 @@ Email address: <%= raw(EmailMunger.encode('somebody@rubyonracetracks.com')) %>
 ```
 * Stop the local web server, and then restart it.  (If you don't, the contact page might not work properly.)
 * When you view the contact page in the web browser, the email address appears normal.  However, when you view the page source from the browser, you see that the characters in the email address have been encoded.  This allows human eyes to see the actual email address, but most bots attempting to harvest email addresses will see noise and thus miss this email address.
-* Although the static pages work as expected, all tests will still fail the title test at this point.  That's because the integration test does not load the title helper.  To correct this, edit the test/test_helper.rb file and replace the Capybara section with the following code:
-```
-#######################
-# BEGIN: Capybara setup
-#######################
-require 'capybara/rails'
-require 'capybara/email'
 
-class ActionDispatch::IntegrationTest
-  # Make app/helpers/application_helper.rb automatically available to
-  # all integration tests
-  include ApplicationHelper
-
-  # Make the Capybara DSL available in all integration tests
-  include Capybara::DSL
-  include Capybara::Email::DSL
-
-  # Reset sessions and driver after each test
-  def teardown
-    teardown_universal
-  end
-end
-#####################
-# END: Capybara setup
-#####################
-```
 * Enter the command "test1".  All tests should pass.
 * Enter the command "sh git_check.sh".  All tests should pass, and RuboCop and Rails Best Practices should show no offenses.
 * Enter the following commands:
