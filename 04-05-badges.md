@@ -1,9 +1,6 @@
 # Unit 4
 ## Chapter 5: Adding Badges
 
-### New Branch
-Enter the command "git checkout -b 04-05-badges".
-
 ### Updating the README.md file
 * Replace the README.md file with the following (providing the badge URLs in the appropriate locations):
 ```
@@ -35,13 +32,9 @@ git commit -m "New README.md page with badges"
 ```
 
 ### Wrapping Up
-* Enter the command "git push origin 04-05-badges".
-* Go to the GitHub repository and click on the "Compare and pull request" button for this branch.
-* Accept this pull request to merge it with the master branch, but do NOT delete this branch.
-* Enter the following commands:
+Enter the following commands
 ```
-git checkout master
-git pull
+git push origin master
 sh heroku.sh
 ```
 
