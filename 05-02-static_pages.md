@@ -75,7 +75,7 @@ git add .
 git commit -m "Added static pages controller"
 ```
 
-### Static Pages: Views
+### Integration Tests
 * Enter the following commands:
 ```
 git rm public/index.html
@@ -162,6 +162,8 @@ end
 * Enter the command "rails test".  All of the static pages tests will fail.
 * Enter the command "alias test1='(command provided in test results with the TESTOPTS part omitted)'".
 * Enter the command "test1".  All 9 tests will fail.  Some of the tests will fail because the expected links are missing, and some tests will fail because the method full_title is undefined.
+
+### Loading the Title Helper
 * Although the method full_title is defined, the integration test does not load the title helper.  To correct this, edit the test/test_helper.rb file and replace the Capybara section with the following code:
 ```
 #######################
@@ -188,7 +190,9 @@ end
 # END: Capybara setup
 #####################
 ```
+* Enter the command "test1".
 
+# Adding Static Content
 * Replace the content of the file app/views/layouts/application.html.erb with the following:
 ```
 <!DOCTYPE html>
