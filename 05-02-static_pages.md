@@ -249,7 +249,7 @@ end
   </script>
 <![endif]-->
 ```
-* At this point, all of the static tests still fail.  However, you no longer get an error message when you try to view your site locally.
+* At this point, all of the static tests still fail due to missing content.  However, you no longer get an error message when you try to view your site locally.
 * Download the Ruby on Rails logo by entering the following command:
 ```
 curl -o app/assets/images/rails.png -OL railstutorial.org/rails.png
