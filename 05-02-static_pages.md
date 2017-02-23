@@ -190,7 +190,7 @@ end
 # END: Capybara setup
 #####################
 ```
-* Enter the command "test1".
+* Enter the command "test1".  All 9 tests still fail.  The errors resulting from failure to load the title helper have now been replaced with errors from missing page titles.
 
 # Adding Static Content
 * Replace the content of the file app/views/layouts/application.html.erb with the following:
