@@ -289,3 +289,4 @@ git commit -m "Added PostgreSQL setup scripts"
 ### Using the PostgreSQL Scripts
 * The Generic App Template uses SQLite in the development environment.  These PostgreSQL scripts are provided to make it easy to switch from SQLite to PostgreSQL WITHOUT forcing the use of it.  Because executing these PostgreSQL scripts makes changes in the source code, you will NOT be entering any more Git commands in the rest of this chapter.
 * Enter the command "sh pg_setup.sh".  To speed up the process, you can just use the default values given.  In the end, your app will use PostgreSQL instead of SQLite, and all of your tests should pass.
+* Do NOT reset your Docker container yet.  (You'll do this later.)
