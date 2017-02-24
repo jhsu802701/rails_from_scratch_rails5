@@ -124,6 +124,10 @@ env_var_password="${env_var_root}_password"
 # FINISHED: setting names of environment variables (env_var_username, env_var_password)
 #######################################################################################
 
+######################################
+# BEGIN: getting username and password
+######################################
+
 db_username_def="username_${db_root}"
 echo
 echo "Default username: ${db_username_def}"
@@ -150,11 +154,15 @@ echo
 echo "Username: ${db_username}"
 echo "Password: ${db_password}"
 
+#########################################
+# FINISHED: getting username and password
+#########################################
+
 sh pg-start.sh
 
 echo '--------------'
 echo 'bundle install'
-bundle install
+bundle install # Needed to run pg_setup.rb
 
 ruby pg_setup.rb $db_dev $db_test $db_pro $env_var_username $env_var_password $db_username $db_password
 
