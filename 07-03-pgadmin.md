@@ -9,11 +9,13 @@ pgAdmin is a GUI browser tool that you can install in your host environment to v
 * The pgAdmin GUI browser makes viewing the database contents a much easier process.
 
 ### Downloading and Installing pgAdmin
+* If you have already installed pgAdmin on your host system, you may move on to "The PostgreSQL Setup".
 * If your host environment is Debian Linux, Ubuntu Linux, or one of their derivatives, enter the command "sudo apt-get install pgadmin3" in the HOST environment. pgAdmin will install in a few minutes.
 * If your host environment is OS X or Windows, go to the [pgAdmin page](https://www.pgadmin.org/). Follow the instructions for downloading and installing this software.
 
-### Setting up PostgreSQL
-* Enter the command "sh pg_setup.sh; sh seed.sh".  (NOTE: You should seed the database BEFORE using pgAdmin to connect to it.  If you seed the database when you already have an active connection through pgAdmin, you may get an error message warning you that the database is being accessed by others.)
+### The PostgreSQL Setup
+* At this point, your app should be set up with PostgreSQL instead of SQLite for the development environment database.
+* Enter the command "sh seed.sh".  (NOTE: You should seed the database BEFORE using pgAdmin to connect to it.  If you seed the database when you already have an active connection through pgAdmin, you may get an error message warning you that the database is being accessed by others.)
 * Get the development database name from the config/database.yml file.
 * Open the file config/application.yml.  Get the username and password from it.  The format of the contents of this file is:
 ```
@@ -24,7 +26,7 @@ pgAdmin is a GUI browser tool that you can install in your host environment to v
 ```
 
 ### Viewing the Database
-* Open pgAdmin.
+* After the seeding process has finished, open pgAdmin.
 * Add a server with the following parameters
   * Name: generic_rails
   * Host: localhost (or the IP address of Docker Machine)
