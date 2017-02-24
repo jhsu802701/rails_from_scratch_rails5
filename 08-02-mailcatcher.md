@@ -32,6 +32,7 @@ echo 'If you are using Docker or Vagrant, the port number may be something else.
 echo 'If you are using Docker Machine, replace "localhost" with the appropriate numerical IP address (probably 192.168.99.100).'
 # Send mail through smtp://localhost:1025
 ```
+* In your host system, open the ports.txt file in the shared directory of the Docker container.  (Alternatively, you can enter the command "cat /home/winner/shared/ports.txt" from your Docker container.)  Note the host port that corresponds to port 1080 in Docker. That's the port number to enter in your web browser in order to view the simulated email client.
 * Enter the command "sh mailcatcher.sh".
 * In the browser window in the host environment, go to the appropriate URL.  You should see the MailCatcher interface, but there won't be any messages.
 * Enter the command "sh git_check.sh".
