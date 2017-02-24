@@ -289,4 +289,6 @@ git commit -m "Added PostgreSQL setup scripts"
 ### Using the PostgreSQL Scripts
 * The Generic App Template uses SQLite in the development environment.  These PostgreSQL scripts are provided to make it easy to switch from SQLite to PostgreSQL WITHOUT forcing the use of it.  Because executing these PostgreSQL scripts makes changes in the source code, you will NOT be entering any more Git commands in the rest of this chapter.
 * Enter the command "sh pg_setup.sh".  To speed up the process, you can just use the default values given.  In the end, your app will use PostgreSQL instead of SQLite, and all of your tests should pass.
-* Do NOT reset your Docker container yet.  (You'll do this later.)
+* Reset the development environment.  After you have downloaded the master branch of this app's code, enter the command "git checkout 07-02-postgresql".
+* From your app's root directory, enter the command "sh pg_setup.sh".  Again, you may use the default values given.  All tests should pass, and there should be no issues raised by RuboCop or Rails Best Practices.
+* The next step is to view the PostgreSQL database.  That's what the next chapter is about.
