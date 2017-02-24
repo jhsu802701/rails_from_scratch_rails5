@@ -24,7 +24,7 @@ gem 'pry-rails' # Improves the screen output in the sandbox environment
 * Enter the following commands:
 ```
 git add .
-git commit -m "Added better_errors and binding_of_caller"
+git commit -m "Added pry-rails"
 git push origin master
 sh heroku.sh
 ```
