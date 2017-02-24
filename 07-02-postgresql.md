@@ -289,8 +289,3 @@ git commit -m "Added PostgreSQL setup scripts"
 ### Using the PostgreSQL Scripts
 * The Generic App Template uses SQLite in the development environment.  These PostgreSQL scripts are provided to make it easy to switch from SQLite to PostgreSQL WITHOUT forcing the use of it.  Because executing these PostgreSQL scripts makes changes in the source code, you will NOT be entering any more Git commands in the rest of this chapter.
 * Enter the command "sh pg_setup.sh".  To speed up the process, you can just use the default values given.  In the end, your app will use PostgreSQL instead of SQLite, and all of your tests should pass.
-* Reset the development environment.  After you have downloaded the master branch of this app's code, enter the command "git checkout 07-02-postgresql".
-* In one tmux window, enter the command "sh all.sh; sh server.sh".
-* After the all.sh and server.sh commands have been executed in the first tmux window, go to a second tmux window and enter the command "sh pg_setup.sh".  Note that this script executes git_check.sh at the end.  All tests should pass, and there should be no issues raised by RuboCop or Rails Best Practices.
-* Don't submit a pull request just yet.  You'll take care of this at the end of the next chapter.
-* The next step is to view the PostgreSQL database.  That's what the next chapter is about.
