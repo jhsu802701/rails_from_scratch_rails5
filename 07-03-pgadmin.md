@@ -26,11 +26,12 @@ pgAdmin is a GUI browser tool that you can install in your host environment to v
 ```
 
 ### Viewing the Database
+* From your host system, open the ports.txt file within the shared directory of the Docker container.  (Alternatively, you can enter the command "cat /home/winner/shared/ports.txt" from your Docker container.)  Note the host port that corresponds to port 5432 in the Docker port.  That's the port number to enter in your web browser in order to view the app.
 * After the seeding process has finished, open pgAdmin.
 * Add a server with the following parameters
   * Name: generic_rails
   * Host: localhost (or the IP address of Docker Machine)
-  * Port: 15432
+  * Port: (host port corresponding to port 5432 in Docker)
   * Maintenance DB: postgres
   * Username: (from config/application.yml)
   * Password: (from config/application.yml)
