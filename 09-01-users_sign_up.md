@@ -282,7 +282,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 end
 ```
 * The user registration controller above uses the default Devise setup EXCEPT when instructed otherwise.  Because the default Devise behavior is not desired in some cases, the exceptions must be specified in the user registration controller.
-* Go to the user sign up page.  At this point, the local server will allow you to sign up, but the second two integration tests will still fail.
+* Enter the command "test1".  Now all of the new integration tests pass, and the user sign up feature is working.
 
 ### Stylesheet (Flash)
 * When you successfully sign up as a user at this point, you will see the message "A message with a confirmation link has been sent to your email address. Please follow the link to activate your account."  This message will be in black letters on white text, but it would be desirable to display it in dark green letters in a light green box.  If you view the source, you'll see that the message about the confirmation link is within a div tag of class "alert alert-notice".
