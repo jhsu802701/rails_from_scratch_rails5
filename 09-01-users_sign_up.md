@@ -317,7 +317,7 @@ end
     text-align: left;
 }
 ```
-* Now flashes messages will appear with special colors to alert you that an action was successful or unsuccessful.  However, there are still two failing integration tests to take care of.
+* Now flashes messages will appear with special colors to alert you that an action was successful or unsuccessful.
 
 ### RuboCop Compliance
 * In the .rubocop.yml file, add "app/controllers/users/*" to the list of files excluded from the Style/ClassAndModuleChildren cop.
