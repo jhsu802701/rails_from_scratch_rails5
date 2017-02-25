@@ -72,7 +72,7 @@ end
               'http://rubyonrails.org/' %>
 </div>
 ```
-* Enter the command "test1".  The first integration test will pass, but the other three will fail.
+* Enter the command "test1".  The first integration test will pass, but the other three will fail.  Two tests fail because the method sign_up_user is undefined, and one test fails because the user sign-up page does not have the expected content.
 * In your web browser, go to the home page in your local app.  Click on the "Sign up now!" button.  You'll find yourself back in the user sign up form, with the "devise/registrations" controller and "new" action once again being utilized.
 
 ### Routing
