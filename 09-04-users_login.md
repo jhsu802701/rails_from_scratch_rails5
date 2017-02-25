@@ -160,7 +160,7 @@ end
                             sessions: 'users/sessions' }
   # END: user section
 ```
-* In your web browser, refresh/visit the URL http://localhost:3000/users/sign_in (replacing the "localhost" and "3000" if necessary).  A login form appears.  You'll still see the generic Devise sign in page, but the controller is now "users sessions".
+* In your web browser, refresh/visit the URL http://localhost:3000/users/sign_in (replacing the "localhost" and "3000" if necessary).  A login form appears.  You'll still see the generic Devise sign in page, but the controller is now "users/sessions".
 
 ### User Login Form
 * Replace the content of the app/views/users/sessions/new.html.erb file with the following:
