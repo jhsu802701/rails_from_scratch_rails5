@@ -92,7 +92,7 @@ end
 </div>
 ```
 * Enter the command "test1".  The first integration test will pass, but the other three will fail because of missing content on the user sign-up page.
-* In your web browser, go to the home page in your local app.  Click on the "Sign up now!" button.  You'll find yourself back in the user sign up form, with the "devise/registrations" controller and "new" action once again being utilized.
+* In your web browser, go to the home page in your local app.  Click on the "Sign up now!" button.  You'll find yourself back in the default user sign up form, with the "devise/registrations" controller and "new" action once again being utilized.
 
 ### Routing
 * Edit the config/routes.rb file.  Replace the line "devise_for :users" with the following lines:
