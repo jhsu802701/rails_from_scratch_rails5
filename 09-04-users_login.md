@@ -148,8 +148,8 @@ end
   </div>
 </header>
 ```
-* Enter the command "test1".  The first integration test passes, but the rest fail.
-* In your web browser, go to your app's home page.  Click on the "Login" link in the header to visit the user sign in page, which is still the generic form provided by Devise.
+* Enter the command "test1".  The first integration test passes, but the rest fail because the expected content is missing.
+* In your web browser, go to your app's home page.  Click on the "Login" link in the header to visit the user sign in page, which is still the generic form provided by Devise.  The debug box will still show the "devise/sessions" controller and the action "new".
 
 ### Routing
 * In the config/routes.rb file, replace the user section with the following:
