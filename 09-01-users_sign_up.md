@@ -163,7 +163,7 @@ to create much better passwords AND store them in encrypted form.
 
 <%= render "users/shared/links" %>
 ```
-* Enter the command "test1".  The first two tests should pass, but the last two will still fail.
+* Enter the command "test1".  Two of the tests fail, but one test fails because filling out the sign-up form and submitting it does not cause the new user to be saved to the database.
 * Go to the user sign up page.  The expected content appears, but the appearance leaves something to be desired.  (Additions to the app/assets/stylesheets/custom.scss stylesheet will take care of this later.)  If you fill out the user sign up form, you'll get error messages telling you that your email address, last name, and first name cannot be blank.  (Modifications to the controller will take care of this later.)
 
 ### Stylesheet (Forms)
