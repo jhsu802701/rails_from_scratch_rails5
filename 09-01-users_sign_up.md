@@ -56,6 +56,29 @@ end
 * Enter the command "test1" to run just these tests again.
 * In your browser, go to the URL http://localhost:3000/users/sign_up .  (Replace "localhost" and/or "3000" if your setup calls for that.)  You'll see the standard Devise sign up form.  The debug window will show that the controller in use is "devise/registrations", and the action in use is "new".
 
+### Test Helper
+* Add the following lines to the end of the test/test_helper.rb file:
+```
+# rubocop:disable Metrics/AbcSize
+# rubocop:disable Metrics/MethodLength
+# rubocop:disable Metrics/ParameterLists
+def sign_up_user(name_u, name_l, name_f, e, p1, p2)
+  visit root_path
+  click_on 'Sign up now!'
+  fill_in('Last name', with: name_l)
+  fill_in('First name', with: name_f)
+  fill_in('Username', with: name_u)
+  fill_in('Email', with: e)
+  fill_in('Password', with: p1) # not yet changed
+  fill_in('Password confirmation', with: p2)
+  click_button('Sign up')
+end
+# rubocop:enable Metrics/AbcSize
+# rubocop:enable Metrics/MethodLength
+# rubocop:enable Metrics/ParameterLists
+```
+* Enter the command "test1".
+
 ### Home Page
 * In this section, you will provide the "Sign up now!" button that provides access to the user sign up page from the home page.
 * Replace the contents of the app/views/static_pages/home.html.erb with the following:
@@ -299,30 +322,6 @@ end
 }
 ```
 * Now flashes messages will appear with special colors to alert you that an action was successful or unsuccessful.  However, there are still two failing integration tests to take care of.
-
-### Test Helper
-* Add the following lines to the end of the test/test_helper.rb file:
-```
-# rubocop:disable Metrics/AbcSize
-# rubocop:disable Metrics/MethodLength
-# rubocop:disable Metrics/ParameterLists
-def sign_up_user(name_u, name_l, name_f, e, p1, p2)
-  visit root_path
-  click_on 'Sign up now!'
-  fill_in('Last name', with: name_l)
-  fill_in('First name', with: name_f)
-  fill_in('Username', with: name_u)
-  fill_in('Email', with: e)
-  fill_in('Password', with: p1) # not yet changed
-  fill_in('Password confirmation', with: p2)
-  click_button('Sign up')
-end
-# rubocop:enable Metrics/AbcSize
-# rubocop:enable Metrics/MethodLength
-# rubocop:enable Metrics/ParameterLists
-```
-* Enter the command "test1".  All tests should pass now.
-* Enter the command "sh git_check.sh".  All tests should pass, but you'll see RuboCop offenses.
 
 ### RuboCop Compliance
 * In the .rubocop.yml file, add "app/controllers/users/*" to the list of files excluded from the Style/ClassAndModuleChildren cop.
