@@ -8,6 +8,8 @@ Enter the command "git checkout -b 09-04-users_login".
 * Enter the command "rails generate integration_test users_login".
 * Replace the contents of test/integration/users_login_test.rb with the following:
 ```
+# rubocop:disable Metrics/AbcSize
+
 require 'test_helper'
 
 class UsersLoginTest < ActionDispatch::IntegrationTest
@@ -87,6 +89,8 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert page.has_text?('Signed out successfully.')
   end
 end
+
+# rubocop:enable Metrics/AbcSize
 ```
 
 * Enter the command "sh build_fast.sh".  All 7 of the new integration tests will fail.
@@ -243,10 +247,6 @@ end
 </div>
 ```
 * Enter the command "test1".  Now all of the tests should pass.
-
-
-### ???
-
 * Enter the command "sh git_check.sh".  All tests should pass, and there should be no offenses.
 * Enter the following commands:
 ```
