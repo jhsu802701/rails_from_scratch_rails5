@@ -73,7 +73,7 @@ def sign_up_user(name_u, name_l, name_f, e, p1, p2)
 end
 # rubocop:enable Metrics/ParameterLists
 ```
-* Enter the command "test1".
+* Enter the command "test1".  Now all 4 tests fail because the "Sign up now!" button is missing from the home page.
 
 ### Home Page
 * In this section, you will provide the "Sign up now!" button that provides access to the user sign up page from the home page.
