@@ -20,7 +20,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert page.has_css?('h1', text: 'Home')
 
     # Special message on home page
-    assert page.has_text?('You are logged in ')
+    assert page.has_text?("You are logged in as a user (#{username}).")
 
     # No "Sign up now!" button
     assert_not page.has_link?('Sign up now!', href: new_user_registration_path)
@@ -31,7 +31,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
 
   test 'Home page provides access to user login page' do
     visit root_path
-    assert_not page.has_text?("You are logged in as a user (#{username}).")
+    assert_not page.has_text?('You are logged in')
     assert page.has_link?('Login', href: new_user_session_path)
   end
 
