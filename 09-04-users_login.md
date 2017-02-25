@@ -21,10 +21,17 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
 
     # Special message on home page
     assert page.has_text?("You are logged in as a user (#{username}).")
+
+    # No "Sign up now!" button
+    assert_not page.has_link?('Sign up now!', href: new_user_registration_path)
+  
+    # No login option available
+    assert page.has_link?('Login', href: new_user_session_path)
   end
 
   test 'Home page provides access to user login page' do
     visit root_path
+    assert_not page.has_text?("You are logged in as a user (#{username}).")
     assert page.has_link?('Login', href: new_user_session_path)
   end
 
@@ -198,7 +205,7 @@ end
   </div>
 </div>
 ```
-* Enter the command "test1".  The first two integration tests will pass, but the rest will still fail.
+* Enter the command "test1".  Four of the tests pass, but the other three still fail because of missing text on the home page.
 * In your web browser, go to the URL http://localhost:3000/users/sign_in (replacing the "localhost" and "3000" if necessary).  Now the desired user login form appears, and you can log in as one of the seeded users.
 * When you visit your app as a logged-in user, you'll still see the "Sign up now!" button on the home page. Clicking on that button will simply give you a message telling you that you are already signed in. However, you still need to remove this button, because it looks bad to provide options that are not actually viable.  (You'll get to this later.)
 
