@@ -84,8 +84,28 @@ end
 
 * Enter the command "sh build_fast.sh".  All 7 of the new integration tests will fail.
 * Enter the command "alias test1='(insert command to rerun failed tests, minus the TESTOPTS portion)'".
-* Enter the command "test1".
+* Enter the command "test1".  Five of the tests fail because the method login_user is undefined, and two tests fail because the link to the user login page cannot be found.
 * In your web browser, go to the URL http://localhost:3000/users/sign_in (and replace the "localhost" and "3000" if necessary).  You'll see a generic Devise sign in page.  The debug box will show the "devise/sessions" controller and the action "new".
+
+### Test Helper (def login_user)
+* Add the following lines to the end of the file test/test_helper.rb:
+```
+def login_user(str_uname, str_pwd, status_remember)
+  visit root_path
+  click_on 'Login'
+  fill_in('Username', with: str_uname)
+  fill_in('Password', with: str_pwd)
+  if status_remember == true
+    check('Remember me')
+  else
+    uncheck('Remember me')
+  end
+  click_button('Log in')
+end
+```
+* Enter the command "test1".  All 7 tests fail because the link to the user login page cannot be found.
+
+
 
 ### Routing
 * In the config/routes.rb file, replace the user section with the following:
@@ -179,24 +199,6 @@ end
 * In your web browser, go to the URL http://localhost:3000/users/sign_in (replacing the "localhost" and "3000" if necessary).  Now the desired user login form appears, and you can log in as one of the seeded users.
 * When you visit your app as a logged-in user, you'll still see the "Sign up now!" button on the home page. Clicking on that button will simply give you a message telling you that you are already signed in. However, you still need to remove this button, because it looks bad to provide options that are not actually viable.  (You'll get to this later.)
 
-### Test Helper (def login_user)
-* Add the following lines to the end of the file test/test_helper.rb:
-```
-def login_user(str_uname, str_pwd, status_remember)
-  visit root_path
-  click_on 'Login'
-  fill_in('Username', with: str_uname)
-  fill_in('Password', with: str_pwd)
-  if status_remember == true
-    check('Remember me')
-  else
-    uncheck('Remember me')
-  end
-  click_button('Log in')
-end
-```
-* Enter the command "test1".  The first 4 tests pass, but the last 3 still fail because the home page does not explicity say, "You are logged in as a user" and list the username.
-
 ### Home Page
 * Replace the contents of the file app/views/static_pages/home.html.erb with the following:
 ```
@@ -231,6 +233,10 @@ end
 </div>
 ```
 * Enter the command "test1".  Now all of the tests should pass.
+
+
+### ???
+
 * Enter the command "sh git_check.sh".  All tests should pass, and there should be no offenses.
 * Enter the following commands:
 ```
