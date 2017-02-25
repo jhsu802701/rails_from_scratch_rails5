@@ -105,19 +105,6 @@ end
 ```
 * Enter the command "test1".  All 7 tests fail because the link to the user login page cannot be found.
 
-
-
-### Routing
-* In the config/routes.rb file, replace the user section with the following:
-```
-  # BEGIN: user section
-  devise_for :users,
-             controllers: { registrations: 'users/registrations',
-                            sessions: 'users/sessions' }
-  # END: user section
-```
-* In your web browser, refresh/visit the URL http://localhost:3000/users/sign_in (replacing the "localhost" and "3000" if necessary).  A login form appears.  You'll still see the generic Devise sign in page, but the controller is now "users sessions".
-
 ### Header
 * Replace the contents of app/views/layouts/_header.html.erb with the following:
 ```
@@ -141,9 +128,14 @@ end
           <%-################### -%>
           <%-# END: USER SECTION -%>
           <%-################### -%>
-        </li>
         <% else %>
+          <%-####################### -%>
+          <%-# BEGIN: GENERAL PUBLIC -%>
+          <%-####################### -%>
           <li><%= link_to 'Login', new_user_session_path %></li>
+          <%-##################### -%>
+          <%-# END: GENERAL PUBLIC -%>
+          <%-##################### -%>
         <% end %>
         <%-####################### -%>
         <%-# END: VARIABLE SECTION -%>
@@ -158,6 +150,17 @@ end
 ```
 * Enter the command "test1".  The first integration test passes, but the rest fail.
 * In your web browser, go to your app's home page.  Click on the "Login" link in the header to visit the user sign in page, which is still the generic form provided by Devise.
+
+### Routing
+* In the config/routes.rb file, replace the user section with the following:
+```
+  # BEGIN: user section
+  devise_for :users,
+             controllers: { registrations: 'users/registrations',
+                            sessions: 'users/sessions' }
+  # END: user section
+```
+* In your web browser, refresh/visit the URL http://localhost:3000/users/sign_in (replacing the "localhost" and "3000" if necessary).  A login form appears.  You'll still see the generic Devise sign in page, but the controller is now "users sessions".
 
 ### User Login Form
 * Replace the content of the app/views/users/sessions/new.html.erb file with the following:
