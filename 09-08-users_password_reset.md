@@ -71,7 +71,7 @@ def begin_user_password_reset(e)
   click_on 'Send me reset password instructions'
 end
 ```
-* Enter the command "test1".  The third test still fails, but it's now due to missing content.
+* Enter the command "test1".  One test fails because the user password reset page does not have the expected content, and one test fails because the user password edit page does not have the expected content.
 
 ### Routing
 * Replace the user section in config/routes.rb with the following code:
