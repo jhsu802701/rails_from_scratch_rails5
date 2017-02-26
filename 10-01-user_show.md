@@ -139,11 +139,9 @@ end
 ############################
 ```
 * Enter the command "sh testc.sh".  Now all 4 new tests fail due to a missing route.
-* Update the routing. Edit the file config/routes.rb and add the following lines to the end of the user section:
+* Update the routing. Edit the file config/routes.rb and add the following line to the end of the user section:
 ```
-  # BEGIN: user methods
   resources :users, only: [:show]
-  # END: user methods
 ```
 
 ### Wrapping Up
