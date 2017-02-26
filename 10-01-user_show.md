@@ -56,8 +56,6 @@ class UsersControllerTest < ActionController::TestCase
 
   test 'should not redirect users from their own profiles' do
     sign_in @u1, scope: :user
-
-    # Self
     get :show, params: { id: @u1 }
     assert :success
   end
