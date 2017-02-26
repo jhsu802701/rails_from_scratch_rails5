@@ -87,7 +87,7 @@ def begin_admin_password_reset(e)
   click_on 'Send me reset password instructions'
 end
 ```
-* Enter the command "test1".  All three tests fail due to missing content.
+* Enter the command "test1". Three tests fail due to missing content.
 
 ### Routing
 * Replace the admin section of config/routes.rb with the following code:
@@ -123,7 +123,7 @@ end
 
 <%= render "admins/shared/links" %>
 ```
-* Enter the command "test1".  Now the first two tests pass, but the remaining two tests fail due to the undefined method begin_admin_password_reset.
+* Enter the command "test1".  Now the first two tests pass, but the remaining two tests fail because the admin password edit page does not have the expected content.
 
 ### app/views/admins/passwords/edit.html.erb
 * Replace the contents of app/views/admins/passwords/edit.html.erb with the following code:
@@ -162,7 +162,7 @@ to create much better passwords AND store them in encrypted form.
 <%= render "admins/shared/links" %>
 ```
 * Enter the command "test1".  All 4 tests should now pass.
-* Enter the command "sh git_check.sh".
+* Enter the command "sh git_check.sh".  All tests should pass, and there should be no offenses.
 * Enter the following commands:
 ```
 git add .
