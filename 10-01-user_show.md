@@ -138,6 +138,13 @@ end
 # END: controller test setup
 ############################
 ```
+* Enter the command "sh testc.sh".  Now all 4 new tests fail due to a missing route.
+* Update the routing. Edit the file config/routes.rb and add the following lines to the end of the user section:
+```
+  # BEGIN: user methods
+  resources :users, only: [:show]
+  # END: user methods
+```
 
 ### Wrapping Up
 * Enter the command "git push origin 10-01-user_show".
