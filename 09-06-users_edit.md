@@ -117,7 +117,7 @@ end
 * Enter the command "alias test1='(command from test results minus the TESTOPTS portion)'".
 * Enter the command "test1".
 
-### test/test_helper.rb file
+### Test Helper
 * Add the following lines to the end of the test/test_helper.rb file:
 ```
 # Needed for using Devise tools in testing, such as login_as
@@ -137,8 +137,7 @@ def xpath_input_str(str_input)
   output
 end
 ```
-* Enter the command "test1".
-* Replace the Capybara section with the following code:
+* Replace the Capybara section of test/test_helper.rb with the following code:
 ```
 #######################
 # BEGIN: Capybara setup
@@ -194,6 +193,8 @@ end
 # rubocop:enable Metrics/AbcSize
 # rubocop:enable Metrics/MethodLength
 ```
+* Enter the command "test1".
+
 ### Header
 * Replace the user portion of the file app/views/layouts/_header.html.erb with the following:
 ```
