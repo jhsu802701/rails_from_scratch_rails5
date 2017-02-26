@@ -217,7 +217,7 @@ end
           <% # END: USER SECTION %>
           <% ################### %>
 ```
-* Enter the command "test1".  The first test passes, but the other 4 still fail.
+* Enter the command "test1".  Two of the tests pass, but the other three fail because the page for editing the settings is missing expected content.
 * In theory, you should be able to access the link to edit settings from the menu bar.  If you use the "view source" option in your browser, you'll see that the link is there.  In practice, you cannot access it.
 
 ### app/assets/javascripts/application.js
