@@ -113,11 +113,31 @@ end
 # rubocop:enable Metrics/MethodLength
 # rubocop:enable Metrics/ParameterLists
 ```
-* Enter the command "sh build_fast.sh".  All 5 of the new integration tests will fail due to undefined methods.
+* Enter the command "sh build_fast.sh".  All 5 of the new integration tests will fail due to undefined methods.  Four tests fail because the method edit_user_start is undefined, and one test fails because the method login_as is undefined.
 * Enter the command "alias test1='(command from test results minus the TESTOPTS portion)'".
 * Enter the command "test1".
 
 ### test/test_helper.rb file
+* Add the following lines to the end of the test/test_helper.rb file:
+```
+# Needed for using Devise tools in testing, such as login_as
+include Warden::Test::Helpers
+
+def edit_user_start(user1)
+  login_as(user1, scope: :user)
+  visit root_path
+  click_on 'Edit Settings'
+end
+
+def xpath_input_str(str_input)
+  str1 = './/input[@value="'
+  str2 = str_input
+  str3 = '"]'
+  output = "#{str1}#{str2}#{str3}"
+  output
+end
+```
+* Enter the command "test1".
 * Replace the Capybara section with the following code:
 ```
 #######################
@@ -174,26 +194,6 @@ end
 # rubocop:enable Metrics/AbcSize
 # rubocop:enable Metrics/MethodLength
 ```
-* Define the undefined methods of the integration test by adding these lines to the end of the test/test_helper.rb file:
-```
-# Needed for using Devise tools in testing, such as login_as
-include Warden::Test::Helpers
-
-def edit_user_start(user1)
-  login_as(user1, scope: :user)
-  visit root_path
-  click_on 'Edit Settings'
-end
-
-def xpath_input_str(str_input)
-  str1 = './/input[@value="'
-  str2 = str_input
-  str3 = '"]'
-  output = "#{str1}#{str2}#{str3}"
-  output
-end
-```
-
 ### Header
 * Replace the user portion of the file app/views/layouts/_header.html.erb with the following:
 ```
