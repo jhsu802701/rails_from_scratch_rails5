@@ -137,7 +137,7 @@ def xpath_input_str(str_input)
   output
 end
 ```
-* Replace the Capybara section of test/test_helper.rb with the following code:
+* Replace the Capybara setup section of test/test_helper.rb with the following code:
 ```
 #######################
 # BEGIN: Capybara setup
@@ -168,7 +168,7 @@ end
 # END: Capybara setup
 #####################
 ```
-* Add the following lines after the Capybara section:
+* Add the following lines after the Capybara setup section:
 ```
 # rubocop:disable Metrics/AbcSize
 # rubocop:disable Metrics/MethodLength
