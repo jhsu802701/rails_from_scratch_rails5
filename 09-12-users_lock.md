@@ -7,7 +7,7 @@ In this chapter, you will configure the app to lock users after an excessive num
 Enter the command "git checkout -b 09-12-users_lock".
 
 ### Gemfile
-* Add the following lines to the end of the Gemfile:
+* Add the following line to the end of the Gemfile:
 ```
 gem 'timecop', group: :testing # Changes current time, needed for testing the lock duration
 ```
