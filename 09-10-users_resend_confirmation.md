@@ -92,7 +92,7 @@ end
 ```
 * Enter the command "sh build_fast.sh".  Both tests fail.
 * Enter the command "alias test1='(command provided by test results minus TESTOPTS portion)'".
-* Enter the command "test1".
+* Enter the command "test1".  Both tests fail because the page where users can request a new confirmation message does not have the expected content.
 * In your web browser, go to the home page.  Click on "Login" and then "Didn't receive confirmation instructions?".  In the debug box, you'll see that the controller is "devise/confirmations".
 
 ### Routing
