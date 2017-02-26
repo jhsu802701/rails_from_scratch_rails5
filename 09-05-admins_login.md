@@ -8,6 +8,8 @@ Enter the command "git checkout -b 09-05-admins_login".
 * Enter the command "rails generate integration_test admins_login".
 * Replace the contents of the file test/integration/admins_login_test.rb with the following code:
 ```
+# rubocop:disable Metrics/AbcSize
+
 require 'test_helper'
 
 class AdminsLoginTest < ActionDispatch::IntegrationTest
@@ -21,7 +23,7 @@ class AdminsLoginTest < ActionDispatch::IntegrationTest
 
     # Special message on home page
     assert page.has_text?("You are logged in as an admin (#{username}).")
-  
+
     # No "Sign up now!" button
     assert_not page.has_link?('Sign up now!', href: new_user_registration_path)
 
@@ -80,6 +82,8 @@ class AdminsLoginTest < ActionDispatch::IntegrationTest
     assert page.has_text?('Signed out successfully.')
   end
 end
+
+# rubocop:enable Metrics/AbcSize
 ```
 * Enter the command "sh build_fast.sh".  All 8 of these integration tests should fail.
 * Enter the command "alias test1='(command in test results minus the TESTOPTS portion)'.
