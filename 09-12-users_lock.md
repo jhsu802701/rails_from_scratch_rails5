@@ -106,7 +106,7 @@ end
 ```
 * Enter the command "sh build_fast.sh".  All 3 of the new integration tests fail.
 * Enter the command "alias test1='(command from test results minus TESTOPTS portion)'".
-* Enter the command "test1".
+* Enter the command "test1".  Two tests fail because the lock feature doesn't work, and one test fails because the page where users can request unlock instructions does not have the expected content.
 
 ### Devise Configuration
 * Edit the file config/initializers/devise.rb.  Make the following changes:
