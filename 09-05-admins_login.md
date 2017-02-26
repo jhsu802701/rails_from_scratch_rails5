@@ -21,10 +21,17 @@ class AdminsLoginTest < ActionDispatch::IntegrationTest
 
     # Special message on home page
     assert page.has_text?("You are logged in as an admin (#{username}).")
+  
+    # No "Sign up now!" button
+    assert_not page.has_link?('Sign up now!', href: new_user_registration_path)
+
+    # No login option available
+    assert_not page.has_link?('Login', href: new_user_session_path)
   end
 
   test 'User login page provides access to admin login page' do
     visit root_path
+    assert_not page.has_text?('You are logged in')
     click_on 'Login'
     assert page.has_link?('Admin Login', href: new_admin_session_path)
   end
