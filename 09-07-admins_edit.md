@@ -155,7 +155,7 @@ end
 ```
 * Enter the command "sh build_fast.sh".  All 10 of the new tests will fail.
 * Enter the command "alias test1='(command from test results minus the TESTOPTS portion)'".
-* Enter the command "test1".
+* Enter the command "test1".  All 10 of the new tests fail.  Two fail because the link to the Edit Settings page is unavailable, and the rest of the tests fail because the edit_admin_start method is undefined.
 
 ### Test Helper
 * Add the following lines to the end of the file test/test_helper.rb:
