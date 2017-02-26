@@ -40,12 +40,6 @@ class UsersControllerTest < ActionController::TestCase
 
   test 'should redirect users from profiles other than their own' do
     sign_in @u1, scope: :user
-
-    # Self
-    get :show, params: { id: @u1 }
-    assert :success
-
-    # Others
     get :show, params: { id: @u2 }
     assert_redirected_to root_path
     get :show, params: { id: @u3 }
@@ -58,6 +52,14 @@ class UsersControllerTest < ActionController::TestCase
     assert_redirected_to root_path
     get :show, params: { id: @u7 }
     assert_redirected_to root_path
+  end
+
+  test 'should not redirect users from their own profiles' do
+    sign_in @u1, scope: :user
+
+    # Self
+    get :show, params: { id: @u1 }
+    assert :success
   end
 
   test 'should not redirect profile page when logged in as a super admin' do
