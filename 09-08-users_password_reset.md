@@ -8,7 +8,6 @@ Enter the command "git checkout -b 09-08-users_password_reset".
 * Enter the command "rails generate integration_test users_password_reset".
 * Replace the contents of test/integration/users_password_reset_test.rb with the following code:
 ```
-
 require 'test_helper'
 
 class UsersPasswordResetTest < ActionDispatch::IntegrationTest
