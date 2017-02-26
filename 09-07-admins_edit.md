@@ -190,7 +190,7 @@ end
           <% # END: ADMIN SECTION %>
           <% #################### %>
 ```
-* Enter the command "test1".  The first 4 tests pass, but the second 6 tests still fail.  
+* Enter the command "test1".  4 of the tests pass, but the other 6 fail because the Admin Edit page does not have the expected content. 
 
 ### Admin Edit Form
 * Replace the contents of app/views/admins/registrations/edit.html.erb with the following code:
