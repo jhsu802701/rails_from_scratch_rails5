@@ -211,7 +211,6 @@ end
 ```
 * Enter the command "test1".  Four of the tests pass, but the other three still fail because of missing text on the home page.
 * In your web browser, go to the URL http://localhost:3000/users/sign_in (replacing the "localhost" and "3000" if necessary).  Now the desired user login form appears, and you can log in as one of the seeded users.
-* When you visit your app as a logged-in user, you'll still see the "Sign up now!" button on the home page. Clicking on that button will simply give you a message telling you that you are already signed in. However, you still need to remove this button, because it looks bad to provide options that are not actually viable.  (You'll get to this later.)
 
 ### Home Page
 * Replace the contents of the file app/views/static_pages/home.html.erb with the following:
