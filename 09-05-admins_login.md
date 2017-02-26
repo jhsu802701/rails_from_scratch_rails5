@@ -246,7 +246,13 @@ end
           <%-# END: ADMIN SECTION -%>
           <%-#################### -%>
         <% else %>
+          <%-####################### -%>
+          <%-# BEGIN: GENERAL PUBLIC -%>
+          <%-####################### -%>
           <li><%= link_to 'Login', new_user_session_path %></li>
+          <%-##################### -%>
+          <%-# END: GENERAL PUBLIC -%>
+          <%-##################### -%>
         <% end %>
         <%-####################### -%>
         <%-# END: VARIABLE SECTION -%>
