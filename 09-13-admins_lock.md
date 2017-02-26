@@ -163,9 +163,9 @@ end
 
 # rubocop:enable Metrics/ClassLength
 ```
-* Enter the command "sh build_fast.sh".  All tests pass except for the one specifying the title and header of the page where admins can request new email messages providing account unlocking links.
+* Enter the command "sh build_fast.sh".
 * Enter the command "alias test1='(command provided in test results minus TESTOPTS portion)'".
-* Enter the command "test1".
+* Enter the command "test1".  All but one of the tests passes.  That one test failure is due to missing content on the admin unlock request page.
 
 ### Routing
 * In your web browser, go to your app's home page.  Click on "Login", then "Admin Login", and finally "Didn't receive unlock instructions?".  The debug box shows that the "devise/unlocks" controller is in use.
@@ -205,7 +205,7 @@ end
 <%= render "admins/shared/links" %>
 ```
 * Enter the command "test1".  All tests should now pass.
-* Enter the command "sh git_check.sh".
+* Enter the command "sh git_check.sh".  All tests should pass, and there should be no offenses.
 * Enter the following commands:
 ```
 git add .
