@@ -72,7 +72,7 @@ end
 ```
 * Enter the command "sh build_fast.sh".  Both tests will fail.
 * Enter the command "alias test1='(command in test results minus the TESTOPTS portion)'".
-* Enter the command "test1".
+* Enter the command "test1".  Both tests fail because the page where admins request a new confirmation message does not have the expected content.
 * In your web browser, go to the home page and click on "Login", "Admin Login", and "Didn't receive confirmation instructions?".  The debug box will show that the controller "devise/confirmations" is in use.
 
 ### Routing
