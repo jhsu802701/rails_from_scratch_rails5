@@ -111,7 +111,8 @@ class UsersControllerTest < ActionController::TestCase
 
   ##################
   # FINISHED: delete
-  ##################  
+  ##################
+end
 # rubocop:enable Metrics/ClassLength
 ```
 * Enter the command "sh testc.sh".
