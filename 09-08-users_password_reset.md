@@ -108,7 +108,7 @@ end
 
 <%= render "users/shared/links" %>
 ```
-* Enter the command "test1".  Now the first two tests pass, but the third test still fails due to the missing method begin_user_password_reset.
+* Enter the command "test1".  Now the first two tests pass, but the third test still fails because the password edit page does not have the expected content.
 * Refresh the web browser.  Now you see the desired form.
 
 ### app/views/users/passwords/edit.html.erb
