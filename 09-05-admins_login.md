@@ -86,7 +86,7 @@ class AdminsLoginTest < ActionDispatch::IntegrationTest
   end
 end
 
-# rubocop:enable Metrics/AbcSize# rubocop:disable Metrics/AbcSize
+# rubocop:enable Metrics/AbcSize
 ```
 * Enter the command "sh build_fast.sh".  All 8 of these integration tests should fail.
 * Enter the command "alias test1='(command in test results minus the TESTOPTS portion)'.
