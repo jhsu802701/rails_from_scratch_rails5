@@ -172,11 +172,12 @@ end
     </div>
 </div>
 ```
+* * Enter the command "test1".  Three of the tests will pass, four of the tests will fail due to missing content on the home page after logging in, and one test will fail because the option of signing up as an admin is available when it shouldn't be.
 * In your web browser, refresh the admin login page. Now the desired admin login form appears, and you can log in as one of the seeded admins.
-* Enter the command "test1".  The test for the expected content on the admin login page will pass, but the other 7 tests will fail.
 
 ### Admin Shared Links
-Edit the file app/views/admins/shared/_links.html.erb.  Remove the "Sign up" link and the entire if statement containing this link.  This feature is disabled for admins.
+* Edit the file app/views/admins/shared/_links.html.erb.  Remove the "Sign up" link and the entire if statement containing this link, because the general public is not permitted to sign up as admins.
+* Enter the command "test1".  Four of the tests will pass, and the other four will fail due to missing content on the home page after logging in.
 
 ### Home Page
 * In the file app/views/static_pages/home.html.erb replace the variable section with the following code:
