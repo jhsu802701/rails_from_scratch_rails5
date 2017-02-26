@@ -233,9 +233,15 @@ end
     <% # END: USER SECTION %>
     <% ################### %>
   <% else %>
+    <% ####################### %>
+    <% # BEGIN: GENERAL PUBLIC %>
+    <% ####################### %>
     <div class="center jumbotron">
       <%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-lg btn-primary" %>
     </div>
+    <% ##################### %>
+    <% # END: GENERAL PUBLIC %>
+    <% ##################### %>
   <% end %>
   <% ####################### %>
   <% # END: VARIABLE SECTION %>
