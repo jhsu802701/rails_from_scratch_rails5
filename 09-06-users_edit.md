@@ -193,7 +193,7 @@ end
 # rubocop:enable Metrics/AbcSize
 # rubocop:enable Metrics/MethodLength
 ```
-* Enter the command "test1".
+* Enter the command "test1".  All 5 integration tests fail because the "Edit Settings" link is unavailable.
 
 ### Header
 * Replace the user portion of the file app/views/layouts/_header.html.erb with the following:
