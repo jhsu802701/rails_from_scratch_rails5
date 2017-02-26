@@ -42,6 +42,9 @@ class AdminsLoginTest < ActionDispatch::IntegrationTest
     visit new_admin_session_path
     assert page.has_css?('title', text: full_title('Admin Login'), visible: false)
     assert page.has_css?('h1', text: 'Admin Login')
+
+    # No sign up option available
+    assert_not page.has_link?('Sign up', href: new_admin_registration_path)
   end
 
   test 'Unsuccessful super admin login, no remembering' do
@@ -83,7 +86,7 @@ class AdminsLoginTest < ActionDispatch::IntegrationTest
   end
 end
 
-# rubocop:enable Metrics/AbcSize
+# rubocop:enable Metrics/AbcSize# rubocop:disable Metrics/AbcSize
 ```
 * Enter the command "sh build_fast.sh".  All 8 of these integration tests should fail.
 * Enter the command "alias test1='(command in test results minus the TESTOPTS portion)'.
