@@ -112,9 +112,8 @@ end
 # rubocop:enable Metrics/AbcSize
 # rubocop:enable Metrics/MethodLength
 # rubocop:enable Metrics/ParameterLists
-
 ```
-* Enter the command "rails test".  All 5 of the new integration tests will fail due to undefined methods.
+* Enter the command "sh build_fast.sh".  All 5 of the new integration tests will fail due to undefined methods.
 * Enter the command "alias test1='(command from test results minus the TESTOPTS portion)'".
 * Enter the command "test1".
 
