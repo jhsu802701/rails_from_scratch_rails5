@@ -90,6 +90,27 @@ end
 * Enter the command "test1" to implement the new tests only.  Again, all 8 of these integration tests should fail.  Six of the tests fail because the login_admin method is undefined, one test fails because the user login page lacks a link to the admin login page, and one test fails because the admin login page lacks the expected content.
 * Go to the local admin login page at http://localhost:3000/admins/sign_in.  (Replace the "localhost" and "3000" if necessary.)  You should see a generic Devise login page with the controller "devise/sessions" and the action "new".
 
+### Test Helper
+* Add the following lines to the end of the test/test_helper.rb file:
+```
+# rubocop:disable Metrics/MethodLength
+def login_admin(str_uname, str_pwd, status_remember)
+  visit root_path
+  click_on 'Login'
+  click_on 'Admin Login'
+  fill_in('Username', with: str_uname)
+  fill_in('Password', with: str_pwd)
+  if status_remember == true
+    check('Remember me')
+  else
+    uncheck('Remember me')
+  end
+  click_button('Log in')
+end
+# rubocop:enable Metrics/MethodLength
+```
+* Enter the command "test1".  Again, the 8 new integration tests fail.  Seven tests fail because the link from the user login page to the admin login page is missing, and one test fails because the admin login page does not have the expected content.
+
 ### Routing
 * Edit the config/routes.rb file and replace the admin section with the following:
 ```
@@ -153,27 +174,6 @@ Edit the file app/views/admins/shared/_links.html.erb.  Remove the "Sign up" lin
 </b>
 ```
 * Enter the command "test1".  The first two tests should pass, but the other 6 will still fail.
-
-### Test Helper
-* Add the following lines to the end of the test/test_helper.rb file:
-```
-# rubocop:disable Metrics/MethodLength
-def login_admin(str_uname, str_pwd, status_remember)
-  visit root_path
-  click_on 'Login'
-  click_on 'Admin Login'
-  fill_in('Username', with: str_uname)
-  fill_in('Password', with: str_pwd)
-  if status_remember == true
-    check('Remember me')
-  else
-    uncheck('Remember me')
-  end
-  click_button('Log in')
-end
-# rubocop:enable Metrics/MethodLength
-```
-* Enter the command "test1".  The first 4 tests pass, but the 4 remaining tests fail because not all of the expected content appears on the home page when logged in as an admin.
 
 ### Home Page
 * In the file app/views/static_pages/home.html.erb replace the variable section with the following code:
