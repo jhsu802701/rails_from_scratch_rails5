@@ -81,9 +81,9 @@ class AdminsLoginTest < ActionDispatch::IntegrationTest
   end
 end
 ```
-* Enter the command "rails test".  All 8 of these integration tests should fail.
+* Enter the command "sh build_fast.sh".  All 8 of these integration tests should fail.
 * Enter the command "alias test1='(command in test results minus the TESTOPTS portion)'.
-* Enter the command "test1" to implement the new tests only.  Again, all 8 of these integration tests should fail.
+* Enter the command "test1" to implement the new tests only.  Again, all 8 of these integration tests should fail.  Six of the tests fail because the login_admin method is undefined, one test fails because the user login page lacks a link to the admin login page, and one test fails because the admin login page lacks the expected content.
 * Go to the local admin login page at http://localhost:3000/admins/sign_in.  (Replace the "localhost" and "3000" if necessary.)  You should see a generic Devise login page with the controller "devise/sessions" and the action "new".
 
 ### Routing
