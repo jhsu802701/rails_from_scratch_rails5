@@ -111,6 +111,16 @@ end
 ```
 * Enter the command "test1".  Again, the 8 new integration tests fail.  Seven tests fail because the link from the user login page to the admin login page is missing, and one test fails because the admin login page does not have the expected content.
 
+### User Login Page
+* Now it's time to provide access to the admin login page through the user login page.
+* Add the following lines to the end of the file app/views/users/sessions/new.html.erb:
+```
+<b>
+<%= link_to "Admin Login", new_admin_session_path %><br />
+</b>
+```
+* Enter the command "test1".  One test passes, but the other seven fail due to missing content on the admin login page.
+
 ### Routing
 * Edit the config/routes.rb file and replace the admin section with the following:
 ```
@@ -164,16 +174,6 @@ end
 
 ### Admin Shared Links
 Edit the file app/views/admins/shared/_links.html.erb.  Remove the "Sign up" link and the entire if statement containing this link.  This feature is disabled for admins.
-
-### User Login Page
-* Now it's time to provide access to the admin login page through the user login page.
-* Add the following lines to the end of the file app/views/users/sessions/new.html.erb:
-```
-<b>
-<%= link_to "Admin Login", new_admin_session_path %><br />
-</b>
-```
-* Enter the command "test1".  The first two tests should pass, but the other 6 will still fail.
 
 ### Home Page
 * In the file app/views/static_pages/home.html.erb replace the variable section with the following code:
