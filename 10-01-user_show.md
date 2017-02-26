@@ -115,7 +115,29 @@ class UsersControllerTest < ActionController::TestCase
 end
 # rubocop:enable Metrics/ClassLength
 ```
-* Enter the command "sh testc.sh".
+* Enter the command "sh testc.sh".  All four new controller tests fail.  Three of these test failures are due to the undefined method sign_in, and one test failure is due to a missing route.
+* Automatically provide Devise test controller helpers (which provide the method sign_in), the setup_universal actions, and the teardown_universal actions to all controller tests. Edit the file test/test_helper.rb and add the following lines before the Capybara section:
+```
+##############################
+# BEGIN: controller test setup
+##############################
+class ActionController::TestCase
+  include Devise::Test::ControllerHelpers
+
+  # Execute before each integration test
+  def setup
+    setup_universal
+  end
+
+  # Execute after each integration test
+  def teardown
+    teardown_universal
+  end
+end
+############################
+# END: controller test setup
+############################
+```
 
 ### Wrapping Up
 * Enter the command "git push origin 10-01-user_show".
