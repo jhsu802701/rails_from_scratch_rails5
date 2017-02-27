@@ -291,8 +291,9 @@ class UsersShowTest < ActionDispatch::IntegrationTest
   end
 end
 ```
-* Enter the command "sh build_fast.sh".  Three tests fail because the user profile page (still blank) lacks the expected content.
+* Enter the command "sh build_fast.sh".  Three tests fail.
 * Enter the command "alias test1='(command for running the failed tests minus the TESTOPTS portion)'"
+* Enter the command "test1".  Three tests fail because the user profile page (still blank) lacks the expected content.
 * Fill in the file app/views/users/show.html.erb with the following:
 ```
 <% require 'email_munger' %>
@@ -306,14 +307,13 @@ end
     Username: <%= @user.username %>
     <br>
     Email: <%= raw(EmailMunger.encode(@user.email)) %>
-    <br>
-    <% if admin_signed_in? %>
-      <%= link_to "Delete #{@user.first_name} #{@user.last_name} (#{@user.username})", @user,
-        class: "btn btn-primary", method: :delete,
-        data: { confirm: "Are you sure you wish to delete #{@user.first_name} #{@user.last_name}?" } %>
-    <% end %>
   </section>
 </div>
+```
+* Enter the command "test1".  One test fails because the user profile page is not accessible from the menu bar.
+* In the user section of app/views/layouts/_header.html.erb, add the following line immediately before the line containing "Edit Settings":
+```
+              <li><%= link_to "Your Profile", user_path(current_user) %></li>
 ```
 
 
