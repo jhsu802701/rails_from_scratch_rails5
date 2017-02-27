@@ -138,7 +138,7 @@ end
 ### Routing
 * In the config/routes.rb file, replace the line beginning with "resources :users" with the following:
 ```
-resources :users, only: [:show, :index]
+  resources :users, only: [:show, :index]
 ```
 * Enter the command "sh testc.sh".
 
