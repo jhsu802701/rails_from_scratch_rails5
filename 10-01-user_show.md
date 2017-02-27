@@ -291,7 +291,7 @@ class UsersShowTest < ActionDispatch::IntegrationTest
   end
 end
 ```
-* Enter the command "sh build_fast.sh".
+* Enter the command "sh build_fast.sh".  Three tests fail because the user profile page (still blank ) lacks the expected content.
 
 ### Wrapping Up
 * Enter the command "git push origin 10-01-user_show".
