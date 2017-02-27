@@ -81,88 +81,68 @@ class AdminsControllerTest < ActionController::TestCase
     get :show, params: { id: @a6 }
     assert :success
   end
+  ###########
+  # END: show
+  ###########
+  ##############
+  # BEGIN: index
+  ##############
 
-  # PART 2: INDEX
-  test 'should redirect index page when not logged in' do
-    get :index
-    assert_redirected_to root_path
-  end
+  ############
+  # END: index
+  ############
+  ###############
+  # BEGIN: delete
+  ###############
 
-  test 'should redirect index page when logged in as a user' do
-    sign_in @u1, scope: :user
-    get :index
-    assert_redirected_to root_path
-  end
-
-  test 'should not redirect index page when logged in as a super admin' do
-    sign_in @a1, scope: :admin
-    get :index
-    assert :success
-  end
-
-  test 'should not redirect index page when logged in as a regular admin' do
-    sign_in @a4, scope: :admin
-    get :index
-    assert :success
-  end
-
-  # PART 3: DELETE
-  test 'should not allow visitor to delete admin' do
-    get :destroy, params: { id: @a5 }
-    assert_redirected_to root_path
-    get :destroy, params: { id: @a6 }
-    assert_redirected_to root_path
-  end
-
-  test 'should not allow user to delete admin' do
-    sign_in @u1, scope: :user
-    get :destroy, params: { id: @a5 }
-    assert_redirected_to root_path
-    get :destroy, params: { id: @a6 }
-    assert_redirected_to root_path
-  end
-
-  # NOTE: Admin can delete self through edit registration form.
-  test 'should not allow regular admin to delete self' do
-    sign_in @a6, scope: :admin
-    get :destroy, params: { id: @a6 }
-    assert_redirected_to root_path
-  end
-
-  # NOTE: Admin can delete self through edit registration form.
-  test 'should not allow super admin to delete self' do
-    sign_in @a5, scope: :admin
-    get :destroy, params: { id: @a5 }
-    assert_redirected_to root_path
-  end
-
-  test 'should not allow regular admin to delete another regular admin' do
-    sign_in @a4, scope: :admin
-    get :destroy, params: { id: @a6 }
-    assert_redirected_to root_path
-  end
-
-  test 'should not allow regular admin to delete super admin' do
-    sign_in @a6, scope: :admin
-    get :destroy, params: { id: @a5 }
-    assert_redirected_to root_path
-  end
-
-  test 'should not allow super admin to delete super admin' do
-    sign_in @a1, scope: :admin
-    get :destroy, params: { id: @a5 }
-    assert_redirected_to root_path
-  end
-
-  test 'should allow super admin to delete regular admin' do
-    sign_in @u5, scope: :admin
-    get :destroy, params: { id: @a6 }
-    assert :success
-  end
+  #############
+  # END: delete
+  #############
 end
 # rubocop:enable Metrics/ClassLength
 ```
+* Update the routing. Edit the file config/routes.rb and add the following line to the end of the admin section:
+```
+  resources :admins, only: [:show]
+```
+* Enter the command "sh testc.sh".
+* Replace the contents of the file app/controllers/admins_controller.rb with the following:
+```
+#
+class AdminsController < ApplicationController
+  ##############################
+  # BEGIN: before_action section
+  ##############################
+  before_action :may_show_admin, only: [:index, :show]
+  before_action :may_destroy_admin, only: [:destroy]
+  ############################
+  # END: before_action section
+  ############################
 
+  #######################
+  # BEGIN: action section
+  #######################
+  def show
+    @admin = Admin.find(params[:id])
+  end
+  #####################
+  # END: action section
+  #####################
+
+  private
+
+  ########################
+  # BEGIN: private section
+  ########################
+  def may_show_admin
+    return redirect_to(root_path) unless admin_signed_in? == true
+  end
+  helper_method :may_show_admin
+  ######################
+  # END: private section
+  ######################
+end
+```
 
 ### Integration Tests
 
