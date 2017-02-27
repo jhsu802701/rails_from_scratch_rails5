@@ -187,6 +187,11 @@ end
 * Enter the command "touch app/views/users/show.html.erb".  This is a blank file that you will fill in later.
 * Enter the command "sh testc.sh".  Now all of the controller tests pass.
 * Enter the command "sh git_check.sh".  All tests should pass, and there should be no offenses.
+* Enter the following commands:
+```
+git add .
+git commit -m  "Added the user show capability in the controller"
+```
 
 ### Integration Tests
 * Enter the command "rails generate integration_test users_show".
