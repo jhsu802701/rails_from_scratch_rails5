@@ -326,6 +326,7 @@ git commit -m "Completed the show method for users"
 ### Wrapping Up
 * Enter the command "git push origin 10-01-user_show".
 * Go to the GitHub repository and click on the "Compare and pull request" button for this branch.
+* The email display on the user profile page will be flagged by Hakiri.  Log into Hakiri and mark this as a false positive by clicking on Details -> 1 warning -> admin view -> 1 warning -> Mark as False Positive.
 * Accept this pull request to merge it with the master branch, but do NOT delete this branch.
 * Enter the following commands:
 ```
