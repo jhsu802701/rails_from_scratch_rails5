@@ -310,6 +310,11 @@ git commit -m "Added user methods"
 * The admins index page (which you will create later) will use the same table formatting.
 * Refresh the user index page.  Now the table looks better.
 * Enter the command "sh git_check.sh".  All tests should pass, and there should be no offenses.
+* Enter the following commands:
+```
+git add .
+git commit -m "Updated the user index styling"
+```
 
 ### Adding and Removing Fields
 * The search form appears at the top of the user index page, but the buttons for adding and removing fields do not work yet.
