@@ -172,7 +172,8 @@ end
   end
   helper_method :may_index_user
 ```
-* Enter the command "sh testc.sh".
+* Enter the command "sh testc.sh".  Two of the tests fail because of a missing template.
+* Enter the command "test1".  Two of the tests fail because of a missing template.
 
 ### User Index View
 Create the file app/views/users/index.html.erb with the following content:
