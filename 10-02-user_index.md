@@ -140,7 +140,8 @@ end
 ```
   resources :users, only: [:show, :index]
 ```
-* Enter the command "sh testc.sh".
+* Enter the command "sh testc.sh".  All 4 controller tests fail because the index action is missing from the user controller.
+* Enter the command "test1".  Again, all 4 integration tests fail because the index action is missing from the user controller.
 
 ### User Controller
 * In the before_action section of the file app/controllers/users_controller.rb, add the following line:
