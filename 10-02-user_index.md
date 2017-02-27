@@ -133,7 +133,7 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
 end
 ```
 * Enter the command "alias test1='rails test test/integration/users_index_test.rb'".
-* Enter the command "test1".
+* Enter the command "test1".  All 4 tests fail because the method users_path is undefined.  Yes, it's the same issue causing the controller tests to fail.
 
 ### Routing
 * In the config/routes.rb file, replace the line beginning with "resources :users" with the following:
