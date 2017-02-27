@@ -63,7 +63,12 @@ Enter the command "git checkout -b 10-03-user_delete".
   helper_method :may_destroy_user
 ```
 * Enter the command "sh testc.sh".  All tests should pass.
-* Enter the command "sh testcl.sh".  All tests should pass, and there should be no offenses.
+* Enter the command "sh git_check.sh".  All tests should pass, and there should be no offenses.
+* Enter the following commands:
+```
+git add .
+git commit -m "Added destroy to the user controller"
+```
 
 ### Wrapping Up
 * Enter the command "git push origin 10-03-user_delete".
