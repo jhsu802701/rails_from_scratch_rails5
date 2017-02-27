@@ -176,7 +176,10 @@ end
 * Enter the command "test1".  Two of the tests fail because of a missing template.
 
 ### User Index View
-Create the file app/views/users/index.html.erb with the following content:
+* Enter the command "touch app/views/users/index.html.erb" to create the user index page.
+* Enter the command "sh testc.sh".  All of the controller tests should pass.
+* Enter the command "test1".  Two of the integration tests fail due to missing content on the index page.
+* Create the file app/views/users/index.html.erb with the following content:
 ```
 <% provide(:title, 'User Index') %>
 
