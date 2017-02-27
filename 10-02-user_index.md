@@ -353,6 +353,12 @@ git commit -m "Allow the buttons to add and remove fields in the user index sear
   end
 ```
 * Refresh your web browser.  Now the only searchable fields should be the email address, username, last name, and first name.
+* Enter the command "sh git_check.sh".  All tests should pass, and there should be no offenses.
+* Enter the following commands:
+```
+git add .
+git commit -m "Limit the ransackable attributes for users and display up to 50 users per page"
+```
 
 ### Wrapping Up
 * Enter the command "git push origin 10-02-user_index_controller".
