@@ -332,6 +332,12 @@ jQuery ->
     event.preventDefault()
 ```
 * Now the buttons for adding and removing fields in the user index search form should work.  Try them out on the browser in your local app to verify this.
+* Enter the command "sh git_check.sh".  All tests should pass, and there should be no offenses.
+* Enter the following commands:
+```
+git add .
+git commit -m "Allow the buttons to add and remove fields in the user index search form to work"
+```
 
 ### Limiting Searchable Fields
 * So far, the search form offers all parameters for filtering search results.  This is confusing and not desirable.  In addition, let's also change the number of entries listed per page from 30 (default value) to 50.
