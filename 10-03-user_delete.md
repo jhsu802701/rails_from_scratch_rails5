@@ -61,7 +61,9 @@ Enter the command "git checkout -b 10-03-user_delete".
   end
   helper_method :may_destroy_user
 ```
-* Enter the command "sh testc.sh".
+* In the file app/controllers/users_controller.rb, add the line "# rubocop:disable Metrics/ClassLength" to the very beginning and the line "# rubocop:disable Metrics/ClassLength" to the very end of the file.
+* Enter the command "sh testc.sh".  All tests should pass.
+* Enter the command "sh testcl.sh".  All tests should pass, and there should be no offenses.
 
 ### Wrapping Up
 * Enter the command "git push origin 10-03-user_delete".
