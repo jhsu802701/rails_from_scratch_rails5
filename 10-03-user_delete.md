@@ -6,7 +6,7 @@ In this chapter, you will give the power to delete users to admins and ONLY admi
 ### New Branch
 Enter the command "git checkout -b 10-03-user_delete".
 
-### User Controller
+### Controller Test
 * In the file test/controllers/users_controller_test.rb, add the following lines to the DELETE section:
 ```
   test 'should not allow visitor to delete user' do
@@ -41,6 +41,7 @@ Enter the command "git checkout -b 10-03-user_delete".
     assert_redirected_to users_path
   end
 ```
+* In the file test/controllers/users_controller_test.rb, add the line "# rubocop:disable Metrics/ClassLength" to the very beginning of the file and the line "# rubocop:disable Metrics/ClassLength" to the very end of the file.
 * Enter the command "sh testc.sh".  Five controller tests fail because the destroy action is missing from the user controller.
 * In the file app/controllers/users_controller.rb, add the following lines to the before_action section:
 ```
@@ -61,7 +62,6 @@ Enter the command "git checkout -b 10-03-user_delete".
   end
   helper_method :may_destroy_user
 ```
-* In the file app/controllers/users_controller.rb, add the line "# rubocop:disable Metrics/ClassLength" to the very beginning and the line "# rubocop:disable Metrics/ClassLength" to the very end of the file.
 * Enter the command "sh testc.sh".  All tests should pass.
 * Enter the command "sh testcl.sh".  All tests should pass, and there should be no offenses.
 
