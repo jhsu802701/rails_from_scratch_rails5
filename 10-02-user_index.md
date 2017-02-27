@@ -287,6 +287,62 @@ git add .
 git commit -m "Added user methods"
 ```
 
+### Bootstrap Styling
+* If you have not already done so, restart the local server, and then refresh the browser.  (If you do not, you'll may get an error message when you attempt to view the user index.)
+* Log in to your local app as an admin.
+* Click on the "User Index" link.  The user index will appear, but the table would look far better with lines between each entry.
+* Add the following content to the end of app/assets/stylesheets/custom.scss to format the table in the users index page:
+```
+/* Users and admins indices */
+.users, .admins {
+  td {
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+  }
+  th {
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+  }
+}
+```
+* The admins index page (which you will create later) will use the same table formatting.
+* Refresh the user index page.  Now the table looks better.
+* Enter the command "sh git_check.sh".  All tests should pass, and there should be no offenses.
+
+### Adding and Removing Fields
+* The search form appears at the top of the user index page, but the buttons for adding and removing fields do not work yet.
+* Add the following content to the end of the app/assets/javascripts/users.coffee file to allow the buttons for adding and removing fields in the search form:
+```
+jQuery ->
+  $('form').on 'click', '.remove_fields', (event) ->
+    $(this).closest('.field').remove()
+    event.preventDefault()
+
+  $('form').on 'click', '.add_fields', (event) ->
+    time = new Date().getTime()
+    regexp = new RegExp($(this).data('id'), 'g')
+    $(this).before($(this).data('fields').replace(regexp, time))
+    event.preventDefault()
+```
+* Now the buttons for adding and removing fields in the user index search form should work.  Try them out on the browser in your local app to verify this.
+
+### Limiting Searchable Fields
+* So far, the search form offers all parameters for filtering search results.  This is confusing and not desirable.  In addition, let's also change the number of entries listed per page from 30 (default value) to 50.
+* Add the following lines to app/models/user.rb immediately after the line beginning with "class User":
+```
+  # Specify the number of entries per page given use of the will_paginate gem
+  self.per_page = 50
+
+  # Limit the parameters available for searching the user database
+  RANSACKABLE_ATTRIBUTES = %w(email username last_name first_name).freeze
+  def self.ransackable_attributes(_auth_object = nil)
+    RANSACKABLE_ATTRIBUTES + _ransackers.keys
+  end
+```
+* Refresh your web browser.  Now the only searchable fields should be the email address, username, last name, and first name.
+
 ### Wrapping Up
 * Enter the command "git push origin 10-02-user_index_controller".
 * Go to the GitHub repository and click on the "Compare and pull request" button for this branch.
