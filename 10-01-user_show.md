@@ -94,23 +94,23 @@ class UsersControllerTest < ActionController::TestCase
     get :show, params: { id: @u7 }
     assert :success
   end
-  ################
-  # FINISHED: show
-  ################
+  ###########
+  # END: show
+  ###########
   ##############
   # BEGIN: index
   ##############
 
-  #################
-  # FINISHED: index
-  #################
+  ############
+  # END: index
+  ############
   ###############
   # BEGIN: delete
   ###############
 
-  ##################
-  # FINISHED: delete
-  ##################
+  #############
+  # END: delete
+  #############
 end
 ```
 * Enter the command "sh testc.sh".  All five new controller tests fail.  Four of these test failures are due to the undefined method sign_in, and one test failure is due to a missing route.
