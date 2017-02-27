@@ -136,12 +136,12 @@ end
 # END: controller test setup
 ############################
 ```
-* Enter the command "sh testc.sh".  Now all 4 new tests fail due to a missing route.
+* Enter the command "sh testc.sh".  Now all five new tests fail due to a missing route.
 * Update the routing. Edit the file config/routes.rb and add the following line to the end of the user section:
 ```
   resources :users, only: [:show]
 ```
-* Enter the command "sh testc.sh".  Now all 4 new tests fail because the "show" action is missing from the user controller.
+* Enter the command "sh testc.sh".  Now all five new tests fail because the "show" action is missing from the user controller.
 * Replace the contents of the file app/controllers/users_controller.rb with the following:
 ```
 #
