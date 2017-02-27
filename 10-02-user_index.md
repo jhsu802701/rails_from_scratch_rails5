@@ -132,7 +132,7 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
   end
 end
 ```
-* Enter the command "alias test`='rails test test/integration/users_index_test.rb'".
+* Enter the command "alias test1='rails test test/integration/users_index_test.rb'".
 * Enter the command "test1".
 
 ### Routing
