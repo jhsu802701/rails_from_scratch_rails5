@@ -116,7 +116,6 @@ end
 * Enter the command "test1".  Two tests will fail because the delete button is missing from the user profile page.
 * Add the delete button to the bottom of the user profile .  Edit the file app/views/users/show.html.erb.  The file should look like this:
 ```
-
     . . . .
     <br>
     <% ###################### %>
