@@ -70,6 +70,49 @@ git add .
 git commit -m "Added destroy to the user controller"
 ```
 
+### Integration Test
+* Enter the command "rails generate integration_test users_delete".
+* Replace the contents of the file test/integration/users_delete_test.rb with the following:
+```
+require 'test_helper'
+
+class UsersDeleteTest < ActionDispatch::IntegrationTest
+  def delete_user(u)
+    visit user_path(u)
+    assert_difference 'User.count', -1 do
+      click_on 'Delete'
+    end
+    assert_text 'User deleted'
+  end
+
+  def check_delete(a)
+    login_as(a, scope: :admin)
+    delete_user(@u1)
+    delete_user(@u2)
+    delete_user(@u3)
+    delete_user(@u4)
+    delete_user(@u5)
+    delete_user(@u6)
+    delete_user(@u7)
+  end
+
+  test 'user does not get button to delete self' do
+    login_as(@u1, scope: :user)
+    visit user_path(@u1)
+    assert page.has_no_link?('Delete', href: user_path(@u1))
+  end
+
+  test 'super admin gets button to delete user' do
+    check_delete(@a1)
+  end
+
+  test 'regular admin gets button to delete user' do
+    check_delete(@a4)
+  end
+end
+```
+* 
+
 ### Wrapping Up
 * Enter the command "git push origin 10-03-user_delete".
 * Go to the GitHub repository and click on the "Compare and pull request" button for this branch.
