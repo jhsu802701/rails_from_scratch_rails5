@@ -1,7 +1,7 @@
 # Unit 10
-## Chapter 2: User Index Controller
+## Chapter 2: User Index
 
-In this chapter, you will provide the index method in the user controller.  The index of users should be available ONLY to the admins and not to the users or the general public.
+In this chapter, you will provide the index method for users.  The index of users should be available ONLY to the admins and not to the users or the general public.
 
 ### New Branch
 Enter the command "git checkout -b 10-02-user_index_controller".
