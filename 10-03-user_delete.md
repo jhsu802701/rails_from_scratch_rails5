@@ -111,7 +111,28 @@ class UsersDeleteTest < ActionDispatch::IntegrationTest
   end
 end
 ```
-* 
+* Enter the command "sh build_fast.sh".  Two tests will fail.
+* Enter the command "alias test1='(command for rerunning test minus the TESTOPTS portion)'".
+* Enter the command "test1".  Two tests will fail because the delete button is missing from the user profile page.
+* Add the delete button to the bottom of the user profile .  Edit the file app/views/users/show.html.erb.  The file should look like this:
+```
+
+    . . . .
+    <br>
+    <% ###################### %>
+    <% # BEGIN: delete button %>
+    <% ###################### %>
+    <% if admin_signed_in? %>
+      <%= link_to "Delete #{@user.first_name} #{@user.last_name} (#{@user.username})", @user,
+        class: "btn btn-primary", method: :delete,
+        data: { confirm: "Are you sure you wish to delete #{@user.first_name} #{@user.last_name}?" } %>
+    <% end %>
+    <% #################### %>
+    <% # END: delete button %>
+    <% #################### %>
+  </section>
+</div>
+```
 
 ### Wrapping Up
 * Enter the command "git push origin 10-03-user_delete".
