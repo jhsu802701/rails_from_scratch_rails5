@@ -41,8 +41,27 @@ Enter the command "git checkout -b 10-03-user_delete".
     assert_redirected_to users_path
   end
 ```
+* Enter the command "sh testc.sh".  Five controller tests fail because the destroy action is missing from the user controller.
+* In the file app/controllers/users_controller.rb, add the following lines to the before_action section:
+```
+  before_action :may_destroy_user, only: [:destroy]
+```
+* In the file app/controllers/users_controller.rb, add the following lines to the action section:
+```
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = 'User deleted'
+    redirect_to(users_path)
+  end
+```
+* In the file app/controllers/users_controller.rb, add the following lines to the private section:
+```
+  def may_destroy_user
+    return redirect_to(root_path) unless admin_signed_in?
+  end
+  helper_method :may_destroy_user
+```
 * Enter the command "sh testc.sh".
-* 
 
 ### Wrapping Up
 * Enter the command "git push origin 10-03-user_delete".
