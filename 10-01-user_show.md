@@ -292,6 +292,7 @@ class UsersShowTest < ActionDispatch::IntegrationTest
 end
 ```
 * Enter the command "sh build_fast.sh".  Three tests fail because the user profile page (still blank) lacks the expected content.
+* Enter the command "alias test1='(command for running the failed tests minus the TESTOPTS portion)'"
 * Fill in the file app/views/users/show.html.erb with the following:
 ```
 <% require 'email_munger' %>
@@ -314,6 +315,7 @@ end
   </section>
 </div>
 ```
+
 
 ### Wrapping Up
 * Enter the command "git push origin 10-01-user_show".
