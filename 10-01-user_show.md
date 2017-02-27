@@ -315,7 +315,13 @@ end
 ```
               <li><%= link_to "Your Profile", user_path(current_user) %></li>
 ```
-
+* Enter the command "test1".  All tests should now pass.
+* Enter the command "sh git_check.sh".  All tests should pass, and there should be no offenses.
+* Enter the following commands:
+```
+git add .
+git commit -m "Completed the show method for users"
+```
 
 ### Wrapping Up
 * Enter the command "git push origin 10-01-user_show".
