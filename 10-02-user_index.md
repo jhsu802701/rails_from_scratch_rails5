@@ -48,7 +48,7 @@ git commit -m "Added gems for paginating and searching the user index"
     assert :success
   end
 ```
-* Enter the command "sh testc.sh".
+* Enter the command "sh testc.sh".  The 4 new controller tests fail because of a missing route.
 
 ### Integration Test
 * Enter the command "rails generate integration_test users_index".
