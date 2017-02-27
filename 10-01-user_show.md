@@ -291,7 +291,29 @@ class UsersShowTest < ActionDispatch::IntegrationTest
   end
 end
 ```
-* Enter the command "sh build_fast.sh".  Three tests fail because the user profile page (still blank ) lacks the expected content.
+* Enter the command "sh build_fast.sh".  Three tests fail because the user profile page (still blank) lacks the expected content.
+* Fill in the file app/views/users/show.html.erb with the following:
+```
+<% require 'email_munger' %>
+<% provide(:title, "User: #{@user.first_name} #{@user.last_name}") %>
+
+<div class="row">
+  <section class="user_info">
+    <h1>
+    User: <%= @user.first_name %> <%= @user.last_name %>
+    </h1>
+    Username: <%= @user.username %>
+    <br>
+    Email: <%= raw(EmailMunger.encode(@user.email)) %>
+    <br>
+    <% if admin_signed_in? %>
+      <%= link_to "Delete #{@user.first_name} #{@user.last_name} (#{@user.username})", @user,
+        class: "btn btn-primary", method: :delete,
+        data: { confirm: "Are you sure you wish to delete #{@user.first_name} #{@user.last_name}?" } %>
+    <% end %>
+  </section>
+</div>
+```
 
 ### Wrapping Up
 * Enter the command "git push origin 10-01-user_show".
