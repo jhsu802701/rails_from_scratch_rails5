@@ -87,7 +87,7 @@ git rm test/integration/test3_test.rb
 * Enter the command "rails test" to make sure you have removed the initial content and initial integration tests.
 * In your browser window connected to the local server, you'll find your static pages at http://localhost:3000/, http://localhost:3000/about, and http://localhost:3000/contact .  (NOTE: If you are using Docker Machine, replace localhost with the appropriate numerical IP address.  If your Docker container outputs to a host port other than 3000, replace the "3000" with the appropriate port number.)
 * Enter the command "rails generate integration_test static_pages".
-* Replace the content of the file test/integration_test/static_pages_test.rb with the following code:
+* Replace the content of the file test/integration/static_pages_test.rb with the following code:
 ```
 require 'test_helper'
 
