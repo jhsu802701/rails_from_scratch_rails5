@@ -52,7 +52,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
 end
 ```
 * Enter the command "sh build_fast.sh".  All 4 of your new integration tests will fail.  Two tests fail because the sign_up_user method is undefined, and two tests fail because the "Sign up now!" button is missing.
-* Enter the command "alias test1=(command for running failed tests minus TESTOPTS portion)".
+* Enter the command "alias test1='(command for running failed tests minus TESTOPTS portion)'".
 * Enter the command "test1" to run just these tests again.
 * In your browser, go to the URL http://localhost:3000/users/sign_up .  (Replace "localhost" and/or "3000" if your setup calls for that.)  You'll see the standard Devise sign up form.  The debug window will show that the controller in use is "devise/registrations", and the action in use is "new".
 
