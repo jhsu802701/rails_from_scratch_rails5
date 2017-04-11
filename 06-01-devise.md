@@ -49,5 +49,5 @@ git commit -m "Configured Devise"
 ```
 git checkout master
 git pull
+sh heroku.sh
 ```
-* Enter the command "sh heroku.sh".
