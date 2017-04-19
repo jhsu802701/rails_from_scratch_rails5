@@ -114,8 +114,7 @@ class AdminsController < ApplicationController
   ##############################
   # BEGIN: before_action section
   ##############################
-  before_action :may_show_admin, only: [:index, :show]
-  before_action :may_destroy_admin, only: [:destroy]
+  before_action :may_show_admin, only: [:show]
   ############################
   # END: before_action section
   ############################
@@ -146,6 +145,118 @@ end
 ```
 
 ### Integration Tests
+* Enter the command "rails generate integration_test admins_show".
+* Replace the contents of the file test/integration/admins_show_test.rb with the following:
+```
+require 'test_helper'
+
+class AdminsShowTest < ActionDispatch::IntegrationTest
+  def check_profile_disabled(a)
+    visit admin_path(a)
+    assert page.has_css?('title', text: full_title(''),
+                                  visible: false)
+    assert page.has_css?('h1', text: 'Home', visible: false)
+  end
+
+  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable Metrics/MethodLength
+  def check_own_profile(a)
+    login_as(a, scope: :admin)
+    visit root_path
+    assert page.has_link?('Your Profile', href: admin_path(a))
+    click_on 'Logout'
+  end
+
+  def check_profile_enabled(a)
+    fn = a.first_name
+    ln = a.last_name
+    un = a.username
+    e = a.email
+    visit admin_path(a)
+    assert page.has_css?('title', text: full_title("Admin: #{fn} #{ln}"),
+                                  visible: false)
+    assert page.has_css?('h1', text: "Admin: #{fn} #{ln}",
+                               visible: false)
+    assert page.has_text?("Username: #{un}")
+    assert page.has_text?("Email: #{e}")
+  end
+  # rubocop:enable Metrics/AbcSize
+  # rubocop:enable Metrics/MethodLength
+
+  test 'unregistered visitors may not view admin profile pages' do
+    check_profile_disabled(@a1)
+    check_profile_disabled(@a2)
+    check_profile_disabled(@a3)
+    check_profile_disabled(@a4)
+    check_profile_disabled(@a5)
+    check_profile_disabled(@a6)
+  end
+
+  test 'user may not view admin profile pages' do
+    login_as(@u1, scope: :user)
+    check_profile_disabled(@a1)
+    check_profile_disabled(@a2)
+    check_profile_disabled(@a3)
+    check_profile_disabled(@a4)
+    check_profile_disabled(@a5)
+    check_profile_disabled(@a6)
+  end
+
+  test 'regular admin can view all admin profiles' do
+    login_as(@a4, scope: :admin)
+    check_profile_enabled(@a1)
+    check_profile_enabled(@a2)
+    check_profile_enabled(@a3)
+    check_profile_enabled(@a4)
+    check_profile_enabled(@a5)
+    check_profile_enabled(@a6)
+  end
+
+  test 'super admin can view all admin profiles' do
+    login_as(@a1, scope: :admin)
+    check_profile_enabled(@a1)
+    check_profile_enabled(@a2)
+    check_profile_enabled(@a3)
+    check_profile_enabled(@a4)
+    check_profile_enabled(@a5)
+    check_profile_enabled(@a6)
+  end
+
+  test 'admins can access their own profiles from the menu bar' do
+    check_own_profile(@a1)
+    check_own_profile(@a2)
+    check_own_profile(@a3)
+    check_own_profile(@a4)
+    check_own_profile(@a5)
+    check_own_profile(@a6)
+  end  
+end
+```
+* Enter the command "alias test1='rails test test/integration/admins_show_test.rb'".
+* Enter the command "test1". This runs only the tests in test/integration/admins_show_test.rb. All 4 integration tests will fail.
+* Create the file app/views/admins/show.html.erb with the following content:
+```
+<% require 'email_munger' %>
+
+<% provide(:title, "Admin: #{@admin.first_name} #{@admin.last_name}") %>
+<div class="row">
+  <section class="user_info">
+    <h1>
+    Admin: <%= @admin.first_name %> <%= @admin.last_name %>
+    </h1>
+    Username: <%= @admin.username %>
+    <br>
+    Email: <%= raw(EmailMunger.encode(@admin.email)) %>
+    <br>
+    <% if @admin.super != true && current_admin.super == true %>
+      <%= link_to "Delete", @admin, method: :delete,
+                            data: { confirm: "Are you sure you wish to delete this admin?" },
+                            class: "btn btn-lg btn-primary"
+      %>
+    <% end %>
+  </section>
+</div>
+```
 
 ### Wrapping Up
 * Enter the command "git push origin 11-01-admin_show".
