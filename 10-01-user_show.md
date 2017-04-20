@@ -141,6 +141,7 @@ end
 ```
   resources :users, only: [:show]
 ```
+* In the config/routes.rb file, remove the line "get 'users/new'".  This is unnecessary, because the registration controller takes care of this.
 * Enter the command "sh testc.sh".  Now all five new tests fail because the "show" action is missing from the user controller.
 * Replace the contents of the file app/controllers/users_controller.rb with the following:
 ```
