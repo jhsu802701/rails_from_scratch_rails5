@@ -106,6 +106,7 @@ end
 ```
   resources :admins, only: [:show]
 ```
+* In config/routes.rb, remove the line "get 'admins/new'".  This line is unnecessary, because the general public is not permitted to sign up as an admin.
 * Enter the command "sh testc.sh".
 * All four new tests fail because the "show" action is missing from the admin controller.
 * Replace the contents of the file app/controllers/admins_controller.rb with the following:
