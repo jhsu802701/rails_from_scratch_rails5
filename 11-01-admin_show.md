@@ -14,7 +14,6 @@ Enter the command "git checkout -b 11-01-admin_show".
 ```
 require 'test_helper'
 
-# rubocop:disable Metrics/ClassLength
 class AdminsControllerTest < ActionController::TestCase
   #############
   # BEGIN: show
@@ -99,7 +98,6 @@ class AdminsControllerTest < ActionController::TestCase
   # END: delete
   #############
 end
-# rubocop:enable Metrics/ClassLength
 ```
 * Enter the command "sh testc.sh".  All 4 new controller tests will fail because of a missing route.
 * Update the routing. Edit the file config/routes.rb and add the following line to the end of the admin section:
@@ -146,6 +144,9 @@ class AdminsController < ApplicationController
 end
 ```
 * Enter the command "sh testc.sh".  All 4 controller tests fail because of a missing template.
+* Enter the command "touch app/views/admins/show.html.erb".  This creates a blank file that you'll fill in later.
+* Enter the command "sh testc.sh".  All tests should now pass.
+* Enter the command "sh git_check.sh".  
 
 ### Integration Tests
 * Enter the command "rails generate integration_test admins_show".
