@@ -101,6 +101,7 @@ class AdminsControllerTest < ActionController::TestCase
 end
 # rubocop:enable Metrics/ClassLength
 ```
+* Enter the command "sh testc.sh".  All 4 new controller tests will fail because of a missing route.
 * Update the routing. Edit the file config/routes.rb and add the following line to the end of the admin section:
 ```
   resources :admins, only: [:show]
