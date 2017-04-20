@@ -262,6 +262,11 @@ end
   </section>
 </div>
 ```
+* Enter the command "test1".  One test fails because the admin profile page is not accessible from the menu bar.
+* In the user section of app/views/layouts/_header.html.erb, add the following line immediately before the line containing "Edit Settings":
+```
+              <li><%= link_to "Your Profile", admin_path(admin_user) %></li>
+```
 * Enter the command "test1".  All 3 integration tests should now pass.
 * Enter the command "sh git_check.sh".  All tests should pass, and there should be no offenses.
 
