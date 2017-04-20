@@ -145,6 +145,7 @@ class AdminsController < ApplicationController
   ######################
 end
 ```
+* Enter the command "sh testc.sh".  All 4 controller tests fail because of a missing template.
 
 ### Integration Tests
 * Enter the command "rails generate integration_test admins_show".
