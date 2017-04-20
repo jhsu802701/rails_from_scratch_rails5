@@ -236,8 +236,9 @@ class AdminsShowTest < ActionDispatch::IntegrationTest
   end  
 end
 ```
-* Enter the command "alias test1='rails test test/integration/admins_show_test.rb'".
-* Enter the command "test1". This runs only the tests in test/integration/admins_show_test.rb. All 4 integration tests will fail.
+* Enter the command "sh build_fast.sh".  All 3 new integration tests will fail.
+* Enter the command "alias test1='(command for repeating the failed tests minus the TESTOPTS portion)'".
+* Enter the command "test1". This runs only the tests in test/integration/admins_show_test.rb. All 3 integration tests will fail.
 * Create the file app/views/admins/show.html.erb with the following content:
 ```
 <% require 'email_munger' %>
