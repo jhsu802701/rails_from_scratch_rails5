@@ -236,7 +236,7 @@ class AdminsShowTest < ActionDispatch::IntegrationTest
   end  
 end
 ```
-* Enter the command "sh build_fast.sh".  All 3 new integration tests will fail.
+* Enter the command "sh build_fast.sh".  All 3 new integration tests will fail because of missing content.
 * Enter the command "alias test1='(command for repeating the failed tests minus the TESTOPTS portion)'".
 * Enter the command "test1". This runs only the tests in test/integration/admins_show_test.rb. All 3 integration tests will fail.
 * Create the file app/views/admins/show.html.erb with the following content:
@@ -262,6 +262,8 @@ end
   </section>
 </div>
 ```
+* Enter the command "test1".  All 3 integration tests should now pass.
+* Enter the command "sh git_check.sh".  All tests should pass, and there should be no offenses.
 
 ### Wrapping Up
 * Enter the command "git push origin 11-01-admin_show".
