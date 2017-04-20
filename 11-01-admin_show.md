@@ -238,7 +238,7 @@ class AdminsShowTest < ActionDispatch::IntegrationTest
     check_own_profile(@a4)
     check_own_profile(@a5)
     check_own_profile(@a6)
-  end  
+  end
 end
 ```
 * Enter the command "sh build_fast.sh".  All 3 new integration tests will fail because of missing content.
