@@ -146,7 +146,7 @@ end
 * Enter the command "sh testc.sh".  All 4 controller tests fail because of a missing template.
 * Enter the command "touch app/views/admins/show.html.erb".  This creates a blank file that you'll fill in later.
 * Enter the command "sh testc.sh".  All tests should now pass.
-* Enter the command "sh git_check.sh".  
+* Enter the command "sh git_check.sh".  All tests should now pass, and there should be no offenses.
 
 ### Integration Tests
 * Enter the command "rails generate integration_test admins_show".
