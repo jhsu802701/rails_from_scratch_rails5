@@ -60,6 +60,8 @@ Enter the command "git checkout -b 11-03-admin_delete".
     assert :success
   end
 ```
+* In test/controllers/admins_controller_test.rb, add the line "# rubocop:disable Metrics/ClassLength" to the very beginning of the file and the line "# rubocop:disable Metrics/ClassLength" to the very end of the file.
+
 
 ### Controller
 * In app/controllers/admins_controller.rb, add the following line to the before_action section:
