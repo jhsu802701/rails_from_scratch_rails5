@@ -2,7 +2,7 @@
 ## Chapter 3: Admin Deletion
 
 ### New Branch
-Enter the command "git checkout -b 11-03-admin_delete
+Enter the command "git checkout -b 11-03-admin_delete".
 
 ### Controller Test
 * In test/controllers/admins_controller_test.rb, add the following content to the delete section:
