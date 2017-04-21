@@ -43,6 +43,8 @@ Enter the command "git checkout -b 10-03-user_delete".
 ```
 * In the file test/controllers/users_controller_test.rb, add the line "# rubocop:disable Metrics/ClassLength" to the very beginning of the file and the line "# rubocop:disable Metrics/ClassLength" to the very end of the file.
 * Enter the command "sh testc.sh".  Five controller tests fail because the destroy action is missing from the user controller.
+
+### Controller
 * In the file app/controllers/users_controller.rb, add the following lines to the before_action section:
 ```
   before_action :may_destroy_user, only: [:destroy]
@@ -114,6 +116,8 @@ end
 * Enter the command "sh build_fast.sh".  Two tests will fail.
 * Enter the command "alias test1='(command for rerunning test minus the TESTOPTS portion)'".
 * Enter the command "test1".  Two tests will fail because the delete button is missing from the user profile page.
+
+### User Profile Page
 * Add the delete button to the bottom of the user profile .  Edit the file app/views/users/show.html.erb.  The file should look like this:
 ```
     . . . .
