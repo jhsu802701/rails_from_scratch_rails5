@@ -41,7 +41,7 @@ Enter the command "git checkout -b 10-03-user_delete".
     assert_redirected_to users_path
   end
 ```
-* In the file test/controllers/users_controller_test.rb, add the line "# rubocop:disable Metrics/ClassLength" to the very beginning of the file and the line "# rubocop:disable Metrics/ClassLength" to the very end of the file.
+* In the file test/controllers/users_controller_test.rb, add the line "# rubocop:disable Metrics/ClassLength" to the very beginning of the file and the line "# rubocop:enable Metrics/ClassLength" to the very end of the file.
 * Enter the command "sh testc.sh".  Five controller tests fail because the destroy action is missing from the user controller.
 
 ### Controller
