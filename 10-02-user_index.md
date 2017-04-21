@@ -4,7 +4,7 @@
 In this chapter, you will provide the index method for users.  The index of users should be available ONLY to the admins and not to the users or the general public.  The index will offer pagination and search capabilities.
 
 ### New Branch
-Enter the command "git checkout -b 10-02-user_index_controller".
+Enter the command "git checkout -b 10-02-user_index".
 
 ### Gemfile
 * Add the following lines to the end of the Gemfile:
