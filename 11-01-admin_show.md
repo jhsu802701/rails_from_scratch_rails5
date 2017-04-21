@@ -100,6 +100,8 @@ class AdminsControllerTest < ActionController::TestCase
 end
 ```
 * Enter the command "sh testc.sh".  All 4 new controller tests will fail because of a missing route.
+
+### Routing
 * Update the routing. Edit the file config/routes.rb and add the following line to the end of the admin section:
 ```
   resources :admins, only: [:show]
@@ -107,6 +109,8 @@ end
 * In config/routes.rb, remove the line "get 'admins/new'".  This line is unnecessary, because the general public is not permitted to sign up as an admin.
 * Enter the command "sh testc.sh".
 * All four new tests fail because the "show" action is missing from the admin controller.
+
+### Controller
 * Replace the contents of the file app/controllers/admins_controller.rb with the following:
 ```
 #
@@ -144,6 +148,8 @@ class AdminsController < ApplicationController
 end
 ```
 * Enter the command "sh testc.sh".  All 4 controller tests fail because of a missing template.
+
+### Template
 * Enter the command "touch app/views/admins/show.html.erb".  This creates a blank file that you'll fill in later.
 * Enter the command "sh testc.sh".  All tests should now pass.
 * Enter the command "sh git_check.sh".  All tests should now pass, and there should be no offenses.
@@ -244,6 +250,8 @@ end
 * Enter the command "sh build_fast.sh".  All 3 new integration tests will fail because of missing content.
 * Enter the command "alias test1='(command for repeating the failed tests minus the TESTOPTS portion)'".
 * Enter the command "test1". This runs only the tests in test/integration/admins_show_test.rb. All 3 integration tests will fail.
+
+### Admin Profile Page
 * Create the file app/views/admins/show.html.erb with the following content:
 ```
 <% require 'email_munger' %>
@@ -268,6 +276,8 @@ end
 </div>
 ```
 * Enter the command "test1".  One test fails because the admin profile page is not accessible from the menu bar.
+
+### Header
 * In the admin section of app/views/layouts/_header.html.erb, add the following line immediately before the line containing "Edit Settings":
 ```
               <li><%= link_to "Your Profile", admin_path(current_admin) %></li>
