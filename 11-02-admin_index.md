@@ -59,7 +59,7 @@ Enter the command "git checkout -b 11-02-admin_index".
   end
   helper_method :may_index_admin
 ```
-* Enter the command "sh testc.sh".  All 4 tests fail because of a missing template.
+* Enter the command "sh testc.sh".  2 tests fail because of a missing template.
 
 ### Initial Template
 * Enter the command "touch app/views/admins/index.html.erb" to create the admin index page.  (You'll fill it in later.)
