@@ -114,6 +114,8 @@ class UsersControllerTest < ActionController::TestCase
 end
 ```
 * Enter the command "sh testc.sh".  All five new controller tests fail.  Four of these test failures are due to the undefined method sign_in, and one test failure is due to a missing route.
+
+### Test Helper
 * Automatically provide Devise test controller helpers (which provide the method sign_in), the setup_universal actions, and the teardown_universal actions to all controller tests. Edit the file test/test_helper.rb and add the following lines before the Capybara setup section:
 ```
 ##############################
@@ -137,12 +139,16 @@ end
 ############################
 ```
 * Enter the command "sh testc.sh".  Now all five new tests fail due to a missing route.
+
+### Routing
 * Update the routing. Edit the file config/routes.rb and add the following line to the end of the user section:
 ```
   resources :users, only: [:show]
 ```
 * In the config/routes.rb file, remove the line "get 'users/new'".  This is unnecessary, because the registration controller takes care of this.
 * Enter the command "sh testc.sh".  Now all five new tests fail because the "show" action is missing from the user controller.
+
+### Controller
 * Replace the contents of the file app/controllers/users_controller.rb with the following:
 ```
 #
@@ -185,6 +191,8 @@ class UsersController < ApplicationController
 end
 ```
 * Enter the command "sh testc.sh".  Three tests fail because of a missing template.
+
+### Template
 * Enter the command "touch app/views/users/show.html.erb".  This is a blank file that you will fill in later.
 * Enter the command "sh testc.sh".  Now all of the controller tests pass.
 * Enter the command "sh git_check.sh".  All tests should pass, and there should be no offenses.
@@ -295,6 +303,8 @@ end
 * Enter the command "sh build_fast.sh".  Three tests fail.
 * Enter the command "alias test1='(command for running the failed tests minus the TESTOPTS portion)'"
 * Enter the command "test1".  Three tests fail because the user profile page (still blank) lacks the expected content.
+
+### User Profile Page
 * Fill in the file app/views/users/show.html.erb with the following:
 ```
 <% require 'email_munger' %>
@@ -312,6 +322,8 @@ end
 </div>
 ```
 * Enter the command "test1".  One test fails because the user profile page is not accessible from the menu bar.
+
+### Header
 * In the user section of app/views/layouts/_header.html.erb, add the following line immediately before the line containing "Edit Settings":
 ```
               <li><%= link_to "Your Profile", user_path(current_user) %></li>
