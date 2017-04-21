@@ -40,7 +40,7 @@ Enter the command "git checkout -b 11-02-admin_index".
 * Enter the command "sh testc.sh".  All 4 tests fail because of a missing action in the admin controller.
 * In the before_action section of the file app/controllers/admins_controller.rb, add the following line:
 ```
-before_action :may_index_admin, only: [:index]
+  before_action :may_index_admin, only: [:index]
 ```
 * In the action section of app/controllers/admins_controller.rb, add the following lines:
 ```
