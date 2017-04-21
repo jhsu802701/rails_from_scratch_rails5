@@ -155,4 +155,64 @@ class AdminsIndexTest < ActionDispatch::IntegrationTest
   end
 end
 ```
-* Enter the command "sh build_fast.sh".  
+* Enter the command "sh build_fast.sh".  Two tests fail due to missing content on the admin index page.
+* Enter the command "alias test1='(command for repeating the tests that failed minus the TESTOPTS portion)'".
+* Enter the command "test1".  Two tests should fail.
+* Give the file app/views/admins/index.html.erb the following content:
+```
+<% provide(:title, 'Admin Index') %>
+
+<h1>Admin Index</h1>
+
+<table class="admins">
+  <tr>
+    <td><b>Last Name</b></td>
+    <td><b>First Name</b></td>
+    <td><b>Super?</b></td>
+    <td><b>Username</b></td>
+    <td><b>Email</b></td>
+  </tr>
+  <%= render @admins %>
+</table>
+<%= will_paginate %>
+```
+* Create the file app/views/admins/_admin.html.erb with the following content to show information on each admin in the index:
+```
+<% require 'email_munger' %>
+<tr>
+  <td><%= admin.last_name %></td>
+  <td><%= admin.first_name %></td>
+  <td>
+  <% if admin.super == true  %>
+    Y
+  <% else %>
+    N
+  <% end %>
+  </td>
+  <td><%= link_to admin.username, admin %></td>
+  <td><%= link_to raw(EmailMunger.encode(admin.email)), admin %></td>
+</tr>
+```
+* Enter the command "test1".  Two tests should fail due to a missing link to the admin index from the home page.
+* In the admin section in app/views/layouts/_header.html.erb, add the following line just after the one containing "User Index":
+```
+          <li><%= link_to "Admin Index", admins_path %></li>
+```
+* Enter the command "test1".  All tests should now pass.
+* Enter the command "sh git_check.sh".  All tests should pass, and there should be no offenses.
+* Enter the following commands:
+```
+git add .
+git commit -m "Completed the index method for admins"
+```
+
+### Wrapping Up
+* Enter the command "git push origin 11-02-admin_index".
+* Go to the GitHub repository and click on the "Compare and pull request" button for this branch.
+* Accept this pull request to merge it with the master branch, but do NOT delete this branch.
+* Enter the following commands:
+```
+git checkout master
+git pull
+sh heroku.sh
+```
