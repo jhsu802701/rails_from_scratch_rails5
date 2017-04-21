@@ -33,11 +33,15 @@ Enter the command "git checkout -b 11-02-admin_index".
   end
 ```
 * Enter the command "sh testc.sh".  All 4 tests fail because of a missing route.
+
+### Routing
 * Edit the config/routes.rb file and replace the line beginning with "resources :admins" with the following:
 ```
   resources :admins, only: [:show, :index]
 ```
 * Enter the command "sh testc.sh".  All 4 tests fail because of a missing action in the admin controller.
+
+### Controller
 * In the before_action section of the file app/controllers/admins_controller.rb, add the following line:
 ```
   before_action :may_index_admin, only: [:index]
@@ -56,6 +60,8 @@ Enter the command "git checkout -b 11-02-admin_index".
   helper_method :may_index_admin
 ```
 * Enter the command "sh testc.sh".  All 4 tests fail because of a missing template.
+
+### Initial Template
 * Enter the command "touch app/views/admins/index.html.erb" to create the admin index page.  (You'll fill it in later.)
 * Enter the command "sh testc.sh".  All controller tests should now pass.
 * Enter the command "sh git_check.sh".  All tests should pass, and there should be no violations.
@@ -158,6 +164,8 @@ end
 * Enter the command "sh build_fast.sh".  Two tests fail due to missing content on the admin index page.
 * Enter the command "alias test1='(command for repeating the tests that failed minus the TESTOPTS portion)'".
 * Enter the command "test1".  Two tests should fail.
+
+### Index Page
 * Give the file app/views/admins/index.html.erb the following content:
 ```
 <% provide(:title, 'Admin Index') %>
@@ -194,6 +202,8 @@ end
 </tr>
 ```
 * Enter the command "test1".  Two tests should fail due to a missing link to the admin index from the home page.
+
+### Header
 * In the admin section in app/views/layouts/_header.html.erb, add the following line just after the one containing "User Index":
 ```
           <li><%= link_to "Admin Index", admins_path %></li>
